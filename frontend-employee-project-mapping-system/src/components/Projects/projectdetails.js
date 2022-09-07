@@ -46,13 +46,13 @@ const ListProjectComponent = () => {
                 <tbody>
                     {
                         projects.map(
-                            Project =>
-                            <tr key = {projects.id}> 
-                                <td> {projects.id} </td>
-                                <td> {projects.Name} </td>
-                                <td>{projects.description}</td>
-                                <td>{projects.startdate}</td>
-                                <td>{projects.enddate}</td>
+                            project =>
+                            <tr key = {project.projectId}> 
+                                <td> {project.projectId} </td>
+                                <td> {project.name} </td>
+                                <td>{project.description}</td>
+                                <td>{project.startDate}</td>
+                                <td>{project.endDate}</td>
                                 <td>
                                     {/* <Link className="btn btn-info" to={`/edit-Project/${Project.id}`} >Update</Link> */}
                                     {/* <button className = "btn btn-danger" onClick = {() => deleteProject(Project.id)} */}

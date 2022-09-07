@@ -1,28 +1,21 @@
 import axios from 'axios'
 
-const Project_BASE_REST_API_URL = 'http://localhost:8080/admin/projects';
+const Project_BASE_REST_API_URL = 'http://localhost:8082/admin/';
 
-class ProjectService{
+// class ProjectService{
 
-    getAllProjects(){
-        return axios.get(Project_BASE_REST_API_URL)
-    }
+//     getAllProjects(){
+//         return axios.get(Project_BASE_REST_API_URL + 'projects')
+//     }
 
-    // createProject(Project){
-    //     return axios.post(Project_BASE_REST_API_URL, Project)
-    // }
-
-    // getProjectById(ProjectId){
-    //     return axios.get(Project_BASE_REST_API_URL + '/' + ProjectId);
-    // }
-
-    // updateProject(ProjectId, Project){
-    //     return axios.put(Project_BASE_REST_API_URL + '/' +ProjectId, Project);
-    // }
-
-    // deleteProject(ProjectId){
-    //     return axios.delete(Project_BASE_REST_API_URL + '/' + ProjectId);
-    // }
+   
+    
+// }
+const getAllProjects = () =>{
+    return axios.get(Project_BASE_REST_API_URL + 'projects')
 }
-
-export default new ProjectService();
+const addNewProject = (projectDetails) =>{
+    return axios.post(Project_BASE_REST_API_URL + 'addprojects',projectDetails);
+}
+// export default new ProjectService();
+export default {getAllProjects,addNewProject};

@@ -1,7 +1,69 @@
-import React from "react";
+import React, {useState, useEffect} from 'react'
+import ProjectService from '../../Services/ProjectService';
+
 
 
 const AddProjects = () => {
+  
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [managerId, setManagerId] = useState("");
+  
+
+
+  // useEffect(() => {
+  //   if(studentId!=null){
+  //     checkUpdation(studentId);
+  //   }
+  //   //---------------------------------------------------------------------
+  //   if (studentName !== null && studentEmail !== null && studentAge !== null) {
+  //     setName(obj.studentName);
+  //     setEmail(obj.studentEmail);
+  //     setAge(obj.studentAge);
+  //   } else {
+  //     setLoggedInStudentFalse(true);
+  //   }
+  // }, []);
+
+  let addProjectDetails = (event) => {
+    event.preventDefault();
+    
+      let projectDetails = {
+        name,
+        description,
+        startDate,
+        endDate,
+        location,
+        managerId
+      };
+      ProjectService
+        .addNewProject(projectDetails)
+        .then((response) => {
+          setName("");
+          setDescription("");
+          setStartDate("");
+          setEndDate("");
+          setLocation("");
+          setManagerId("");
+    
+          // setSuccessMesg("User Created Successfully");
+         // window.sessionStorage.setItem("snackbar_registration","show");
+          //toastr.success("Student Profile Created Successfully");
+          //navigate("/login");
+        })
+        .catch((error) => {
+          console.log(error)
+          //setErrorMesg(error.response.data);
+        });
+    
+  };
+
+
+
     return (
         <>
           {/* {loggedInStudentFalse && <Navigate to="/home" />}
@@ -16,7 +78,7 @@ const AddProjects = () => {
               </p>
               <div className="border border-1 rounded">
                 <div className="m-3">
-                  <form>
+                  <form onSubmit={addProjectDetails}>
                     <div className="form-floating mb-3">
                       <input
                         type="text"
@@ -85,8 +147,8 @@ const AddProjects = () => {
                     </div>
                     
                     <div className="row g-1">
-                      <button type="submit" className="btn1 primary1">
-                        Update Details
+                      <button type="submit" className="btn primary">
+                        Add Project
                       </button>
                     </div>
                   </form>

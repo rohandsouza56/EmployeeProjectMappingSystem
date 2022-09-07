@@ -8,7 +8,7 @@ import ListProjectComponent from './components/Projects/projectdetails';
 function App() {
   return (
     <div className="App">
-      <ListProjectComponent/>
+      <AddProjects/>
     </div>
   );
 }
