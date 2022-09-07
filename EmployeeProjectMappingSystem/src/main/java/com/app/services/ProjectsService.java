@@ -19,5 +19,13 @@ public class ProjectsService {
 		// TODO Auto-generated method stub
 		return projectsRepository.findAll();
 	}
+	
+	
+	
+	
+	public Projects addProjects(Projects project) {
+		// TODO Auto-generated method stub
+		return projectsRepository.save(project);
+	}
 
 }

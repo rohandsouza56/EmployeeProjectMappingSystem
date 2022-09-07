@@ -3,8 +3,6 @@ use epms;
 drop database epms;
 show tables;
 
-
-
 create table Projects(
 Project_Id int primary key auto_increment,
 Project_Name varchar(50) Not Null,
