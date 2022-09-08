@@ -1,5 +1,7 @@
 package com.app.pojos;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,30 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="Options")
+@Table(name="Quiz")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Options {
+public class Quiz {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Option_Id")
-	private int optionId;
+	@Column(name="Question_Id")
+	private int questionId;
 	
+
 	@ManyToOne( cascade = CascadeType.ALL)
-	@JoinColumn(name="Question_Id")
-	private Quiz quiz;
+	@JoinColumn(name="technologyId")
+	private Technology technology;
 	
-	@Column(name="Option")
-	private String Option;
+	@Column(name="Question")
+	private String question;
 	
-	@Column(name="isTrue")
-	private boolean isTrue;
+	
+	@OneToMany(mappedBy="quiz")
+	private List<Options> options;
+	
 }

@@ -1,12 +1,14 @@
 package com.app.pojos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ import lombok.NoArgsConstructor;
 public class Projects{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Project_Id")
 	private int projectId;
 	
 	@Column(name="Project_Name")
@@ -41,6 +44,13 @@ public class Projects{
 	@Column(name="Manager_Id")
 	private int managerId;
 	
+	
+	@OneToMany(mappedBy="projects")
+	List<ProjectRequirement> projectRequirement;
+	
+
+	@OneToMany(mappedBy="projects")
+	List<Departments> departments;
 	//Projects p = new Projects();
 	
 	

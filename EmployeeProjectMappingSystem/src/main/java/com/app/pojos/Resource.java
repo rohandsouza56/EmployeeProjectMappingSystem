@@ -1,6 +1,5 @@
 package com.app.pojos;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,22 +11,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="Project_Requirment")
+@Table(name="Resource")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectRequirment {
+public class Resource {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Requirement_Id")
-	private int requirementId;
+	@Column(name="Resource_Id")
+	private int resourceId;
 	
-	@Column(name="Project_Id")
-	private int projectId;
-
-	@Column(name="Project_Name")
-	private String name;
-
+	@Column(name="Resource_Name")
+	private String resourceName;
+	
+	@Column(name="Link")
+	private String link;
+	
 }

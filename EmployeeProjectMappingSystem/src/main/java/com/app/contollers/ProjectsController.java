@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.app.pojos.Options;
 import com.app.pojos.Projects;
+import com.app.pojos.Quiz;
+import com.app.services.OptionsService;
 import com.app.services.ProjectsService;
+import com.app.services.QuizService;
 
 @RestController
 @RequestMapping("/admin")
@@ -22,6 +27,12 @@ public class ProjectsController {
 
 	@Autowired
 	private ProjectsService projectsService;
+	
+	@Autowired
+	private QuizService quizService;
+	
+	@Autowired
+	private OptionsService optionsService;
 	
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
@@ -38,7 +49,13 @@ public class ProjectsController {
 		return ResponseEntity.ok().body(projectsService.addProjects(project));
 	}
 	
-	//last updated
+	@PostMapping("/addoption")
+	public ResponseEntity<?> addOptions(@RequestBody Options option){
+		return ResponseEntity.ok().body(optionsService.addOptions(option));
+	}
 	
-
+	@PostMapping("/addquiz")
+	public ResponseEntity<?> addQuiz(@RequestBody Quiz quiz){
+		return ResponseEntity.ok().body(quizService.addQuestion(quiz));
+	}
 }

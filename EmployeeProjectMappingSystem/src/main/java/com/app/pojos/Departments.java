@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,24 +15,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="Options")
+@Table(name="Departments")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Options {
+public class Departments {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Option_Id")
-	private int optionId;
+	@Column(name="Department_Id")
+	private int departmentId;
 	
 	@ManyToOne( cascade = CascadeType.ALL)
-	@JoinColumn(name="Question_Id")
-	private Quiz quiz;
+	@JoinColumn(name="Project_Id")
+	private Projects projects;
 	
-	@Column(name="Option")
-	private String Option;
+	@Column(name="Name")
+	private String name;
 	
-	@Column(name="isTrue")
-	private boolean isTrue;
+	@Column(name="Current_Strength")
+	private int currentStrength;
+	
+	@Column(name="Maximum_Strength")
+	private int maximumStrength;
 }
