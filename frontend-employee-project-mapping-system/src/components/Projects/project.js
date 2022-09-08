@@ -12,26 +12,110 @@ const AddProjects = () => {
   const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
   const [managerId, setManagerId] = useState("");
+
+  const [nameErr, setNameErr] = useState("");
+  const [descriptionErr, setDescriptionErr] = useState("");
+  const [startDateErr, setStartDateErr] = useState("");
+  const [endDateErr, setEndDateErr] = useState("");
+  const [locationErr, setLocationErr] = useState("");
+  const [managerIdErr, setManagerIdErr] = useState("");
+
+  const [errorMesg, setErrorMesg] = useState("");
+  
+ 
+  let nameTextHandler = (event) => {
+    if(nameErr!=="" || nameErr!==null) setNameErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setName(event.target.value.toUpperCase());
+  };
+
+  let descriptionTextHandler = (event) => {
+    if(descriptionErr!=="" || descriptionErr!==null) setDescriptionErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setDescription(event.target.value);
+  };
+
+  let startDateTextHandler = (event) => {
+    if(startDateErr!=="" || startDateErr!==null) setStartDateErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setStartDate(event.target.value);
+  };
+
+  let endDateTextHandler = (event) => {
+    if(endDateErr!=="" || endDateErr!==null) setEndDateErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setEndDate(event.target.value);
+  };
+
+  let locationTextHandler = (event) => {
+    if(locationErr!=="" || locationErr!==null) setLocationErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setLocation(event.target.value);
+  };
+
+  let managerIdTextHandler = (event) => {
+    if(managerIdErr!=="" || managerIdErr!==null) setManagerIdErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setManagerId(event.target.value);
+  };
+
+
+  let validation = () => {
+    setNameErr("");
+    setDescriptionErr("");
+    setStartDateErr("");
+    setEndDateErr("");
+    setLocationErr("");
+    setManagerIdErr("");
+    let flag = true;
+   
+    if (name === "" || name === null) {
+      setNameErr("This field is compulsory");
+      flag = false;
+    }
+    if (description === "" || description === null) {
+      setDescriptionErr("This field is compulsory");
+      flag = false;
+    } 
+
+    if (startDate === "" || startDate === null) {
+      setStartDateErr("This field is compulsory");
+      flag = false;
+    } 
+
+    if (endDate === "" || endDate === null) {
+      setEndDateErr("This field is compulsory");
+      flag = false;
+    } 
+
+    if (location === "" || location === null) {
+      setLocationErr("This field is compulsory");
+      flag = false;
+    } 
+    if (managerId === "" || managerId === null) {
+      setManagerIdErr("This field is compulsory");
+      flag = false;
+    } 
   
 
+    if (flag) {
+      return true;
+    }
+  };
 
-  // useEffect(() => {
-  //   if(studentId!=null){
-  //     checkUpdation(studentId);
-  //   }
-  //   //---------------------------------------------------------------------
-  //   if (studentName !== null && studentEmail !== null && studentAge !== null) {
-  //     setName(obj.studentName);
-  //     setEmail(obj.studentEmail);
-  //     setAge(obj.studentAge);
-  //   } else {
-  //     setLoggedInStudentFalse(true);
-  //   }
-  // }, []);
+
+
+
 
   let addProjectDetails = (event) => {
     event.preventDefault();
-    
+    if (validation() === true) {
       let projectDetails = {
         name,
         description,
@@ -41,26 +125,35 @@ const AddProjects = () => {
         managerId
       };
       ProjectService
-        .addNewProject(projectDetails)
-        .then((response) => {
-          setName("");
-          setDescription("");
-          setStartDate("");
-          setEndDate("");
-          setLocation("");
-          setManagerId("");
-    
-          // setSuccessMesg("User Created Successfully");
-         // window.sessionStorage.setItem("snackbar_registration","show");
-          //toastr.success("Student Profile Created Successfully");
-          //navigate("/login");
-        })
-        .catch((error) => {
-          console.log(error)
-          //setErrorMesg(error.response.data);
-        });
-    
+      .addNewProject(projectDetails)
+      .then((response) => {
+        setName("");
+        setDescription("");
+        setStartDate("");
+        setEndDate("");
+        setLocation("");
+        setManagerId("");
+  
+        // setSuccessMesg("User Created Successfully");
+       // window.sessionStorage.setItem("snackbar_registration","show");
+        //toastr.success("Student Profile Created Successfully");
+        //navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error)
+        setErrorMesg(error.response.data);
+      });
+    }
   };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,71 +176,74 @@ const AddProjects = () => {
                       <input
                         type="text"
                         className="form-control"
-                       // value={name}
-                        //onChange={nameTextHandler}
+                        value={name}
+                        onChange={nameTextHandler}
                         placeholder="Enter Project Name"
                         
                       />
                       <label>Project Name</label>
+                      <span className="text-danger">{nameErr}</span>
                     </div>
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={email}
-                        // onChange={emailTextHandler}
-                        placeholder="enter description"
+                        value={description}
+                        onChange={descriptionTextHandler}
+                        placeholder="Enter Description"
                         
                       />
-                      <label>description</label>
+                      <label>Description</label>
+                      <span className="text-danger">{descriptionErr}</span>
                     </div>
                     <div className="form-floating mb-3">
                       <input
                         type="date"
                         className="form-control"
-                        // value={age}
-                        // onChange={ageTextHandler}
+                        value={startDate}
+                        onChange={startDateTextHandler}
                         placeholder="Enter startdate"
                         
                       />
-                      <label>startdate</label>
+                      <label>Start Date</label>
+                      <span className="text-danger">{startDateErr}</span>
                     </div>
                     <div className="form-floating mb-3">
                       <input
                         type="date"
                         className="form-control"
-                        // value={city}
-                        // onChange={cityTextHandler}
+                        value={endDate}
+                        onChange={endDateTextHandler}
                         placeholder="End date"
                       />
-                      <label>End date</label>
-                      {/* <span className="text-danger">{cityError}</span> */}
+                      <label>End Date</label>
+                      <span className="text-danger">{endDateErr}</span>
                     </div>
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={states}
-                        // onChange={stateTextHandler}
+                        value={location}
+                        onChange={locationTextHandler}
                         placeholder="Enter location"
                       />
-                      <label>location</label>
-                      {/* <span className="text-danger">{stateError}</span> */}
+                      <label>Location</label>
+                      <span className="text-danger">{locationErr}</span>
                     </div>
                     <div className="form-floating mb-3">
                       <input
                         type="number"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
-                        placeholder="Enter ManagerId"
+                        value={managerId}
+                        onChange={managerIdTextHandler}
+                        placeholder="Enter Manager Id"
                       />
                       <label>ManagerId</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{managerIdErr}</span>
                     </div>
                     
                     <div className="row g-1">
-                      <button type="submit" className="btn primary">
+                      <button type="submit" className="btn btn-primary">
                         Add Project
                       </button>
                     </div>
