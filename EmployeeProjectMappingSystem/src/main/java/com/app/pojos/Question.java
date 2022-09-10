@@ -17,27 +17,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="Quiz")
+@Table(name="Question")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Quiz {
+public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Question_Id")
 	private int questionId;
 	
 
-	@ManyToOne( cascade = CascadeType.ALL)
-	@JoinColumn(name="technologyId")
+	@ManyToOne
+	@JoinColumn(name="Technology_Id")
 	private Technology technology;
 	
 	@Column(name="Question")
 	private String question;
 	
 	
-	@OneToMany(mappedBy="quiz")
+	
+	@OneToMany(mappedBy="question")
 	private List<Options> options;
 	
 }

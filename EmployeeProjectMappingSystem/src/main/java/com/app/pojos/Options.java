@@ -25,9 +25,9 @@ public class Options {
 	@Column(name="Option_Id")
 	private int optionId;
 	
-	@ManyToOne( cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="Question_Id")
-	private Quiz quiz;
+	private Question question;
 	
 	@Column(name="Option")
 	private String Option;

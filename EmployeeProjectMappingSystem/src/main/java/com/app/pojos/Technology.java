@@ -39,7 +39,10 @@ public class Technology {
 	@JoinColumn(name = "Resource_Id") //fk
 	private Resource resourceId;
 	
-	@OneToMany(mappedBy="technology")
-	private List<Quiz> quiz;
+	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	private List<Question> question;
+	
+	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	private List<ProjectRequirement> projectRequirement;
 	
 }

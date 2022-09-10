@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.app.dao.QuizRepository;
 import com.app.pojos.Options;
-import com.app.pojos.Quiz;
+import com.app.pojos.Question;
 
 public class Testing {
 
@@ -15,7 +15,7 @@ public class Testing {
 	private QuizRepository q11;
 	
 	public void addQuestion() {
-		Quiz q=new Quiz();
+		Question q=new Question();
 		
 		 String a = "Is java Platform independent??"; 
 		q.setQuestion(a);

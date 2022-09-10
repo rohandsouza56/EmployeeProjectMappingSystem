@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,17 +31,24 @@ public class Skills {
 	@Column(name="Skill_Id")
 	private int skillId;
 	
+	
+	
 	@Column(name="Skill")
 	private String skill;
 	
-	@Column(name="Date_Of_Complition")
-	private LocalDate dateOfComplition;
+
+	@ManyToOne
+	@JoinColumn(name="Employee_Id")
+	private Employee employee;
+	
+	@Column(name="Date_Of_Completion")
+	private LocalDate dateOfCompletion;
 	
 	@Column(name="Certification_Link")
 	private String certificationLink;
 	
-	@Column(name="Certification_Pdf")
-	private String certificationPdf;
+	@Column(name="Certificate_Pdf")
+	private String certificatePdf;
 	
 
 	/****check cascade type */

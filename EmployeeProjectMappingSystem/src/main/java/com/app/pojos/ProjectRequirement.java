@@ -11,13 +11,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Table(name="Project_Requirement")
+@Table(name="Project_Requirment")
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectRequirement {
@@ -27,12 +33,16 @@ public class ProjectRequirement {
 	@Column(name="Requirement_Id")
 	private int requirementId;
 	
-	
-	@ManyToOne( cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="Project_Id")
 	private Projects projects;
-
-	@Column(name="Project_Name")
-	private String name;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="Technology_Id")
+	private Technology technology;
+	
+//	@Column(name="Technology_Id")
+//	private int technology;
 
 }

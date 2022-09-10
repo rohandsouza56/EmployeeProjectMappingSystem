@@ -1,23 +1,37 @@
 package com.app.pojos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name="Projects")
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Projects{
@@ -44,14 +58,16 @@ public class Projects{
 	@Column(name="Manager_Id")
 	private int managerId;
 	
-	
-	@OneToMany(mappedBy="projects")
-	List<ProjectRequirement> projectRequirement;
+	//@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="projects1",cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
+	Set<Departments> departments;
 	
 
-	@OneToMany(mappedBy="projects")
-	List<Departments> departments;
-	//Projects p = new Projects();
+	@OneToMany(mappedBy="projects",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	//@Fetch(value = FetchMode.SUBSELECT)
+	Set<ProjectRequirement> projectRequirement;
+	
+
 	
 	
 }

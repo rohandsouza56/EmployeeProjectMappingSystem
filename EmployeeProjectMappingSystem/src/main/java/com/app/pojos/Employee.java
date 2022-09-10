@@ -3,11 +3,13 @@ package com.app.pojos;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -45,25 +47,25 @@ public class Employee {
 	@Column(name="Email")
 	private String email;
 	
-	@Column(name="Pan_No")
+	@Column(name="Pan_Number")
 	private String panNo;
 	
 	@Column(name="Gender")
 	private String gender;
 
-	@Column(name="User_Name")
+	@Column(name="UserName")
 	private String userName;
 	
 	@Column(name="Password")
 	private String password;
 	
-	@OneToOne
-	@Column(name="Project_Id")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="Project_Id")
 	private Projects projects;
 	
-	@OneToOne
-	@Column(name="Department_Id")
-	private Departments depertments;
+//	@OneToOne(cascade = CascadeType.PERSIST)
+//	@JoinColumn(name="Department_Id")
+//	private Departments departments;
 	
 	@Column(name="Is_Manager")
 	private int isManager;
@@ -74,7 +76,7 @@ public class Employee {
 	/*
 	private int skillId;
 */
-	@OneToMany(mappedBy="quiz")
+	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL)
 	private List<Skills> skills;
 	
 	@Column(name="Resume")
