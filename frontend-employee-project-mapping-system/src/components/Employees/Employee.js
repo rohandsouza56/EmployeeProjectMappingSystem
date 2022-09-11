@@ -1,17 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import EmployeeService from '../../Services/EmployeeService';
-
-
+import React, { useState, useEffect } from "react";
+// import EmployeeService from '../../Services/EmployeeService';
 
 const AddEmployees = () => {
-  
-
   const [name, setName] = useState("");
   const [designation, setDesignation] = useState("");
   const [dateOfJoining, setDateOfJoining] = useState("");
   const [mobileNo, setMobileNo] = useState("");
   const [email, setEmail] = useState("");
   const [panNumber, setPanNumber] = useState("");
+  const [gender, setGender] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [projectId, setProjectId] = useState("");
@@ -22,13 +19,13 @@ const AddEmployees = () => {
   const [resume, setResume] = useState("");
   const [isTagged, setIsTagged] = useState("");
 
-
   const [nameErr, setNameErr] = useState("");
   const [designationErr, setDesignationErr] = useState("");
   const [dateOfJoiningErr, setDateOfJoiningErr] = useState("");
   const [mobileNoErr, setMobileNoErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [panNumberErr, setPanNumberErr] = useState("");
+  const [genderErr, setGenderErr] = useState("");
   const [userNameErr, setUserNameErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
   const [projectIdErr, setProjectIdErr] = useState("");
@@ -40,135 +37,141 @@ const AddEmployees = () => {
   const [isTaggedErr, setIsTaggedErr] = useState("");
 
   const [errorMesg, setErrorMesg] = useState("");
-  
- 
+
   let nameTextHandler = (event) => {
-    if(nameErr!=="" || nameErr!==null) setNameErr("");
+    if (nameErr !== "" || nameErr !== null) setNameErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setName(event.target.value.toUpperCase());
   };
 
   let designationTextHandler = (event) => {
-    if(DesignationErr!=="" || DesignationErr!==null) setDesignationErr("");
+    if (designationErr !== "" || designationErr !== null) setDesignationErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setDesignation(event.target.value);
   };
 
   let dateOfJoiningTextHandler = (event) => {
-    if(DateOfJoiningErr!=="" || DateOfJoiningErr!==null) setDateOfJoiningErr("");
+    if (dateOfJoiningErr !== "" || dateOfJoiningErr !== null)
+      setDateOfJoiningErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setDateOfJoining(event.target.value);
   };
 
   let mobileNoTextHandler = (event) => {
-    if(MobileNoErr!=="" || MobileNoErr!==null) setmobileNoErr("");
+    if (mobileNoErr !== "" || mobileNoErr !== null) setMobileNoErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setMobileNo(event.target.value);
   };
 
   let emailTextHandler = (event) => {
-    if(EmailErr!=="" || EmailErr!==null) setEmailErr("");
+    if (emailErr !== "" || emailErr !== null) setEmailErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setEmail(event.target.value);
   };
 
   let panNumberTextHandler = (event) => {
-    if(panNumberErr!=="" || panNumberErr!==null) setPanNumberErr("");
+    if (panNumberErr !== "" || panNumberErr !== null) setPanNumberErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setpanNumber(event.target.value);
+    setPanNumber(event.target.value);
+  };
+
+  let genderTextHandler = (event) => {
+    if (genderErr !== "" || genderErr !== null) setGenderErr("");
+    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
+    setGender(event.target.value);
   };
 
   let userNameTextHandler = (event) => {
-    if(userNameErr!=="" || userNameErr!==null) setuserNameErr("");
+    if (userNameErr !== "" || userNameErr !== null) setUserNameErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setuserName(event.target.value);
+    setUserName(event.target.value);
   };
 
   let passwordTextHandler = (event) => {
-    if(passwordErr!=="" || passwordErr!==null) setpasswordErr("");
+    if (passwordErr !== "" || passwordErr !== null) setPasswordErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setpassword(event.target.value);
+    setPassword(event.target.value);
   };
 
   let projectIdTextHandler = (event) => {
-    if(projectIdErr!=="" || projectIdErr!==null) setprojectIdErr("");
+    if (projectIdErr !== "" || projectIdErr !== null) setProjectIdErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setprojectId(event.target.value);
+    setProjectId(event.target.value);
   };
 
   let departmentIdTextHandler = (event) => {
-    if(departmentIdErr!=="" || departmentIdErr!==null) setdepartmentIdErr("");
+    if (departmentIdErr !== "" || departmentIdErr !== null)
+      setDepartmentIdErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setdepartmentId(event.target.value);
+    setDepartmentId(event.target.value);
   };
 
   let isManagerTextHandler = (event) => {
-    if(isManagerErr!=="" || isManagerErr!==null) setisManagerErr("");
+    if (isManagerErr !== "" || isManagerErr !== null) setIsManagerErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setisManager(event.target.value);
+    setIsManager(event.target.value);
   };
 
   let managerIdTextHandler = (event) => {
-    if(managerIdErr!=="" || managerIdErr!==null) setmanagerIdErr("");
+    if (managerIdErr !== "" || managerIdErr !== null) setManagerIdErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setmanagerId(event.target.value);
+    setManagerId(event.target.value);
   };
 
   let skillIdTextHandler = (event) => {
-    if(skillIdErr!=="" || skillIdErr!==null) setskillIdErr("");
+    if (skillIdErr !== "" || skillIdErr !== null) setSkillIdErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setskillId(event.target.value);
+    setSkillId(event.target.value);
   };
 
   let resumeTextHandler = (event) => {
-    if(resumeErr!=="" || resumeErr!==null) setresumeErr("");
+    if (resumeErr !== "" || resumeErr !== null) setResumeErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setresume(event.target.value);
+    setResume(event.target.value);
   };
 
   let isTaggedTextHandler = (event) => {
-    if(isTaggedErr!=="" || isTaggedErr!==null) setisTaggedErr("");
+    if (isTaggedErr !== "" || isTaggedErr !== null) setIsTaggedErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setisTagged(event.target.value);
+    setIsTagged(event.target.value);
   };
-
-        
-        
 
   let validation = () => {
     setNameErr("");
-    setdesignationErr("");
-    setdateOfJoiningErr("");
-    setmobileNoErr("");
-    setemailErr("");
-    setpanNumberErr("");
-    setuserNameErr("");
-    setpasswordErr("");
-    setprojectIdErr("");
-    setdepartmentIdErr("");
-    setisManagerErr("");
-    setmanagerIdErr("");
-    setskillIdErr("");
-    setresumeErr("");
-    setisTaggedErr("");
+    setDesignationErr("");
+    setDateOfJoiningErr("");
+    setMobileNoErr("");
+    setEmailErr("");
+    setPanNumberErr("");
+    setGenderErr("");
+    setUserNameErr("");
+    setPasswordErr("");
+    setProjectIdErr("");
+    setDepartmentIdErr("");
+    setIsManagerErr("");
+    setManagerIdErr("");
+    setSkillIdErr("");
+    setResumeErr("");
+    setIsTaggedErr("");
 
     let flag = true;
-   
+
     if (name === "" || name === null) {
       setNameErr("This field is compulsory");
       flag = false;
@@ -176,87 +179,102 @@ const AddEmployees = () => {
     if (designation === "" || designation === null) {
       setDesignationErr("This field is compulsory");
       flag = false;
-    } 
+    }
 
     if (dateOfJoining === "" || dateOfJoining === null) {
-      setdateOfJoiningErr("This field is compulsory");
+      setDateOfJoiningErr("This field is compulsory");
       flag = false;
-    } 
+    }
 
     if (mobileNo === "" || mobileNo === null) {
-      setmobileNoErr("This field is compulsory");
+      setMobileNoErr("This field is compulsory");
       flag = false;
-    } 
+    }
 
     if (email === "" || email === null) {
-      setemailErr("This field is compulsory");
+      setEmailErr("This field is compulsory");
       flag = false;
-    } 
+    }
     if (panNumber === "" || panNumber === null) {
-      setpanNumberErr("This field is compulsory");
+      setPanNumberErr("This field is compulsory");
       flag = false;
-    } 
+    }
+
+    if (gender === "" || gender === null) {
+      setGenderErr("This field is compulsory");
+      flag = false;
+    }
+
     if (userName === "" || userName === null) {
-        setuserNameErr("This field is compulsory");
-        flag = false;
-      } 
+      setUserNameErr("This field is compulsory");
+      flag = false;
+    }
 
     if (password === "" || password === null) {
-        setpasswordErr("This field is compulsory");
-        flag = false;
-    } 
+      setPasswordErr("This field is compulsory");
+      flag = false;
+    }
 
     if (projectId === "" || projectId === null) {
-        setprojectIdErr("This field is compulsory");
-        flag = false;
-    } 
+      setProjectIdErr("This field is compulsory");
+      flag = false;
+    }
 
     if (departmentId === "" || departmentId === null) {
-        setdepartmentIdErr("This field is compulsory");
-        flag = false;
-    } 
+      setDepartmentIdErr("This field is compulsory");
+      flag = false;
+    }
 
     if (isManager === "" || isManager === null) {
-        setisManagerErr("This field is compulsory");
-        flag = false;
-    } 
+      setIsManagerErr("This field is compulsory");
+      flag = false;
+    }
 
     if (managerId === "" || managerId === null) {
-        setmanagerIdErr("This field is compulsory");
-        flag = false;
-    } 
+      setManagerIdErr("This field is compulsory");
+      flag = false;
+    }
 
     if (skillId === "" || skillId === null) {
-        setskillIdErr("This field is compulsory");
-        flag = false;
-    } 
+      setSkillIdErr("This field is compulsory");
+      flag = false;
+    }
 
     if (resume === "" || resume === null) {
-        setresumeErr("This field is compulsory");
-        flag = false;
-    } 
+      setResumeErr("This field is compulsory");
+      flag = false;
+    }
 
-    
     if (isTagged === "" || isTagged === null) {
-        setisTaggedErr("This field is compulsory");
-        flag = false;
-    } 
-    
-
-    
-
-  
+      setIsTaggedErr("This field is compulsory");
+      flag = false;
+    }
 
     if (flag) {
       return true;
     }
   };
 
-
-
   let addEmployeeDetails = (event) => {
     event.preventDefault();
-    
+    if (validation()) {
+      setNameErr("");
+      setDesignationErr("");
+      setDateOfJoiningErr("");
+      setMobileNoErr("");
+      setEmailErr("");
+      setPanNumberErr("");
+      setGenderErr("");
+      setUserNameErr("");
+      setPasswordErr("");
+      setProjectIdErr("");
+      setDepartmentIdErr("");
+      setIsManagerErr("");
+      setManagerIdErr("");
+      setSkillIdErr("");
+      setResumeErr("");
+      setIsTaggedErr("");
+
       let EmployeeDetails = {
         name,
         designation,
@@ -264,6 +282,7 @@ const AddEmployees = () => {
         mobileNo,
         email,
         panNumber,
+        gender,
         userName,
         password,
         projectId,
@@ -272,249 +291,281 @@ const AddEmployees = () => {
         managerId,
         skillId,
         resume,
-        isTagged
+        isTagged,
       };
-      EmployeeService
-        .addNewEmployee(EmployeeDetails)
-        .then((response) => {
-          setName("");
-          setDesignation("");
-          setdateOfJoining("");
-          setmobileNo("");
-          setEmail("");
-          setpanNumber("");
-          setuserName("");
-          setPassword("");
-          setprojectId("");
-          setdepartmentId("");
-          setisManager("");
-          setManagerId("");
-          setskillId("");
-          setResume("");
-          setisTagged("");
 
-    
-         
-        })
-        .catch((error) => {
-          console.log(error)
-          //setErrorMesg(error.response.data);
-        });
-    
+      //   EmployeeService
+      //     .addNewEmployee(EmployeeDetails)
+      //     .then((response) => {
+      //       setName("");
+      //       setDesignation("");
+      //       setDateOfJoining("");
+      //       setMobileNo("");
+      //       setEmail("");
+      //       setPanNumber("");
+      //       setGender("");
+      //       setUserName("");
+      //       setPassword("");
+      //       setProjectId("");
+      //       setDepartmentId("");
+      //       setIsManager("");
+      //       setManagerId("");
+      //       setSkillId("");
+      //       setResume("");
+      //       setIsTagged("");
+
+      //     })
+      //     .catch((error) => {
+      //       console.log(error)
+      //       //setErrorMesg(error.response.data);
+      //     });
+    }
   };
 
-
-
-    return (
-        <>
-          
-          <div className="container-fluid w-50 mt-5 add-details-section">
+  return (
+    <>
+      <div className="container-fluid w-50 mt-5 add-details-section">
+        <div className="m-3">
+          <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
+            Add Employee Details
+          </h2>
+          <p className="text-50 text-success mb-3 dashboard-data-section-para">
+            Please fill up the form
+          </p>
+          <div className="border border-1 rounded">
             <div className="m-3">
-              <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
-                Add Employee Details
-              </h2>
-              <p className="text-50 text-success mb-3 dashboard-data-section-para">
-                Please fill up the form
-              </p>
-              <div className="border border-1 rounded">
-                <div className="m-3">
-                  <form onSubmit={addEmployeeDetails}>
+              <form onSubmit={addEmployeeDetails}>
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                       // value={name}
-                        //onChange={nameTextHandler}
+                        value={name}
+                        onChange={nameTextHandler}
                         placeholder="Enter Employee Name"
-                        
                       />
                       <label>Employee Name</label>
+                      <span className="text-danger">{nameErr}</span>
                     </div>
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={email}
-                        // onChange={emailTextHandler}
+                        value={designation}
+                        onChange={designationTextHandler}
                         placeholder="enter designation"
-                        
                       />
-                      <label>description</label>
+                      <label>Designation</label>
+                      <span className="text-danger">{designationErr}</span>
                     </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="date"
                         className="form-control"
-                        // value={age}
-                        // onChange={ageTextHandler}
+                        value={dateOfJoining}
+                        onChange={dateOfJoiningTextHandler}
                         placeholder="Enter date Of Joining"
-                        
                       />
                       <label>date Of Joining</label>
+                      <span className="text-danger">{dateOfJoiningErr}</span>
                     </div>
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="number"
                         className="form-control"
-                        // value={city}
-                        // onChange={cityTextHandler}
+                        value={mobileNo}
+                        onChange={mobileNoTextHandler}
                         placeholder="mobile no"
                       />
                       <label>mobile No</label>
-                      {/* <span className="text-danger">{cityError}</span> */}
+                      <span className="text-danger">{mobileNoErr}</span>
                     </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="email"
                         className="form-control"
-                        // value={states}
-                        // onChange={stateTextHandler}
+                        value={email}
+                        onChange={emailTextHandler}
                         placeholder="Enter emailId"
                       />
                       <label>email Id</label>
-                      {/* <span className="text-danger">{stateError}</span> */}
+                      <span className="text-danger">{emailErr}</span>
                     </div>
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
-                        type="number"
+                        type="text"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={gender}
+                        onChange={genderTextHandler}
                         placeholder="Enter PanNumber"
                       />
-                      <label>panNumber</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <label>Gender</label>
+                      <span className="text-danger">{genderErr}</span>
                     </div>
+                  </div>
+                </div>
 
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
-                        placeholder="Enter Gender"
-                      />
-                      <label>Genderr</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
-                    </div>
-
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={userName}
+                        onChange={userNameTextHandler}
                         placeholder="enter username"
                       />
                       <label>userName</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{userNameErr}</span>
                     </div>
-
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="password"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={password}
+                        onChange={passwordTextHandler}
                         placeholder="Enter Password"
                       />
                       <label>password</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{passwordErr}</span>
                     </div>
+                  </div>
+                </div>
 
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="number"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={projectId}
+                        onChange={projectIdTextHandler}
                         placeholder="Enter Project Id"
                       />
                       <label>project Id</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{projectIdErr}</span>
                     </div>
-
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="number"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={departmentId}
+                        onChange={departmentIdTextHandler}
                         placeholder="Enter departmenr id"
                       />
                       <label>department Id</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{departmentIdErr}</span>
                     </div>
-
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={isManager}
+                        onChange={isManagerTextHandler}
                         placeholder="Enter IsManager"
                       />
                       <label>isManager</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{isManagerErr}</span>
                     </div>
-                    
-
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="number"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
-                        placeholder="Enter Skill id"
+                        value={managerId}
+                        onChange={managerIdTextHandler}
+                        placeholder="Enter Manager id"
                       />
-                      <label>skill id</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <label>Manager Id</label>
+                      <span className="text-danger">{managerIdErr}</span>
                     </div>
-
-
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={resume}
+                        onChange={resumeTextHandler}
                         placeholder="Enter resume"
                       />
                       <label>resume</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{resumeErr}</span>
                     </div>
-
+                  </div>
+                  <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
                         type="text"
                         className="form-control"
-                        // value={country}
-                        // onChange={countryTextHandler}
+                        value={isTagged}
+                        onChange={isTaggedTextHandler}
                         placeholder="Enter isTagged"
                       />
                       <label>isTagged</label>
-                      {/* <span className="text-danger">{countryError}</span> */}
+                      <span className="text-danger">{isTaggedErr}</span>
                     </div>
-
-                    <div className="row g-1">
-                      <button type="submit" className="btn primary">
-                        Add Employee
-                      </button>
-                    </div>
-                  </form>
+                  </div>
                 </div>
-              </div>
-              {/* <span className="text-success">
+
+                {/* <div className="form-floating mb-3">
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={panNumber}
+                        onChange={panNumberTextHandler}
+                        placeholder="Enter PanNumber"
+                      />
+                      <label>panNumber</label>
+                      <span className="text-danger">{panNumberErr}</span>
+                    </div> */}
+
+                <div className="row g-1">
+                  <button type="submit" className="btn btn-primary">
+                    Add Employee
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          {/* <span className="text-success">
                 <b>{successMesg}</b>
               </span>
               <span className="text-danger">
                 <b>{errorMesg}</b>
               </span> */}
-            </div>
-          </div>
-        </>
-      );
-    };
-    
-    export default AddEmployees;
-    
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AddEmployees;
