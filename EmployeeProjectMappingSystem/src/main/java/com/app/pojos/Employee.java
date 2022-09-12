@@ -59,13 +59,13 @@ public class Employee {
 	@Column(name="Password")
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Project_Id")
 	private Projects projects;
 	
-//	@OneToOne(cascade = CascadeType.PERSIST)
-//	@JoinColumn(name="Department_Id")
-//	private Departments departments;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="Department_Id")
+	private Departments departments;
 	
 	@Column(name="Is_Manager")
 	private int isManager;

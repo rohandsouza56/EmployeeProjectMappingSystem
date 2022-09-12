@@ -16,43 +16,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.app.pojos.Departments;
 import com.app.pojos.Options;
 import com.app.pojos.Projects;
 import com.app.pojos.Question;
-import com.app.services.OptionsService;
-import com.app.services.ProjectsService;
-import com.app.services.QuizService;
+import com.app.servicesimpl.DepartmentServiceImpl;
+import com.app.servicesimpl.OptionsServiceImpl;
+import com.app.servicesimpl.ProjectsServiceImpl;
+import com.app.servicesimpl.QuizServiceImpl;
 
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin(origins = "http://localhost:3000")
-public class ProjectsController {
+public class AdminController {
 
 	@Autowired
-	private ProjectsService projectsService;
+	private ProjectsServiceImpl projectsService;
+	
+	@Autowired
+	private DepartmentServiceImpl departmentServiceImpl;
 	
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
 		List<Projects> list = projectsService.getAllProjects();
-		for (Projects p:list) {
-			System.out.println(p.toString());
-		}
 		if(list.size()<=0)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
-	@PostMapping("/addproject")
+	@PostMapping("/project/add")
 	public ResponseEntity<?> addProject(@RequestBody Projects project){
 		return ResponseEntity.ok().body(projectsService.addProjects(project));
 	}
 	
 	@PutMapping("/project/edit")
-	public ResponseEntity<?> updateProjectDetails(@RequestBody  Projects detachedProject) {
-		System.out.println(detachedProject);
+	public ResponseEntity<?> updateProjectDetails(@RequestBody  Projects project) {
+		System.out.println(project);
 		try {
-			return ResponseEntity.ok().body(projectsService.updateProject(detachedProject));
+			return ResponseEntity.ok().body(projectsService.updateProject(project));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
@@ -65,4 +66,32 @@ public class ProjectsController {
 	}
 	
 	
+	
+	@GetMapping("/departments")
+	public ResponseEntity<?> getAllDepartments(){
+		List<Departments> list = departmentServiceImpl.getAllDepartments();
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	@PostMapping("/department/add")
+	public ResponseEntity<?> addDepartments(@RequestBody Departments departments){
+		return ResponseEntity.ok().body(departmentServiceImpl.addDepartments(departments));
+	}
+	
+	@PutMapping("/department/edit")
+	public ResponseEntity<?> updateDepartmentsDetails(@RequestBody  Departments departments) {
+		System.out.println(departments);
+		try {
+			return ResponseEntity.ok().body(departmentServiceImpl.updateDepartments(departments));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@DeleteMapping("/department/{departmentId}")
+	public ResponseEntity<?> deleteDepartmentstDetails(@PathVariable int departmentId){
+		return ResponseEntity.ok().body(projectsService.deleteProject(departmentId));
+	}
 }

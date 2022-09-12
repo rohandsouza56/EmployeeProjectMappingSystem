@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,8 +31,8 @@ import lombok.ToString;
 
 @Table(name="Projects")
 @Entity
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(exclude = "departments") 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Projects{
@@ -58,13 +59,16 @@ public class Projects{
 	@Column(name="Manager_Id")
 	private int managerId;
 	
-	//@Fetch(value = FetchMode.SUBSELECT)
-	@OneToMany(mappedBy="projects1",cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
+//	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ToString.Exclude
 	Set<Departments> departments;
 	
 
-	@OneToMany(mappedBy="projects",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	//@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ToString.Exclude
 	Set<ProjectRequirement> projectRequirement;
 	
 
