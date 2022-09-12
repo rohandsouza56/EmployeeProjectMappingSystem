@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Login from './components/login';
+
 import AddProjects from './components/Projects/project';
 import ListProjectComponent from './components/Projects/projectdetails';
 import AddEmployees from './components/Employees/Employee';
@@ -10,6 +10,8 @@ import AddTechnology from './components/Technology/AddTechnology';
 import AddDepartment from './components/Departments/AddDepartment';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import{Route, Routes,BrowserRouter} from "react-router-dom"
+import Header from './components/Home/Header';
+import Login from './components/Login/Login';
 // import {Route,} from "react-router-dom";
 
 
@@ -17,11 +19,18 @@ import{Route, Routes,BrowserRouter} from "react-router-dom"
  const App = () => {
   return (
     // <div className="App">
-    
+  
+     
+    <BrowserRouter>
 
-<BrowserRouter>
+
+      <Header/>
+   
+      
+      
       <Routes>
-          {/* <Route path='/login' element={<Login/>}/> */}
+          <Route path='/login' element={<Login/>}/>
+
           <Route path='/addproject' element={<AddProjects/>}/>
           <Route path='/projectlist' element={<ListProjectComponent/>}/>
           <Route path='/department' element={<AddDepartment/>}/>
@@ -33,6 +42,10 @@ import{Route, Routes,BrowserRouter} from "react-router-dom"
     </BrowserRouter>
     
     
+
+      
+
+   
 
     //   {/* <AddProjects/>
     //  <AddEmployees/>

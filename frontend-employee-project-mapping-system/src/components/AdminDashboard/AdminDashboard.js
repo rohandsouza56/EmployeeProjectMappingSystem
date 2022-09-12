@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import AddDepartment from "../Departments/AddDepartment";
 import AddEmployees from "../Employees/Employee";
 import AddProjects from "../Projects/project";
+import {FaUserAlt,FaBlackTie } from "react-icons/fa";
+import { BiAtom } from "react-icons/bi";
+import { GrTechnology } from "react-icons/gr";
+import './AdminDashboard.css';
+
+
+ //import { FaUserAlt } from "react-icons/md";
 
 import AddTechnology from "../Technology/AddTechnology";
 
@@ -90,24 +97,31 @@ const AdminDashboard = () => {
                 
                 {/* <div id="close-sidebar" className="text-end" onClick={hideSidebar}><ImCross /></div> */}
                 
-                {/* <a href="#" className="hello-text d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    <FaUserGraduate style={{ width: "30px" }} />
-                    <span className="fs-4">Hello <span className="text-success"><b>{name}</b></span></span>
-                </a> */}
+                <a href="#" className="hello-text d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <FaUserAlt style={{ width: "30px" }} />
+                    
+                    <span className="fs-4">Hello <span className="text-success"><b>Admin</b></span></span>
+                </a>
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto sidebar-list">
-                    <li onClick={showAddProject} style={{cursor:"context-menu"}}>
-                        {/* <AiTwotoneHome className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} /> */}
-                        Projects
-                    </li>
-                    <li onClick={showAddEmployee} style={{cursor:"context-menu"}}>
-                        {/* <AiFillDashboard className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} /> */}
-                       Employee
-                    </li>
-                     <li onClick={showAddTechnology} style={{cursor:"context-menu"}}>
-                        {/* <FaBook size={20} style={{ width: "30px", paddingBottom: "4px" }} /> */}
-                        Technology
-                    </li>
+                    <b>
+                        <li onClick={showAddProject} style={{cursor:"context-menu"}}>
+                            <BiAtom className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} />
+                            <span id="Hovereffect">Projects</span>
+                        </li>
+                    
+                        <li onClick={showAddEmployee} style={{cursor:"context-menu"}}>
+                            <FaBlackTie className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} />
+                            <span id="Hovereffect">Employee</span>
+                        
+                        </li>
+                    
+                        <li onClick={showAddTechnology} style={{cursor:"context-menu"}}>
+                            <GrTechnology size={20} style={{ width: "30px", paddingBottom: "4px" }} />
+                            <span id="Hovereffect">Technology</span>
+                            
+                        </li> 
+                    </b>
                     {/* <li onClick={showListOfStudents}  style={{cursor:"context-menu"}}>
                         <ImBooks className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} />
                         Students

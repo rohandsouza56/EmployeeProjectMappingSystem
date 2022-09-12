@@ -1,0 +1,60 @@
+/* #Hovereffect {
+    position: relative;
+  }
+  
+  #Hovereffect::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #8946d0;
+      bottom: 0;
+      left: 0;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform .3s ease-in-out;
+    }
+  
+    #Hovereffect:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+  } */
+
+
+  #Hovereffect {
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #Hovereffect:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #Hovereffect:hover {
+   background-position: 0;
+  }
+  
+  #Hovereffect:hover::before {
+    width:100%;
+  }
