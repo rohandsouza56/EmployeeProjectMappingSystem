@@ -14,7 +14,7 @@ public class OptionsServiceImpl {
 	OptionsRepository optionsRepository;
 	
 	public Options addOptions(Options options) {
-		// TODO Auto-generated method stub
+	
 		return optionsRepository.save(options);
 	}
 }

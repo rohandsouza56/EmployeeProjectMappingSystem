@@ -28,7 +28,7 @@ import com.app.servicesimpl.QuizServiceImpl;
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin(origins = "http://localhost:3000")
-public class ProjectsController {
+public class AdminController {
 
 	@Autowired
 	private ProjectsServiceImpl projectsService;
@@ -39,24 +39,21 @@ public class ProjectsController {
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
 		List<Projects> list = projectsService.getAllProjects();
-		for (Projects p:list) {
-			System.out.println(p.toString());
-		}
 		if(list.size()<=0)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
-	@PostMapping("/addproject")
+	@PostMapping("/project/add")
 	public ResponseEntity<?> addProject(@RequestBody Projects project){
 		return ResponseEntity.ok().body(projectsService.addProjects(project));
 	}
 	
 	@PutMapping("/project/edit")
-	public ResponseEntity<?> updateProjectDetails(@RequestBody  Projects detachedProject) {
-		System.out.println(detachedProject);
+	public ResponseEntity<?> updateProjectDetails(@RequestBody  Projects project) {
+		System.out.println(project);
 		try {
-			return ResponseEntity.ok().body(projectsService.updateProject(detachedProject));
+			return ResponseEntity.ok().body(projectsService.updateProject(project));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
@@ -78,7 +75,7 @@ public class ProjectsController {
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
-	@PostMapping("/adddepartment")
+	@PostMapping("/department/add")
 	public ResponseEntity<?> addDepartments(@RequestBody Departments departments){
 		return ResponseEntity.ok().body(departmentServiceImpl.addDepartments(departments));
 	}
@@ -91,5 +88,10 @@ public class ProjectsController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
+	}
+	
+	@DeleteMapping("/department/{departmentId}")
+	public ResponseEntity<?> deleteDepartmentstDetails(@PathVariable int departmentId){
+		return ResponseEntity.ok().body(projectsService.deleteProject(departmentId));
 	}
 }

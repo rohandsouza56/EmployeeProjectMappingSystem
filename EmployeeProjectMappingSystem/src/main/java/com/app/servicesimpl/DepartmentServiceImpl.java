@@ -58,8 +58,11 @@ public class DepartmentServiceImpl implements IDepartmentService {
 
 	@Override
 	public List<Departments> deleteDepartments(int departmentId) {
-		// TODO Auto-generated method stub
-		return null;
+		Departments department = departmentsRepository.findById(departmentId)
+				.orElseThrow(() -> new ResourceNotFoundException("Department Not Found with Department ID : " + departmentId));
+		departmentsRepository.delete(department);
+		
+		return departmentsRepository.findAll();
 	}
 
 }

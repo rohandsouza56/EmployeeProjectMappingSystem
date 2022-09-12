@@ -46,7 +46,7 @@ public class ProjectsServiceImpl implements IProjectsService {
 
 	public List<Projects> deleteProject(int projectId) {
 		Projects project = projectsRepository.findById(projectId)
-				.orElseThrow(() -> new ResourceNotFoundException("projects Not FOund with StudentID : " + projectId));
+				.orElseThrow(() -> new ResourceNotFoundException("Project Not Found with Projet Id : " + projectId));
 		projectsRepository.delete(project);
 		
 		return projectsRepository.findAll();
