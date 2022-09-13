@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pojos.Departments;
-import com.app.pojos.Options;
+import com.app.pojos.Employee;
 import com.app.pojos.Projects;
-import com.app.pojos.Question;
+import com.app.service.IEmployeeService;
 import com.app.servicesimpl.DepartmentServiceImpl;
-import com.app.servicesimpl.OptionsServiceImpl;
 import com.app.servicesimpl.ProjectsServiceImpl;
-import com.app.servicesimpl.QuizServiceImpl;
 
 @RestController
 @RequestMapping("/admin")
@@ -36,6 +34,11 @@ public class AdminController {
 	@Autowired
 	private DepartmentServiceImpl departmentServiceImpl;
 	
+	@Autowired
+	private IEmployeeService employeeService;
+	
+	
+	//*************  Projects ************
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
 		List<Projects> list = projectsService.getAllProjects();
@@ -59,13 +62,14 @@ public class AdminController {
 		}
 	}
 	
-	
 	@DeleteMapping("/project/{projectId}")
 	public ResponseEntity<?> deleteProjectDetails(@PathVariable int projectId){
 		return ResponseEntity.ok().body(projectsService.deleteProject(projectId));
 	}
 	
 	
+	
+	//******************  Departments ***************
 	
 	@GetMapping("/departments")
 	public ResponseEntity<?> getAllDepartments(){
@@ -94,4 +98,38 @@ public class AdminController {
 	public ResponseEntity<?> deleteDepartmentstDetails(@PathVariable int departmentId){
 		return ResponseEntity.ok().body(projectsService.deleteProject(departmentId));
 	}
+	
+	
+	//********************** Employee **************
+	@GetMapping("/employee")
+	public ResponseEntity<?> getAllEmployee(){
+		List<Employee> list = employeeService.getAllEmployees();
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	@PostMapping("/employee/add")
+	public ResponseEntity<?> addemployee(@RequestBody Employee employee){
+		return ResponseEntity.ok().body(employeeService.addEmployee(employee));
+	}
+	
+	@PutMapping("/employee/edit")
+	public ResponseEntity<?> updateDepartmentsDetails(@RequestBody  Employee employee) {
+		System.out.println(employee);
+		try {
+			return ResponseEntity.ok().body(employeeService.updateEmployee(employee));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@DeleteMapping("/employee/{employeeId}")
+	public ResponseEntity<?> deleteEmployeeDetails(@PathVariable int employeeId){
+		return ResponseEntity.ok().body(employeeService.deleteEmployee(employeeId));
+	}
+	
+	
+	
+	
 }

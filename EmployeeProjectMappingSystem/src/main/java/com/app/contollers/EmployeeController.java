@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pojos.Departments;
+import com.app.pojos.Employee;
 import com.app.pojos.Projects;
 import com.app.service.IDepartmentService;
+import com.app.service.IEmployeeService;
 import com.app.service.IProjectsService;
 
 @RestController
@@ -26,7 +28,8 @@ public class EmployeeController {
 	@Autowired
 	private IProjectsService projectsService;
 	
-	
+	@Autowired
+	private IEmployeeService employeeService;
 	
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
@@ -40,6 +43,14 @@ public class EmployeeController {
 	@GetMapping("/departments")
 	public ResponseEntity<?> getAllDepartments(){
 		List<Departments> list = departmentService.getAllDepartments();
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	@GetMapping("/employees")
+	public ResponseEntity<?> getAllEmployee(){
+		List<Employee> list = employeeService.getAllEmployees();
 		if(list.size()<=0)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.of(Optional.of(list));

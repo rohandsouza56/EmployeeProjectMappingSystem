@@ -67,28 +67,13 @@ isTrue boolean,
 constraint fk_Options_Question_Id_ foreign key (Question_Id) references Question(Question_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-/*
-create table Employee(
-Employee_Id int primary key auto_increment , 
-Employee_Name varchar(20) Not Null,
-Designation varchar(20) Not Null,
-DateOfJoining date Not Null,
-MobileNo varchar(10) Not Null,
-Email varchar(30) Not Null,
-Pan_Number varchar(20) Not Null,
-Gender varchar(10) Not Null,
-UserName varchar(20) Not Null,
-`Password` varchar(20) Not Null,
-Project_Id int Not Null,
-Department_Id int Not Null,
-Is_Manager boolean Not Null,
-Manager_Id int Not Null,
-Resume blob Not Null, 
-Is_Tagged boolean Not Null,
-Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id),
-Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id)
+
+create table Roles(
+Roll_Id int primary key  auto_increment,
+Roll_Name varchar(50)
 );
-*/
+
+
 create table Employee(
 Employee_Id int primary key auto_increment , 
 Employee_Name varchar(255),
@@ -102,14 +87,24 @@ UserName varchar(255),
 `Password` varchar(255),
 Project_Id int ,
 Department_Id int,
-Is_Manager boolean ,
 Manager_Id int,
+Roll_Id int,
 Resume blob, 
 Is_Tagged boolean ,
 Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id) ON DELETE SET NULL ON UPDATE CASCADE,
-Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE
+Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE,
+Constraint fk_Employee_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
+
+create table `Admin`(
+Admin_Id int primary key  auto_increment,
+Username varchar(50),
+`Password` varchar(50),
+Roll_Id int,
+Constraint fk_Admin_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+ 
 
 create table Skills(Skill_Id int primary key  auto_increment,
 Skill varchar(50),

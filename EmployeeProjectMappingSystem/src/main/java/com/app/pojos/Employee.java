@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,20 +11,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Table(name="Employee")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class Employee implements Serializable {
 
 	/* Note  *** check data type of resume,isTagged and isManager   */
 	
@@ -67,8 +72,6 @@ public class Employee {
 	@JoinColumn(name="Department_Id")
 	private Departments departments;
 	
-	@Column(name="Is_Manager")
-	private int isManager;
 	
 	@Column(name="Manager_Id")
 	private int managerId;
@@ -77,6 +80,8 @@ public class Employee {
 	private int skillId;
 */
 	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL)
+	@JsonIgnore
+	@ToString.Exclude
 	private List<Skills> skills;
 	
 	@Column(name="Resume")
@@ -84,4 +89,8 @@ public class Employee {
 	
 	@Column(name="Is_Tagged")
 	private int isTagged;
+	
+	@ManyToOne
+	@JoinColumn(name="Roll_Id")
+	private Roles roles;
 }
