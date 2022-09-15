@@ -2,7 +2,7 @@ import {React,useContext} from 'react';
 import {useState, useEffect} from 'react';
 import { Link,Navigate,useNavigate } from 'react-router-dom';
 
-import UserServices from '../../Services/UserServices';
+import LoginServices from '../../Services/LoginServices';
 
 const Login =()=>{
     const [email,setEmail] = useState('');
@@ -64,29 +64,29 @@ const Login =()=>{
                 email,password
             }
 
-            UserServices.login(loginRequest).then(response =>{
+            LoginServices.login(loginRequest).then(response =>{
                 setEmail("");
                 setPassword("");
 
-                if (response.data.role === "ADMIN") {
-                    const user = response.data;
-                    // window.sessionStorage.setItem('user', JSON.stringify(user));
-                    // window.sessionStorage.setItem("email", user.email);
-                    // window.sessionStorage.setItem("name", user.name);
-                    // window.sessionStorage.setItem("snackbar", "show");
-                    // console.log(user);
-                    setLoggedInAsAdmin(true);
-                }
+                // if (response.data.role === "ADMIN") {
+                //     const user = response.data;
+                //     // window.sessionStorage.setItem('user', JSON.stringify(user));
+                //     // window.sessionStorage.setItem("email", user.email);
+                //     // window.sessionStorage.setItem("name", user.name);
+                //     // window.sessionStorage.setItem("snackbar", "show");
+                //     // console.log(user);
+                //     setLoggedInAsAdmin(true);
+                // }
 
-                else if(response.data.role === "MANAGER"){
-                    setLoggedInAsManager(true);
-                }
+                // else if(response.data.role === "MANAGER"){
+                //     setLoggedInAsManager(true);
+                // }
 
-                else if(response.data.role === "EMPLOYEE"){
-                    setLoggedInEmployee(true);
-                }
+                // else if(response.data.role === "EMPLOYEE"){
+                //     setLoggedInEmployee(true);
+                // }
 
-            }).catch(error=>{setErrorMsg(error.response.data.errorDetails);})
+            }).catch(error=>{setErrorMsg(error.response.data);})
 
         }
     }

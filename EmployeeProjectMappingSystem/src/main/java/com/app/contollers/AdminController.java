@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.pojos.Admin;
 import com.app.pojos.Departments;
 import com.app.pojos.Employee;
 import com.app.pojos.ProjectRequirement;
 import com.app.pojos.Projects;
 import com.app.pojos.Technology;
+import com.app.service.IAdminService;
 import com.app.service.IDepartmentService;
 import com.app.service.IEmployeeService;
 import com.app.service.IProjectRequirementService;
@@ -48,6 +50,9 @@ public class AdminController {
 	
 	@Autowired
 	private ITechnologyService technologyService;
+	
+	@Autowired
+	private IAdminService adminService;
 	
 	
 	
@@ -202,6 +207,10 @@ public class AdminController {
 		return ResponseEntity.ok().body(technologyService.deleteTechnology(technologyId));
 	}
 	
+	@PostMapping("/admin/add")
+	public ResponseEntity<?> addAdmin(@RequestBody Admin admin){
+		return ResponseEntity.ok().body(adminService.addAdmin(admin));
+	}
 	
 	
 }

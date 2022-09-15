@@ -79,8 +79,8 @@ Employee_Id int primary key auto_increment ,
 Employee_Name varchar(255),
 Designation varchar(255) ,
 DateOfJoining date,
-MobileNo varchar(255),
-Email varchar(255),
+MobileNo varchar(255) unique,
+Email varchar(255) unique,
 Pan_Number varchar(255),
 Gender varchar(255),
 UserName varchar(255) unique,
@@ -99,8 +99,8 @@ Constraint fk_Employee_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id
 
 create table `Admin`(
 Admin_Id int primary key  auto_increment,
-Username varchar(50),
-`Password` varchar(50),
+Email varchar(50) unique,
+`Password` varchar(255),
 Roll_Id int,
 Constraint fk_Admin_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE
 );

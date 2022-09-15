@@ -30,8 +30,8 @@ public class Admin {
 	@Column(name="Admin_Id")
 	private int adminId;
 	
-	@Column(name="Username")
-	private String username;
+	@Column(name="Email")
+	private String email;
 	
 	@Column(name="password")
 	private String password;

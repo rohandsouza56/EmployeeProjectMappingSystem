@@ -97,9 +97,14 @@ desc employee;
 select *from employee;
 
 
-insert into `Admin` (Username,`Password`,Roll_Id)
-values("Rohan","Rohan123",3),
-("Sachin","Sachin123",3);
+insert into `Admin` (Email,`Password`,Roll_Id)
+values("rohan@gmail.com","Rohan123",3),
+("sachin@gmail.com","Sachin123",3);
+Select * from `Admin`;
+
+ALTER TABLE `Admin`
+Modify COLUMN `password` varchar(255);
+
 
 insert into Skills (Skill,Employee_Id,Date_of_Completion,Certification_Link,Certificate_Pdf,Technology_Id)
 values ("Skill 1",1,"2022-5-5","Link 1","Pdf",1),
@@ -110,6 +115,7 @@ values ("Skill 1",1,"2022-5-5","Link 1","Pdf",1),
 ("Skill 6",2,"2019-4-3","Link 6","Pdf",1);
 
 select *from Skills;
+select * from Employee;
 
 
 
