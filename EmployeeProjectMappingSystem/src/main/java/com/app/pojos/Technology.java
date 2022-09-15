@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Table(name="Technology")
 @Entity
@@ -37,12 +40,16 @@ public class Technology {
 	/****check cascade type */
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "Resource_Id") //fk
-	private Resource resourceId;
+	private Resource resource;
 	
 	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	@JsonIgnore
+	@ToString.Exclude
 	private List<Question> question;
 	
 	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	@JsonIgnore
+	@ToString.Exclude
 	private List<ProjectRequirement> projectRequirement;
 	
 }

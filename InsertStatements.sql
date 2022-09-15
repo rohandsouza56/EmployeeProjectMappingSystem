@@ -57,6 +57,7 @@ values(1,1),
 (3,5),
 (3,6);
 
+select * from Project_Requirment;
 
 
 desc Question;
@@ -68,15 +69,6 @@ values(1,"Question1"),
 (5,"Question5"),
 (6,"Question6");
 select *from Question;
-
-Create Table Options 
-(
-Option_Id int primary key,
-Question_Id int,
-`Option` varchar(200),
-isTrue boolean,
-constraint fk_Options_Question_Id_ foreign key (Question_Id) references Question(Question_Id)
-);
 
 
 
@@ -98,7 +90,7 @@ select * from roles;
 
 
 insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,Pan_Number,Gender,UserName,`Password`,Project_Id,Department_Id,Manager_Id,Roll_Id,`Resume`,Is_Tagged) 
-values("Abc","Testing","2022-05-02","123456789","Abc@gmail.com","Abc.pan","Male","Abc","Password123",1,1,2,1,null,false),
+values("admin","Testing","2022-05-02","123456789","Abc@gmail.com","Abc.pan","Male","admin","$10$mybMGl4uELNixxm77TlpBOugvykfT.WinkQwVXtfY0FdxMgmvySOm",1,1,2,1,null,false),
 ("LMN","Developer","2022-05-02","24123789","lmn@gmail.com","lmn.pan","Male","lmn","Password123",2,2,1,2,null,false);
 
 desc employee;

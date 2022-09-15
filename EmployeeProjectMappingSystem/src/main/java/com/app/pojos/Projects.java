@@ -32,7 +32,7 @@ import lombok.ToString;
 @Table(name="Projects")
 @Entity
 @Data
-@EqualsAndHashCode(exclude = "departments") 
+@EqualsAndHashCode(exclude = "departments,projectRequirement") 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Projects{

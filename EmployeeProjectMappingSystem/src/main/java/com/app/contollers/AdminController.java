@@ -18,8 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pojos.Departments;
 import com.app.pojos.Employee;
+import com.app.pojos.ProjectRequirement;
 import com.app.pojos.Projects;
+import com.app.pojos.Technology;
+import com.app.service.IDepartmentService;
 import com.app.service.IEmployeeService;
+import com.app.service.IProjectRequirementService;
+import com.app.service.IProjectsService;
+import com.app.service.ITechnologyService;
 import com.app.servicesimpl.DepartmentServiceImpl;
 import com.app.servicesimpl.ProjectsServiceImpl;
 
@@ -29,13 +35,20 @@ import com.app.servicesimpl.ProjectsServiceImpl;
 public class AdminController {
 
 	@Autowired
-	private ProjectsServiceImpl projectsService;
+	private IProjectsService projectsService;
 	
 	@Autowired
-	private DepartmentServiceImpl departmentServiceImpl;
+	private IDepartmentService departmentServiceImpl;
 	
 	@Autowired
 	private IEmployeeService employeeService;
+	
+	@Autowired
+	private IProjectRequirementService projectRequirementService;
+	
+	@Autowired
+	private ITechnologyService technologyService;
+	
 	
 	
 	//*************  Projects ************
@@ -62,7 +75,7 @@ public class AdminController {
 		}
 	}
 	
-	@DeleteMapping("/project/{projectId}")
+	@DeleteMapping("/project/delete/{projectId}")
 	public ResponseEntity<?> deleteProjectDetails(@PathVariable int projectId){
 		return ResponseEntity.ok().body(projectsService.deleteProject(projectId));
 	}
@@ -94,7 +107,7 @@ public class AdminController {
 		}
 	}
 	
-	@DeleteMapping("/department/{departmentId}")
+	@DeleteMapping("/department/delete/{departmentId}")
 	public ResponseEntity<?> deleteDepartmentstDetails(@PathVariable int departmentId){
 		return ResponseEntity.ok().body(projectsService.deleteProject(departmentId));
 	}
@@ -124,11 +137,70 @@ public class AdminController {
 		}
 	}
 	
-	@DeleteMapping("/employee/{employeeId}")
+	@DeleteMapping("/employee/delete/{employeeId}")
 	public ResponseEntity<?> deleteEmployeeDetails(@PathVariable int employeeId){
 		return ResponseEntity.ok().body(employeeService.deleteEmployee(employeeId));
 	}
 	
+	//**********************Project Requirement
+	
+	
+	@GetMapping("/project/{projectId}/requirement")
+	public ResponseEntity<?> getAllRequirement(@PathVariable int projectId){
+		List<ProjectRequirement> list = projectRequirementService.getAllRequirement(projectId);
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	@PostMapping("/projectreq/add")
+	public ResponseEntity<?> addProjectRequirement(@RequestBody ProjectRequirement projectRequirement){
+		return ResponseEntity.ok().body(projectRequirementService.addProjectRequirement(projectRequirement));
+	}
+	
+	@PutMapping("/projectreq/edit")
+	public ResponseEntity<?> updateProjectRequirement(@RequestBody  ProjectRequirement projectRequirement) {
+		System.out.println(projectRequirement);
+		try {
+			return ResponseEntity.ok().body(projectRequirementService.updateProjectRequirement(projectRequirement));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@DeleteMapping("/projectreq/delete/{requirementId}")
+	public ResponseEntity<?> deleteProjectRequirement(@PathVariable int requirementId){
+		return ResponseEntity.ok().body(projectRequirementService.deleteProjectRequirement(requirementId));
+	}
+	
+	
+	@GetMapping("/technology")
+	public ResponseEntity<?> getAllTechnology(){
+		List<Technology> list = technologyService.getAllTechnology();
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	@PostMapping("/technology/add")
+	public ResponseEntity<?> addTechnology(@RequestBody Technology technology){
+		return ResponseEntity.ok().body(technologyService.addTechnology(technology));
+	}
+	
+	@PutMapping("/technology/edit")
+	public ResponseEntity<?> updateTechnologyt(@RequestBody  Technology technology) {
+		System.out.println(technology);
+		try {
+			return ResponseEntity.ok().body(technologyService.updateTechnology(technology));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@DeleteMapping("/technology/delete/{technologyId}")
+	public ResponseEntity<?> deleteTechnlogy(@PathVariable int technologyId){
+		return ResponseEntity.ok().body(technologyService.deleteTechnology(technologyId));
+	}
 	
 	
 	
