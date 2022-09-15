@@ -1,16 +1,16 @@
 package com.app.pojos;
 
-import java.util.List;
+
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,36 +20,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Table(name="Technology")
+@Table(name="Roles")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Technology {
-
+public class Roles {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Technology_Id")
-	private int technologyId;
+	@Column(name="Roll_Id")
+	private int rollId;
 	
-	@Column(name="Technology_Name")
-	private String technologyName;
+	@Column(name="Roll_Name")
+	private String rollName;
 	
-	
-	/****check cascade type */
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "Resource_Id") //fk
-	private Resource resource;
-	
-	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@ToString.Exclude
-	private List<Question> question;
+	Set<Employee> employee;
 	
-	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@ToString.Exclude
-	private List<ProjectRequirement> projectRequirement;
-	
+	Set<Admin> admin;
 }
