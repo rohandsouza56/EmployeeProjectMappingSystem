@@ -6,6 +6,7 @@ import { MdContactPage } from 'react-icons/md'
 import { RiTeamFill } from 'react-icons/ri'
 import { BiNews } from 'react-icons/bi'
 // import NavbarLogo from '../../images/navbar-logo.png'
+import NavLogo from '../Images/NavLogo.png'
 
 import { Nav,Container,Navbar,NavDropdown } from 'react-bootstrap'
 // import { Container, Nav, Navbar, NavDropdown } from 
@@ -71,13 +72,13 @@ const Header = () => {
     return (
         <Navbar  expand="lg" className='Navclass sticky-top site-navbar' style={{zIndex:'999'}}>
             <Container>
-                {/* <NavLink to="/">
-                    <img className="navbar-logo" src={NavbarLogo} alt="ucs_logo" width={300} height={50} />
-                </NavLink> */}
-
-                <NavLink to= "/login"  id="title">
-                    Employee Project Mapping System
+                <NavLink to="/login">
+                    <img className="navbar-logo m-4" src={NavLogo} alt="ucs_logo" width={200} height={200} />
                 </NavLink>
+
+                {/* <NavLink to= "/login"  id="title">
+                    Employee Project Mapping System
+                </NavLink> */}
 
                 {/* <NavLink to= "/login"><h4><strong>Employee Project Mapping System</strong></h4> </NavLink> */}
                 <Navbar.Toggle className='navbar-toggler' aria-controls="basic-navbar-nav" />

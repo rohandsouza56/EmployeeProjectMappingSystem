@@ -12,6 +12,9 @@ import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import{Route, Routes,BrowserRouter} from "react-router-dom"
 import Header from './components/Home/Header';
 import Login from './components/Login/Login';
+import AddProjectMapping from './components/AdminDashboard/ProjectMapping';
+import AddResources from './components/Resources/Resource';
+import EmployeeDashboard from './components/EmployeeDashboard/EmployeeDashboard';
 // import {Route,} from "react-router-dom";
 
 
@@ -38,6 +41,9 @@ import Login from './components/Login/Login';
           <Route path='/employee' element={<AddEmployees/>}/>
           <Route path='/skill' element={<AddSkills/>}/>
           <Route path='/admindashboard' element={<AdminDashboard/>}/>
+          <Route path='/employeedashboard' element={<EmployeeDashboard/>}/>
+          <Route path='/addresource' element={<AddResources/>}/>
+          <Route path='/projectmapping' element={<AddProjectMapping/>}/>
         </Routes>
     </BrowserRouter>
     

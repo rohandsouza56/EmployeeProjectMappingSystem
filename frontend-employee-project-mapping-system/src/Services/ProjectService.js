@@ -17,5 +17,8 @@ const getAllProjects = () =>{
 const addNewProject = (projectDetails) =>{
     return axios.post(Project_BASE_REST_API_URL + 'addproject',projectDetails);
 }
+const deleteProject = (projectId) =>{
+    return axios.delete(Project_BASE_REST_API_URL + 'deleteproject',projectId);
+}
 // export default new ProjectService();
-export default {getAllProjects,addNewProject};
+export default {getAllProjects,addNewProject,deleteProject};

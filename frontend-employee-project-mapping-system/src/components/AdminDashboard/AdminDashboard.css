@@ -25,8 +25,8 @@
   #Hovereffect {
     background-image: linear-gradient(
       to right,
-      #54b3d6,
-      #54b3d6 50%,
+      #0e76e6,
+      #0e76e6 50%,
       #000 50%
     );
     background-size: 200% 100%;
@@ -41,7 +41,7 @@
   
   #Hovereffect:before {
     content: '';
-    background: #54b3d6;
+    background: #0e76e6;
     display: block;
     position: absolute;
     bottom: -3px;
