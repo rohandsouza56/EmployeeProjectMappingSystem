@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import TechnologyService from "../../Services/TechnologyService";
-import ProjectService from "../../Services/ProjectService";
+// import AdminServices from "../../Services/AdminServices";
+import AdminServices from "../../Services/AdminServices";
 import ProjectRequirmentService from "../../Services/ProjectRequirmentService";
 
 const AddProjectRequirment = ()=>{
@@ -29,7 +30,7 @@ const AddProjectRequirment = ()=>{
     }
 
     const getAllProjects=()=>{
-        ProjectService.getAllProjects().then(response=>{
+        AdminServices.getAllProjects().then(response=>{
             setProjects(response.data);
             console.log(response.data);
         }).catch(error=>{

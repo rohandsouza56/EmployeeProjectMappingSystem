@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 //import { Link } from 'react-router-dom'
-//import ProjectService from '../Services/ProjectService';
-import ProjectService from '../../Services/ProjectService';
+//import AdminServices from '../Services/AdminServices';
+// import AdminServices from '../../Services/AdminServices';
+import AdminServices from '../../Services/AdminServices';
 
 const ListProjectComponent = () => {
 
@@ -13,7 +14,8 @@ const ListProjectComponent = () => {
     }, [])
 
     const getAllProjects = () => {
-        ProjectService.getAllProjects().then((response) => {
+        console.log(localStorage.getItem("jwtToken"));
+        AdminServices.getAllProjects().then((response) => {
             setProjects(response.data)
             console.log(response.data);
         }).catch(error =>{
@@ -22,7 +24,7 @@ const ListProjectComponent = () => {
     }
 
     // const deleteProject = (ProjectId) => {
-    //    ProjectService.deleteProject(ProjectId).then((response) =>{
+    //    AdminServices.deleteProject(ProjectId).then((response) =>{
     //     getAllProjects();
 
     //    }).catch(error =>{

@@ -67,7 +67,7 @@ const Login =()=>{
             LoginServices.login(loginRequest).then(response =>{
                 setEmail("");
                 setPassword("");
-                 navigate("/admindashboard");
+                  navigate("/admindashboard");
 
 
                 // if (response.data.role === "ADMIN") {

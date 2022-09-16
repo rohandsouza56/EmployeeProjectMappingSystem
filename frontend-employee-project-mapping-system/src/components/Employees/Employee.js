@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import AdminServices from "../../Services/AdminServices";
 // import EmployeeService from '../../Services/EmployeeService';
+import EmployeeService from "../../Services/EmployeeService";
 
 const AddEmployees = () => {
   const [name, setName] = useState("");
@@ -9,32 +11,23 @@ const AddEmployees = () => {
   const [email, setEmail] = useState("");
   const [panNumber, setPanNumber] = useState("");
   const [gender, setGender] = useState("");
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [projectId, setProjectId] = useState("");
   const [departmentId, setDepartmentId] = useState("");
-  const [isManager, setIsManager] = useState("");
-  const [managerId, setManagerId] = useState("");
-  const [skillId, setSkillId] = useState("");
-  const [resume, setResume] = useState("");
-  const [isTagged, setIsTagged] = useState("");
+  const [roleId, setRoleId] = useState("");
 
   const [nameErr, setNameErr] = useState("");
   const [designationErr, setDesignationErr] = useState("");
   const [dateOfJoiningErr, setDateOfJoiningErr] = useState("");
   const [mobileNoErr, setMobileNoErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
-  const [panNumberErr, setPanNumberErr] = useState("");
+
   const [genderErr, setGenderErr] = useState("");
-  const [userNameErr, setUserNameErr] = useState("");
+
   const [passwordErr, setPasswordErr] = useState("");
   const [projectIdErr, setProjectIdErr] = useState("");
   const [departmentIdErr, setDepartmentIdErr] = useState("");
-  const [isManagerErr, setIsManagerErr] = useState("");
-  const [managerIdErr, setManagerIdErr] = useState("");
-  const [skillIdErr, setSkillIdErr] = useState("");
-  const [resumeErr, setResumeErr] = useState("");
-  const [isTaggedErr, setIsTaggedErr] = useState("");
+  const [roleIdErr, setRoleIdErr] = useState("");
 
   const [errorMesg, setErrorMesg] = useState("");
 
@@ -74,25 +67,11 @@ const AddEmployees = () => {
     setEmail(event.target.value);
   };
 
-  let panNumberTextHandler = (event) => {
-    if (panNumberErr !== "" || panNumberErr !== null) setPanNumberErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setPanNumber(event.target.value);
-  };
-
   let genderTextHandler = (event) => {
     if (genderErr !== "" || genderErr !== null) setGenderErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setGender(event.target.value);
-  };
-
-  let userNameTextHandler = (event) => {
-    if (userNameErr !== "" || userNameErr !== null) setUserNameErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setUserName(event.target.value);
   };
 
   let passwordTextHandler = (event) => {
@@ -117,39 +96,11 @@ const AddEmployees = () => {
     setDepartmentId(event.target.value);
   };
 
-  let isManagerTextHandler = (event) => {
-    if (isManagerErr !== "" || isManagerErr !== null) setIsManagerErr("");
+  let roleIdTextHandler = (event) => {
+    if (roleIdErr !== "" || roleIdErr !== null) setRoleIdErr("");
     // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setIsManager(event.target.value);
-  };
-
-  let managerIdTextHandler = (event) => {
-    if (managerIdErr !== "" || managerIdErr !== null) setManagerIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setManagerId(event.target.value);
-  };
-
-  let skillIdTextHandler = (event) => {
-    if (skillIdErr !== "" || skillIdErr !== null) setSkillIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setSkillId(event.target.value);
-  };
-
-  let resumeTextHandler = (event) => {
-    if (resumeErr !== "" || resumeErr !== null) setResumeErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setResume(event.target.value);
-  };
-
-  let isTaggedTextHandler = (event) => {
-    if (isTaggedErr !== "" || isTaggedErr !== null) setIsTaggedErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setIsTagged(event.target.value);
+    setRoleId(event.target.value);
   };
 
   let validation = () => {
@@ -158,17 +109,13 @@ const AddEmployees = () => {
     setDateOfJoiningErr("");
     setMobileNoErr("");
     setEmailErr("");
-    setPanNumberErr("");
+
     setGenderErr("");
-    setUserNameErr("");
+
     setPasswordErr("");
     setProjectIdErr("");
     setDepartmentIdErr("");
-    setIsManagerErr("");
-    setManagerIdErr("");
-    setSkillIdErr("");
-    setResumeErr("");
-    setIsTaggedErr("");
+    setRoleIdErr("");
 
     let flag = true;
 
@@ -195,18 +142,9 @@ const AddEmployees = () => {
       setEmailErr("This field is compulsory");
       flag = false;
     }
-    if (panNumber === "" || panNumber === null) {
-      setPanNumberErr("This field is compulsory");
-      flag = false;
-    }
 
     if (gender === "" || gender === null) {
       setGenderErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (userName === "" || userName === null) {
-      setUserNameErr("This field is compulsory");
       flag = false;
     }
 
@@ -225,28 +163,8 @@ const AddEmployees = () => {
       flag = false;
     }
 
-    if (isManager === "" || isManager === null) {
-      setIsManagerErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (managerId === "" || managerId === null) {
-      setManagerIdErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (skillId === "" || skillId === null) {
-      setSkillIdErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (resume === "" || resume === null) {
-      setResumeErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (isTagged === "" || isTagged === null) {
-      setIsTaggedErr("This field is compulsory");
+    if (roleId === "" || roleId === null) {
+      setRoleIdErr("This field is compulsory");
       flag = false;
     }
 
@@ -256,26 +174,24 @@ const AddEmployees = () => {
   };
 
   let addEmployeeDetails = (event) => {
+    console.log("AAAAAAAAAAAA");
     event.preventDefault();
+    console.log("BBBBB");
     if (validation()) {
       setNameErr("");
       setDesignationErr("");
       setDateOfJoiningErr("");
       setMobileNoErr("");
       setEmailErr("");
-      setPanNumberErr("");
+
       setGenderErr("");
-      setUserNameErr("");
+
       setPasswordErr("");
       setProjectIdErr("");
       setDepartmentIdErr("");
-      setIsManagerErr("");
-      setManagerIdErr("");
-      setSkillIdErr("");
-      setResumeErr("");
-      setIsTaggedErr("");
+      setRoleIdErr("");
 
-      let EmployeeDetails = {
+      let employeeDetails = {
         name,
         designation,
         dateOfJoining,
@@ -283,42 +199,32 @@ const AddEmployees = () => {
         email,
         panNumber,
         gender,
-        userName,
+
         password,
         projectId,
         departmentId,
-        isManager,
-        managerId,
-        skillId,
-        resume,
-        isTagged,
+        roleId,
       };
+      console.log(employeeDetails);
+      AdminServices.addNewEmployee(employeeDetails)
+        .then((response) => {
+          setName("");
+          setDesignation("");
+          setDateOfJoining("");
+          setMobileNo("");
+          setEmail("");
+          setPanNumber("");
+          setGender("");
 
-      //   EmployeeService
-      //     .addNewEmployee(EmployeeDetails)
-      //     .then((response) => {
-      //       setName("");
-      //       setDesignation("");
-      //       setDateOfJoining("");
-      //       setMobileNo("");
-      //       setEmail("");
-      //       setPanNumber("");
-      //       setGender("");
-      //       setUserName("");
-      //       setPassword("");
-      //       setProjectId("");
-      //       setDepartmentId("");
-      //       setIsManager("");
-      //       setManagerId("");
-      //       setSkillId("");
-      //       setResume("");
-      //       setIsTagged("");
-
-      //     })
-      //     .catch((error) => {
-      //       console.log(error)
-      //       //setErrorMesg(error.response.data);
-      //     });
+          setPassword("");
+          setProjectId("");
+          setDepartmentId("");
+          setRoleId("");
+        })
+        .catch((error) => {
+          console.log(error);
+          //setErrorMesg(error.response.data);
+        });
     }
   };
 
@@ -423,19 +329,7 @@ const AddEmployees = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={userName}
-                        onChange={userNameTextHandler}
-                        placeholder="enter username"
-                      />
-                      <label>userName</label>
-                      <span className="text-danger">{userNameErr}</span>
-                    </div>
-                  </div>
+                  <div className="col-6">AAAAAAAAAAAAAA</div>
                   <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
@@ -485,68 +379,16 @@ const AddEmployees = () => {
                       <input
                         type="text"
                         className="form-control"
-                        value={isManager}
-                        onChange={isManagerTextHandler}
-                        placeholder="Enter IsManager"
+                        value={roleId}
+                        onChange={roleIdTextHandler}
+                        placeholder="Enter roleId"
                       />
-                      <label>isManager</label>
-                      <span className="text-danger">{isManagerErr}</span>
+                      <label>roleId</label>
+                      <span className="text-danger">{roleIdErr}</span>
                     </div>
                   </div>
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="number"
-                        className="form-control"
-                        value={managerId}
-                        onChange={managerIdTextHandler}
-                        placeholder="Enter Manager id"
-                      />
-                      <label>Manager Id</label>
-                      <span className="text-danger">{managerIdErr}</span>
-                    </div>
-                  </div>
+                  <div className="col-6">BBBBB</div>
                 </div>
-                <div className="row">
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={resume}
-                        onChange={resumeTextHandler}
-                        placeholder="Enter resume"
-                      />
-                      <label>resume</label>
-                      <span className="text-danger">{resumeErr}</span>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={isTagged}
-                        onChange={isTaggedTextHandler}
-                        placeholder="Enter isTagged"
-                      />
-                      <label>isTagged</label>
-                      <span className="text-danger">{isTaggedErr}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* <div className="form-floating mb-3">
-                      <input
-                        type="number"
-                        className="form-control"
-                        value={panNumber}
-                        onChange={panNumberTextHandler}
-                        placeholder="Enter PanNumber"
-                      />
-                      <label>panNumber</label>
-                      <span className="text-danger">{panNumberErr}</span>
-                    </div> */}
 
                 <div className="row g-1">
                   <button type="submit" className="btn btn-primary">

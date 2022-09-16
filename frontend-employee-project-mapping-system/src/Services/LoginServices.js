@@ -9,7 +9,7 @@ const login = (loginRequest) => {
       let token = response.data.token;
       console.log(token);
       localStorage.setItem("jwtToken", "Bearer " + token);
-      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+      //axios.defaults.headers.common["Authorization"] = "Bearer " + token;
       // (this.$router.push({name:'HomePage'}));
     });
 };

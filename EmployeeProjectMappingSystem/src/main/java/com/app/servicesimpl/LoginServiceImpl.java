@@ -3,12 +3,12 @@ package com.app.servicesimpl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +18,13 @@ import com.app.pojos.Employee;
 import com.app.pojos.Admin;
 
 @Service
-public class LoginServiceImpl implements UserDetailsService {
+public class LoginServiceImpl{// implements UserDetailsService {
 
-	@Autowired
-	EmployeeRepository employeeRepository;
-	
-	@Autowired
-	AdminRepository adminRepository;
+//	@Autowired
+//	EmployeeRepository employeeRepository;
+//	
+//	@Autowired
+//	AdminRepository adminRepository;
 	
 	
 //	@Override
@@ -51,20 +51,20 @@ public class LoginServiceImpl implements UserDetailsService {
 //				new ArrayList<>());
 //	}
 	
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		
-
-		
-		Admin admin = adminRepository.findByEmail(email);
-		System.out.println(admin.getEmail()+" "+admin.getPassword());
-		System.out.println();
-		if (admin == null) {
-			throw new UsernameNotFoundException("Admin not found with username: " + email);
-		}
-		return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getPassword(),
-				new ArrayList<>());
-	}
+//	@Override
+//	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//		
+//
+//		
+//		Admin admin = adminRepository.findByEmail(email);
+//		System.out.println(admin.getEmail()+" "+admin.getPassword());
+//		System.out.println();
+//		if (admin == null) {
+//			throw new UsernameNotFoundException("Admin not found with username: " + email);
+//		}
+//		return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getPassword(),
+//				new ArrayList<>());
+//	}
 
 
 }

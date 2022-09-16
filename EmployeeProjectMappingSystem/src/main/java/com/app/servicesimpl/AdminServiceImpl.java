@@ -3,7 +3,7 @@ package com.app.servicesimpl;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
@@ -21,8 +21,8 @@ public class AdminServiceImpl implements IAdminService {
 	@Transactional
 	@Override
 	public Admin addAdmin(Admin admin) {	
-		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
-		admin.setPassword(bcryptEncoder.encode(admin.getPassword()));
+//		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
+//		admin.setPassword(bcryptEncoder.encode(admin.getPassword()));
 		return adminRepository.save(admin);
 	}
 

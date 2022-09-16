@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import ProjectService from '../../Services/ProjectService';
+// import ProjectService from '../../Services/AdminServices';
+import AdminServices from '../../Services/AdminServices';
 import { Button,Modal,Table } from 'react-bootstrap';
 
 
@@ -33,7 +34,9 @@ const AddProjects = () => {
   //-------------------------------------
 
   const getAllProjects =()=>{
-    ProjectService.getAllProjects().then((response)=>{
+    console.log("AAAa");
+    console.log(localStorage.getItem("jwtToken"));
+    AdminServices.getAllProjects().then((response)=>{
         setAllProject(response.data);
         console.log(response.data);
     }).catch((error)=>{
@@ -147,7 +150,9 @@ const AddProjects = () => {
         location,
         managerId
       };
-      ProjectService
+
+      console.log(projectDetails);
+      AdminServices
       .addNewProject(projectDetails)
       .then((response) => {
         setName("");
@@ -171,7 +176,7 @@ const AddProjects = () => {
 
   let handleDelete = (projectId) => {
      
-      ProjectService.deleteProject(projectId).then(response=>{
+      AdminServices.deleteProject(projectId).then(response=>{
         console.log(response.data);
         getAllProjects();
       }).catch(err => {
