@@ -67,6 +67,8 @@ const Login =()=>{
             LoginServices.login(loginRequest).then(response =>{
                 setEmail("");
                 setPassword("");
+                 navigate("/admindashboard");
+
 
                 // if (response.data.role === "ADMIN") {
                 //     const user = response.data;
@@ -75,7 +77,7 @@ const Login =()=>{
                 //     // window.sessionStorage.setItem("name", user.name);
                 //     // window.sessionStorage.setItem("snackbar", "show");
                 //     // console.log(user);
-                //     setLoggedInAsAdmin(true);
+                //    setLoggedInAsAdmin(true);
                 // }
 
                 // else if(response.data.role === "MANAGER"){

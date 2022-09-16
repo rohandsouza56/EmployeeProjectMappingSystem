@@ -164,7 +164,7 @@ const AddProjectMapping = () => {
     return (
         <div className="container-fluid w-50 mt-5 add-qualification-details">
             <div className="m-3">
-                <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">Skills</h2>
+                <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">Employee Project Mapping</h2>
                 <p className="text-50 text-success mb-3 dashboard-data-section-para">Please enter Employee-Project Mapping Details</p>
                 <div className="border border-1 rounded">
                     <div className="m-3">

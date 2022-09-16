@@ -36,9 +36,6 @@ const AdminDashboard = () => {
     if (home) {
       setHome(false);
     }
-    // if (Projectlist) {
-    //   setProjectList(false);
-    // }
     if (addEmployee) {
       setAddEmployee(false);
     }
@@ -66,6 +63,8 @@ const AdminDashboard = () => {
     setAddProject(true);
   };
 
+
+
   let showHome = () => {
     if (addEmployee) {
       setAddEmployee(false);
@@ -90,6 +89,8 @@ const AdminDashboard = () => {
     }
     setHome(true);
   };
+
+
 
   let showAddEmployee = () => {
     if (home) {
@@ -116,6 +117,8 @@ const AdminDashboard = () => {
     }
     setAddEmployee(true);
   };
+
+
 
   let showAddTechnology = () => {
     if (home) {
@@ -203,7 +206,8 @@ const AdminDashboard = () => {
       setMapping(false);
     }
 
-    setAddProjectRequirment(true);
+
+    setProjectReq(true);
   };
 
   let showMapping = () => {
@@ -396,7 +400,7 @@ const AdminDashboard = () => {
           {addEmployee && <AddEmployees />}
           {addDepartment && <AddDepartment />}
           {addTechnology && <AddTechnology />}
-          {addProjectRequirment && <AddProjectRequirment />}
+          {projectReq && <AddProjectRequirment />}
           {addResource && <AddResources />}
           {mapping && <AddProjectMapping />}
           {/* 

@@ -37,7 +37,8 @@ public class SecurityConfig {
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // don't authenticate this particular request
-                .authorizeHttpRequests().antMatchers("/authenticate","/admin/employee/add","/admin/admin/add").permitAll()
+                .authorizeHttpRequests().antMatchers("/authenticate","/admin/employee/add","/admin/admin/add"
+                		).permitAll()
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and()
                 // make sure we use stateless session; session won't be used to

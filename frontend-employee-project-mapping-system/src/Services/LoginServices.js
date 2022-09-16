@@ -15,6 +15,7 @@ const login = (loginRequest) => {
 };
 
 
+
 const userDetails = (email) => {
   return axios.get(USER_API_SERVICE_URL + "/details/", email);
 };

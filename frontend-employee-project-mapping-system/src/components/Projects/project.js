@@ -25,7 +25,10 @@ const AddProjects = () => {
     //--------------for modal--------------
     const [show,setShow] = useState(false);
     const handleClose = () =>setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+      getAllProjects();
+      setShow(true);
+    }
     const [allProject,setAllProject] = useState([]);
   //-------------------------------------
 
@@ -38,9 +41,9 @@ const AddProjects = () => {
     })
   }
 
-  useEffect(()=>{
-    getAllProjects();
-  },[])
+  // useEffect(()=>{
+  //   getAllProjects();
+  // },[])
   
  
   let nameTextHandler = (event) => {

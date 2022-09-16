@@ -13,8 +13,9 @@ const Project_BASE_REST_API_URL = "http://localhost:8080/admin/";
 //     return axios.get(Project_BASE_REST_API_URL + 'projects')
 // }
 const getAllProjects = () => {
+  console.log(localStorage.getItem("jwtToken"));
   return axios.get(Project_BASE_REST_API_URL + "projects", {
-    headers: { Authorization: localStorage.getItem("jwtToken") },
+    headers: { "Authorization": localStorage.getItem("jwtToken") },
   });
 };
 
