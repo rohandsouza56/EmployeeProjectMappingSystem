@@ -24,19 +24,19 @@ Constraint fk_Departments_Projects foreign key	(Project_Id) references Projects(
 );
 drop table departments;
 
+Create Table Technology
+(
+Technology_Id int primary key  auto_increment,
+Technology_Name varchar(50)
+);
+
 create table Resource
 (
 Resource_Id int primary key  auto_increment,
 link varchar(50),
-Resource_Name varchar(50)
-);
-
-Create Table Technology
-(
-Technology_Id int primary key  auto_increment,
-Technology_Name varchar(50),
-Resource_Id int,
-constraint fk_Technology_Resource_Id_ foreign key (Resource_Id) references Resource(Resource_Id) ON DELETE CASCADE ON UPDATE CASCADE
+`Description` varchar(255),
+Technology_Id int,
+constraint fk_Resource_Technology_Id_ foreign key (Technology_Id) references Technology(Technology_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 

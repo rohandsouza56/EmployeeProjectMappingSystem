@@ -36,12 +36,6 @@ public class Technology {
 	@Column(name="Technology_Name")
 	private String technologyName;
 	
-	
-	/****check cascade type */
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "Resource_Id") //fk
-	private Resource resource;
-	
 	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
 	@JsonIgnore
 	@ToString.Exclude

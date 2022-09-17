@@ -24,28 +24,25 @@ values(2,"ABC",25,200),
 select *from Departments ;
 drop table departments;
 
-
-
-insert into Resource (link,Resource_Name)
-values("Link 1","Resource 1"),
-("Link 2","Resource 2"),
-("Link 3","Resource 3"),
-("Link 4","Resource 4"),
-("Link 5","Resource 5"),
-("Link 6","Resource 6");
-select * from Resource;
-truncate Resource;
-
-
-insert into Technology (Technology_Name,Resource_Id)
-values("Technology1",1),
-("Technology2",2),
-("Technology3",3),
-("Technology4",4),
-("Technology5",5),
-("Technology6",6);
+insert into Technology (Technology_Name)
+values("Technology1"),
+("Technology2"),
+("Technology3"),
+("Technology4"),
+("Technology5"),
+("Technology6");
 select * from Technology;
 truncate Technology;
+
+insert into Resource (link,`Description`,Technology_Id)
+values("Link 1","Description 1",1),
+("Link 2","Description 2",2),
+("Link 3","Description 3",3),
+("Link 4","Description 4",4),
+("Link 5","Description 5",5),
+("Link 6","Description 6",6);
+select * from Resource;
+truncate Resource;
 
 
 
