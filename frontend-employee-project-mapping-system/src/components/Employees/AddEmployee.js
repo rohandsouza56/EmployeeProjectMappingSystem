@@ -9,11 +9,8 @@ const AddEmployees = () => {
   const [dateOfJoining, setDateOfJoining] = useState("");
   const [mobileNo, setMobileNo] = useState("");
   const [email, setEmail] = useState("");
-  const [panNumber, setPanNumber] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
-  const [projectId, setProjectId] = useState("");
-  const [departmentId, setDepartmentId] = useState("");
   const [roleId, setRoleId] = useState("");
 
   const [nameErr, setNameErr] = useState("");
@@ -21,12 +18,8 @@ const AddEmployees = () => {
   const [dateOfJoiningErr, setDateOfJoiningErr] = useState("");
   const [mobileNoErr, setMobileNoErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
-
   const [genderErr, setGenderErr] = useState("");
-
   const [passwordErr, setPasswordErr] = useState("");
-  const [projectIdErr, setProjectIdErr] = useState("");
-  const [departmentIdErr, setDepartmentIdErr] = useState("");
   const [roleIdErr, setRoleIdErr] = useState("");
 
   const [errorMesg, setErrorMesg] = useState("");
@@ -81,20 +74,9 @@ const AddEmployees = () => {
     setPassword(event.target.value);
   };
 
-  let projectIdTextHandler = (event) => {
-    if (projectIdErr !== "" || projectIdErr !== null) setProjectIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setProjectId(event.target.value);
-  };
+ 
 
-  let departmentIdTextHandler = (event) => {
-    if (departmentIdErr !== "" || departmentIdErr !== null)
-      setDepartmentIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
-    if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
-    setDepartmentId(event.target.value);
-  };
+  
 
   let roleIdTextHandler = (event) => {
     if (roleIdErr !== "" || roleIdErr !== null) setRoleIdErr("");
@@ -109,12 +91,8 @@ const AddEmployees = () => {
     setDateOfJoiningErr("");
     setMobileNoErr("");
     setEmailErr("");
-
     setGenderErr("");
-
     setPasswordErr("");
-    setProjectIdErr("");
-    setDepartmentIdErr("");
     setRoleIdErr("");
 
     let flag = true;
@@ -153,15 +131,6 @@ const AddEmployees = () => {
       flag = false;
     }
 
-    if (projectId === "" || projectId === null) {
-      setProjectIdErr("This field is compulsory");
-      flag = false;
-    }
-
-    if (departmentId === "" || departmentId === null) {
-      setDepartmentIdErr("This field is compulsory");
-      flag = false;
-    }
 
     if (roleId === "" || roleId === null) {
       setRoleIdErr("This field is compulsory");
@@ -174,21 +143,15 @@ const AddEmployees = () => {
   };
 
   let addEmployeeDetails = (event) => {
-    console.log("AAAAAAAAAAAA");
     event.preventDefault();
-    console.log("BBBBB");
     if (validation()) {
       setNameErr("");
       setDesignationErr("");
       setDateOfJoiningErr("");
       setMobileNoErr("");
       setEmailErr("");
-
       setGenderErr("");
-
       setPasswordErr("");
-      setProjectIdErr("");
-      setDepartmentIdErr("");
       setRoleIdErr("");
 
       let employeeDetails = {
@@ -197,12 +160,8 @@ const AddEmployees = () => {
         dateOfJoining,
         mobileNo,
         email,
-        panNumber,
         gender,
-
         password,
-        projectId,
-        departmentId,
         roleId,
       };
       console.log(employeeDetails);
@@ -213,12 +172,8 @@ const AddEmployees = () => {
           setDateOfJoining("");
           setMobileNo("");
           setEmail("");
-          setPanNumber("");
           setGender("");
-
           setPassword("");
-          setProjectId("");
-          setDepartmentId("");
           setRoleId("");
         })
         .catch((error) => {
@@ -329,51 +284,6 @@ const AddEmployees = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-6">AAAAAAAAAAAAAA</div>
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="password"
-                        className="form-control"
-                        value={password}
-                        onChange={passwordTextHandler}
-                        placeholder="Enter Password"
-                      />
-                      <label>password</label>
-                      <span className="text-danger">{passwordErr}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="number"
-                        className="form-control"
-                        value={projectId}
-                        onChange={projectIdTextHandler}
-                        placeholder="Enter Project Id"
-                      />
-                      <label>project Id</label>
-                      <span className="text-danger">{projectIdErr}</span>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="number"
-                        className="form-control"
-                        value={departmentId}
-                        onChange={departmentIdTextHandler}
-                        placeholder="Enter departmenr id"
-                      />
-                      <label>department Id</label>
-                      <span className="text-danger">{departmentIdErr}</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
                   <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
@@ -387,7 +297,19 @@ const AddEmployees = () => {
                       <span className="text-danger">{roleIdErr}</span>
                     </div>
                   </div>
-                  <div className="col-6">BBBBB</div>
+                  <div className="col-6">
+                    <div className="form-floating mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        value={password}
+                        onChange={passwordTextHandler}
+                        placeholder="Enter Password"
+                      />
+                      <label>password</label>
+                      <span className="text-danger">{passwordErr}</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="row g-1">

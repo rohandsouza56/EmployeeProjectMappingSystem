@@ -36,7 +36,7 @@ public class TechnologyServiceImpl implements ITechnologyService  {
 	}
 	
 	
-
+	@Transactional
 	@Override
 	public Technology updateTechnology(Technology technology) {
 //		if(!technologyRepository.existsById(technology.getTechnologyId())) {

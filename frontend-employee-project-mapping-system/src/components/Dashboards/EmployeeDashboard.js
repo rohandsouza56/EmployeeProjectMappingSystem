@@ -10,7 +10,7 @@ import { GrTechnology } from "react-icons/gr";
 
 
  //import { FaUserAlt } from "react-icons/md";
- import AddSkills from "../Skills/skill";
+ import AddSkills from "../Skills/AddSkill";
 
 import AddTechnology from "../Technology/AddTechnology";
 

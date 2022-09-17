@@ -13,5 +13,7 @@ public interface IEmployeeService {
 	public Employee updateEmployee(Employee employee) ;
 
 	public List<Employee> deleteEmployee(int employeeId);
+	
+	public Employee changeMapping(Employee employee);
 
 }

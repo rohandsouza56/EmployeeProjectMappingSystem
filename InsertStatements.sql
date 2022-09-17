@@ -89,9 +89,9 @@ values("Employee"),
 select * from roles;
 
 
-insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,Pan_Number,Gender,UserName,`Password`,Project_Id,Department_Id,Manager_Id,Roll_Id,`Resume`,Is_Tagged) 
-values("admin","Testing","2022-05-02","123456789","Abc@gmail.com","Abc.pan","Male","admin","$10$mybMGl4uELNixxm77TlpBOugvykfT.WinkQwVXtfY0FdxMgmvySOm",1,1,2,1,null,false),
-("LMN","Developer","2022-05-02","24123789","lmn@gmail.com","lmn.pan","Male","lmn","Password123",2,2,1,2,null,false);
+insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,`Password`,Gender,Project_Id,Department_Id,Roll_Id,`Resume`) 
+values("abc","Testing","2022-05-02","123456789","Abc@gmail.com","abc","Male",1,1,1,null),
+("lmn","Dev","2022-05-02","123456779","lmn@gmail.com","lmn","Male",1,1,1,null);
 
 desc employee;
 select *from employee;
@@ -108,8 +108,8 @@ Modify COLUMN `password` varchar(255);
 
 insert into Skills (Skill,Employee_Id,Date_of_Completion,Certification_Link,Certificate_Pdf,Technology_Id)
 values ("Skill 1",1,"2022-5-5","Link 1","Pdf",1),
-("Skill 2",1,"2021-5-5","Link 2","Pdf",1),
-("Skill 3",1,"2020-5-5","Link 3","Pdf",1),
+("Skill 2",2,"2021-5-5","Link 2","Pdf",1),
+("Skill 3",2,"2020-5-5","Link 3","Pdf",1),
 ("Skill 4",2,"2022-10-15","Link 4","Pdf",1),
 ("Skill 5",2,"2022-1-1","Link 5","Pdf",1),
 ("Skill 6",2,"2019-4-3","Link 6","Pdf",1);

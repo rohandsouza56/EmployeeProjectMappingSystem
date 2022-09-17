@@ -122,5 +122,24 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		employeeRepository.delete(employee);
 		return employeeRepository.findAll();
 	}
-
+	
+	@Transactional
+	@Override
+	public Employee changeMapping(Employee employee) {
+		
+		Employee newEmployee = employeeRepository.findById(employee.getEmployeeId())
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Project ID : " + employee.getEmployeeId()));
+				
+		Projects project = projectsRepository.findById(employee.getProjects().getProjectId())
+				.orElseThrow(() -> new ResourceNotFoundException("Project Not Found with Project ID : " + employee.getProjects().getProjectId()));
+		
+		Departments department = departmentsRepository.findById(employee.getDepartments().getDepartmentId())
+				.orElseThrow(() -> new ResourceNotFoundException("Department Not Found with Department ID : " + employee.getDepartments().getDepartmentId()));
+		
+		newEmployee.setProjects(project);
+		newEmployee.setDepartments(department);
+		
+		return employeeRepository.save(newEmployee);
+	
+	}
 }

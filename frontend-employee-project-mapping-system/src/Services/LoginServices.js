@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_API_SERVICE_URL = "http://localhost:8080";
+const USER_API_SERVICE_URL = "http://localhost:8082";
 
 const login = (loginRequest) => {
   return axios

@@ -5,12 +5,12 @@ show tables;
 
 create table Projects(
 Project_Id int primary key auto_increment,
-Project_Name varchar(50) Not Null,
-`Description` varchar(100) Not Null,
-Start_Date date not null,
-End_Date date not null,
-Location varchar(50) not null,
-Manager_Id int not null
+Project_Name varchar(50),
+`Description` varchar(100),
+Start_Date date,
+End_Date date,
+Location varchar(50),
+Manager_Id int
 );
 
 
@@ -81,16 +81,12 @@ Designation varchar(255) ,
 DateOfJoining date,
 MobileNo varchar(255) unique,
 Email varchar(255) unique,
-Pan_Number varchar(255),
-Gender varchar(255),
-UserName varchar(255) unique,
 `Password` varchar(255),
+Gender varchar(255),
 Project_Id int ,
 Department_Id int,
-Manager_Id int,
 Roll_Id int,
-Resume blob, 
-Is_Tagged boolean ,
+Resume blob,
 Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE

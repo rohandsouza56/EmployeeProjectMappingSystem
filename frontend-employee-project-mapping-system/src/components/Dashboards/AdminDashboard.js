@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AddDepartment from "../Departments/AddDepartment";
-import AddEmployees from "../Employees/Employee";
-import AddProjects from "../Projects/project";
-import AddProjectRequirment from "../Projects/ProjectRequirment";
+import AddEmployees from "../Employees/AddEmployee";
+import AddProjects from "../Projects/AddProject";
+import AddProjectRequirment from "../ProjectRequirement/AddProjectRequirment";
 import Home from "./AdminHome";
-import AddProjectMapping from "./ProjectMapping";
-import AddResources from "../Resources/Resource";
+import AddProjectMapping from "../Projects/ProjectMapping";
+import AddResources from "../Resources/AddResource";
 
 import { FaUserAlt, FaBlackTie, FaFileImport } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
@@ -298,7 +298,7 @@ const AdminDashboard = () => {
                   className="sidebar-list-icon"
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
-                Home
+                <span id="Hovereffect">Home</span>
               </li>
 
               <li onClick={showAddProject} style={{ cursor: "context-menu" }}>
@@ -327,7 +327,7 @@ const AdminDashboard = () => {
                   size={22}
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
-                <span id="Hovereffect">Add Technology</span>
+                <span id="Hovereffect">Technology</span>
               </li>
 
               <li onClick={showAddResource} style={{ cursor: "context-menu" }}>
@@ -335,7 +335,7 @@ const AdminDashboard = () => {
                   size={20}
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
-                <span id="Hovereffect">Add Resource</span>
+                <span id="Hovereffect">Resource</span>
               </li>
 
               <li
@@ -346,7 +346,7 @@ const AdminDashboard = () => {
                   size={22}
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
-                <span id="Hovereffect">Add Requirment</span>
+                <span id="Hovereffect">Project Requirements</span>
               </li>
 
               <li onClick={showMapping} style={{ cursor: "context-menu" }}>

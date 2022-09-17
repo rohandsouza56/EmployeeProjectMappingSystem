@@ -52,14 +52,9 @@ public class Employee implements Serializable {
 	@Column(name="Email")
 	private String email;
 	
-	@Column(name="Pan_Number")
-	private String panNo;
-	
 	@Column(name="Gender")
 	private String gender;
 
-	@Column(name="UserName")
-	private String userName;
 	
 	@Column(name="Password")
 	private String password;
@@ -72,13 +67,6 @@ public class Employee implements Serializable {
 	@JoinColumn(name="Department_Id")
 	private Departments departments;
 	
-	
-	@Column(name="Manager_Id")
-	private int managerId;
-	
-	/*
-	private int skillId;
-*/
 	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL)
 	@JsonIgnore
 	@ToString.Exclude
@@ -86,9 +74,6 @@ public class Employee implements Serializable {
 	
 	@Column(name="Resume")
 	private String Resume;
-	
-	@Column(name="Is_Tagged")
-	private int isTagged;
 	
 	@ManyToOne
 	@JoinColumn(name="Roll_Id")

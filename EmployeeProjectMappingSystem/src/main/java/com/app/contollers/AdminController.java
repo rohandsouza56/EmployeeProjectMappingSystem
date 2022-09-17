@@ -19,14 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.pojos.Admin;
 import com.app.pojos.Departments;
 import com.app.pojos.Employee;
+import com.app.pojos.Options;
 import com.app.pojos.ProjectRequirement;
 import com.app.pojos.Projects;
+import com.app.pojos.Question;
+import com.app.pojos.Resource;
 import com.app.pojos.Technology;
 import com.app.service.IAdminService;
 import com.app.service.IDepartmentService;
 import com.app.service.IEmployeeService;
+import com.app.service.IOptionsService;
 import com.app.service.IProjectRequirementService;
 import com.app.service.IProjectsService;
+import com.app.service.IQuestionService;
+import com.app.service.IResourceService;
 import com.app.service.ITechnologyService;
 import com.app.servicesimpl.DepartmentServiceImpl;
 import com.app.servicesimpl.ProjectsServiceImpl;
@@ -53,7 +59,15 @@ public class AdminController {
 	
 	@Autowired
 	private IAdminService adminService;
+
+	@Autowired
+	private IResourceService resouceService;
 	
+	@Autowired
+	private IQuestionService questionService;
+	
+	@Autowired
+	private IOptionsService optionsService;
 	
 	
 	//*************  Projects ************
@@ -119,7 +133,7 @@ public class AdminController {
 	
 	
 	//********************** Employee **************
-	@GetMapping("/employee")
+	@GetMapping("/employees")
 	public ResponseEntity<?> getAllEmployee(){
 		List<Employee> list = employeeService.getAllEmployees();
 		if(list.size()<=0)
@@ -178,8 +192,9 @@ public class AdminController {
 		return ResponseEntity.ok().body(projectRequirementService.deleteProjectRequirement(requirementId));
 	}
 	
+	//*********************** Technology
 	
-	@GetMapping("/technology")
+	@GetMapping("/technologies")
 	public ResponseEntity<?> getAllTechnology(){
 		List<Technology> list = technologyService.getAllTechnology();
 		if(list.size()<=0)
@@ -212,5 +227,104 @@ public class AdminController {
 		return ResponseEntity.ok().body(adminService.addAdmin(admin));
 	}
 	
+	//*********************** Resources
+		@GetMapping("/resources")
+		public ResponseEntity<?> getAllResource(){
+			List<Resource> list = resouceService.getAllResources();
+			if(list.size()<=0)
+				return ResponseEntity.notFound().build();
+			return ResponseEntity.of(Optional.of(list));
+		}
+		
+		@PostMapping("/resource/add")
+		public ResponseEntity<?> addResource(@RequestBody Resource resource){
+			return ResponseEntity.ok().body(resouceService.addResource(resource));
+		}
+		
+		@PutMapping("/resource/edit")
+		public ResponseEntity<?> updateResource(@RequestBody  Resource resource) {
+			System.out.println(resource);
+			try {
+				return ResponseEntity.ok().body(resouceService.updateResource(resource));
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			}
+		}
+		
+		@DeleteMapping("/resource/delete/{resourceId}")
+		public ResponseEntity<?> deleteResource(@PathVariable int resourceId){
+			return ResponseEntity.ok().body(resouceService.deleteResource(resourceId));
+		}
+		
+		
+		
+		//******************** Question **********
+		
+		@GetMapping("/questions")
+		public ResponseEntity<?> getAllQuestion(){
+			List<Question> list = questionService.getAllQuestions();
+			if(list.size()<=0)
+				return ResponseEntity.notFound().build();
+			return ResponseEntity.of(Optional.of(list));
+		}
+		
+		@PostMapping("/question/add")
+		public ResponseEntity<?> addQuestion(@RequestBody Question question){
+			return ResponseEntity.ok().body(questionService.addQuestion(question));
+		}
+		
+		@PutMapping("/question/edit")
+		public ResponseEntity<?> updateQuestion(@RequestBody  Question question) {
+			System.out.println(question);
+			try {
+				return ResponseEntity.ok().body(questionService.updateQuestion(question));
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			}
+		}
+		
+		@DeleteMapping("/question/delete/{questionId}")
+		public ResponseEntity<?> deleteQuestion(@PathVariable int questionId){
+			return ResponseEntity.ok().body(questionService.deleteQuestion(questionId));
+		}
+		
+		
+		//******************** Options  ***********
+		
+		
+		@GetMapping("/options")
+		public ResponseEntity<?> getAllOption(){
+			List<Options> list = optionsService.getAllOptions();
+			if(list.size()<=0)
+				return ResponseEntity.notFound().build();
+			return ResponseEntity.of(Optional.of(list));
+		}
+		
+		@PostMapping("/option/add")
+		public ResponseEntity<?> addOption(@RequestBody Options option){
+			return ResponseEntity.ok().body(optionsService.addOption(option));
+		}
+		
+		@PutMapping("/option/edit")
+		public ResponseEntity<?> updateOption(@RequestBody Options option) {
+			System.out.println(option);
+			try {
+				return ResponseEntity.ok().body(optionsService.updateOption(option));
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			}
+		}
+		
+		@DeleteMapping("/option/delete/{optionId}")
+		public ResponseEntity<?> deleteOption(@PathVariable int optionId){
+			return ResponseEntity.ok().body(optionsService.deleteOption(optionId));
+		}
+		
+		//******************** Mapping  ***********
+		
+		@PostMapping("/map/employee")
+		public ResponseEntity<?> changeMapping(@RequestBody Employee employee){
+			return ResponseEntity.ok().body(employeeService.changeMapping(employee));
+		}
 	
 }
