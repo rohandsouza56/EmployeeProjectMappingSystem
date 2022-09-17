@@ -15,6 +15,11 @@ import Login from "./components/Login/Login";
 import AddProjectMapping from "./components/Projects/ProjectMapping";
 import AddResources from "./components/Resources/AddResource";
 import EmployeeDashboard from "./components/Dashboards/EmployeeDashboard";
+import NotFound from "./components/NotFound/NotFound";
+import About from "./components/Pages/About";
+import Contact from "./components/Pages/Contact";
+// import TeamPage from "./components/Pages/TeamPage";
+
 
 const App = () => {
   return (
@@ -34,6 +39,10 @@ const App = () => {
         <Route path="/employeedashboard" element={<EmployeeDashboard />} />
         <Route path="/addresource" element={<AddResources />} />
         <Route path="/projectmapping" element={<AddProjectMapping />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact/>} />
+        {/* <Route path="/teampage" element={<TeamPage/>} /> */}
       </Routes>
     </BrowserRouter>
   );

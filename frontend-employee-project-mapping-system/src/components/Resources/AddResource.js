@@ -3,13 +3,14 @@ import AdminServices from "../../Services/AdminServices";
 
 const AddResources = () => {
   const [link, setLink] = useState("");
-  const [resourceName, setResourceName] = useState("");
-
+  const [description, setDescription] = useState("");
+  const [technologyId, setTechnologyId] = useState("");
   const [linkErr, setLinkErr] = useState("");
-  const [resourceNameErr, setResourceNameErr] = useState("");
-
+  const [descriptionErr, setDescriptionErr] = useState("");
+  const [technologyErr, setTechnologyErr] = useState("");
   const [errorMesg, setErrorMesg] = useState("");
   const [resources, setResources] = useState([]);
+  const [technologies, setTechnologies] = useState([]);
 
   const getAllResources = () => {
     AdminServices.getAllResources()
@@ -22,8 +23,20 @@ const AddResources = () => {
       });
   };
 
+  const getAllTechnology = () => {
+    AdminServices.getAllTechnologies()
+      .then((response) => {
+        setTechnologies(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getAllResources();
+    getAllTechnology();
   }, []);
 
   let linkHandler = (event) => {
@@ -32,15 +45,21 @@ const AddResources = () => {
     setLink(event.target.value);
   };
 
-  let resourceNameHandler = (event) => {
-    if (resourceNameErr !== "" || resourceNameErr !== null) setLinkErr("");
+  let descriptionHandler = (event) => {
+    if (descriptionErr !== "" || descriptionErr !== null) setLinkErr("");
     if (errorMesg !== " " || errorMesg !== null) setErrorMesg("");
-    setResourceName(event.target.value);
+    setDescription(event.target.value);
+  };
+
+  let technologyHandler = (event) => {
+    if (technologyErr !== "" || technologyErr !== null) setTechnologyErr("");
+    if (errorMesg !== " " || errorMesg !== null) setErrorMesg("");
+    setTechnologyId(event.target.value);
   };
 
   let validation = () => {
     setLinkErr("");
-    setResourceNameErr("");
+    setDescriptionErr("");
 
     let flag = true;
 
@@ -49,8 +68,13 @@ const AddResources = () => {
       flag = false;
     }
 
-    if (resourceName === "" || resourceName === null) {
-      setResourceNameErr("This field is compulsory");
+    if (description === "" || description === null) {
+      setDescriptionErr("This field is compulsory");
+      flag = false;
+    }
+
+    if (technologyId === "" || technologyId === null) {
+      setTechnologyErr("This field is compulsory");
       flag = false;
     }
 
@@ -64,12 +88,18 @@ const AddResources = () => {
     if (validation() === true) {
       let resourceDetails = {
         link,
-        resourceName,
+        description,
+        technology: {
+          technologyId,
+        },
       };
+      console.log(resourceDetails);
       AdminServices.addNewResouce(resourceDetails)
         .then((response) => {
           setLink("");
-          setResourceName("");
+          setDescription("");
+          setTechnologyId("");
+          getAllResources();
         })
         .catch((error) => {
           console.log(error);
@@ -111,6 +141,23 @@ const AddResources = () => {
             <div className="m-3">
               <form onSubmit={addResourceDetails}>
                 <div className="form-floating mb-3">
+                  <select
+                    class="form-select"
+                    onChange={technologyHandler}
+                    aria-label="Default select example"
+                  >
+                    {technologies.map((technology) => (
+                      <option
+                        key={technology.technologyId}
+                        value={technology.technologyId}
+                      >
+                        {technology.technologyName}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="text-danger">{technologyErr}</span>
+                </div>
+                <div className="form-floating mb-3">
                   <input
                     type="url"
                     className="form-control"
@@ -125,12 +172,12 @@ const AddResources = () => {
                   <input
                     type="text"
                     className="form-control"
-                    value={resourceName}
-                    onChange={resourceNameHandler}
+                    value={description}
+                    onChange={descriptionHandler}
                     placeholder="enter Resource Name"
                   />
-                  <label>Resource Name</label>
-                  <span className="text-danger">{resourceNameErr}</span>
+                  <label>Description</label>
+                  <span className="text-danger">{descriptionErr}</span>
                 </div>
 
                 <div className="row g-1">
@@ -155,7 +202,8 @@ const AddResources = () => {
             <thead className="thead-dark">
               <tr>
                 <th>#</th>
-                <th>Resource Name</th>
+                <th>Technology Name</th>
+                <th>Description</th>
                 <th>Resource Link</th>
                 <th>Action</th>
               </tr>
@@ -164,7 +212,9 @@ const AddResources = () => {
               {resources.map((resource) => (
                 <tr key={resource.resourceId}>
                   <td>{resource.resourceId}</td>
-                  <td>{resource.resourceName}</td>
+                  {/* <td>{resource.technology.technologyName}</td> */}
+                  <td>Tech Name</td>
+                  <td>{resource.description}</td>
                   <td>{resource.link}</td>
                   <td>
                     <center>

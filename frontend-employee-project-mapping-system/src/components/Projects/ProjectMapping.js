@@ -51,11 +51,11 @@ const AddProjectMapping = () => {
     }
 
     if (departmentId === "" || departmentId === null) {
-      setDepartmentIdErr("This field is compulsory");
+      setDepartmentIdErr("Please Enter Department Id");
       flag = false;
     }
     if (employeeId === "" || employeeId === null) {
-      setEmployeeIdErr("This field is compulsory");
+      setEmployeeIdErr("Please Enter Employee Id");
       flag = false;
     }
 

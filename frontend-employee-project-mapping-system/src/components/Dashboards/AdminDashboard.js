@@ -7,6 +7,7 @@ import Home from "./AdminHome";
 import AddProjectMapping from "../Projects/ProjectMapping";
 import AddResources from "../Resources/AddResource";
 
+
 import { FaUserAlt, FaBlackTie, FaFileImport } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
 import { GrTechnology } from "react-icons/gr";
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
   const [addproject, setAddProject] = useState(false);
   const [addTechnology, setAddTechnology] = useState(false);
   const [addProjectRequirment, setAddProjectRequirment] = useState(false);
-  const [home, setHome] = useState(false);
+  const [home, setHome] = useState(true);
   const [mapping, setMapping] = useState(false);
 
   // const [Projectlist, setProjectList] = useState(false);
@@ -241,25 +242,43 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
+    
 
     setMapping(true);
   };
 
-  // let showDashboard = () => {
-  //     if (home) {
-  //         setHome(false);
-  //     }
-  //     if(course){
-  //         setCourse(false);
-  //     }
-  //     if (listOfStudents) {
-  //         setListOfStudents(false);
-  //     }
-  //     if (declareResult) {
-  //         setDeclareResult(false);
-  //     }
-  //     setDashboard(true);
-  // }
+  let showAddDepartment = () => {
+      if (home) {
+          setHome(false);
+      }
+      if (addEmployee) {
+        setAddEmployee(false);
+      }
+      if (addproject) {
+        setAddProject(false);
+      }
+      if (addTechnology) {
+        setAddTechnology(false);
+      }
+  
+      if (mapping) {
+        setMapping(false);
+      }
+      if (addResource) {
+        setAddResource(false);
+      }
+  
+      if (addProjectRequirment) {
+        setAddProjectRequirment(false);
+      }
+      if (projectReq) {
+        setProjectReq(false);
+      }
+      if (mapping) {
+        setMapping(false);
+      }
+      setAddDepartment(true);
+  }
 
   return (
     <>
@@ -317,6 +336,15 @@ const AdminDashboard = () => {
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
                 <span id="Hovereffect">Employee</span>
+              </li>
+
+              <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
+                <FaBlackTie
+                  size={22}
+                  className="sidebar-list-icon"
+                  style={{ width: "30px", paddingBottom: "4px" }}
+                />
+                <span id="Hovereffect">Department</span>
               </li>
 
               <li

@@ -99,30 +99,30 @@ const AddProjects = () => {
     let flag = true;
 
     if (name === "" || name === null) {
-      setNameErr("This field is compulsory");
+      setNameErr("Please Enter Name");
       flag = false;
     }
     if (description === "" || description === null) {
-      setDescriptionErr("This field is compulsory");
+      setDescriptionErr("Please Enter Project Description");
       flag = false;
     }
 
     if (startDate === "" || startDate === null) {
-      setStartDateErr("This field is compulsory");
+      setStartDateErr("Please Enter Start Date");
       flag = false;
     }
 
     if (endDate === "" || endDate === null) {
-      setEndDateErr("This field is compulsory");
+      setEndDateErr("Please Enter End Date");
       flag = false;
     }
 
     if (location === "" || location === null) {
-      setLocationErr("This field is compulsory");
+      setLocationErr("Please Enter Location");
       flag = false;
     }
     if (managerId === "" || managerId === null) {
-      setManagerIdErr("This field is compulsory");
+      setManagerIdErr("Please Enter Manager Id");
       flag = false;
     }
 

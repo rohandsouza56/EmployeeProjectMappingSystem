@@ -96,28 +96,39 @@ const AddEmployees = () => {
     setRoleIdErr("");
 
     let flag = true;
+    let regex = /[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.[a-zA-Z]+/;
+    let passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+    let mobileRegx = /^[789]{1}[0-9]{9}$/
 
     if (name === "" || name === null) {
-      setNameErr("This field is compulsory");
+      setNameErr("Please Enter Name");
       flag = false;
     }
     if (designation === "" || designation === null) {
-      setDesignationErr("This field is compulsory");
+      setDesignationErr("Please Enter Designation ");
       flag = false;
     }
 
     if (dateOfJoining === "" || dateOfJoining === null) {
-      setDateOfJoiningErr("This field is compulsory");
+      setDateOfJoiningErr("Please Enter Date Of Joining");
       flag = false;
     }
 
     if (mobileNo === "" || mobileNo === null) {
-      setMobileNoErr("This field is compulsory");
+      setMobileNoErr("Please Enter Mobile Number");
+      flag = false;
+    }else if (mobileRegx.test(mobileNo) === false) {
+      setMobileNoErr("Mobile no should be in 10 digit");
       flag = false;
     }
 
+
     if (email === "" || email === null) {
-      setEmailErr("This field is compulsory");
+      setEmailErr("Please Enter Email Id");
+      flag = false;
+    }
+    else if (regex.test(email) === false) {
+      setEmailErr("Email is in wrong format. Example: abc@gmail.com");
       flag = false;
     }
 
@@ -127,13 +138,17 @@ const AddEmployees = () => {
     }
 
     if (password === "" || password === null) {
-      setPasswordErr("This field is compulsory");
+      setPasswordErr("Please Enter Password");
+      flag = false;
+    }
+    else if(passwordRegex.test(password)===false){
+      setPasswordErr("Password should have atleast one capital letter, one special character and a number.\nAlso, the size of password should lies between 8 to 15 characters");
       flag = false;
     }
 
 
     if (roleId === "" || roleId === null) {
-      setRoleIdErr("This field is compulsory");
+      setRoleIdErr("Please Enter Role Id");
       flag = false;
     }
 
