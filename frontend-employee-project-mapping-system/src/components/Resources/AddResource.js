@@ -64,17 +64,17 @@ const AddResources = () => {
     let flag = true;
 
     if (link === "" || link === null) {
-      setLinkErr("This field is compulsory");
+      setLinkErr("Please Enter Resource Link");
       flag = false;
     }
 
     if (description === "" || description === null) {
-      setDescriptionErr("This field is compulsory");
+      setDescriptionErr("Please Enter Description");
       flag = false;
     }
 
     if (technologyId === "" || technologyId === null) {
-      setTechnologyErr("This field is compulsory");
+      setTechnologyErr("Please select Technology");
       flag = false;
     }
 
@@ -144,8 +144,9 @@ const AddResources = () => {
                   <select
                     class="form-select"
                     onChange={technologyHandler}
-                    aria-label="Default select example"
+                    aria-label="Select Technology"
                   >
+                    <option hidden disabled selected value> -- Select Technology -- </option>
                     {technologies.map((technology) => (
                       <option
                         key={technology.technologyId}

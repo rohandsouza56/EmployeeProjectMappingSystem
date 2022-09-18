@@ -16,7 +16,7 @@ const ListProjectComponent = () => {
     const getAllProjects = () => {
         console.log(localStorage.getItem("jwtToken"));
         AdminServices.getAllProjects().then((response) => {
-            setProjects(response.data)
+            setProjects(response.data);
             console.log(response.data);
         }).catch(error =>{
             console.log(error);
