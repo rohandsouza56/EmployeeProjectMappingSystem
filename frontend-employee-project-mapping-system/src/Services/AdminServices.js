@@ -2,12 +2,6 @@ import axios from "axios";
 
 const ADMIN_BASE_REST_API_URL = "http://localhost:8082/admin/";
 
-// const getAllProjects = () => {
-//   console.log(localStorage.getItem("jwtToken"));
-//   return axios.get(ADMIN_BASE_REST_API_URL + "projects", {
-//     headers: { Authorization: localStorage.getItem("jwtToken") },
-//   });
-// };
 
 const getAllProjects = () => {
   console.log(localStorage.getItem("jwtToken"));
@@ -38,6 +32,15 @@ const getAllDepartments = () => {
     },
   });
 };
+
+const getAllDepartmenrByProjectId = (projectId) => {
+  return axios.get(ADMIN_BASE_REST_API_URL + "department/"+projectId, {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
+
 const addDepartment = (departmentDetails) => {
   return axios.post(
     ADMIN_BASE_REST_API_URL + "department/add",
@@ -162,4 +165,5 @@ export default {
   deleteDepartment,
   addRequirment,
   projectMapping,
+  getAllDepartmenrByProjectId
 };

@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import AdminServices from "../../Services/AdminServices";
 
 const AddSkills = () => {
-  // let studentId = window.sessionStorage.getItem("id");
-
   const [skillId, setSkillId] = useState("");
   const [skill, setSkill] = useState("");
   const [employeeId, setEmployeeId] = useState("");
@@ -21,36 +19,9 @@ const AddSkills = () => {
   const [certificatePdfErr, setCertificatePdfErr] = useState("");
   const [technologyIdErr, setTechnologyIdErr] = useState("");
 
-  // const [show, setShow] = useState("");
-  // const [show1, setShow1] = useState("");
   const [error, setError] = useState("");
-  // const [disable, setDisable] = useState("")
 
   const [skills, setSkills] = useState([]);
-
-  // const init = () => {
-  //     StudentService.getEducationDetailsOfStudent(studentId).then(response => {
-  //         console.log(response.data);
-  //         setEducations(response.data);
-  //     }).catch(err => {
-  //         console.log(err);
-  //     })
-  // }
-  // useEffect(() => {
-  //     init();
-  //     AdminService.getAcademicDates().then(resp => {
-  //         let updationDate = resp.data.updationDate;
-  //         let resultDate = resp.data.resultDate;
-  //         if (((Date.parse(updationDate)) <= (Date.parse(new Date())))||((Date.parse(resultDate)) <= (Date.parse(new Date())))) {
-  //             setDisable("Disabled");
-  //         }
-  //         else {
-  //             setDisable("");
-  //         }
-  //     }).catch(err => {
-  //         console.log(err);
-  //     })
-  // }, []);
 
   let skillIdHandler = (event) => {
     setSkillId(event.target.value);
@@ -141,15 +112,10 @@ const AddSkills = () => {
   };
 
   let handleDelete = (skillId) => {
-    //if (disable === "") {
     AdminServices.deleteSkills(skillId)
       .then((resp) => {
-        // StudentService.deleteEducation(educationId, studentId).then(resp => {
         console.log(resp.data);
-        // init();
-        // setShow1("show");
         setTimeout(() => {
-          // setShow1("");
           clearTimeout();
         }, 3000);
       })
@@ -157,13 +123,10 @@ const AddSkills = () => {
         console.log(err);
       });
   };
-  //     else {
-  //         alert("Last Date for Updating Student Details is OVER..");
-  //     }
 
   let onAddSkillsSubmit = (event) => {
     event.preventDefault();
-    // if (disable === "") {
+
     if (validation()) {
       setSkillIdErr("");
       setSkillErr("");
@@ -196,7 +159,6 @@ const AddSkills = () => {
 
       AdminServices.addSkills(skillDetails)
         .then((response) => {
-          //console.log("Education Added", response.data);
           setSkillIdErr("");
           setSkillErr("");
           setEmployeeIdErr("");
@@ -204,9 +166,6 @@ const AddSkills = () => {
           setCertificationLinkErr("");
           setCertificatePdfErr("");
           setTechnologyIdErr("");
-          // init();
-          // setShow("show");
-          // setTimeout(function () { setShow(""); clearTimeout(); }, 3000)
         })
         .catch((err) => {
           console.log("Error found", err);
@@ -315,47 +274,10 @@ const AddSkills = () => {
                   Add Skills{" "}
                 </button>
               </div>
-
-              {/* <div className="form-floating mb-3">
-                                    <select className="form-select" value={name} onChange={onNameHandler} disabled={disable}>
-                                        <option value="" selected>--SELECT--</option>
-                                        <option value="SSC">Department 1</option>
-                                        <option value="HSC">Department 2</option>
-                                    </select>
-                                    <label>Department</label>
-                                    <span className="text-danger">{nameErr}</span>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="text" className="form-control" value={institute} onChange={instituteHandler} placeholder="Enter Institute" disabled={disable} />
-                                    <label>Name of your Institute</label>
-                                    <span className="text-danger">{instituteErr}</span>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="text" className="form-control" value={percentage} onChange={percentageHandler} placeholder="Enter Percentage" disabled={disable} />
-                                    <label>Percentage</label>
-                                    <span className="text-danger">{percentageErr}</span>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <select className="form-select" value={yop} onChange={yopHandler} disabled={disable}>
-                                        <option value="" selected>--SELECT--</option>
-                                        {yearArray.map((ele, key) => {
-                                            return (
-                                                <option value={ele}>{ele}</option>
-                                            );
-                                        })}
-                                    </select>
-                                    <label>Year of Passing</label>
-                                    <span className="text-danger">{yopErr}</span>
-                                </div>
-                                <div className="row g-1">
-                                    <button type="submit" className="btn1 primary1">Add Qualification</button>
-                                </div> */}
             </form>
           </div>
         </div>
         <span className="text-danger">{error}</span>
-        {/* <div className={show} id="snackbar">Education Details Added Successfully<output></output></div>
-                <div className={show1} id="snackbar">Education Details Deleted<output></output></div> */}
       </div>
 
       <hr />

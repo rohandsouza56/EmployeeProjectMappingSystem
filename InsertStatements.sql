@@ -15,12 +15,15 @@ select *from Projects;
 
 
 insert into Departments(Project_Id,Name,Current_Strength ,Maximum_Strength)
-values(2,"ABC",25,200),
-(2,"XYZ",20,200),
-(3,"XYZ",25,200),
-(4,"AAA",50,200),
-(5,"BBB",100,200),
-(6,"CCC",100,200);
+values(1,"Departmen1",25,200),
+(1,"Departmen2",20,200),
+(2,"Departmen2",25,200),
+(2,"Departmen3",50,200),
+(2,"Departmen4",100,200),
+(3,"Departmen5",100,200),
+(3,"Departmen6",100,200),
+(3,"Departmen7",100,200),
+(3,"Departmen8",100,200);
 select *from Departments ;
 drop table departments;
 
@@ -99,8 +102,8 @@ values("rohan@gmail.com","Rohan123",3),
 ("sachin@gmail.com","Sachin123",3);
 Select * from `Admin`;
 
-ALTER TABLE `Admin`
-Modify COLUMN `password` varchar(255);
+-- ALTER TABLE `Admin`
+-- Modify COLUMN `password` varchar(255);
 
 
 insert into Skills (Skill,Employee_Id,Date_of_Completion,Certification_Link,Certificate_Pdf,Technology_Id)

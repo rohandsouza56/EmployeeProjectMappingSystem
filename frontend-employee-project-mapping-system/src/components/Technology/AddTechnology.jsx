@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminService from "../../Services/AdminServices";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddTechnology = () => {
   const [technologyName, settechnologyName] = useState("");
@@ -50,35 +52,23 @@ const AddTechnology = () => {
       flag = false;
     }
 
-    // if (resourceId === "" || resourceId === null) {
-    //   setResourceIdErr("Please Enter Resource Id");
-    //   flag = false;
-    // }
-
     if (flag) {
       return true;
     }
   };
 
   let handleDelete = (technologyId) => {
-    //if (disable === "") {
     AdminService.deleteTechnology(technologyId)
       .then((resp) => {
         console.log(resp.data);
         getAllTechnologies();
-        // setShow1("show");
         setTimeout(() => {
-          //setShow1("");
           clearTimeout();
         }, 3000);
       })
       .catch((err) => {
         console.log(err);
       });
-    //  }
-    //  else {
-    //      alert("Last Date for Updating Student Details is OVER..");
-    //   }
   };
 
   let addTechnologySubmit = (event) => {
@@ -98,13 +88,15 @@ const AddTechnology = () => {
           settechnologyName("");
           setResourceId("");
           setErrorMsg("");
-          setSuccessMsg("Department Details Added Successfully");
+          setSuccessMsg("Technology Details Added Successfully");
           setErrorMsg("");
+          toast.success("Technology Details Added Successfully");
         })
         .catch((error) => {
           console.log(error);
           setSuccessMsg("");
           setErrorMsg("Error");
+          toast.error("Technology Details Added Successfully");
         });
     }
   };
@@ -133,17 +125,6 @@ const AddTechnology = () => {
                 <span className="text-danger">{technologyNameErr}</span>
               </div>
 
-              {/* <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={resourceId}
-                  onChange={resourceIdHandler}
-                  placeholder="enter Resource"
-                />
-                <label> Resource </label>
-                <span className="text-danger">{resourceIdErr}</span>
-              </div> */}
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">
                   {" "}
@@ -190,6 +171,7 @@ const AddTechnology = () => {
             ))}
           </tbody>
         </table>
+        <ToastContainer />
       </div>
     </div>
   );

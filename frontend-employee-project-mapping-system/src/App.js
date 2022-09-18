@@ -18,7 +18,7 @@ import EmployeeDashboard from "./components/Dashboards/EmployeeDashboard";
 import NotFound from "./components/NotFound/NotFound";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
-// import TeamPage from "./components/Pages/TeamPage";
+
 
 
 const App = () => {

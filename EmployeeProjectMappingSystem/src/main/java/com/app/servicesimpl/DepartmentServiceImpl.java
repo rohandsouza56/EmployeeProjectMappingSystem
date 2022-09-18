@@ -64,5 +64,14 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		
 		return departmentsRepository.findAll();
 	}
+	
+	@Override
+	public List<Departments> getDepartment(int projectId) {
+		Projects project = projectsRepository.findById(projectId)
+				.orElseThrow(() -> new ResourceNotFoundException("project with id: " + projectId + " not found."));
+		
+		return departmentsRepository.findByProjectId(projectId);
+	}
+	
 
 }

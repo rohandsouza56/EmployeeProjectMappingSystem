@@ -26,14 +26,14 @@ const AddEmployees = () => {
 
   let nameTextHandler = (event) => {
     if (nameErr !== "" || nameErr !== null) setNameErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setName(event.target.value.toUpperCase());
   };
 
   let designationTextHandler = (event) => {
     if (designationErr !== "" || designationErr !== null) setDesignationErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setDesignation(event.target.value);
   };
@@ -41,46 +41,42 @@ const AddEmployees = () => {
   let dateOfJoiningTextHandler = (event) => {
     if (dateOfJoiningErr !== "" || dateOfJoiningErr !== null)
       setDateOfJoiningErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setDateOfJoining(event.target.value);
   };
 
   let mobileNoTextHandler = (event) => {
     if (mobileNoErr !== "" || mobileNoErr !== null) setMobileNoErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setMobileNo(event.target.value);
   };
 
   let emailTextHandler = (event) => {
     if (emailErr !== "" || emailErr !== null) setEmailErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setEmail(event.target.value);
   };
 
   let genderTextHandler = (event) => {
     if (genderErr !== "" || genderErr !== null) setGenderErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setGender(event.target.value);
   };
 
   let passwordTextHandler = (event) => {
     if (passwordErr !== "" || passwordErr !== null) setPasswordErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setPassword(event.target.value);
   };
 
- 
-
-  
-
   let roleIdTextHandler = (event) => {
     if (roleIdErr !== "" || roleIdErr !== null) setRoleIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMesg !== "" || errorMesg !== null) setErrorMesg("");
     setRoleId(event.target.value);
   };
@@ -97,8 +93,9 @@ const AddEmployees = () => {
 
     let flag = true;
     let regex = /[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.[a-zA-Z]+/;
-    let passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
-    let mobileRegx = /^[789]{1}[0-9]{9}$/
+    let passwordRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+    let mobileRegx = /^[789]{1}[0-9]{9}$/;
 
     if (name === "" || name === null) {
       setNameErr("Please Enter Name");
@@ -117,17 +114,15 @@ const AddEmployees = () => {
     if (mobileNo === "" || mobileNo === null) {
       setMobileNoErr("Please Enter Mobile Number");
       flag = false;
-    }else if (mobileRegx.test(mobileNo) === false) {
+    } else if (mobileRegx.test(mobileNo) === false) {
       setMobileNoErr("Mobile no should be in 10 digit");
       flag = false;
     }
 
-
     if (email === "" || email === null) {
       setEmailErr("Please Enter Email Id");
       flag = false;
-    }
-    else if (regex.test(email) === false) {
+    } else if (regex.test(email) === false) {
       setEmailErr("Email is in wrong format. Example: abc@gmail.com");
       flag = false;
     }
@@ -140,12 +135,12 @@ const AddEmployees = () => {
     if (password === "" || password === null) {
       setPasswordErr("Please Enter Password");
       flag = false;
-    }
-    else if(passwordRegex.test(password)===false){
-      setPasswordErr("Password should have atleast one capital letter, one special character and a number.\nAlso, the size of password should lies between 8 to 15 characters");
+    } else if (passwordRegex.test(password) === false) {
+      setPasswordErr(
+        "Password should have atleast one capital letter, one special character and a number.\nAlso, the size of password should lies between 8 to 15 characters"
+      );
       flag = false;
     }
-
 
     if (roleId === "" || roleId === null) {
       setRoleIdErr("Please Enter Role Id");

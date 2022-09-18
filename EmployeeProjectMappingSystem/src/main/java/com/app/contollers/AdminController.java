@@ -111,6 +111,14 @@ public class AdminController {
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
+	@GetMapping("/department/{projectId}")
+	public ResponseEntity<?> getDepartment(@PathVariable int projectId){
+		List<Departments> list = departmentServiceImpl.getDepartment(projectId);
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
 	@PostMapping("/department/add")
 	public ResponseEntity<?> addDepartments(@RequestBody Departments departments){
 		return ResponseEntity.ok().body(departmentServiceImpl.addDepartments(departments));

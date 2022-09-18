@@ -112,4 +112,3 @@ Technology_Id int,
 constraint fk_Skills_Skill_Id_ foreign key (Technology_Id) references Technology(Technology_Id) ON DELETE CASCADE ON UPDATE CASCADE,
 constraint fk_Skills_Employee_Id_ foreign key (Employee_Id) references Employee(Employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-

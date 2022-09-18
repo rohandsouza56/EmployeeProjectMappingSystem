@@ -2,11 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import AdminServices from "../../Services/AdminServices";
 import EmployeeService from "../../Services/EmployeeService";
-// import SkillService from "../../Services/SkillService";
-//import SkillService from "../../Services/SkillService";
 
 const AddProjectMapping = () => {
-  // let studentId = window.sessionStorage.getItem("id");
+  
 
   const [employeeId, setEmployeeId] = useState("");
   const [projectId, setProjectId] = useState("");
@@ -14,9 +12,9 @@ const AddProjectMapping = () => {
   const [employeeIdErr, setEmployeeIdErr] = useState("");
   const [departmentIdErr, setDepartmentIdErr] = useState("");
   const [projectIdErr, setProjectIdErr] = useState("");
+  const [departmentProjects, setDepartmentProjects] = useState([]);
 
-  // const [show, setShow] = useState("");
-  // const [show1, setShow1] = useState("");
+ 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [mapping, setMapping] = useState([]);
@@ -30,6 +28,7 @@ const AddProjectMapping = () => {
 
   let projectIdHandler = (event) => {
     setProjectId(event.target.value);
+    getAllDepartmenrByProjectId(event.target.value);
     if (projectIdErr !== "" || projectIdErr !== null) {
       projectIdHandler("");
     }
@@ -62,19 +61,33 @@ const AddProjectMapping = () => {
     if (flag) return true;
   };
 
+  let getAllDepartmenrByProjectId = (projectId) =>{
+   
+
+      AdminServices.getAllDepartmenrByProjectId(projectId)
+        .then((response) => {
+          console.log(response.data);
+          setDepartmentProjects(response.data);
+          setErrorMsg("");
+      
+        })
+        .catch((err) => {
+          console.log("Error found", err);
+          setErrorMsg("Incorrect Details Entered");
+          setDepartmentProjects([]);
+          setSuccessMsg("");
+        });
+  }
 
   let onProjectMappingSubmit = (event) => {
     event.preventDefault();
-    // if (disable === "") {
+    
     if (validation()) {
       setProjectIdErr("");
       setDepartmentIdErr("");
       setEmployeeIdErr("");
 
-      // console.log("...." + skillId);
-      // let skill = { "skillId": skillId, "skill": skill, "employeeId": employeeId, "dateOfCompletion": dateOfCompletion, "certificationLink": certificationLink, "certificatePdf": certificatePdf, "technologyId":technologyId };
-      // console.log(skill);
-
+     
       let mappingDetails = {
         employeeId,
         projects: {
@@ -87,15 +100,12 @@ const AddProjectMapping = () => {
 
       AdminServices.projectMapping(mappingDetails)
         .then((response) => {
-          //console.log("Education Added", response.data);
           setDepartmentIdErr("");
           setEmployeeIdErr("");
           setProjectIdErr("");
           setSuccessMsg("Employee Mapping Changed Successfully");
           setErrorMsg("");
-          // init();
-          // setShow("show");
-          // setTimeout(function () { setShow(""); clearTimeout(); }, 3000)
+          
         })
         .catch((err) => {
           console.log("Error found", err);
@@ -141,17 +151,25 @@ const AddProjectMapping = () => {
                 <span className="text-danger">{projectIdErr}</span>
               </div>
 
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  value={departmentId}
-                  onChange={departmentIdHandler}
-                  placeholder="Enter Department Id"
-                />
-                <label>Department Id </label>
-                <span className="text-danger">{departmentIdErr}</span>
-              </div>
+  
+                <div className="form-floating mb-3">
+                  <select
+                    class="form-select"
+                    onChange={departmentIdHandler}
+                    aria-label="Select Technology"
+                  >
+                    <option hidden disabled selected value> -- Select Department -- </option>
+                    {departmentProjects.map((department) => (
+                      <option
+                        key={department.departmentId}
+                        value={department.departmentId}
+                      >
+                        {department.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="text-danger">{departmentIdErr}</span>
+                </div>
 
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">
@@ -163,8 +181,7 @@ const AddProjectMapping = () => {
         </div>
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
-        {/* <div className={show} id="snackbar">Education Details Added Successfully<output></output></div>
-                <div className={show1} id="snackbar">Education Details Deleted<output></output></div> */}
+       
       </div>
     </div>
   );

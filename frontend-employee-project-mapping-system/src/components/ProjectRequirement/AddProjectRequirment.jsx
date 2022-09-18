@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
 
 const AddProjectRequirment = () => {
-  const [technologyId, settechnologyId] = useState("");
+  const [technologyId, setTechnologyId] = useState("");
   const [techName, setTechName] = useState("");
   const [projectId, setProjectId] = useState("");
   const [projectName, setProjectName] = useState("");
 
-  const [technologyIdErr, settechnologyIdErr] = useState("");
+  const [technologyErr, setTechnologyErr] = useState("");
   const [techNameErr, setTechNameErr] = useState("");
   const [projectIdErr, setProjectIdErr] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const [techlogies, setTechnologies] = useState([]);
+  const [technologies, setTechnologies] = useState([]);
   const [projects, setProjects] = useState([]);
 
   const getAllTechnologies = () => {
@@ -44,11 +44,10 @@ const AddProjectRequirment = () => {
     getAllProjects();
   }, []);
 
-  let technologyIdHandler = (event) => {
-    settechnologyId(event.target.value);
-    if (technologyIdErr !== "" || technologyIdErr !== null) {
-      settechnologyIdErr("");
-    }
+  let technologyHandler = (event) => {
+    if (technologyErr !== "" || technologyErr !== null) setTechnologyErr("");
+    if (errorMsg !== " " || errorMsg !== null) setErrorMsg("");
+    setTechnologyId(event.target.value);
   };
 
   let projectIdHandler = (event) => {
@@ -62,7 +61,7 @@ const AddProjectRequirment = () => {
     let flag = true;
 
     if (technologyId === "") {
-      settechnologyIdErr("Please Enter Technology Id");
+      setTechnologyErr("Please Enter Technology Id");
       flag = false;
     }
 
@@ -92,17 +91,13 @@ const AddProjectRequirment = () => {
       .catch((err) => {
         console.log(err);
       });
-    //  }
-    //  else {
-    //      alert("Last Date for Updating Student Details is OVER..");
-    //   }
   };
 
   let onSubmit = (event) => {
     event.preventDefault();
 
     if (validation()) {
-      settechnologyIdErr("");
+      setTechnologyErr("");
       setProjectIdErr("");
 
       let requirment = {
@@ -116,7 +111,7 @@ const AddProjectRequirment = () => {
 
       AdminServices.addRequirment(requirment)
         .then((response) => {
-          settechnologyId("");
+          setTechnologyId("");
           setProjectId("");
           setErrorMsg("");
           setSuccessMsg("Project Requirement Details Added Successfully");
@@ -155,15 +150,25 @@ const AddProjectRequirment = () => {
               </div>
 
               <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={technologyId}
-                  onChange={technologyIdHandler}
-                  placeholder="enter Resource"
-                />
-                <label> Technology Id </label>
-                <span className="text-danger">{technologyIdErr}</span>
+                <select
+                  class="form-select"
+                  onChange={technologyHandler}
+                  aria-label="Select Technology"
+                >
+                  <option hidden disabled selected value>
+                    {" "}
+                    -- Select Technology --{" "}
+                  </option>
+                  {technologies.map((technology) => (
+                    <option
+                      key={technology.technologyId}
+                      value={technology.technologyId}
+                    >
+                      {technology.technologyName}
+                    </option>
+                  ))}
+                </select>
+                <span className="text-danger">{technologyErr}</span>
               </div>
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">
@@ -178,33 +183,6 @@ const AddProjectRequirment = () => {
       </div>
 
       <hr />
-      {/* <div className="table-responsive">
-        <table className="table table-bordered table-striped">
-            <thead className="thead-dark">
-                <tr>
-                    <th>Technology Id</th>
-                    <th>Technology Name</th>
-                    <th>Resource</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    techlogies.map(technology => (
-                        <tr key={technology.technologyId}>
-                            <td>{technology.techName}</td>
-                            <td>{technology.resourceId}</td>
-                           <td>
-                                <center><button className="btn1 primary1 rounded" onClick={() => {
-                                    handleDelete(technology.technologyId);
-                                }}>Delete</button></center>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
-        </div> */}
     </div>
   );
 };

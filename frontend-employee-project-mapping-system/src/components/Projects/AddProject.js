@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import ProjectService from '../../Services/AdminServices';
+
 import AdminServices from "../../Services/AdminServices";
 import { Button, Modal, Table } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProjects = () => {
   const [name, setName] = useState("");
@@ -43,48 +45,40 @@ const AddProjects = () => {
       });
   };
 
-  // useEffect(()=>{
-  //   getAllProjects();
-  // },[])
-
   let nameTextHandler = (event) => {
     if (nameErr !== "" || nameErr !== null) setNameErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setName(event.target.value.toUpperCase());
   };
 
   let descriptionTextHandler = (event) => {
     if (descriptionErr !== "" || descriptionErr !== null) setDescriptionErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
+
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setDescription(event.target.value);
   };
 
   let startDateTextHandler = (event) => {
     if (startDateErr !== "" || startDateErr !== null) setStartDateErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setStartDate(event.target.value);
   };
 
   let endDateTextHandler = (event) => {
     if (endDateErr !== "" || endDateErr !== null) setEndDateErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setEndDate(event.target.value);
   };
 
   let locationTextHandler = (event) => {
     if (locationErr !== "" || locationErr !== null) setLocationErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setLocation(event.target.value);
   };
 
   let managerIdTextHandler = (event) => {
     if (managerIdErr !== "" || managerIdErr !== null) setManagerIdErr("");
-    // if (successMesg !== "" || successMesg !== null) setSuccessMesg("");
     if (errorMsg !== "" || errorMsg !== null) setErrorMsg("");
     setManagerId(event.target.value);
   };
@@ -154,14 +148,13 @@ const AddProjects = () => {
           setManagerId("");
           setSuccessMsg("Project Details Added Successfully");
           setErrorMsg("");
-          // window.sessionStorage.setItem("snackbar_registration","show");
-          //toastr.success("Student Profile Created Successfully");
-          //navigate("/login");
+          toast.success("Project Details Added Successfully");
         })
         .catch((error) => {
           console.log(error);
           setErrorMsg("Error");
           setSuccessMsg("");
+          toast.success("Error");
         });
     }
   };
@@ -179,8 +172,6 @@ const AddProjects = () => {
 
   return (
     <>
-      {/* {loggedInStudentFalse && <Navigate to="/home" />}
-          {studentProfileUpdated && <Navigate to="/student_dashboard" />} */}
       <div className="container-fluid w-50 mt-5 add-details-section">
         <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
@@ -269,26 +260,21 @@ const AddProjects = () => {
           </div>
           <span className="text-danger">{errorMsg}</span>
           <span className="text-success">{successMsg}</span>
-          {/* <span className="text-success">
-                <b>{successMesg}</b>
-              </span>
-              <span className="text-danger">
-                <b>{errorMsg}</b>
-              </span> */}
         </div>
       </div>
 
       {/* ----------------------modal ---------------- */}
-      <Button className="ms-5" varient="secondary" onClick={handleShow}>
-        View Projects
-      </Button>
-      <Modal
-        show={show}
-        size="lg"
-        onHide={handleClose}
-        backdrop="static"
-        // dialogClassName='modal-90w'
-      >
+      <div className="modalButtonDiv">
+        <Button
+          className="modalButton"
+          varient="secondary"
+          onClick={handleShow}
+        >
+          View Projects
+        </Button>
+      </div>
+
+      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Project List</Modal.Title>
         </Modal.Header>

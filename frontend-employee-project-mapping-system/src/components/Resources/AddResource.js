@@ -146,7 +146,10 @@ const AddResources = () => {
                     onChange={technologyHandler}
                     aria-label="Select Technology"
                   >
-                    <option hidden disabled selected value> -- Select Technology -- </option>
+                    <option hidden disabled selected value>
+                      {" "}
+                      -- Select Technology --{" "}
+                    </option>
                     {technologies.map((technology) => (
                       <option
                         key={technology.technologyId}
@@ -189,12 +192,6 @@ const AddResources = () => {
               </form>
             </div>
           </div>
-          {/* <span className="text-success">
-                <b>{successMesg}</b>
-              </span>
-              <span className="text-danger">
-                <b>{errorMesg}</b>
-              </span> */}
         </div>
 
         <hr />
@@ -213,7 +210,6 @@ const AddResources = () => {
               {resources.map((resource) => (
                 <tr key={resource.resourceId}>
                   <td>{resource.resourceId}</td>
-                  {/* <td>{resource.technology.technologyName}</td> */}
                   <td>Tech Name</td>
                   <td>{resource.description}</td>
                   <td>{resource.link}</td>

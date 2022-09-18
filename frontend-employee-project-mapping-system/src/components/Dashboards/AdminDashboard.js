@@ -6,7 +6,7 @@ import AddProjectRequirment from "../ProjectRequirement/AddProjectRequirment";
 import Home from "./AdminHome";
 import AddProjectMapping from "../Projects/ProjectMapping";
 import AddResources from "../Resources/AddResource";
-
+import Admin from "./Admin";
 
 import { FaUserAlt, FaBlackTie, FaFileImport } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
@@ -28,7 +28,6 @@ const AdminDashboard = () => {
   const [home, setHome] = useState(true);
   const [mapping, setMapping] = useState(false);
 
-  // const [Projectlist, setProjectList] = useState(false);
   const [addEmployee, setAddEmployee] = useState(false);
   const [addResource, setAddResource] = useState(false);
   const [projectReq, setProjectReq] = useState(false);
@@ -46,7 +45,7 @@ const AdminDashboard = () => {
     if (addTechnology) {
       setAddTechnology(false);
     }
-    if(addproject){
+    if (addproject) {
       setAddProject(false);
     }
 
@@ -64,8 +63,6 @@ const AdminDashboard = () => {
     setAddProject(true);
   };
 
-
-
   let showHome = () => {
     if (addEmployee) {
       setAddEmployee(false);
@@ -79,7 +76,7 @@ const AdminDashboard = () => {
     if (mapping) {
       setMapping(false);
     }
-    if(addproject){
+    if (addproject) {
       setAddProject(false);
     }
     if (addResource) {
@@ -90,8 +87,6 @@ const AdminDashboard = () => {
     }
     setHome(true);
   };
-
-
 
   let showAddEmployee = () => {
     if (home) {
@@ -119,13 +114,10 @@ const AdminDashboard = () => {
     setAddEmployee(true);
   };
 
-
-
   let showAddTechnology = () => {
     if (home) {
       setHome(false);
     }
-
     if (addEmployee) {
       setAddEmployee(false);
     }
@@ -182,7 +174,6 @@ const AdminDashboard = () => {
     if (home) {
       setHome(false);
     }
-
     if (addEmployee) {
       setAddEmployee(false);
     }
@@ -207,7 +198,6 @@ const AdminDashboard = () => {
       setMapping(false);
     }
 
-
     setProjectReq(true);
   };
 
@@ -215,7 +205,6 @@ const AdminDashboard = () => {
     if (home) {
       setHome(false);
     }
-
     if (addEmployee) {
       setAddEmployee(false);
     }
@@ -242,57 +231,48 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
-    
 
     setMapping(true);
   };
 
   let showAddDepartment = () => {
-      if (home) {
-          setHome(false);
-      }
-      if (addEmployee) {
-        setAddEmployee(false);
-      }
-      if (addproject) {
-        setAddProject(false);
-      }
-      if (addTechnology) {
-        setAddTechnology(false);
-      }
-  
-      if (mapping) {
-        setMapping(false);
-      }
-      if (addResource) {
-        setAddResource(false);
-      }
-  
-      if (addProjectRequirment) {
-        setAddProjectRequirment(false);
-      }
-      if (projectReq) {
-        setProjectReq(false);
-      }
-      if (mapping) {
-        setMapping(false);
-      }
-      setAddDepartment(true);
-  }
+    if (home) {
+      setHome(false);
+    }
+
+    if (addEmployee) {
+      setAddEmployee(false);
+    }
+    if (addproject) {
+      setAddProject(false);
+    }
+    if (addTechnology) {
+      setAddTechnology(false);
+    }
+
+    if (mapping) {
+      setMapping(false);
+    }
+    if (addResource) {
+      setAddResource(false);
+    }
+
+    if (addProjectRequirment) {
+      setAddProjectRequirment(false);
+    }
+    if (projectReq) {
+      setProjectReq(false);
+    }
+    if (mapping) {
+      setMapping(false);
+    }
+    setAddDepartment(true);
+  };
 
   return (
     <>
-      {/* {unauthorizedAdminAccess && <Navigate to="/" />}
-        {notloggedInAsAdmin && <Navigate to="/login" />} */}
-      {/* {logOut && <Navigate to="/login" />} */}
-
       <div className="row g-1  w-100 dashboard-section">
-        {/* <div className="sidebar-toggler" ref={sidebarTogglerRef} onClick={showSidebar}><MdVerticalDistribute /></div>  */}
-        <div
-          /*ref={sidebarRef}*/ className=" dashboard-sidebar bg-light col-md-3 col-sm-3 col-5 bg-light p-3"
-        >
-          {/* <div id="close-sidebar" className="text-end" onClick={hideSidebar}><ImCross /></div> */}
-
+        <div className=" dashboard-sidebar bg-light col-md-3 col-sm-3 col-5 bg-light p-3">
           <a
             href="#"
             className="hello-text d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
@@ -338,7 +318,10 @@ const AdminDashboard = () => {
                 <span id="Hovereffect">Employee</span>
               </li>
 
-              <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
+              <li
+                onClick={showAddDepartment}
+                style={{ cursor: "context-menu" }}
+              >
                 <FaBlackTie
                   size={22}
                   className="sidebar-list-icon"
@@ -385,14 +368,6 @@ const AdminDashboard = () => {
                 <span id="Hovereffect">Employee Project Mapping</span>
               </li>
             </b>
-            {/* <li onClick={showListOfStudents}  style={{cursor:"context-menu"}}>
-                        <ImBooks className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} />
-                        Students
-                    </li> */}
-            {/* <li onClick={showResultPage}  style={{cursor:"context-menu"}}>
-                        <BsFillDoorOpenFill className="sidebar-list-icon" style={{ width: "30px", paddingBottom: "4px" }} />
-                        Result
-                     </li> */}
           </ul>
           <div style={{ marginTop: "150%" }} className="sidebar-login">
             <hr />
@@ -402,25 +377,17 @@ const AdminDashboard = () => {
                 id="dropdownUser2"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-              >
-                {/* <strong>{name}</strong> */}
-              </a>
+              ></a>
               <ul
                 className="dropdown-menu text-small shadow sidebar-list"
                 aria-labelledby="dropdownUser2"
-              >
-                {/* <li><Link to="/profile" className="dropdown-item" >Profile</Link></li>
-                            <li><hr className="dropdown-divider" /></li> */}
-                {/* <li>
-                                <button type="button" className="btn1 primary1 dropdown-item" onClick={logoutClick}>Logout</button>
-                            </li> */}
-              </ul>
+              ></ul>
             </div>
           </div>
         </div>
 
         <div
-          /*ref={dashboardDataSectionRef}*/ className="col-md-9 col-sm-9 col-7 dashboard-data-section"
+          className="col-md-9 col-sm-9 col-7 dashboard-data-section"
           style={{ backgroundColor: "#b0c4de" }}
         >
           {home && <Home />}
@@ -431,9 +398,6 @@ const AdminDashboard = () => {
           {projectReq && <AddProjectRequirment />}
           {addResource && <AddResources />}
           {mapping && <AddProjectMapping />}
-          {/* 
-                <div className={show} id="snackbar">Login Successfully..</div>
-                <div className={show2} id="snackbar">Student details are added..</div> */}
         </div>
       </div>
     </>

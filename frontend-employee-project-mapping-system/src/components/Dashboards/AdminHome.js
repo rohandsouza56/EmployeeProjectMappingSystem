@@ -4,24 +4,7 @@ import admin from "../Images/Admin.jpg";
 
 const Home = () => {
 
-    // const username = window.sessionStorage.getItem("name");
-    // const [name, setName] = useState("");
     
-    // useEffect(() => {
-    //     if (username !== null) {
-    //         setName(username);
-    //     }
-    //     else {
-    //         setName("");
-    //     }
-
-    //     AdminService.getAcademicDates().then(resp=>{
-    //         setResultDate(resp.data.resultDate);
-    //         setUpdationDate(resp.data.updationDate);
-    //     }).catch(err=>{
-    //         console.log("Something Went Wrong",err);
-    //     })
-    // }, [])
 
     return (
         <div className="container-fluid">

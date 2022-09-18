@@ -3,12 +3,6 @@ import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
 
 const AddDepartment = () => {
-  // var yearArray = [];
-  // for (let i = 2008; i < 2018; i++) {
-  //     yearArray.push(i);
-  // }
-  // let studentId = window.sessionStorage.getItem("id");
-
   const [departmentId, setDepartmentId] = useState("");
   const [projectId, setProjectId] = useState("");
   const [name, setName] = useState("");
@@ -39,13 +33,6 @@ const AddDepartment = () => {
     init();
   }, []);
 
-  let onDepartmentIdHandler = (event) => {
-    setDepartmentId(event.target.value);
-    if (departmentIdErr !== "" || departmentIdErr !== null) {
-      setDepartmentIdErr("");
-    }
-  };
-
   let onProjectIdHandler = (event) => {
     setProjectId(event.target.value);
     if (projectIdErr !== "" || projectIdErr !== null) {
@@ -75,18 +62,7 @@ const AddDepartment = () => {
   };
 
   let validation = () => {
-    // console.log(studentId);
     let flag = true;
-    // let percentageRegex = /[A-Za-z\@\?\/\!\~]+/;
-    // if (type === "") {
-    //     setTypeErr("Please select Course");
-    //     flag = false;
-    // }
-
-    if (departmentId === "" || departmentId === null) {
-      setDepartmentIdErr("Please Enter Department ID");
-      flag = false;
-    }
 
     if (projectId === "" || projectId === null) {
       setProjectIdErr("Please Enter Project ID");
@@ -140,23 +116,16 @@ const AddDepartment = () => {
       setNameErr("");
       setCurrentStrengthErr("");
       setMaximumStrengthErr("");
-      console.log("...." + departmentId);
-      let department = {
-        DepartmentId: departmentId,
-        ProjectId: projectId,
-        Name: name,
-        CurrentStrength: currentStrength,
-        MaximumStrength: maximumStrength,
-      };
-      console.log(department);
 
       let departmentDetails = {
-        departmentId,
-        projectId,
+        projects: {
+          projectId,
+        },
         name,
         currentStrength,
         maximumStrength,
       };
+      console.log(departmentDetails);
       AdminServices.addDepartment(departmentDetails)
         .then((response) => {
           setDepartmentId("");
@@ -196,18 +165,6 @@ const AddDepartment = () => {
         <div className="border border-1 rounded">
           <div className="m-3">
             <form onSubmit={onAddDepartmentSubmit} className="department-form">
-              <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={departmentId}
-                  onChange={onDepartmentIdHandler}
-                  placeholder="Enter Department Id"
-                />
-                <label>Department Id</label>
-                <span className="text-danger">{departmentIdErr}</span>
-              </div>
-
               <div className="form-floating mb-3">
                 <input
                   type="number"
