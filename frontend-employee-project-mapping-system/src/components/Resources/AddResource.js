@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
+import { Button, Modal, Table } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddResources = () => {
   const [link, setLink] = useState("");
@@ -11,6 +14,17 @@ const AddResources = () => {
   const [errorMesg, setErrorMesg] = useState("");
   const [resources, setResources] = useState([]);
   const [technologies, setTechnologies] = useState([]);
+
+  //--------------for modal--------------
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    getAllResources();
+    setShow(true);
+  };
+  const [allResource, setAllResources] = useState([]);
+  //-------------------------------------
+
 
   const getAllResources = () => {
     AdminServices.getAllResources()
@@ -100,23 +114,23 @@ const AddResources = () => {
           setDescription("");
           setTechnologyId("");
           getAllResources();
+      
+          toast.success("Resources Details Added Successfully");
         })
         .catch((error) => {
           console.log(error);
-          setErrorMesg(error.response.data);
+          toast.success("Something Went Wrong");
         });
     }
   };
 
   let handleDelete = (resourceId) => {
-    //if (disable === "") {
+    
     AdminServices.deleteResource(resourceId)
       .then((resp) => {
         console.log(resp.data);
         getAllResources();
-        // setShow1("show");
         setTimeout(() => {
-          //setShow1("");
           clearTimeout();
         }, 3000);
       })
@@ -127,9 +141,8 @@ const AddResources = () => {
 
   return (
     <>
-      {/* {loggedInStudentFalse && <Navigate to="/home" />}
-          {studentProfileUpdated && <Navigate to="/student_dashboard" />} */}
-      <div className="container-fluid w-50 mt-5 add-details-section">
+      
+      <div className="container-fluid w-50 mt-5 add-details-section form-background">
         <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
             Add Resource Details
@@ -192,11 +205,28 @@ const AddResources = () => {
               </form>
             </div>
           </div>
+
+          <div className="modalButtonDiv">
+        <Button
+          className="modalButton bg-info"
+          varient="info"
+          onClick={handleShow}
+        >
+          View Resources
+        </Button>
+      </div>
         </div>
 
         <hr />
-        <div className="table-responsive">
-          <table className="table table-bordered table-striped">
+         {/* ----------------------modal ---------------- */}
+      
+
+      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Resource List</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <table striped border hover>
             <thead className="thead-dark">
               <tr>
                 <th>#</th>
@@ -229,8 +259,17 @@ const AddResources = () => {
               ))}
             </tbody>
           </table>
+          </Modal.Body>
+        <Modal.Footer>
+          <Button varient="primary" onClick={handleClose}>
+            {" "}
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer />
         </div>
-      </div>
+      
     </>
   );
 };

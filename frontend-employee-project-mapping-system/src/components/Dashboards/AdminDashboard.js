@@ -369,21 +369,7 @@ const AdminDashboard = () => {
               </li>
             </b>
           </ul>
-          <div style={{ marginTop: "150%" }} className="sidebar-login">
-            <hr />
-            <div className="dropdown" style={{ cursor: "context-menu" }}>
-              <a
-                className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></a>
-              <ul
-                className="dropdown-menu text-small shadow sidebar-list"
-                aria-labelledby="dropdownUser2"
-              ></ul>
-            </div>
-          </div>
+         
         </div>
 
         <div

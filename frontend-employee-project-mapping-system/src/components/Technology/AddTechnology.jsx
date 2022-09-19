@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdminService from "../../Services/AdminServices";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Button, Modal, Table } from "react-bootstrap";
 
 const AddTechnology = () => {
   const [technologyName, settechnologyName] = useState("");
@@ -14,6 +15,16 @@ const AddTechnology = () => {
   const [successMsg, setSuccessMsg] = useState("");
 
   const [techlogies, setTechnologies] = useState([]);
+
+   //--------------for modal--------------
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    getAllTechnologies();
+    setShow(true);
+  };
+  const [allTechnology, setAllTechnology] = useState([]);
+  //------
 
   const getAllTechnologies = () => {
     AdminService.getAllTechnologies()
@@ -102,7 +113,7 @@ const AddTechnology = () => {
   };
 
   return (
-    <div className="container-fluid w-50 mt-5 add-qualification-details">
+    <div className="container-fluid w-50 mt-5 add-qualification-details form-background">
       <div className="m-3">
         <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
           Add Technology
@@ -137,10 +148,27 @@ const AddTechnology = () => {
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
       </div>
-
+      <div className="modalButtonDiv">
+        <Button
+          className="modalButton bg-info"
+          varient="info"
+          onClick={handleShow}
+        >
+          View Technology
+        </Button>
+      </div>
+      
       <hr />
-      <div className="table-responsive">
-        <table className="table table-bordered table-striped">
+
+      {/* ----------------------modal ---------------- */}
+      
+
+      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Technology List</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped border hover>
           <thead className="thead-dark">
             <tr>
               <th>Technology Id</th>
@@ -170,10 +198,18 @@ const AddTechnology = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+       </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button varient="primary" onClick={handleClose}>
+            {" "}
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
         <ToastContainer />
       </div>
-    </div>
+    
   );
 };
 

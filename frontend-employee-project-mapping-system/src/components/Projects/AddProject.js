@@ -4,6 +4,7 @@ import AdminServices from "../../Services/AdminServices";
 import { Button, Modal, Table } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../../App.css";
 
 const AddProjects = () => {
   const [name, setName] = useState("");
@@ -154,7 +155,7 @@ const AddProjects = () => {
           console.log(error);
           setErrorMsg("Error");
           setSuccessMsg("");
-          toast.success("Error");
+          toast.success("Something Went Wrong");
         });
     }
   };
@@ -172,7 +173,7 @@ const AddProjects = () => {
 
   return (
     <>
-      <div className="container-fluid w-50 mt-5 add-details-section">
+      <div className="container-fluid w-50 mt-5 add-details-section form-background">
         <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
             Add Project Details
@@ -261,18 +262,19 @@ const AddProjects = () => {
           <span className="text-danger">{errorMsg}</span>
           <span className="text-success">{successMsg}</span>
         </div>
-      </div>
-
-      {/* ----------------------modal ---------------- */}
-      <div className="modalButtonDiv">
+        <div className="modalButtonDiv">
         <Button
-          className="modalButton"
-          varient="secondary"
+          className="modalButton bg-info"
+          varient="info"
           onClick={handleShow}
         >
           View Projects
         </Button>
       </div>
+      </div>
+
+      {/* ----------------------modal ---------------- */}
+      
 
       <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
@@ -319,6 +321,7 @@ const AddProjects = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer />
     </>
   );
 };

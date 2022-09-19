@@ -1,17 +1,22 @@
-
-
-    .dashboard-data-section {
-/* background-image: url("../Images/image-1.jpg");
+.dashboard-data-section {
+  /* background-image: url("../Images/image-1.jpg");
 background-image:-o-linear-gradient(); */
 
-background-image: linear-gradient(rgba(159, 159, 159, 0.755),
-      rgba(0, 0, 0, 0.693)), url("../Images/image-9.jpeg");
-      background-size: cover;
-        background-repeat: no-repeat;
-
-
+  background-image: linear-gradient(
+      rgba(159, 159, 159, 0.755),
+      rgba(0, 0, 0, 0.693)
+    ),
+    url("../Images/image-9.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 100px;
 }
-  /* .dashboard-data-section{
+.dashboard-sidebar {
+  /* height: 900px; */
+}
+
+/* .dashboard-data-section{
 
     padding: 50px 25px 50px;
       max-width: 500px;
@@ -24,8 +29,8 @@ background-image: linear-gradient(rgba(159, 159, 159, 0.755),
 
     
   } */
-     
-         /* .dashboard-data-section::before {
+
+/* .dashboard-data-section::before {
       content: "";
       position: absolute;
       top: 0;
@@ -44,42 +49,38 @@ background-image: linear-gradient(rgba(159, 159, 159, 0.755),
         }
      */
 
+#Hovereffect {
+  background-image: linear-gradient(to right, #0e76e6, #0e76e6 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  cursor: pointer;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
 
-  #Hovereffect {
-    background-image: linear-gradient(
-      to right,
-      #0e76e6,
-      #0e76e6 50%,
-      #000 50%
-    );
-    background-size: 200% 100%;
-    background-position: -100%;
-    display: inline-block;
-    padding: 5px 0;
-    cursor: pointer;
-    position: relative;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  #Hovereffect:before {
-    content: '';
-    background: #0e76e6;
-    display: block;
-    position: absolute;
-    cursor: pointer;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  #Hovereffect:hover {
-   background-position: 0;
-  }
-  
-  #Hovereffect:hover::before {
-    width:100%;
-  }
+#Hovereffect:before {
+  content: "";
+  background: #0e76e6;
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+#Hovereffect:hover {
+  background-position: 0;
+  font-size: 18px;
+}
+
+#Hovereffect:hover::before {
+  width: 100%;
+}

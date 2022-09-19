@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
+
 // import EmployeeService from '../../Services/EmployeeService';
+import "react-toastify/dist/ReactToastify.css";
 import EmployeeService from "../../Services/EmployeeService";
 
 const AddEmployees = () => {
@@ -135,9 +137,15 @@ const AddEmployees = () => {
     if (password === "" || password === null) {
       setPasswordErr("Please Enter Password");
       flag = false;
-    } else if (passwordRegex.test(password) === false) {
+    } 
+    else if(password.length<8 || password.length>15){
       setPasswordErr(
-        "Password should have atleast one capital letter, one special character and a number.\nAlso, the size of password should lies between 8 to 15 characters"
+        "Password should contain characters between 8 to 15"
+      );
+    }
+    else if (passwordRegex.test(password) === false) {
+      setPasswordErr(
+        "Password should have 1 capital letter, 1 special character and a number"
       );
       flag = false;
     }
@@ -195,7 +203,7 @@ const AddEmployees = () => {
 
   return (
     <>
-      <div className="container-fluid w-75 mt-5 add-details-section">
+      <div className="container-fluid w-75 mt-5 add-details-section form-background">
         <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
             Add Employee Details
@@ -275,7 +283,7 @@ const AddEmployees = () => {
                         placeholder="Enter emailId"
                       />
                       <label>email Id</label>
-                      <b className="text-primary">{emailErr}</b>
+                      <b className="text-danger">{emailErr}</b>
                     </div>
                   </div>
                   <div className="col-6">

@@ -175,7 +175,7 @@ const AddSkills = () => {
   };
 
   return (
-    <div className="container-fluid w-50 mt-5 add-qualification-details">
+    <div className="container-fluid w-50 mt-5 add-qualification-details form-background">
       <div className="m-3">
         <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
           Skills

@@ -1,6 +1,8 @@
-// import React from "react";
 import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
+import { Button, Modal, Table } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddDepartment = () => {
   const [departmentId, setDepartmentId] = useState("");
@@ -19,7 +21,18 @@ const AddDepartment = () => {
 
   const [departments, setDepartments] = useState([]);
 
-  const init = () => {
+  //--------------for modal--------------
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    getAllDepartments();
+    setShow(true);
+  };
+  const [allDepartment, setAllDepartment] = useState([]);
+  //-------------------------------------
+
+
+  const getAllDepartments = () => {
     AdminServices.getAllDepartments(departmentId)
       .then((response) => {
         console.log(response.data);
@@ -30,7 +43,7 @@ const AddDepartment = () => {
       });
   };
   useEffect(() => {
-    init();
+    
   }, []);
 
   let onProjectIdHandler = (event) => {
@@ -87,29 +100,21 @@ const AddDepartment = () => {
   };
 
   let handleDelete = (departmentId) => {
-    //if (disable === "") {
+    
     AdminServices.deleteDepartment(departmentId)
       .then((resp) => {
         console.log(resp.data);
-        init();
-        // setShow1("show");
-        setTimeout(() => {
-          //setShow1("");
-          clearTimeout();
-        }, 3000);
+        getAllDepartments();        
       })
       .catch((err) => {
         console.log(err);
       });
-    //  }
-    //  else {
-    //      alert("Last Date for Updating Student Details is OVER..");
-    //   }
+   
   };
 
   let onAddDepartmentSubmit = (event) => {
     event.preventDefault();
-    //   if (disable === "") {
+    
     if (validation()) {
       setDepartmentIdErr("");
       setProjectIdErr("");
@@ -135,26 +140,21 @@ const AddDepartment = () => {
           setMaximumStrength("");
           setSuccessMsg("Department Details Added Successfully");
           setErrorMsg("");
+           toast.success("Department Details Added Successfully");
 
-          // setSuccessMesg("User Created Successfully");
-          // window.sessionStorage.setItem("snackbar_registration","show");
-          //toastr.success("Student Profile Created Successfully");
-          //navigate("/login");
+          
         })
         .catch((error) => {
           console.log(error);
-          setErrorMsg("Something went wrong");
           setSuccessMsg("");
+          toast.success("Something Went Wrong");
         });
     }
-    //  }
-    //  else {
-    //      alert("Last Date for Updating Student Details is OVER..");
-    // }
+    
   };
 
   return (
-    <div className="container-fluid w-50 mt-5 add-qualification-details">
+    <div className="container-fluid w-50 mt-5 add-qualification-details form-background">
       <div className="m-3">
         <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
           Department Details
@@ -222,12 +222,29 @@ const AddDepartment = () => {
         </div>
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
-        {/* <div className={show} id="snackbar">Education Details Added Successfully<output></output></div>
-                <div className={show1} id="snackbar">Education Details Deleted<output></output></div> */}
+        
       </div>
 
+       <div className="modalButtonDiv">
+        <Button
+          className="modalButton bg-info"
+          varient="info"
+          onClick={handleShow}
+        >
+          View Departments
+        </Button>
+      </div>
+
+      
+
+      {/* ----------------------modal ---------------- */}
+
       <hr />
-      <div className="table-responsive">
+      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Department List</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
         <table className="table table-bordered table-striped">
           <thead className="thead-dark">
             <tr>
@@ -262,8 +279,18 @@ const AddDepartment = () => {
             ))}
           </tbody>
         </table>
+      
+        </Modal.Body>
+        <Modal.Footer>
+          <Button varient="primary" onClick={handleClose}>
+            {" "}
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer />
       </div>
-    </div>
+    
   );
 };
 
