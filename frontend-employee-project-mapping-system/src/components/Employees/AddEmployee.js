@@ -275,7 +275,7 @@ const AddEmployees = () => {
                         placeholder="Enter emailId"
                       />
                       <label>email Id</label>
-                      <span className="text-danger">{emailErr}</span>
+                      <b className="text-primary">{emailErr}</b>
                     </div>
                   </div>
                   <div className="col-6">

@@ -18,6 +18,8 @@ import EmployeeDashboard from "./components/Dashboards/EmployeeDashboard";
 import NotFound from "./components/NotFound/NotFound";
 import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
+import ExtraInfo from "./components/Home/ExtraInfo";
+import Copyright from "./components/Home/Copyright";
 
 
 
@@ -44,6 +46,19 @@ const App = () => {
         <Route path="/contact" element={<Contact/>} />
         {/* <Route path="/teampage" element={<TeamPage/>} /> */}
       </Routes>
+
+      
+
+    
+      
+        
+      <footer className="footer section ">
+        <ExtraInfo />
+        <Copyright />
+      </footer>
+      
+    
+  )
     </BrowserRouter>
   );
 };

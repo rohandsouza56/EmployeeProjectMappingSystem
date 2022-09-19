@@ -23,16 +23,7 @@ const ListProjectComponent = () => {
         })
     }
 
-    // const deleteProject = (ProjectId) => {
-    //    AdminServices.deleteProject(ProjectId).then((response) =>{
-    //     getAllProjects();
-
-    //    }).catch(error =>{
-    //        console.log(error);
-    //    })
-        
-    // }
-
+    
     return (
         <div className = "container">
             <h2 className = "text-center"> List Projects </h2>
@@ -56,9 +47,7 @@ const ListProjectComponent = () => {
                                 <td>{project.startDate}</td>
                                 <td>{project.endDate}</td>
                                 <td>
-                                    {/* <Link className="btn btn-info" to={`/edit-Project/${Project.id}`} >Update</Link> */}
-                                    {/* <button className = "btn btn-danger" onClick = {() => deleteProject(Project.id)} */}
-                                    {/* style = {{marginLeft:"10px"}}> Delete</button> */}
+                                    
                                 </td>
                             </tr>
                         )

@@ -13,67 +13,54 @@ import { Nav,Container,Navbar,NavDropdown } from 'react-bootstrap'
 // import { UserContext } from '../../App';
 
 const Header = () => {
-    // const {state,dispatch} = useContext(UserContext);
-    // const navigate = useNavigate();
-    // const role = window.sessionStorage.getItem("role");    
+    
+    const navigate = useNavigate();
+    const role = "ADMIN";    
 
-    // const logoutUser = () => {
-    //     window.sessionStorage.removeItem('user');
-    //     window.sessionStorage.removeItem("id");
-    //     window.sessionStorage.removeItem("email");
-    //     window.sessionStorage.removeItem("name");
-    //     window.sessionStorage.removeItem("age");
-    //     window.sessionStorage.removeItem("universityId");
-    //     window.sessionStorage.removeItem("universityEmail");
-    //     window.sessionStorage.removeItem("universityName");
-    //     window.sessionStorage.removeItem("state");
-    //     window.sessionStorage.removeItem("city");
-    //     window.sessionStorage.removeItem("phone_no");
-    //     window.sessionStorage.setItem("snackbar2", "show");
-    //     window.sessionStorage.removeItem('loggedIn');
-    //     window.sessionStorage.removeItem('role');
-    //     dispatch({type:"USER",payload:false});
-    //     navigate("/login");
-    // }
+    const logoutUser = () => {
+        localStorage.removeItem('jwtToken');
 
-    // const RenderMenu = () =>{
-    //     if(state && role==="STUDENT"){
-    //         return (
-    //             <>
-    //             <NavDropdown.Item href="/student_dashboard">Dashboard</NavDropdown.Item>
-    //             <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
-    //             </>
-    //         )
-    //     }
-    //     else if(state && role==="ADMIN"){
-    //         return (
-    //             <>
-    //             <NavDropdown.Item href="/admin_dashboard">Dashboard</NavDropdown.Item>
-    //             <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
-    //             </>
-    //         )
-    //     }
-    //     else if(state && role==="COLLEGE"){
-    //         return (
-    //             <>
-    //             <NavDropdown.Item href="/college_dashboard">Dashboard</NavDropdown.Item>
-    //             <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
-    //             </>
-    //         )
-    //     }
-    //     else{
-    //         return (
-    //             <>
-    //             <NavDropdown.Item href="/login">Log In</NavDropdown.Item></>
-    //         )
-    //     }
-    // }
+        navigate("/login");
+    }
+
+    const RenderMenu = () =>{
+        if(role==="ADMIN"){
+            return (
+                <>
+                <NavDropdown.Item href="/admindashboard">Dashboard</NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
+                </>
+            )
+        }
+        else if(role==="EMPLOYEE"){
+            return (
+                <>
+                <NavDropdown.Item href="/admin_dashboard">Dashboard</NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
+                </>
+            )
+        }
+        else if(role==="MANAGER"){
+            return (
+                <>
+                <NavDropdown.Item href="/college_dashboard">Dashboard</NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>
+                </>
+            )
+        }
+        else{
+            return (
+                <>
+                <NavDropdown.Item href="/login">Log In</NavDropdown.Item></>
+            )
+        }
+    }
 
     return (
         <Navbar  expand="lg" className='Navclass sticky-top site-navbar' style={{zIndex:'999'}}>
             <Container>
                 <NavLink to="/login">
-                    <img className="navbar-logo m-4" src={NavLogo} alt="ucs_logo" width={200} height={200} />
+                    <img className="navbar-logo mt-2" src={NavLogo} alt="ucs_logo" width={180} height={70} />
                 </NavLink>
 
                 {/* <NavLink to= "/login"  id="title">
@@ -89,7 +76,7 @@ const Header = () => {
                         <NavLink className='navbar-link' to='/about'><BiNews className='navbar-right-logo' /> About</NavLink>
                         <NavLink className='navbar-link' to='/contact'><MdContactPage className='navbar-right-logo' /> Contact Us</NavLink>
                         <NavDropdown title={<IoIosContact/>} className="navbar-profile" >
-                            {/* <RenderMenu /> */}
+                            <RenderMenu />
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

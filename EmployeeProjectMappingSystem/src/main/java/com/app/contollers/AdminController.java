@@ -114,6 +114,7 @@ public class AdminController {
 	@GetMapping("/department/{projectId}")
 	public ResponseEntity<?> getDepartment(@PathVariable int projectId){
 		List<Departments> list = departmentServiceImpl.getDepartment(projectId);
+		list.stream().filter(n-> n.getName().equals("xyz"));
 		if(list.size()<=0)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.of(Optional.of(list));

@@ -388,6 +388,7 @@ const AdminDashboard = () => {
 
         <div
           className="col-md-9 col-sm-9 col-7 dashboard-data-section"
+          
           style={{ backgroundColor: "#b0c4de" }}
         >
           {home && <Home />}

@@ -11,16 +11,16 @@ const Contact = () => {
                 We are devoted to serve you in our best way possible.<br/> If you have any query or issue regarding this Project, feel free to contact us!
                 <br/><br/>
                 <h6 className="fw-bold mb-2 text-uppercase">Email &nbsp;<i className="fa fa-envelope" aria-hidden="true" style={{color: "green"}}></i></h6>
-                <a href="mailto:Info@youremail.com" style={{color: "black"}}>cdac@email.com</a>
+                <a href="mailto:epms@email.com" style={{color: "black"}}>epms@email.com</a>
                 <br/><br/>
                 <h6 className="fw-bold mb-2 text-uppercase">Phone &nbsp;<i className="fa fa-phone" aria-hidden="true" style={{color: "green"}}></i></h6>
-                12-3456-7890, 98-1122-0009
+                +123 116-9990, 98-1122-0009
                 <br/><br/><br/>
                 <h5 className="fw-bold mb-2 text-uppercase"> Kharghar &nbsp;<i className="fas fa-map-marker-alt" style={{color: "green"}}></i></h5>
-                <strong>Center for Development of Advanced Computing (C-DAC)</strong><br/>
-                C-DAC Mumbai<br/>
+                <strong>Employee Project Mapping System (EPMS)</strong><br/>
+                 Mumbai<br/>
                 Kharghar<br/>
-                Mumbai - 223,345, Maharashtra (India)<br/>
+                Mumbai - 456, Maharastra, INDIA<br/>
                 Phone: +91-00000000<br/>
                 Fax: +91-11-11234345<br/><br/><br/>
             </p>

@@ -43,3 +43,11 @@
 .modalButton{
   width:42%
 }
+
+.form-background{
+  
+        background-color: white,
+         border-radius:10px, 
+         padding:"30px", opacity:"0.5"
+      
+}
