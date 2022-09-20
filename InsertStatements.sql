@@ -15,35 +15,35 @@ select *from Projects;
 
 
 insert into Departments(Project_Id,Name,Current_Strength ,Maximum_Strength)
-values(1,"Departmen1",25,200),
-(1,"Departmen2",20,200),
-(2,"Departmen2",25,200),
-(2,"Departmen3",50,200),
-(2,"Departmen4",100,200),
-(3,"Departmen5",100,200),
-(3,"Departmen6",100,200),
-(3,"Departmen7",100,200),
-(3,"Departmen8",100,200);
+values(1,"Accounts",25,200),
+(1,"Development",20,200),
+(2,"Operations",25,200),
+(2,"Network",50,200),
+(2,"Linux",100,200),
+(3,"Production",100,200),
+(3,"Human Resources",100,200),
+(3,"Business Development",100,200),
+(3,"Risk Management",100,200);
 select *from Departments ;
 drop table departments;
 
 insert into Technology (Technology_Name)
-values("Technology1"),
-("Technology2"),
-("Technology3"),
-("Technology4"),
-("Technology5"),
-("Technology6");
+values("Spring Boot"),
+("React"),
+("MySql"),
+("DotNet"),
+("Java"),
+("Python");
 select * from Technology;
 truncate Technology;
 
 insert into Resource (link,`Description`,Technology_Id)
-values("Link 1","Description 1",1),
-("Link 2","Description 2",2),
-("Link 3","Description 3",3),
-("Link 4","Description 4",4),
-("Link 5","Description 5",5),
-("Link 6","Description 6",6);
+values("Link 1","Spring Boot Notes",1),
+("Link 2","React Notes",2),
+("Link 3","MySql Notes",3),
+("Link 4","DotNet Notes",4),
+("Link 5","Java Notes",5),
+("Link 6","Python Notes",6);
 select * from Resource;
 truncate Resource;
 
@@ -116,6 +116,10 @@ values ("Skill 1",1,"2022-5-5","Link 1","Pdf",1),
 
 select *from Skills;
 select * from Employee;
+
+show variables like 'max_allowed_packet';
+SET GLOBAL max_allowed_packet=268435456;
+
 
 
 

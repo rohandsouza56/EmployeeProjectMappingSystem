@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     gap: 30px;
     z-index: 10;
+    background-color: rgb(48, 149, 215);
 }
 .social-sites-logo{
     display: flex;
@@ -17,19 +18,19 @@
 }
 
 .twitter-logo:hover{
-    color: var(--green-color);
+    color:  #05319f;
 }
 .facebook-logo:hover{
-    color: var(--green-color);
+    color:  #05319f;
 }
 .youtube-logo:hover{
-    color: var(--green-color);
+    color: red
 }
 .linkedin-logo:hover{
-    color: var(--green-color);
+    color: #05319f;
 }
 .instagram-logo:hover{
-    color: var(--green-color);
+    color: #ffb039;
 }
 
 .extra-info-section-list{
@@ -44,7 +45,9 @@
 
 .extra-info-section-list > li:hover{
     cursor: pointer;
-    background-color: #4BC960;
+    background-color: #0998ff;
+    border-radius: 10px;
+    padding-left: 10px;
     
 }
 

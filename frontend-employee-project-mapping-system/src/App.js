@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 
 import AddProjects from "./components/Projects/AddProject";
-import ListProjectComponent from "./components/Projects/ProjectList";
+import ProjectList from "./components/Projects/ProjectList";
 import AddEmployees from "./components/Employees/AddEmployee";
 import AddSkills from "./components/Skills/AddSkill";
 import AddTechnology from "./components/Technology/AddTechnology";
@@ -20,7 +20,8 @@ import About from "./components/Pages/About";
 import Contact from "./components/Pages/Contact";
 import ExtraInfo from "./components/Home/ExtraInfo";
 import Copyright from "./components/Home/Copyright";
-
+import AddResume from "./components/Employees/AddResume";
+import ProjectListEmployee from "./components/Projects/ProjectListEmployee";
 
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         <Route path="/addproject" element={<AddProjects />} />
-        <Route path="/projectlist" element={<ListProjectComponent />} />
+        <Route path="/projectlist" element={<ProjectList />} />
         <Route path="/department" element={<AddDepartment />} />
         <Route path="/technology" element={<AddTechnology />} />
         <Route path="/employee" element={<AddEmployees />} />
@@ -44,6 +45,8 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/resume" element={<AddResume/>} />
+        <Route path="/empproject" element={<ProjectListEmployee/>} />
         {/* <Route path="/teampage" element={<TeamPage/>} /> */}
       </Routes>
 

@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.DepartmentsRepository;
@@ -141,5 +142,38 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		
 		return employeeRepository.save(newEmployee);
 	
+	}
+
+	@Override
+	public Employee saveFile(MultipartFile file) {
+		  String docname = file.getOriginalFilename();
+		  try {
+			  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
+			  return employeeRepository.save(employee);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
+	}
+	
+	@Override
+	public Employee saveFile(int employeeId,MultipartFile file) {
+		
+		Employee employee = employeeRepository.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Project ID : " + employeeId));
+		
+		
+		  String docname = file.getOriginalFilename();
+		  try {
+		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
+			 // employee.setDocName(docname.);
+			  employee.setResume(file.getBytes());
+			  return employeeRepository.save(employee);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
 	}
 }

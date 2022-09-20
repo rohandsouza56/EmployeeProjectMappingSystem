@@ -30,7 +30,7 @@ const ExtraInfo = () => {
     navigate("/events");
   }
   return (
-    <section className="container-fluid extra-info-section bg-info text-white ">
+    <section className="container-fluid extra-info-section text-white">
       <div className="extra-info-section-left">
         <h3>About Us</h3>
         <ul className="extra-info-section-list">

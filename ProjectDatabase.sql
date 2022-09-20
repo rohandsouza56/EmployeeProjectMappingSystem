@@ -86,7 +86,7 @@ Gender varchar(255),
 Project_Id int ,
 Department_Id int,
 Roll_Id int,
-Resume blob,
+Resume MEDIUMBLOB,
 Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE

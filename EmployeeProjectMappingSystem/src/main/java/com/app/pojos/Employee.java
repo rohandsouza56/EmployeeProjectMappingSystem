@@ -11,10 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -72,10 +74,31 @@ public class Employee implements Serializable {
 	@ToString.Exclude
 	private List<Skills> skills;
 	
+	
+	@Lob
 	@Column(name="Resume")
-	private String Resume;
+	private byte[] resume;
+	
+	
+	@Transient
+	private String docName;
+	
+	@Transient
+	private String docType;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="Roll_Id")
 	private Roles roles;
+
+
+	public Employee(String docName, String docType, byte[] resume) {
+		super();
+		this.resume = resume;
+		this.docName = docName;
+		this.docType = docType;
+	}
+	
+	
+	
 }

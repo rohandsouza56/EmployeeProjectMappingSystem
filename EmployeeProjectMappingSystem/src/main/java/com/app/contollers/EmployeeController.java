@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.pojos.Departments;
 import com.app.pojos.Employee;
@@ -95,6 +97,26 @@ public class EmployeeController {
 	@DeleteMapping("/skill/delete/{skillId}")
 	public ResponseEntity<?> deleteSkills(@PathVariable int skillId){
 		return ResponseEntity.ok().body(skillService.deleteSkill(skillId));
+	}
+	
+	
+	
+	@PostMapping("/resume")
+	public String uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+		for (MultipartFile file: files) {
+			employeeService.saveFile(file);
+			
+		}
+		return "Sucessssssss";
+	}
+	
+	@PostMapping("/resume/{employeeId}")
+	public String uploadMultipleFiles(@PathVariable int employeeId,@RequestParam("files") MultipartFile[] file) {
+		//for (MultipartFile file: files) {
+			employeeService.saveFile(employeeId,file[0]);
+			
+		//}
+		return "Sucessssssss";
 	}
 	
 }

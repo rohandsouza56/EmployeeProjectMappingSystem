@@ -60,7 +60,7 @@ const Header = () => {
         <Navbar  expand="lg" className='Navclass sticky-top site-navbar' style={{zIndex:'999'}}>
             <Container>
                 <NavLink to="/login">
-                    <img className="navbar-logo mt-2" src={NavLogo} alt="ucs_logo" width={180} height={70} />
+                    <img className="navbar-logo mt-2" src={NavLogo} alt="ucs_logo" width={160} height={50} />
                 </NavLink>
 
                 {/* <NavLink to= "/login"  id="title">

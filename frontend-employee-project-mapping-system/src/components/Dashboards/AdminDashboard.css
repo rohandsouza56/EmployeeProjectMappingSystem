@@ -2,11 +2,8 @@
   /* background-image: url("../Images/image-1.jpg");
 background-image:-o-linear-gradient(); */
 
-  background-image: linear-gradient(
-      rgba(159, 159, 159, 0.755),
-      rgba(0, 0, 0, 0.693)
-    ),
-    url("../Images/image-9.jpeg");
+  background-image: 
+    url("../Images/image-5.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

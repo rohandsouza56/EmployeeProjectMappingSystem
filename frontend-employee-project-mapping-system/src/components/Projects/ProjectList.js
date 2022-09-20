@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react'
 // import AdminServices from '../../Services/AdminServices';
 import AdminServices from '../../Services/AdminServices';
 
-const ListProjectComponent = () => {
+const ProjectList = () => {
 
     const [projects, setProjects] = useState([])
 
@@ -58,4 +58,7 @@ const ListProjectComponent = () => {
     )
 }
 
-export default ListProjectComponent
+export default ProjectList
+
+
+

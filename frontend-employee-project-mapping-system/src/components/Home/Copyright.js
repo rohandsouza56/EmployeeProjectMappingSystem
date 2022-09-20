@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-     <nav className="footer-copyright-section text-white bg-info">
+     <nav className="footer-copyright-section text-white" style={{backgroundColor:"rgb(48, 149, 215)"}}>
       <div className="container-fluid">
-        <p className="text-center">© Copyright Employee Mapping System<span style={{color:'var(--green-color)'}}>www.employeemappingsystem.com</span> 2022</p>
+        <p className="text-center">© Copyright Employee Mapping System<span style={{color:'var(--green-color)'}}>www.employeemappingsystem.com </span> 2022</p>
       </div>
     </nav>
     // <div className="container my-5">

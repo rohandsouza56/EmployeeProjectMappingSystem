@@ -23,10 +23,7 @@
     align-items: center;
 }
 
-.navbar-logo{
-    flex: 20%;
-    align-content: center;
-}
+
 .navbar-right{
     flex: 60%;
     display: flex;
@@ -46,13 +43,9 @@
     height: 100%;
 }
 
-.navbar-right-logo{
-    visibility: hidden;
-    color: var(--green-color);
-}
 
 .navbar-link:hover{
-    color:var(--green-color);
+    color: #21e4f2;
 }
 
 .navbar-link:hover .navbar-right-logo{
@@ -79,19 +72,19 @@
 }
 
 .navbar-login:hover{
-    color: var(--green-color);
+    color: #21e4f2;
     background-color: white;
 }
 
 .navbar-profile{
     text-decoration: none;
     font-size: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     margin-left: 20px;
     cursor: pointer;
 }
 .navbar-profile:hover{
-    color: var(--green-color);
+    color: #21e4f2;
 }
 
 .navbar-right-login-profile:hover .navbar-login{
@@ -137,11 +130,7 @@
         height: auto;
     }
 
-    .navbar-logo{
-        flex: 100%;
-        width: 100%;
-        /* padding: 5px 0; */
-    }
+  
     .navbar-right{
         flex: 100%;
         width: 100%;

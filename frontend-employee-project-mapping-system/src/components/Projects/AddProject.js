@@ -263,18 +263,17 @@ const AddProjects = () => {
           <span className="text-success">{successMsg}</span>
         </div>
         <div className="modalButtonDiv">
-        <Button
-          className="modalButton bg-info"
-          varient="info"
-          onClick={handleShow}
-        >
-          View Projects
-        </Button>
-      </div>
+          <Button
+            className="modalButton bg-info"
+            varient="info"
+            onClick={handleShow}
+          >
+            View Projects
+          </Button>
+        </div>
       </div>
 
       {/* ----------------------modal ---------------- */}
-      
 
       <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>

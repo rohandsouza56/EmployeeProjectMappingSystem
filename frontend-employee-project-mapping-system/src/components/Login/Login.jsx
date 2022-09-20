@@ -2,6 +2,8 @@ import { React, useContext } from "react";
 import { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import user from "../Images/user-picture.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import LoginServices from "../../Services/LoginServices";
 
@@ -41,8 +43,13 @@ const Login = () => {
     let emailFlag = true;
     let passwordFlag = true;
 
+    let regex = /[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.[a-zA-Z]+/;
+
     if (email === "" || email === null) {
-      setEmailErr("Please Enter Email");
+      setEmailErr("Please Enter Email Id");
+      emailFlag = false;
+    } else if (regex.test(email) === false) {
+      setEmailErr("Email is in wrong format. Example: abc@gmail.com");
       emailFlag = false;
     }
 
@@ -69,6 +76,7 @@ const Login = () => {
         .then((response) => {
           setEmail("");
           setPassword("");
+          toast.success("Login Success");
           navigate("/admindashboard");
 
           // if (response.data.role === "ADMIN") {
@@ -91,6 +99,7 @@ const Login = () => {
         })
         .catch((error) => {
           setErrorMsg(error.response.data);
+          toast.error("Incorrect Details entered");
         });
     }
   };
@@ -148,10 +157,10 @@ const Login = () => {
                 </div>
             </div> */}
 
-      <div className="container-fluid w-50 mt-5 login-component">
+      <div className="container-fluid w-50 mt-5 login-component" >
         <div
           className="row border rounded"
-          style={{ backgroundColor: "LightGray" }}
+          style={{ backgroundColor: "lightBlue" }}
         >
           <div className="col-4 ">
             <img
@@ -171,7 +180,7 @@ const Login = () => {
                 <form onSubmit={onLoginSubmit}>
                   <div className="form-floating mb-3">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control form-control-sm"
                       value={email}
                       onChange={emailTextHandler}
@@ -202,6 +211,7 @@ const Login = () => {
                     </button>
                   </div>
                 </form>
+                <ToastContainer />
               </div>
             </div>
           </div>
