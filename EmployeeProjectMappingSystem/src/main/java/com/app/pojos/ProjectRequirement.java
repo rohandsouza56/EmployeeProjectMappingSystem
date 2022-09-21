@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -34,11 +35,13 @@ public class ProjectRequirement {
 	private int requirementId;
 	
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="Project_Id")
 	private Projects projects;
 	
 	
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="Technology_Id")
 	private Technology technology;
 	

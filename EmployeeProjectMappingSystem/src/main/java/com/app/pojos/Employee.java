@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -69,8 +72,8 @@ public class Employee implements Serializable {
 	@JoinColumn(name="Department_Id")
 	private Departments departments;
 	
-	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL)
-	@JsonIgnore
+	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	private List<Skills> skills;
 	
@@ -88,6 +91,7 @@ public class Employee implements Serializable {
 	
 	
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="Roll_Id")
 	private Roles roles;
 

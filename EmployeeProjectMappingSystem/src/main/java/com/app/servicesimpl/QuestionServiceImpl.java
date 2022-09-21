@@ -45,5 +45,11 @@ public class QuestionServiceImpl implements IQuestionService {
 		
 		return questionRepoditory.findAll();
 	}
+
+	@Override
+	public List<Question> getAllQuestionsByTechnologyId(int technologyId) {
+		List<Question> list=questionRepoditory.getAllQuestionByTechnologyId(technologyId);
+		return list;
+	}
 }
 

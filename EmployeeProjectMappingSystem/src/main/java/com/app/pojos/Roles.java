@@ -13,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,13 +37,13 @@ public class Roles {
 	@Column(name="Roll_Name")
 	private String rollName;
 	
-	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	Set<Employee> employee;
 	
-	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	Set<Admin> admin;
 }

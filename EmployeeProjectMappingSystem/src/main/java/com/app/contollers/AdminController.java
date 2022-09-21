@@ -277,6 +277,15 @@ public class AdminController {
 			return ResponseEntity.of(Optional.of(list));
 		}
 		
+		@GetMapping("/questions/bytechnologyid/{technologyId}")
+		public ResponseEntity<?> getAllQuestionsByTechnologyId(@PathVariable int technologyId){
+			List<Question> list = questionService.getAllQuestionsByTechnologyId(technologyId);
+			if(list.size()<=0)
+				return ResponseEntity.notFound().build();
+			return ResponseEntity.of(Optional.of(list));
+		}
+		
+		
 		@PostMapping("/question/add")
 		public ResponseEntity<?> addQuestion(@RequestBody Question question){
 			return ResponseEntity.ok().body(questionService.addQuestion(question));

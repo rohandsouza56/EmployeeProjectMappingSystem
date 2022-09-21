@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -38,6 +39,7 @@ public class Admin {
 	
 	
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="Roll_Id")
 	private Roles roles;
 }

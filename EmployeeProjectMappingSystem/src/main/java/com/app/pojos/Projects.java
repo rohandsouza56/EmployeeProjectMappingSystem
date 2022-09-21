@@ -20,6 +20,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,14 +61,14 @@ public class Projects{
 	private int managerId;
 	
 //	@Fetch(value = FetchMode.SUBSELECT)
-	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	Set<Departments> departments;
 	
 
-	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	Set<ProjectRequirement> projectRequirement;
 	
