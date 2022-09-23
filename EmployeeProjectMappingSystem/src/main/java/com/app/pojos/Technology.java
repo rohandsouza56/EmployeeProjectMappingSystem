@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,12 +38,12 @@ public class Technology {
 	private String technologyName;
 	
 	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonManagedReference
 	@ToString.Exclude
 	private List<Question> question;
 	
 	@OneToMany(mappedBy="technology",cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonManagedReference
 	@ToString.Exclude
 	private List<ProjectRequirement> projectRequirement;
 	

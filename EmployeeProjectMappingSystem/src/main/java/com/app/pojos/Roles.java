@@ -38,12 +38,12 @@ public class Roles {
 	private String rollName;
 	
 	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonManagedReference
+	@JsonIgnore
 	@ToString.Exclude
 	Set<Employee> employee;
 	
-	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonManagedReference
+	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	@ToString.Exclude
 	Set<Admin> admin;
 }

@@ -91,7 +91,7 @@ public class Employee implements Serializable {
 	
 	
 	@ManyToOne
-	@JsonBackReference
+//	@JsonBackReference
 	@JoinColumn(name="Roll_Id")
 	private Roles roles;
 

@@ -39,7 +39,6 @@ public class Admin {
 	
 	
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name="Roll_Id")
 	private Roles roles;
 }

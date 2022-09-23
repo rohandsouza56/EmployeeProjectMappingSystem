@@ -44,6 +44,9 @@ public class Question {
 	@Column(name="Question")
 	private String question;
 	
+	@Column(name="marks")
+	private int marks;
+	
 	
 	
 	@OneToMany(mappedBy="question" ,fetch=FetchType.EAGER)
