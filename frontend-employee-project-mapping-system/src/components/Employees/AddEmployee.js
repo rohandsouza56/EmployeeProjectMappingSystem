@@ -137,13 +137,9 @@ const AddEmployees = () => {
     if (password === "" || password === null) {
       setPasswordErr("Please Enter Password");
       flag = false;
-    } 
-    else if(password.length<8 || password.length>15){
-      setPasswordErr(
-        "Password should contain characters between 8 to 15"
-      );
-    }
-    else if (passwordRegex.test(password) === false) {
+    } else if (password.length < 8 || password.length > 15) {
+      setPasswordErr("Password should contain characters between 8 to 15");
+    } else if (passwordRegex.test(password) === false) {
       setPasswordErr(
         "Password should have 1 capital letter, 1 special character and a number"
       );
@@ -211,7 +207,7 @@ const AddEmployees = () => {
           <p className="text-50 text-success mb-3 dashboard-data-section-para">
             Please fill up the form
           </p>
-          <div className="border border-1 rounded">
+          <div className="">
             <div className="m-3">
               <form onSubmit={addEmployeeDetails}>
                 <div className="row">

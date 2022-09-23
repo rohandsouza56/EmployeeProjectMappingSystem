@@ -134,7 +134,7 @@ const AddProjectRequirment = () => {
         <p className="text-50 text-success mb-3 dashboard-data-section-para">
           Please enter Project and Technology Id's
         </p>
-        <div className="border border-1 rounded">
+        <div className="border border-0 rounded">
           <div className="m-3">
             <form onSubmit={onSubmit} className="department-form">
               <div className="form-floating mb-3">

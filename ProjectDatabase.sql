@@ -54,6 +54,7 @@ Create Table Question
 Question_Id int primary key  auto_increment,
 Technology_Id int,
 Question varchar(200),
+marks tinyint,
 constraint fk_Quiz_Technology_Id_ foreign key (Technology_Id) references Technology(Technology_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

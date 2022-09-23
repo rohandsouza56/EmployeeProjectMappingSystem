@@ -8,7 +8,14 @@ import AddProjectMapping from "../Projects/ProjectMapping";
 import AddResources from "../Resources/AddResource";
 import Admin from "./Admin";
 
-import { FaUserAlt, FaBlackTie, FaFileImport } from "react-icons/fa";
+import {
+  FaUserAlt,
+  FaBlackTie,
+  FaFileImport,
+  FaSourcetree,
+  FaMapSigns,
+  FaLightbulb,
+} from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
 import { GrTechnology } from "react-icons/gr";
 import { AiTwotoneHome } from "react-icons/ai";
@@ -272,7 +279,7 @@ const AdminDashboard = () => {
   return (
     <>
       <div className="row g-1  w-100 dashboard-section">
-        <div className=" dashboard-sidebar bg-light col-md-3 col-sm-3 col-5 bg-light p-3">
+        <div className="dashboard-sidebar col-md-2 col-sm-2 col-4 p-2">
           <a
             href="#"
             className="hello-text d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
@@ -291,92 +298,80 @@ const AdminDashboard = () => {
           </a>
           <hr />
           <ul className="nav nav-pills flex-column mb-auto sidebar-list">
-            <b>
-              <li onClick={showHome} style={{ cursor: "context-menu" }}>
-                <AiTwotoneHome
-                  className="sidebar-list-icon"
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Home</span>
-              </li>
+            <li onClick={showHome} style={{ cursor: "context-menu" }}>
+              <AiTwotoneHome
+                size={22}
+                className="sidebar-list-icon"
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Home</span>
+            </li>
 
-              <li onClick={showAddProject} style={{ cursor: "context-menu" }}>
-                <BiAtom
-                  size={22}
-                  className="sidebar-list-icon"
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Projects</span>
-              </li>
+            <li onClick={showAddProject} style={{ cursor: "context-menu" }}>
+              <BiAtom
+                size={22}
+                className="sidebar-list-icon"
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Projects</span>
+            </li>
 
-              <li onClick={showAddEmployee} style={{ cursor: "context-menu" }}>
-                <FaBlackTie
-                  size={22}
-                  className="sidebar-list-icon"
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Employee</span>
-              </li>
+            <li onClick={showAddEmployee} style={{ cursor: "context-menu" }}>
+              <FaBlackTie
+                size={22}
+                className="sidebar-list-icon"
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Employee</span>
+            </li>
 
-              <li
-                onClick={showAddDepartment}
-                style={{ cursor: "context-menu" }}
-              >
-                <FaBlackTie
-                  size={22}
-                  className="sidebar-list-icon"
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Department</span>
-              </li>
+            <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
+              <FaBlackTie
+                size={22}
+                className="sidebar-list-icon"
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Department</span>
+            </li>
 
-              <li
-                onClick={showAddTechnology}
-                style={{ cursor: "context-menu" }}
-              >
-                <GrTechnology
-                  size={22}
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Technology</span>
-              </li>
+            <li onClick={showAddTechnology} style={{ cursor: "context-menu" }}>
+              <FaLightbulb
+                size={22}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Technology</span>
+            </li>
 
-              <li onClick={showAddResource} style={{ cursor: "context-menu" }}>
-                <GrTechnology
-                  size={20}
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Resource</span>
-              </li>
+            <li onClick={showAddResource} style={{ cursor: "context-menu" }}>
+              <FaSourcetree
+                size={20}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Resource</span>
+            </li>
 
-              <li
-                onClick={showAddProjectRequirment}
-                style={{ cursor: "context-menu" }}
-              >
-                <FaFileImport
-                  size={22}
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Project Requirements</span>
-              </li>
+            <li
+              onClick={showAddProjectRequirment}
+              style={{ cursor: "context-menu" }}
+            >
+              <FaFileImport
+                size={22}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Project Requirements</span>
+            </li>
 
-              <li onClick={showMapping} style={{ cursor: "context-menu" }}>
-                <FaFileImport
-                  size={22}
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Employee Project Mapping</span>
-              </li>
-            </b>
+            <li onClick={showMapping} style={{ cursor: "context-menu" }}>
+              <FaMapSigns
+                size={22}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Employee Project Mapping</span>
+            </li>
           </ul>
-         
         </div>
 
-        <div
-          className="col-md-9 col-sm-9 col-7 dashboard-data-section"
-          
-          style={{ backgroundColor: "#b0c4de" }}
-        >
+        <div className="col-md-10 col-sm-10 col-8 dashboard-data-section">
           {home && <Home />}
           {addproject && <AddProjects />}
           {addEmployee && <AddEmployees />}

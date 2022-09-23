@@ -22,47 +22,44 @@ import ExtraInfo from "./components/Home/ExtraInfo";
 import Copyright from "./components/Home/Copyright";
 import AddResume from "./components/Employees/AddResume";
 import ProjectListEmployee from "./components/Projects/ProjectListEmployee";
-
-
+import EmployeeLogin from "./components/Login/EmployeeLogin";
+import EmployeeProfile from "./components/Employees/EmployeeProfile";
+import QuizComp from "./components/Quiz/Quiz"
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
+    <div className="App">
+      <BrowserRouter>
+        <Header />
 
-      <Routes>
-        <Route path="/login" element={<Login />} />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/addproject" element={<AddProjects />} />
+          <Route path="/projectlist" element={<ProjectList />} />
+          <Route path="/department" element={<AddDepartment />} />
+          <Route path="/technology" element={<AddTechnology />} />
+          <Route path="/employee" element={<AddEmployees />} />
+          <Route path="/skill" element={<AddSkills />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/employeedashboard" element={<EmployeeDashboard />} />
+          <Route path="/addresource" element={<AddResources />} />
+          <Route path="/projectmapping" element={<AddProjectMapping />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<AddResume />} />
+          <Route path="/empproject" element={<ProjectListEmployee />} />
+          <Route path="/employeelogin" element={<EmployeeLogin />} />
+          <Route path="/employeeprofile" element={<EmployeeProfile />} />
+          <Route path="/quiz" element={<QuizComp />} />
+          {/* <Route path="/teampage" element={<TeamPage/>} /> */}
+        </Routes>
 
-        <Route path="/addproject" element={<AddProjects />} />
-        <Route path="/projectlist" element={<ProjectList />} />
-        <Route path="/department" element={<AddDepartment />} />
-        <Route path="/technology" element={<AddTechnology />} />
-        <Route path="/employee" element={<AddEmployees />} />
-        <Route path="/skill" element={<AddSkills />} />
-        <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route path="/employeedashboard" element={<EmployeeDashboard />} />
-        <Route path="/addresource" element={<AddResources />} />
-        <Route path="/projectmapping" element={<AddProjectMapping />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/resume" element={<AddResume/>} />
-        <Route path="/empproject" element={<ProjectListEmployee/>} />
-        {/* <Route path="/teampage" element={<TeamPage/>} /> */}
-      </Routes>
-
-      
-
-    
-      
-        
-      <footer className="footer section ">
-        <ExtraInfo />
-        <Copyright />
-      </footer>
-      
-    
-  
-    </BrowserRouter>
+        <footer className="footer section ">
+          <ExtraInfo />
+          <Copyright />
+        </footer>
+      </BrowserRouter>
+    </div>
   );
 };
 

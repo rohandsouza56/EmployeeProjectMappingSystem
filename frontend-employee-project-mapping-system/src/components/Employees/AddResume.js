@@ -58,7 +58,7 @@ const AddResume = () => {
         <p className="text-50 text-success mb-3 dashboard-data-section-para">
           Please enter Resume Details Here
         </p>
-        <div className="border border-1 rounded">
+        <div className="">
           <div className="m-3">
             <form onSubmit={addResumeSubmit} className="department-form">
               <div class="mb-3">

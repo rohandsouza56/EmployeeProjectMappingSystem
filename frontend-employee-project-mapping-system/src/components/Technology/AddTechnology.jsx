@@ -16,7 +16,7 @@ const AddTechnology = () => {
 
   const [techlogies, setTechnologies] = useState([]);
 
-   //--------------for modal--------------
+  //--------------for modal--------------
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -113,7 +113,7 @@ const AddTechnology = () => {
   };
 
   return (
-    <div className="container-fluid w-50 mt-5 add-qualification-details form-background">
+    <div className="container-fluid w-50 mt-5 form-background">
       <div className="m-3">
         <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
           Add Technology
@@ -121,7 +121,7 @@ const AddTechnology = () => {
         <p className="text-50 text-success mb-3 dashboard-data-section-para">
           Please enter Technology Details Here
         </p>
-        <div className="border border-1 rounded">
+        <div className="">
           <div className="m-3">
             <form onSubmit={addTechnologySubmit} className="department-form">
               <div className="form-floating mb-3">
@@ -157,11 +157,10 @@ const AddTechnology = () => {
           View Technology
         </Button>
       </div>
-      
+
       <hr />
 
       {/* ----------------------modal ---------------- */}
-      
 
       <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
@@ -169,36 +168,36 @@ const AddTechnology = () => {
         </Modal.Header>
         <Modal.Body>
           <Table striped border hover>
-          <thead className="thead-dark">
-            <tr>
-              <th>Technology Id</th>
-              <th>Technology Name</th>
-              <th>Resource</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {techlogies.map((technology) => (
-              <tr key={technology.technologyId}>
-                <td>{technology.technologyId}</td>
-                <td>{technology.technologyName}</td>
-                <td>{technology.resourceId}</td>
-                <td>
-                  <center>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => {
-                        handleDelete(technology.technologyId);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </center>
-                </td>
+            <thead className="thead-dark">
+              <tr>
+                <th>Technology Id</th>
+                <th>Technology Name</th>
+                <th>Resource</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-       </Table>
+            </thead>
+            <tbody>
+              {techlogies.map((technology) => (
+                <tr key={technology.technologyId}>
+                  <td>{technology.technologyId}</td>
+                  <td>{technology.technologyName}</td>
+                  <td>{technology.resourceId}</td>
+                  <td>
+                    <center>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          handleDelete(technology.technologyId);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </center>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Modal.Body>
         <Modal.Footer>
           <Button varient="primary" onClick={handleClose}>
@@ -207,9 +206,8 @@ const AddTechnology = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-        <ToastContainer />
-      </div>
-    
+      <ToastContainer />
+    </div>
   );
 };
 

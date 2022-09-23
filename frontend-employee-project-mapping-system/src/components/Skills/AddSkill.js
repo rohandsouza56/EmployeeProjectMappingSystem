@@ -1,6 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import AdminServices from "../../Services/AdminServices";
+import EmployeeService from "../../Services/EmployeeService";
+import { Button, Modal, Table } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../../App.css";
 
 const AddSkills = () => {
   const [skillId, setSkillId] = useState("");
@@ -18,10 +22,34 @@ const AddSkills = () => {
   const [certificationLinkErr, setCertificationLinkErr] = useState("");
   const [certificatePdfErr, setCertificatePdfErr] = useState("");
   const [technologyIdErr, setTechnologyIdErr] = useState("");
+  
+  const [successMsg, setSuccessMsg] = useState("");
+   const [errorMsg, setErrorMsg] = useState("");
 
-  const [error, setError] = useState("");
 
-  const [skills, setSkills] = useState([]);
+
+  //--------------for modal--------------
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    getAllSkills();
+    setShow(true);
+  };
+  const [allSkills, setAllSkills] = useState([]);
+  //-------------------------------------
+
+
+  const getAllSkills = () => {
+    console.log(localStorage.getItem("jwtToken"));
+    EmployeeService.getAllSkills()
+      .then((response) => {
+        setAllSkills(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   let skillIdHandler = (event) => {
     setSkillId(event.target.value);
@@ -73,7 +101,14 @@ const AddSkills = () => {
   };
 
   let validation = () => {
-    let flag = true;
+    setSkillIdErr("");
+      setSkillErr("");
+      setEmployeeIdErr("");
+      setDateOfCompletionErr("");
+      setCertificationLinkErr("");
+      setCertificatePdfErr("");
+      setTechnologyIdErr("");
+      let flag = true;
 
     if (skillId === "" || skillId === null) {
       setSkillIdErr("Please select correct Skill Id");
@@ -111,53 +146,26 @@ const AddSkills = () => {
     if (flag) return true;
   };
 
-  let handleDelete = (skillId) => {
-    AdminServices.deleteSkills(skillId)
-      .then((resp) => {
-        console.log(resp.data);
-        setTimeout(() => {
-          clearTimeout();
-        }, 3000);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+ 
 
-  let onAddSkillsSubmit = (event) => {
+  let AddSkillsSubmit = (event) => {
     event.preventDefault();
 
-    if (validation()) {
-      setSkillIdErr("");
-      setSkillErr("");
-      setEmployeeIdErr("");
-      setDateOfCompletionErr("");
-      setCertificationLinkErr("");
-      setCertificatePdfErr("");
-      setTechnologyIdErr("");
-      console.log("...." + skillId);
-      let skill = {
-        skillId: skillId,
-        skill: skill,
-        employeeId: employeeId,
-        dateOfCompletion: dateOfCompletion,
-        certificationLink: certificationLink,
-        certificatePdf: certificatePdf,
-        technologyId: technologyId,
+    if (validation()=== true) {
+     
+      let skillDetails= {
+         skillId,
+         skill,
+          employeeId,
+         dateOfCompletion,
+         certificationLink,
+         certificatePdf,
+         technologyId,
       };
-      console.log(skill);
+      console.log(skillDetails);
 
-      let skillDetails = {
-        skillId,
-        skill,
-        employeeId,
-        dateOfCompletion,
-        certificationLink,
-        certificatePdf,
-        technologyId,
-      };
 
-      AdminServices.addSkills(skillDetails)
+      EmployeeService.addNewSkills(skillDetails)
         .then((response) => {
           setSkillIdErr("");
           setSkillErr("");
@@ -166,26 +174,42 @@ const AddSkills = () => {
           setCertificationLinkErr("");
           setCertificatePdfErr("");
           setTechnologyIdErr("");
+           setErrorMsg("");
+          toast.success("Skills Added Successfully");
         })
         .catch((err) => {
           console.log("Error found", err);
-          setError("Something went wrong");
+          setErrorMsg("Error");
+          setSuccessMsg("");
+          toast.success("Something Went Wrong");
         });
     }
   };
 
+   let handleDelete = (skillId) => {
+    EmployeeService.deleteSkills(skillId)
+      .then((resp) => {
+        console.log(resp.data);
+        getAllSkills();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
+    <>
     <div className="container-fluid w-50 mt-5 add-qualification-details form-background">
       <div className="m-3">
         <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
-          Skills
+         Add  Skills
         </h2>
         <p className="text-50 text-success mb-3 dashboard-data-section-para">
           Please enter skill Details
         </p>
         <div className="border border-1 rounded">
           <div className="m-3">
-            <form onSubmit={onAddSkillsSubmit} className="department-form">
+            <form onSubmit={AddSkillsSubmit} className="department-form">
               <div className="form-floating mb-3">
                 <input
                   type="number"
@@ -270,20 +294,38 @@ const AddSkills = () => {
 
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">
-                  {" "}
-                  Add Skills{" "}
+                  
+                  Add Skills
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <span className="text-danger">{error}</span>
+        <span className="text-danger">{errorMsg}</span>
+          <span className="text-success">{successMsg}</span>
       </div>
 
-      <hr />
-      <div className="table-responsive">
-        <table className="table table-bordered table-striped">
-          <thead className="thead-dark">
+       <div className="modalButtonDiv">
+          <Button
+            className="modalButton bg-info"
+            varient="info"
+            onClick={handleShow}
+          >
+            View Skills
+          </Button>
+        </div>
+      </div>
+
+      
+      
+
+      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Skills</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <table striped border hover>
+          <thead>
             <tr>
               <th>Skill Id</th>
               <th>Skill</th>
@@ -296,33 +338,42 @@ const AddSkills = () => {
             </tr>
           </thead>
           <tbody>
-            {skills.map((skill) => (
-              <tr key={skills.skillId}>
-                <td>{skills.skill}</td>
-                <td>{skills.employeeId}</td>
-                <td>{skills.dateOfCompletion}</td>
-                <td>{skills.certificationLink}</td>
-                <td>{skills.certificatePdf}</td>
-                <td>{skills.technologyId}</td>
+            {allSkills.map((allSkill) => (
+              <tr key={allSkill.skillId}>
+                <td>{allSkill.skill}</td>
+                <td>{allSkill.employeeId}</td>
+                <td>{allSkill.dateOfCompletion}</td>
+                <td>{allSkill.certificationLink}</td>
+                <td>{allSkill.certificatePdf}</td>
+                <td>{allSkill.technologyId}</td>
                 <td>
-                  <center>
+                 
                     <button
-                      className="btn1 primary1 rounded"
-                      onClick={() => {
-                        handleDelete(skills.skillId);
-                      }}
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(allSkill.skillId)}
+                      style={{ marginLeft: "10px" }}
                     >
                       Delete
                     </button>
-                  </center>
+                 
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button varient="primary" onClick={handleClose}>
+            {" "}
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer/>
+      
+    </>
   );
+  
 };
 
 export default AddSkills;

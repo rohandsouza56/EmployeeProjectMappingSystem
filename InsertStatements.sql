@@ -60,27 +60,6 @@ values(1,1),
 select * from Project_Requirment;
 
 
-desc Question;
-insert into Question (Technology_Id,Question)
-values(1,"Question1"),
-(2,"Question2"),
-(3,"Question3"),
-(4,"Question4"),
-(5,"Question5"),
-(6,"Question6");
-select *from Question;
-
-
-
-insert into Options (Question_Id,`Option`,isTrue)
-values(1,"Option 1",true),
-(2,"Option 1",true),
-(3,"Option 1",true),
-(4,"Option 1",true),
-(5,"Option 1",true),
-(6,"Option 1",true);
-select *from Options;
-
 
 insert into Roles (Roll_Name)
 values("Employee"),
@@ -98,9 +77,13 @@ select *from employee;
 
 
 insert into `Admin` (Email,`Password`,Roll_Id)
-values("rohan@gmail.com","Rohan123",3),
-("sachin@gmail.com","Sachin123",3);
+values("rohan@gmail.com","$2a$10$thyM/gCbXydZ9KSml.UA3ejMjQOHpXuRNvu5rowMg/DkY06TY1Xk6",3),
+("sachin@gmail.com","$2a$10$ehNVZyoAmNNChPytW87V0eNmK5xdGniEj5AN2NhY7k/S6wmXzvy2.",3),
+("sanket@gmail.com","$2a$10$.TF0128baaB72azUJ43j/OLD.VIJdJwmLPcF9Tp7LfVurXYp5FRRe",3),
+("sakshi@gmail.com","$2a$10$6vU0RbHStBBJjNg4vTKEvOGXMUs5HF0zcxlHKrkIk1LM/gIe2sega",3);
 Select * from `Admin`;
+
+truncate table `Admin`;
 
 -- ALTER TABLE `Admin`
 -- Modify COLUMN `password` varchar(255);

@@ -12,25 +12,25 @@ import "./ExtraInfo.css";
 
 const ExtraInfo = () => {
   const navigate = useNavigate();
-  let showHome=()=>{
+  let showHome = () => {
     navigate("/");
-  }
-  let showColleges=()=>{
+  };
+  let showColleges = () => {
     navigate("/colleges");
-  }
+  };
 
-  let showCourses=()=>{
+  let showCourses = () => {
     navigate("/courses");
-  }
+  };
 
-  let showAbout = () =>{
+  let showAbout = () => {
     navigate("/about");
-  }
-  let showEvent = () =>{
+  };
+  let showEvent = () => {
     navigate("/events");
-  }
+  };
   return (
-    <section className="container-fluid extra-info-section text-white">
+    <section className=" extra-info-section text-white ">
       <div className="extra-info-section-left">
         <h3>About Us</h3>
         <ul className="extra-info-section-list">
@@ -72,36 +72,44 @@ const ExtraInfo = () => {
           <li onClick={showCourses}>
             <AiOutlineRight /> Contact Us
           </li>
-          
         </ul>
       </div>
 
       <div className="extra-info-section-right">
         <h3>Opening Hours</h3>
         <div className="extra-info-section-right-inner">
-            <ul className="extra-info-section-list time-table">
-              <li>
-                <span>Sat-Sun</span>
-                <span>09am - 05pm</span>
-              </li>
-              <li>
-                <span>Mon-Tue</span>
-                <span>09am - 05pm</span>
-              </li>
-              <li>
-                <span>Wed</span>
-                <span>09am - 05pm</span>
-              </li>
-              <li>
-                <span>Thu</span>
-                <span>09am - 05pm</span>
-              </li>
-              <li>
-                <span>Fri</span> <span style={{backgroundColor:'var(--green-color)',padding:'3px 7px', borderRadius:'10px'}}>Closed</span>
-              </li>
-            </ul>
-          </div>
+          <ul className="extra-info-section-list time-table">
+            <li>
+              <span>Sat-Sun</span>
+              <span>09am - 05pm</span>
+            </li>
+            <li>
+              <span>Mon-Tue</span>
+              <span>09am - 05pm</span>
+            </li>
+            <li>
+              <span>Wed</span>
+              <span>09am - 05pm</span>
+            </li>
+            <li>
+              <span>Thu</span>
+              <span>09am - 05pm</span>
+            </li>
+            <li>
+              <span>Fri</span>{" "}
+              <span
+                style={{
+                  backgroundColor: "var(--green-color)",
+                  padding: "3px 7px",
+                  borderRadius: "10px",
+                }}
+              >
+                Closed
+              </span>
+            </li>
+          </ul>
         </div>
+      </div>
     </section>
   );
 };

@@ -31,7 +31,6 @@ const AddDepartment = () => {
   const [allDepartment, setAllDepartment] = useState([]);
   //-------------------------------------
 
-
   const getAllDepartments = () => {
     AdminServices.getAllDepartments(departmentId)
       .then((response) => {
@@ -42,9 +41,7 @@ const AddDepartment = () => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   let onProjectIdHandler = (event) => {
     setProjectId(event.target.value);
@@ -100,21 +97,19 @@ const AddDepartment = () => {
   };
 
   let handleDelete = (departmentId) => {
-    
     AdminServices.deleteDepartment(departmentId)
       .then((resp) => {
         console.log(resp.data);
-        getAllDepartments();        
+        getAllDepartments();
       })
       .catch((err) => {
         console.log(err);
       });
-   
   };
 
   let onAddDepartmentSubmit = (event) => {
     event.preventDefault();
-    
+
     if (validation()) {
       setDepartmentIdErr("");
       setProjectIdErr("");
@@ -140,9 +135,7 @@ const AddDepartment = () => {
           setMaximumStrength("");
           setSuccessMsg("Department Details Added Successfully");
           setErrorMsg("");
-           toast.success("Department Details Added Successfully");
-
-          
+          toast.success("Department Details Added Successfully");
         })
         .catch((error) => {
           console.log(error);
@@ -150,7 +143,6 @@ const AddDepartment = () => {
           toast.success("Something Went Wrong");
         });
     }
-    
   };
 
   return (
@@ -162,7 +154,7 @@ const AddDepartment = () => {
         <p className="text-50 text-success mb-3 dashboard-data-section-para">
           Please enter Department Details
         </p>
-        <div className="border border-1 rounded">
+        <div className="border border-0 rounded">
           <div className="m-3">
             <form onSubmit={onAddDepartmentSubmit} className="department-form">
               <div className="form-floating mb-3">
@@ -222,10 +214,9 @@ const AddDepartment = () => {
         </div>
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
-        
       </div>
 
-       <div className="modalButtonDiv">
+      <div className="modalButtonDiv">
         <Button
           className="modalButton bg-info"
           varient="info"
@@ -235,8 +226,6 @@ const AddDepartment = () => {
         </Button>
       </div>
 
-      
-
       {/* ----------------------modal ---------------- */}
 
       <hr />
@@ -245,41 +234,40 @@ const AddDepartment = () => {
           <Modal.Title>Department List</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <table className="table table-bordered table-striped">
-          <thead className="thead-dark">
-            <tr>
-              <th>Department Id</th>
-              <th>Project Id</th>
-              <th>Name of Department</th>
-              <th>Current Strength</th>
-              <th>Max Strength</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {departments.map((department) => (
-              <tr key={department.departmentId}>
-                <td>{department.projectId}</td>
-                <td>{department.name}</td>
-                <td>{department.currentStrength}</td>
-                <td>{department.maximumStrength}</td>
-                <td>
-                  <center>
-                    <button
-                      className="btn1 primary1 rounded"
-                      onClick={() => {
-                        handleDelete(department.departmentId);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </center>
-                </td>
+          <table className="table table-bordered table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th>Department Id</th>
+                <th>Project Id</th>
+                <th>Name of Department</th>
+                <th>Current Strength</th>
+                <th>Max Strength</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      
+            </thead>
+            <tbody>
+              {departments.map((department) => (
+                <tr key={department.departmentId}>
+                  <td>{department.projectId}</td>
+                  <td>{department.name}</td>
+                  <td>{department.currentStrength}</td>
+                  <td>{department.maximumStrength}</td>
+                  <td>
+                    <center>
+                      <button
+                        className="btn1 primary1 rounded"
+                        onClick={() => {
+                          handleDelete(department.departmentId);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </center>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </Modal.Body>
         <Modal.Footer>
           <Button varient="primary" onClick={handleClose}>
@@ -289,8 +277,7 @@ const AddDepartment = () => {
         </Modal.Footer>
       </Modal>
       <ToastContainer />
-      </div>
-    
+    </div>
   );
 };
 

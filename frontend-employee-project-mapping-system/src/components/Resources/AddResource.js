@@ -25,7 +25,6 @@ const AddResources = () => {
   const [allResource, setAllResources] = useState([]);
   //-------------------------------------
 
-
   const getAllResources = () => {
     AdminServices.getAllResources()
       .then((response) => {
@@ -114,7 +113,7 @@ const AddResources = () => {
           setDescription("");
           setTechnologyId("");
           getAllResources();
-      
+
           toast.success("Resources Details Added Successfully");
         })
         .catch((error) => {
@@ -125,7 +124,6 @@ const AddResources = () => {
   };
 
   let handleDelete = (resourceId) => {
-    
     AdminServices.deleteResource(resourceId)
       .then((resp) => {
         console.log(resp.data);
@@ -141,7 +139,6 @@ const AddResources = () => {
 
   return (
     <>
-      
       <div className="container-fluid w-50 mt-5 add-details-section form-background">
         <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase dashboard-data-section-heading">
@@ -150,7 +147,7 @@ const AddResources = () => {
           <p className="text-50 text-success mb-3 dashboard-data-section-para">
             Please fill up the form
           </p>
-          <div className="border border-1 rounded">
+          <div className="border border-0 rounded">
             <div className="m-3">
               <form onSubmit={addResourceDetails}>
                 <div className="form-floating mb-3">
@@ -207,69 +204,67 @@ const AddResources = () => {
           </div>
 
           <div className="modalButtonDiv">
-        <Button
-          className="modalButton bg-info"
-          varient="info"
-          onClick={handleShow}
-        >
-          View Resources
-        </Button>
-      </div>
+            <Button
+              className="modalButton bg-info"
+              varient="info"
+              onClick={handleShow}
+            >
+              View Resources
+            </Button>
+          </div>
         </div>
 
         <hr />
-         {/* ----------------------modal ---------------- */}
-      
+        {/* ----------------------modal ---------------- */}
 
-      <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
-        <Modal.Header closeButton>
-          <Modal.Title>Resource List</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <table striped border hover>
-            <thead className="thead-dark">
-              <tr>
-                <th>#</th>
-                <th>Technology Name</th>
-                <th>Description</th>
-                <th>Resource Link</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {resources.map((resource) => (
-                <tr key={resource.resourceId}>
-                  <td>{resource.resourceId}</td>
-                  <td>Tech Name</td>
-                  <td>{resource.description}</td>
-                  <td>{resource.link}</td>
-                  <td>
-                    <center>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => {
-                          handleDelete(resource.resourceId);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </center>
-                  </td>
+        <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
+          <Modal.Header closeButton>
+            <Modal.Title>Resource List</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <table striped border hover>
+              <thead className="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Technology Name</th>
+                  <th>Description</th>
+                  <th>Resource Link</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {resources.map((resource) => (
+                  <tr key={resource.resourceId}>
+                    <td>{resource.resourceId}</td>
+                    <td>Tech Name</td>
+                    <td>{resource.description}</td>
+                    <td>{resource.link}</td>
+                    <td>
+                      <center>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => {
+                            handleDelete(resource.resourceId);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </center>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Modal.Body>
-        <Modal.Footer>
-          <Button varient="primary" onClick={handleClose}>
-            {" "}
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <ToastContainer />
-        </div>
-      
+          <Modal.Footer>
+            <Button varient="primary" onClick={handleClose}>
+              {" "}
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <ToastContainer />
+      </div>
     </>
   );
 };

@@ -1,0 +1,30 @@
+.headpart {
+    background-color: rgb(170, 0, 255);
+    height: 100%;
+    border-top-left-radius: 40px;
+}
+
+
+.header {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffff;
+}
+
+.titles {
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.subtitles {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.container {
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 28px 4px rgba(0, 0, 0, 0.1);
+
+}
