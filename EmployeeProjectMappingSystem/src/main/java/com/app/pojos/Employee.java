@@ -3,6 +3,7 @@ package com.app.pojos;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -72,10 +73,10 @@ public class Employee implements Serializable {
 	@JoinColumn(name="Department_Id")
 	private Departments departments;
 	
-	@OneToMany(mappedBy="employee",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	@JsonManagedReference
+	@OneToMany(mappedBy="employee",cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)
+	@JsonIgnore
 	@ToString.Exclude
-	private List<Skills> skills;
+	private Set<Skills> skills;
 	
 	
 	@Lob

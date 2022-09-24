@@ -37,7 +37,6 @@ public class Question {
 	
 
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name="Technology_Id")
 	private Technology technology;
 	

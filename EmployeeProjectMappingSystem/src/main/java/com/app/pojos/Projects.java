@@ -60,7 +60,6 @@ public class Projects{
 	@Column(name="Manager_Id")
 	private int managerId;
 	
-//	@Fetch(value = FetchMode.SUBSELECT)
 	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	@ToString.Exclude

@@ -41,7 +41,7 @@ public class ProjectRequirement {
 	
 	
 	@ManyToOne
-	@JsonBackReference
+	//@JsonBackReference
 	@JoinColumn(name="Technology_Id")
 	private Technology technology;
 	

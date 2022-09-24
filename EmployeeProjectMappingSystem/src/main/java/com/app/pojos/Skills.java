@@ -40,7 +40,6 @@ public class Skills {
 	
 
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name="Employee_Id")
 	private Employee employee;
 	

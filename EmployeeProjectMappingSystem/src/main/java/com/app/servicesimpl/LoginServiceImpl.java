@@ -27,43 +27,35 @@ public class LoginServiceImpl implements UserDetailsService {
 	AdminRepository adminRepository;
 	
 	
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		employee.setPassword(passwordEncoder.encode(p));
-//		Employee employee = employeeRepository.findEmployeeByUsernameAndPassword(username, username)
-//		
-//		if ("abc".equals(username)) {
-//			return new User("abc", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
-//					new ArrayList<>());
-//		} else {
-//			throw new UsernameNotFoundException("User not found with username: " + username);
-//		}
-//		
-//		Employee employee = employeeRepository.findByUsername(username);
-//		System.out.println(employee.getUserName()+" "+employee.getPassword());
-//		System.out.println();
-//		if (employee == null) {
-//			throw new UsernameNotFoundException("Employee not found with username: " + username);
-//		}
-//		return new org.springframework.security.core.userdetails.User(employee.getUserName(), employee.getPassword(),
-//				new ArrayList<>());
-//	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
 
-		
+		System.out.println("Email: "+email);
 		Admin admin = adminRepository.findByEmail(email);
-		System.out.println(admin.getEmail()+" "+admin.getPassword());
+		
+		Employee employee = employeeRepository.findByEmail(email);
+		
+		//int roleId = Integer.parseInt(email.charAt(email.length()-1)+"");
+		//System.out.println("Role ID: "+roleId);
+		
+		//System.out.println(admin);
+		//System.out.println(employee);
+		
+		//System.out.println(admin.getEmail()+" "+admin.getPassword());
 		System.out.println();
-		if (admin == null) {
-			throw new UsernameNotFoundException("Admin not found with username: " + email);
+		if (admin == null && employee==null) {
+			throw new UsernameNotFoundException("User not found with username: " + email);
 		}
-		return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getPassword(),
-				new ArrayList<>());
+		else if(employee == null) {
+			return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getPassword(),
+					new ArrayList<>());
+		}else {
+			return new org.springframework.security.core.userdetails.User(employee.getEmail(), employee.getPassword(),
+					new ArrayList<>());
+		}
+		
 	}
 
 

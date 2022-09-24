@@ -35,23 +35,23 @@ public class LoginController {
 	@Autowired
 	private UserDetailsService jwtInMemoryUserDetailsService;
 	
-//	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-//	public ResponseEntity<?> createAuthenticationToken(@RequestBody Employee employee)
-//			throws Exception {
-//
-//		System.out.print(employee.getUserName()+"  "+employee.getPassword());
-//		
-//		authenticate(employee.getUserName(), employee.getPassword());
-//
-//		final UserDetails userDetails = jwtInMemoryUserDetailsService
-//				.loadUserByUsername(employee.getUserName());
-//
-//		final String token = jwtTokenUtil.generateToken(userDetails);
-//
-//		return ResponseEntity.ok(new JwtResponse(token));
-//	}
+	@RequestMapping(value = "/employee/authenticate", method = RequestMethod.POST)
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody Employee employee)
+			throws Exception {
+
+		//System.out.print(employee.getEmail()+"  "+employee.getPassword());
+		//System.out.println(employee.getRoles().getRollId());
+		authenticate(employee.getEmail(), employee.getPassword());
+
+		final UserDetails userDetails = jwtInMemoryUserDetailsService
+				.loadUserByUsername(employee.getEmail());
+
+		final String token = jwtTokenUtil.generateToken(userDetails);
+
+		return ResponseEntity.ok(new JwtResponse(token));
+	}
 	
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody Admin admin)
 			throws Exception {
 

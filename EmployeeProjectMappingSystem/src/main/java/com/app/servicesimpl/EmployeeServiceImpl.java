@@ -78,6 +78,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 //		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
 //		employee.setPassword(bcryptEncoder.encode(employee.getPassword()));
 		
+		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
+		employee.setPassword(bcryptEncoder.encode(employee.getPassword()));
 		return employeeRepository.save(employee);
 	}
 
