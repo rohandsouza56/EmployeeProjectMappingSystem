@@ -30,7 +30,7 @@ const ProjectListSub = ({ projectData }) => {
       <div className="col-5">
         <div className="card">
           <div className="card__title">Name: {projectData.name}</div>
-          console.log(projectData);
+
           <div className="card__body">
             <table className="table">
               <tr>

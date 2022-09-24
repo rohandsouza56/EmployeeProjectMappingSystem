@@ -4,7 +4,7 @@ const USER_API_SERVICE_URL = "http://localhost:8082";
 
 const login = (loginRequest) => {
   return axios
-    .post(USER_API_SERVICE_URL + "/authenticate", loginRequest)
+    .post(USER_API_SERVICE_URL + "/admin/authenticate", loginRequest)
     .then((response) => {
       let token = response.data.token;
       console.log(token);

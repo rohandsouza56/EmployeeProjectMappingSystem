@@ -70,3 +70,21 @@
 /* .App {
   background-image: url("./components/Images/image-2.jpg");
 } */
+.footer-copyright-section {
+  /* position: absolute;
+  bottom: 0; */
+  /* width: 100vw; */
+  padding: 5px 0;
+  border-top: 1px solid grey;
+}
+
+@media only screen and (max-width:576px) {
+
+  /* .navbar-logo{
+      width: 200px;
+  } */
+
+  .footer-copyright-section>div {
+    font-size: 10px !important;
+  }
+}

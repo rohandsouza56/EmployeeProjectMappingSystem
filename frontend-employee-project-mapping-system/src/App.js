@@ -24,7 +24,9 @@ import AddResume from "./components/Employees/AddResume";
 import ProjectListEmployee from "./components/Projects/ProjectListEmployee";
 import EmployeeLogin from "./components/Login/EmployeeLogin";
 import EmployeeProfile from "./components/Employees/EmployeeProfile";
-import QuizComp from "./components/Quiz/Quiz"
+import QuizComp from "./components/Quiz/Quiz";
+import HomePage from "./components/Home/HomePage";
+
 const App = () => {
   return (
     <div className="App">
@@ -51,6 +53,7 @@ const App = () => {
           <Route path="/employeelogin" element={<EmployeeLogin />} />
           <Route path="/employeeprofile" element={<EmployeeProfile />} />
           <Route path="/quiz" element={<QuizComp />} />
+          <Route path="/" element={<HomePage />} />
           {/* <Route path="/teampage" element={<TeamPage/>} /> */}
         </Routes>
 

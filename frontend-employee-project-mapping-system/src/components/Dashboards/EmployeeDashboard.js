@@ -119,7 +119,7 @@ const EmployeeDashboard = () => {
       <div className="row g-1  w-100 dashboard-section">
         {/* <div className="sidebar-toggler" ref={sidebarTogglerRef} onClick={showSidebar}><MdVerticalDistribute /></div>  */}
         <div
-          /*ref={sidebarRef}*/ className=" dashboard-sidebar bg-light col-md-3 col-sm-3 col-5 bg-light p-3"
+          /*ref={sidebarRef}*/ className=" dashboard-sidebar bg-light col-md-2 col-sm-2 col-4 bg-light p-3"
         >
           {/* <div id="close-sidebar" className="text-end" onClick={hideSidebar}><ImCross /></div> */}
 
@@ -193,31 +193,11 @@ const EmployeeDashboard = () => {
           </ul>
           <div style={{ marginTop: "150%" }} className="sidebar-login">
             <hr />
-            <div className="dropdown" style={{ cursor: "context-menu" }}>
-              <a
-                className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {/* <strong>{name}</strong> */}
-              </a>
-              <ul
-                className="dropdown-menu text-small shadow sidebar-list"
-                aria-labelledby="dropdownUser2"
-              >
-                {/* <li><Link to="/profile" className="dropdown-item" >Profile</Link></li>
-                            <li><hr className="dropdown-divider" /></li> */}
-                {/* <li>
-                                <button type="button" className="btn1 primary1 dropdown-item" onClick={logoutClick}>Logout</button>
-                            </li> */}
-              </ul>
-            </div>
           </div>
         </div>
 
         <div
-          /*ref={dashboardDataSectionRef}*/ className="col-md-9 col-sm-9 col-7 dashboard-data-section"
+          /*ref={dashboardDataSectionRef}*/ className="col-md-10 col-sm-10 col-8 dashboard-data-section"
           style={{ backgroundColor: "#d3ded6" }}
         >
           {employeeProfile && <EmployeeProfile />}
