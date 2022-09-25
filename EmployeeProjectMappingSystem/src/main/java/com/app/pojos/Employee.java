@@ -73,8 +73,8 @@ public class Employee implements Serializable {
 	@JoinColumn(name="Department_Id")
 	private Departments departments;
 	
-	@OneToMany(mappedBy="employee",cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="employee",cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@JsonManagedReference
 	@ToString.Exclude
 	private Set<Skills> skills;
 	
@@ -93,7 +93,7 @@ public class Employee implements Serializable {
 	
 	@ManyToOne
 //	@JsonBackReference
-	@JoinColumn(name="Roll_Id")
+	@JoinColumn(name="Role_Id")
 	private Roles roles;
 
 

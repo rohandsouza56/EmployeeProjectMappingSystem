@@ -215,7 +215,7 @@ const AddDepartment = () => {
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
       </div>
-
+      <hr />
       <div className="modalButtonDiv">
         <Button
           className="modalButton bg-info"
@@ -228,7 +228,7 @@ const AddDepartment = () => {
 
       {/* ----------------------modal ---------------- */}
 
-      <hr />
+    
       <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Department List</Modal.Title>
@@ -238,7 +238,7 @@ const AddDepartment = () => {
             <thead className="thead-dark">
               <tr>
                 <th>Department Id</th>
-                <th>Project Id</th>
+                {/* <th>Project Id</th> */}
                 <th>Name of Department</th>
                 <th>Current Strength</th>
                 <th>Max Strength</th>
@@ -248,14 +248,14 @@ const AddDepartment = () => {
             <tbody>
               {departments.map((department) => (
                 <tr key={department.departmentId}>
-                  <td>{department.projectId}</td>
+                  <td>{department.departmentId}</td>
                   <td>{department.name}</td>
                   <td>{department.currentStrength}</td>
                   <td>{department.maximumStrength}</td>
                   <td>
                     <center>
                       <button
-                        className="btn1 primary1 rounded"
+                        className="btn btn-danger"
                         onClick={() => {
                           handleDelete(department.departmentId);
                         }}

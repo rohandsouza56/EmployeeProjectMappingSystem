@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import LoginServices from "../../Services/LoginServices";
+import EmployeeService from "../../Services/EmployeeService";
 
 const EmployeeLogin = () => {
   const [email, setEmail] = useState("");
@@ -84,16 +85,28 @@ const EmployeeLogin = () => {
       let loginRequest = {
         email,
         password,
-        role,
+        roles: { roleId: role },
       };
 
-      LoginServices.login(loginRequest)
+      LoginServices.loginEmployee(loginRequest)
         .then((response) => {
+          EmployeeService.getSingleEmployeeByUserName(loginRequest.email).then(
+            (response) => {
+              window.sessionStorage.setItem('employee', JSON.stringify(response.data));
+              window.sessionStorage.setItem('departments', JSON.stringify(response.data.departments));
+              window.sessionStorage.setItem('projects', JSON.stringify(response.data.projects));
+              window.sessionStorage.setItem('skills', JSON.stringify(response.data.skills));
+              
+              console.log(response.data);
+              console.log(JSON.parse(window.sessionStorage.getItem('employee')).designation)
+            }
+          );
+
           setEmail("");
           setPassword("");
           setRole("");
           toast.success("Login Success");
-          navigate("/admindashboard");
+          navigate("/employeedashboard");
 
           // if (response.data.role === "ADMIN") {
           //     const user = response.data;
@@ -170,14 +183,18 @@ const EmployeeLogin = () => {
                     <span className="text-danger">{passwordErr}</span>
                   </div>
                   <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control form-control-sm"
-                      value={role}
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
                       onChange={roleTextHandler}
-                      placeholder="role"
-                    />
-                    <label>Enter Your Role</label>
+                    >
+                      <option hidden disabled selected value>-- Role --</option>
+                      <option value="1">
+                        Employee
+                      </option>
+                      <option value="2">Manager</option>
+                    </select>
+                    <label>Select Role</label>
                     <span className="text-danger">{roleErr}</span>
                   </div>
                   <div className="row g-1">

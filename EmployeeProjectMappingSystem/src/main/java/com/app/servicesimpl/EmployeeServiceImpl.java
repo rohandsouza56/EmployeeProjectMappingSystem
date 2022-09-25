@@ -67,8 +67,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		}
 		*/
 		if(employee.getRoles()!=null) {
-			Roles roles=rolesRepository.findById(employee.getRoles().getRollId())
-				.orElseThrow(() -> new ResourceNotFoundException("Roles Not Found with role ID : " + employee.getRoles().getRollId()));
+			System.out.println(employee.getRoles().getRoleId());
+			Roles roles=rolesRepository.findById(employee.getRoles().getRoleId())
+				.orElseThrow(() -> new ResourceNotFoundException("Roles Not Found with role ID : " + employee.getRoles().getRoleId()));
 		
 			employee.setRoles(roles);
 		}
@@ -104,8 +105,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		}
 		
 		if(employee.getRoles()!=null) {
-			Roles roles=rolesRepository.findById(employee.getRoles().getRollId())
-				.orElseThrow(() -> new ResourceNotFoundException("Roles Not Found with role ID : " + employee.getRoles().getRollId()));
+			Roles roles=rolesRepository.findById(employee.getRoles().getRoleId())
+				.orElseThrow(() -> new ResourceNotFoundException("Roles Not Found with role ID : " + employee.getRoles().getRoleId()));
 		
 			employee.setRoles(roles);
 		}
@@ -131,7 +132,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	public Employee changeMapping(Employee employee) {
 		
 		Employee newEmployee = employeeRepository.findById(employee.getEmployeeId())
-				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Project ID : " + employee.getEmployeeId()));
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employee.getEmployeeId()));
 				
 		Projects project = projectsRepository.findById(employee.getProjects().getProjectId())
 				.orElseThrow(() -> new ResourceNotFoundException("Project Not Found with Project ID : " + employee.getProjects().getProjectId()));
@@ -163,7 +164,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	public Employee saveFile(int employeeId,MultipartFile file) {
 		
 		Employee employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Project ID : " + employeeId));
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
 		
 		
 		  String docname = file.getOriginalFilename();
@@ -177,5 +178,22 @@ public class EmployeeServiceImpl implements IEmployeeService {
 			  e.printStackTrace();
 		  }
 		return null;
+	}
+
+	@Override
+	public Employee getEmployeeById(int employeeId) {
+		Employee employee = employeeRepository.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
+		return employee;
+	}
+
+	@Override
+	public Employee getEmployeeByuserName(String userName) {
+		Employee employee = employeeRepository.findByUserName(userName);
+			if(employee==null) {
+				throw new ResourceNotFoundException("Employee Not Found with userName "+userName);
+			}
+				
+		return employee;
 	}
 }

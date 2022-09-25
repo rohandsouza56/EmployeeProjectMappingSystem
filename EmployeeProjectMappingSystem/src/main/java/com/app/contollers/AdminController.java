@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pojos.Admin;
@@ -96,6 +97,7 @@ public class AdminController {
 	
 	@DeleteMapping("/project/delete/{projectId}")
 	public ResponseEntity<?> deleteProjectDetails(@PathVariable int projectId){
+		System.out.println(projectId);
 		return ResponseEntity.ok().body(projectsService.deleteProject(projectId));
 	}
 	
@@ -152,6 +154,7 @@ public class AdminController {
 	
 	@PostMapping("/employee/add")
 	public ResponseEntity<?> addemployee(@RequestBody Employee employee){
+		System.out.println(employee.toString());
 		return ResponseEntity.ok().body(employeeService.addEmployee(employee));
 	}
 	
@@ -273,6 +276,11 @@ public class AdminController {
 		@PostMapping("/map/employee")
 		public ResponseEntity<?> changeMapping(@RequestBody Employee employee){
 			return ResponseEntity.ok().body(employeeService.changeMapping(employee));
+		}
+		
+		@GetMapping("/getadmin")
+		public ResponseEntity<?> getEmployeeByuserName(@RequestParam(name = "email") String email){
+			return ResponseEntity.ok().body(adminService.getAdmin(email));
 		}
 	
 }

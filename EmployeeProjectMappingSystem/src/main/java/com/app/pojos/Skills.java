@@ -17,12 +17,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Table(name="Skills")
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "technologyId") 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Skills {
@@ -40,6 +43,7 @@ public class Skills {
 	
 
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="Employee_Id")
 	private Employee employee;
 	
@@ -55,6 +59,7 @@ public class Skills {
 
 	/****check cascade type */
 	@OneToOne(cascade = CascadeType.PERSIST)
+	@ToString.Exclude
 	@JoinColumn(name = "Technology_Id") //fk
 	private Technology technologyId;
 }

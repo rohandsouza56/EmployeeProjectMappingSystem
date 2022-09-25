@@ -2,6 +2,8 @@ package com.app.servicesimpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,8 @@ public class DepartmentServiceImpl implements IDepartmentService {
 
 	*/
 	
+	@Transactional
+	@Override
 	public Departments addDepartments(Departments departments) {
 		Projects project = projectsRepository.findById(departments.getProjects().getProjectId())
 				.orElseThrow(() -> new ResourceNotFoundException("project with id: " + departments.getProjects().getProjectId() + " not found."));
@@ -49,6 +53,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	
 
 	@Override
+	@Transactional
 	public Departments updateDepartments(Departments departments) {
 		Projects project = projectsRepository.findById(departments.getProjects().getProjectId())
 				.orElseThrow(() -> new ResourceNotFoundException("project with id: " + departments.getProjects().getProjectId() + " not found."));

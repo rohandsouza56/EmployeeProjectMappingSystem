@@ -19,10 +19,10 @@ const addNewProject = (projectDetails) => {
   });
 };
 const deleteProject = (projectId) => {
-  return axios.delete(ADMIN_BASE_REST_API_URL + "project/delete", projectId, {
+  return axios.delete(ADMIN_BASE_REST_API_URL + "project/delete/"+projectId, {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
-    },
+    }
   });
 };
 const getAllDepartments = () => {
@@ -133,6 +133,8 @@ const addRequirment = (requirement) => {
   });
 };
 
+
+
 const deleteProjectRequirment = (requirmentId) => {
   return axios.delete(
     ADMIN_BASE_REST_API_URL + "/projectreq/delete",
@@ -143,6 +145,15 @@ const deleteProjectRequirment = (requirmentId) => {
 const projectMapping = (mappingDetails) => {
   console.log(mappingDetails);
   return axios.post(ADMIN_BASE_REST_API_URL + "map/employee", mappingDetails, {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
+
+
+const getAdminByEmail = (email) => {
+  return axios.get(ADMIN_BASE_REST_API_URL +"getadmin?email="+email , {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
     },
@@ -165,5 +176,6 @@ export default {
   deleteDepartment,
   addRequirment,
   projectMapping,
-  getAllDepartmenrByProjectId
+  getAllDepartmenrByProjectId,
+  getAdminByEmail
 };

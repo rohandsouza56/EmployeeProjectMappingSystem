@@ -20,4 +20,15 @@ const changePassword = (newPasswordObj) => {
   return axios.put(USER_API_SERVICE_URL + "/changePassword", newPasswordObj);
 };
 
-export default { login, userDetails, changePassword };
+const loginEmployee = (loginRequest) => {
+  return axios
+    .post(USER_API_SERVICE_URL + "/employee/authenticate", loginRequest)
+    .then((response) => {
+      let token = response.data.token;
+      console.log(token);
+      localStorage.setItem("jwtToken", "Bearer " + token);
+    });
+};
+
+
+export default { login, userDetails, changePassword, loginEmployee };

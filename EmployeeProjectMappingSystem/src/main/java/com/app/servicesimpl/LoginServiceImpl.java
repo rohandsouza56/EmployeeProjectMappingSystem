@@ -40,8 +40,8 @@ public class LoginServiceImpl implements UserDetailsService {
 		//int roleId = Integer.parseInt(email.charAt(email.length()-1)+"");
 		//System.out.println("Role ID: "+roleId);
 		
-		//System.out.println(admin);
-		//System.out.println(employee);
+		System.out.println(admin);
+		System.out.println(employee);
 		
 		//System.out.println(admin.getEmail()+" "+admin.getPassword());
 		System.out.println();

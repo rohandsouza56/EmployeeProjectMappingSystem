@@ -18,7 +18,7 @@ const EmployeeDashboard = () => {
   // const [addDepartment, setAddDepartment] = useState(false);
 
   // const [addproject, setAddProject] = useState(false);
-  const [addTechnology, setAddTechnology] = useState(false);
+  
   const [projectlist, setProjectList] = useState(false);
   const [employeeProfile, setEmployeeProfile] = useState(false);
   const [getResource, setResource] = useState(false);
@@ -28,9 +28,7 @@ const EmployeeDashboard = () => {
     if (projectlist) {
       setProjectList(false);
     }
-    if (addTechnology) {
-      setAddTechnology(false);
-    }
+  
     if (addSkill) {
       setAddSkill(false);
     }
@@ -41,9 +39,7 @@ const EmployeeDashboard = () => {
   };
 
   let showProjectList = () => {
-    if (addTechnology) {
-      setAddTechnology(false);
-    }
+    
     if (addSkill) {
       setAddSkill(false);
     }
@@ -57,21 +53,7 @@ const EmployeeDashboard = () => {
     setProjectList(true);
   };
 
-  let showAddTechnology = () => {
-    if (addSkill) {
-      setAddSkill(false);
-    }
-    if (employeeProfile) {
-      setEmployeeProfile(false);
-    }
-    if (projectlist) {
-      setProjectList(false);
-    }
-    if (getResource) {
-      setResource(false);
-    }
-    setAddTechnology(true);
-  };
+  
 
   let showAddSkill = () => {
     if (employeeProfile) {
@@ -81,9 +63,7 @@ const EmployeeDashboard = () => {
       setProjectList(false);
     }
 
-    if (addTechnology) {
-      setAddTechnology(false);
-    }
+  
 
     if (getResource) {
       setResource(false);
@@ -100,9 +80,6 @@ const EmployeeDashboard = () => {
       setProjectList(false);
     }
 
-    if (addTechnology) {
-      setAddTechnology(false);
-    }
 
     if (addSkill) {
       setAddSkill(false);
@@ -132,7 +109,10 @@ const EmployeeDashboard = () => {
             <span className="fs-4">
               Hello{" "}
               <span className="text-success">
-                <b>Employee</b>
+                <b> {
+                  JSON.parse(window.sessionStorage.getItem("employee"))
+                    .employeeName
+                }</b>
               </span>
             </span>
           </a>
@@ -163,16 +143,7 @@ const EmployeeDashboard = () => {
                         
                         </li> */}
 
-              <li
-                onClick={showAddTechnology}
-                style={{ cursor: "context-menu" }}
-              >
-                <GrTechnology
-                  size={20}
-                  style={{ width: "30px", paddingBottom: "4px" }}
-                />
-                <span id="Hovereffect">Technology</span>
-              </li>
+             
 
               <li onClick={showAddSkill} style={{ cursor: "context-menu" }}>
                 <GiSkills
@@ -202,7 +173,6 @@ const EmployeeDashboard = () => {
         >
           {employeeProfile && <EmployeeProfile />}
           {projectlist && <ProjectListEmployee />}
-          {addTechnology && <AddTechnology />}
           {addSkill && <AddSkills />}
           {getResource && <GetResource />}
           {/* 

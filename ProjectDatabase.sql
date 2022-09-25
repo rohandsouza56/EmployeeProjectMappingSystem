@@ -54,7 +54,7 @@ Create Table Question
 Question_Id int primary key  auto_increment,
 Technology_Id int,
 Question varchar(200),
-marks tinyint,
+marks tinyint default 0,
 constraint fk_Quiz_Technology_Id_ foreign key (Technology_Id) references Technology(Technology_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -70,8 +70,8 @@ constraint fk_Options_Question_Id_ foreign key (Question_Id) references Question
 
 
 create table Roles(
-Roll_Id int primary key  auto_increment,
-Roll_Name varchar(50)
+Role_Id int primary key  auto_increment,
+Role_Name varchar(50)
 );
 
 
@@ -86,20 +86,21 @@ Email varchar(255) unique,
 Gender varchar(255),
 Project_Id int ,
 Department_Id int,
-Roll_Id int,
+Role_Id int,
 Resume MEDIUMBLOB,
 Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE,
-Constraint fk_Employee_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE
+Constraint fk_Employee_Role_Id_Id foreign key (Role_Id) references Roles(Role_Id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 
 create table `Admin`(
 Admin_Id int primary key  auto_increment,
+`Name` varchar(100),
 Email varchar(50) unique,
 `Password` varchar(255),
-Roll_Id int,
-Constraint fk_Admin_Roll_Id_Id foreign key (Roll_Id) references Roles(Roll_Id) ON DELETE SET NULL ON UPDATE CASCADE
+Role_Id int,
+Constraint fk_Admin_Role_Id_Id foreign key (Role_Id) references Roles(Role_Id) ON DELETE SET NULL ON UPDATE CASCADE
 );
  
 

@@ -202,7 +202,7 @@ const AddResources = () => {
               </form>
             </div>
           </div>
-
+          <hr />
           <div className="modalButtonDiv">
             <Button
               className="modalButton bg-info"
@@ -214,7 +214,7 @@ const AddResources = () => {
           </div>
         </div>
 
-        <hr />
+      
         {/* ----------------------modal ---------------- */}
 
         <Modal show={show} size="lg" onHide={handleClose} backdrop="static">
@@ -222,10 +222,10 @@ const AddResources = () => {
             <Modal.Title>Resource List</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <table striped border hover>
-              <thead className="thead-dark">
+          <table className="table table-bordered table-striped">
+            <thead className="thead-dark">
                 <tr>
-                  <th>#</th>
+                  <th>Resource Id</th>
                   <th>Technology Name</th>
                   <th>Description</th>
                   <th>Resource Link</th>
@@ -236,7 +236,7 @@ const AddResources = () => {
                 {resources.map((resource) => (
                   <tr key={resource.resourceId}>
                     <td>{resource.resourceId}</td>
-                    <td>Tech Name</td>
+                    <td>{resource.technology.technologyName}</td>
                     <td>{resource.description}</td>
                     <td>{resource.link}</td>
                     <td>

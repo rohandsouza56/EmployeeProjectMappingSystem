@@ -37,8 +37,12 @@ public class Admin {
 	@Column(name="password")
 	private String password;
 	
+
+	@Column(name="Name")
+	private String name;
+	
 	
 	@ManyToOne
-	@JoinColumn(name="Roll_Id")
+	@JoinColumn(name="Role_Id")
 	private Roles roles;
 }

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import LoginServices from "../../Services/LoginServices";
+import AdminServices from "../../Services/AdminServices";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -74,8 +75,16 @@ const Login = () => {
 
       LoginServices.login(loginRequest)
         .then((response) => {
+          AdminServices.getAdminByEmail(loginRequest.email).then(
+            (response) => {
+              window.sessionStorage.setItem('admin', JSON.stringify(response.data));      
+              console.log(response.data);
+        
+            }
+          );
           setEmail("");
           setPassword("");
+          
           toast.success("Login Success");
           navigate("/admindashboard");
 

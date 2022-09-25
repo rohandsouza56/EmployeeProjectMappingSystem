@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import AdminServices from "../../Services/AdminServices";
 import EmployeeService from "../../Services/EmployeeService";
 import { Button, Modal, Table } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../App.css";
 
 const AddSkills = () => {
-  const [skillId, setSkillId] = useState("");
   const [skill, setSkill] = useState("");
   const [employeeId, setEmployeeId] = useState("");
   const [dateOfCompletion, setDateOfCompletion] = useState("");
@@ -15,14 +15,13 @@ const AddSkills = () => {
   const [certificatePdf, setCertificatePdf] = useState("");
   const [technologyId, setTechnologyId] = useState("");
 
-  const [skillIdErr, setSkillIdErr] = useState("");
   const [skillErr, setSkillErr] = useState("");
   const [employeeIdErr, setEmployeeIdErr] = useState("");
   const [dateOfCompletionErr, setDateOfCompletionErr] = useState("");
   const [certificationLinkErr, setCertificationLinkErr] = useState("");
   const [certificatePdfErr, setCertificatePdfErr] = useState("");
   const [technologyIdErr, setTechnologyIdErr] = useState("");
-  
+  const [technologies, setTechnologies] = useState([]);
   const [successMsg, setSuccessMsg] = useState("");
    const [errorMsg, setErrorMsg] = useState("");
 
@@ -37,7 +36,9 @@ const AddSkills = () => {
   };
   const [allSkills, setAllSkills] = useState([]);
   //-------------------------------------
-
+  useEffect(() => {
+    getAllTechnology();
+  }, []);
 
   const getAllSkills = () => {
     console.log(localStorage.getItem("jwtToken"));
@@ -51,13 +52,19 @@ const AddSkills = () => {
       });
   };
 
-  let skillIdHandler = (event) => {
-    setSkillId(event.target.value);
-    if (skillIdErr !== "" || skillIdErr !== null) {
-      setSkillIdErr("");
-    }
+  const getAllTechnology = () => {
+    AdminServices.getAllTechnologies()
+      .then((response) => {
+        setTechnologies(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+
+  
   let skillHandler = (event) => {
     setSkill(event.target.value);
     if (skillErr !== "" || skillErr !== null) {
@@ -101,7 +108,7 @@ const AddSkills = () => {
   };
 
   let validation = () => {
-    setSkillIdErr("");
+    
       setSkillErr("");
       setEmployeeIdErr("");
       setDateOfCompletionErr("");
@@ -110,17 +117,9 @@ const AddSkills = () => {
       setTechnologyIdErr("");
       let flag = true;
 
-    if (skillId === "" || skillId === null) {
-      setSkillIdErr("Please select correct Skill Id");
-      flag = false;
-    }
 
     if (skill === "" || skill === null) {
       setSkillErr("This field is compulsory");
-      flag = false;
-    }
-    if (employeeId === "" || employeeId === null) {
-      setEmployeeIdErr("This field is compulsory");
       flag = false;
     }
 
@@ -129,14 +128,6 @@ const AddSkills = () => {
       flag = false;
     }
 
-    if (certificationLink === "" || certificationLink === null) {
-      setCertificationLinkErr("This field is compulsory");
-      flag = false;
-    }
-    if (certificatePdf === "" || certificatePdf === null) {
-      setCertificatePdfErr("This field is compulsory");
-      flag = false;
-    }
 
     if (technologyId === "" || technologyId === null) {
       setTechnologyIdErr("This field is compulsory");
@@ -154,9 +145,8 @@ const AddSkills = () => {
     if (validation()=== true) {
      
       let skillDetails= {
-         skillId,
          skill,
-          employeeId,
+          employeeId:JSON.parse(window.sessionStorage.getItem('employee')).employeeId,
          dateOfCompletion,
          certificationLink,
          certificatePdf,
@@ -167,7 +157,6 @@ const AddSkills = () => {
 
       EmployeeService.addNewSkills(skillDetails)
         .then((response) => {
-          setSkillIdErr("");
           setSkillErr("");
           setEmployeeIdErr("");
           setDateOfCompletionErr("");
@@ -210,44 +199,55 @@ const AddSkills = () => {
         <div className="border border-1 rounded">
           <div className="m-3">
             <form onSubmit={AddSkillsSubmit} className="department-form">
-              <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={skillId}
-                  onChange={skillIdHandler}
-                  placeholder="Enter Skill Id"
-                />
-                <label>Skill Id</label>
-                <span className="text-danger">{skillIdErr}</span>
-              </div>
-
-              <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={skill}
-                  onChange={skillHandler}
-                  placeholder="enter skill"
-                />
-                <label> Skill </label>
-                <span className="text-danger">{skillErr}</span>
-              </div>
-
-              <div className="form-floating mb-3">
+            <div className="form-floating mb-3">
                 <input
                   type="text"
                   className="form-control"
-                  value={employeeId}
+                  value={ JSON.parse(window.sessionStorage.getItem('employee')).employeeId}
                   onChange={employeeIdHandler}
-                  placeholder="Enter Employee Id"
+                  placeholder="Enter Employee Id" disabled
                 />
                 <label>Employee Id </label>
                 <span className="text-danger">{employeeIdErr}</span>
               </div>
+
+              <div className="form-floating mb-3">
+                  <select
+                    class="form-select"
+                    onChange={technologyIdHandler}
+                    aria-label="Select Technology"
+                  >
+                    <option hidden disabled selected value>
+                      {" "}
+                      -- Select Technology --{" "}
+                    </option>
+                    {technologies.map((technology) => (
+                      <option
+                        key={technology.technologyId}
+                        value={technology.technologyId}
+                      >
+                        {technology.technologyName}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="text-danger">{technologyIdErr}</span>
+                </div>
               <div className="form-floating mb-3">
                 <input
-                  type="number"
+                  type="text"
+                  className="form-control"
+                  value={skill}
+                  onChange={skillHandler}
+                  placeholder="Enter Skill Description"
+                />
+                <label> Skill Description </label>
+                <span className="text-danger">{skillErr}</span>
+              </div>
+
+             
+              <div className="form-floating mb-3">
+                <input
+                  type="date"
                   className="form-control"
                   value={dateOfCompletion}
                   onChange={dateOfCompletionHandler}
@@ -280,18 +280,7 @@ const AddSkills = () => {
                 <span className="text-danger">{certificatePdfErr}</span>
               </div>
 
-              <div className="form-floating mb-3">
-                <input
-                  type="number"
-                  className="form-control"
-                  value={technologyId}
-                  onChange={technologyIdHandler}
-                  placeholder="Technology Id"
-                />
-                <label>Technology Id</label>
-                <span className="text-danger">{technologyIdErr}</span>
-              </div>
-
+              
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">
                   

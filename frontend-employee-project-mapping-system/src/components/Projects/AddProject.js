@@ -262,6 +262,7 @@ const AddProjects = () => {
           <span className="text-danger">{errorMsg}</span>
           <span className="text-success">{successMsg}</span>
         </div>
+        <hr />
         <div className="modalButtonDiv">
           <Button
             className="modalButton bg-info"
@@ -283,7 +284,7 @@ const AddProjects = () => {
           <Table striped border hover>
             <thead>
               <tr>
-                <th>#</th>
+                <th>Project Id</th>
                 <th>Project Name</th>
                 <th> Project Description</th>
                 <th> Start Date</th>

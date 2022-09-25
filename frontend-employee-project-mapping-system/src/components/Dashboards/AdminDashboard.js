@@ -292,7 +292,10 @@ const AdminDashboard = () => {
             <span className="fs-4">
               Hello{" "}
               <span className="text-secondary">
-                <b>Admin</b>
+                <b>{
+                  JSON.parse(window.sessionStorage.getItem("admin"))?JSON.parse(window.sessionStorage.getItem("admin"))
+                  .name:"Admin"
+                }</b>
               </span>
             </span>
           </a>

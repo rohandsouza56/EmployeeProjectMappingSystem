@@ -32,12 +32,29 @@ const getAllDepartments = () => {
     },
   });
 };
-
+/*
+const getSingleEmployee = (employeeId) => {
+  return axios.get(Employee_BASE_REST_API_URL + , {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};*/
 // export default new ProjectService();
+
+
+const getSingleEmployeeByUserName = (userName) => {
+  return axios.get(Employee_BASE_REST_API_URL +"employeebyusername?userName="+userName , {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
 export default {
   getAllSkills,
   addSkills,
   deleteSkills,
   addResume,
   getAllDepartments,
+  getSingleEmployeeByUserName
 };

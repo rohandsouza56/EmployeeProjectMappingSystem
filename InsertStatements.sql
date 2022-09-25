@@ -61,26 +61,29 @@ select * from Project_Requirment;
 
 
 
-insert into Roles (Roll_Name)
+insert into Roles (Role_Name)
 values("Employee"),
 ("Manager"),
 ("Admin");
 select * from roles;
 
 
-insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,`Password`,Gender,Project_Id,Department_Id,Roll_Id,`Resume`) 
+insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,`Password`,Gender,Project_Id,Department_Id,Role_Id,`Resume`) 
 values("abc","Testing","2022-05-02","123456789","Abc@gmail.com","abc","Male",1,1,1,null),
 ("lmn","Dev","2022-05-02","123456779","lmn@gmail.com","lmn","Male",1,1,1,null);
+
+insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,`Password`,Gender,Project_Id,Department_Id,Role_Id,`Resume`) 
+values("Rohan","Developer","2022-05-02","123454789","rohandsouza5656@gmail.com","$2a$10$oEOnOzTX/cageXtPZdA79e7UUluCe5AAJu6ymIxZWoVV7DQNHR7Z6","Male",1,1,1,null);
 
 desc employee;
 select *from employee;
 
 
-insert into `Admin` (Email,`Password`,Roll_Id)
-values("rohan@gmail.com","$2a$10$thyM/gCbXydZ9KSml.UA3ejMjQOHpXuRNvu5rowMg/DkY06TY1Xk6",3),
-("sachin@gmail.com","$2a$10$ehNVZyoAmNNChPytW87V0eNmK5xdGniEj5AN2NhY7k/S6wmXzvy2.",3),
-("sanket@gmail.com","$2a$10$.TF0128baaB72azUJ43j/OLD.VIJdJwmLPcF9Tp7LfVurXYp5FRRe",3),
-("sakshi@gmail.com","$2a$10$6vU0RbHStBBJjNg4vTKEvOGXMUs5HF0zcxlHKrkIk1LM/gIe2sega",3);
+insert into `Admin` (`Name`,Email,`Password`,Role_Id)
+values("Rohan","rohan@gmail.com","$2a$10$thyM/gCbXydZ9KSml.UA3ejMjQOHpXuRNvu5rowMg/DkY06TY1Xk6",3),
+("Sachin","sachin@gmail.com","$2a$10$ehNVZyoAmNNChPytW87V0eNmK5xdGniEj5AN2NhY7k/S6wmXzvy2.",3),
+("Sanket","sanket@gmail.com","$2a$10$.TF0128baaB72azUJ43j/OLD.VIJdJwmLPcF9Tp7LfVurXYp5FRRe",3),
+("Sakshi","sakshi@gmail.com","$2a$10$6vU0RbHStBBJjNg4vTKEvOGXMUs5HF0zcxlHKrkIk1LM/gIe2sega",3);
 Select * from `Admin`;
 
 truncate table `Admin`;

@@ -1,14 +1,14 @@
-insert into Question (Technology_Id,Question,marks)
-values(1,"What is Dependency Injection?",0),
-(1,"What is global-session scope?",0),
-(1,"What is bean autowiring?",0),
-(1,"What is true about @Autowired annotation?",0),
-(1,"What is Target object?",0),
-(1,"What is Spring MVC framework?",0),
-(1,"SpEL is part of core container?",0),
-(1,"How to handle shut down of IoC container?",0),
-(1," Which of the following class can be used to call Stored Procedures in spring?",0),
-(1,"Which one of following is an alternative to Spring HibernateTemplate?",0);
+insert into Question (Technology_Id,Question)
+values(1,"What is Dependency Injection?"),
+(1,"What is global-session scope?"),
+(1,"What is bean autowiring?"),
+(1,"What is true about @Autowired annotation?"),
+(1,"What is Target object?"),
+(1,"What is Spring MVC framework?"),
+(1,"SpEL is part of core container?"),
+(1,"How to handle shut down of IoC container?"),
+(1," Which of the following class can be used to call Stored Procedures in spring?"),
+(1,"Which one of following is an alternative to Spring HibernateTemplate?");
 
 select *from Question;
 

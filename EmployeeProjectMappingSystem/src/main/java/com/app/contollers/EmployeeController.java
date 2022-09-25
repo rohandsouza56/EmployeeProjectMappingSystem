@@ -71,6 +71,16 @@ public class EmployeeController {
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
+	@GetMapping("/employee/{employeeId}")
+	public ResponseEntity<?> getEmployeeById(@PathVariable int employeeId){
+		return ResponseEntity.ok().body(employeeService.getEmployeeById(employeeId));
+	}
+	
+	@GetMapping("/employeebyusername")
+	public ResponseEntity<?> getEmployeeByuserName(@RequestParam(name = "userName") String userName){
+		return ResponseEntity.ok().body(employeeService.getEmployeeByuserName(userName));
+	}
+	
 	@GetMapping("/skill")
 	public ResponseEntity<?> getAllSkills(){
 		List<Skills> list = skillService.getAllSkill();
@@ -107,7 +117,7 @@ public class EmployeeController {
 			employeeService.saveFile(file);
 			
 		}
-		return "Sucessssssss";
+		return "Sucess";
 	}
 	
 	@PostMapping("/resume/{employeeId}")
@@ -116,7 +126,7 @@ public class EmployeeController {
 			employeeService.saveFile(employeeId,file[0]);
 			
 		//}
-		return "Sucessssssss";
+		return "Sucess";
 	}
 	
 }

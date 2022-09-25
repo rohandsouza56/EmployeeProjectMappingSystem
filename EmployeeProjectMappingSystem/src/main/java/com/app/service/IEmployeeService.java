@@ -22,4 +22,8 @@ public interface IEmployeeService {
 	
 	public Employee saveFile(int employeeId,MultipartFile file);
 
+	public Employee getEmployeeById(int employeeId);
+
+	public Employee getEmployeeByuserName(String userName);
+
 }

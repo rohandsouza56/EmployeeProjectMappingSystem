@@ -31,18 +31,18 @@ public class Roles {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Roll_Id")
-	private int rollId;
+	@Column(name="Role_Id")
+	private int roleId;
 	
-	@Column(name="Roll_Name")
-	private String rollName;
+	@Column(name="Role_Name")
+	private String roleName;
 	
-	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="roles",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@ToString.Exclude
 	Set<Employee> employee;
 	
-	@OneToMany(mappedBy="roles",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="roles",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@ToString.Exclude
 	Set<Admin> admin;

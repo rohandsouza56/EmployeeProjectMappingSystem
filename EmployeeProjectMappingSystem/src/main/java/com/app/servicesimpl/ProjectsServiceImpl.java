@@ -2,6 +2,8 @@ package com.app.servicesimpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,7 @@ public class ProjectsServiceImpl implements IProjectsService {
 	
 	
 	@Override
+	@Transactional
 	public Projects addProjects(Projects project) {
 		
 		return projectsRepository.save(project);
@@ -36,6 +39,7 @@ public class ProjectsServiceImpl implements IProjectsService {
 
 
 	@Override
+	@Transactional
 	public Projects updateProject(Projects detachedProject) {
 		
 		return projectsRepository.save(detachedProject);
@@ -44,6 +48,7 @@ public class ProjectsServiceImpl implements IProjectsService {
 
 
 	@Override
+	@Transactional
 	public List<Projects> deleteProject(int projectId) {
 		Projects project = projectsRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Project Not Found with Projet Id : " + projectId));

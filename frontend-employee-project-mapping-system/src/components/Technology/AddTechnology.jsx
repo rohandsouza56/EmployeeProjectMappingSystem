@@ -148,6 +148,7 @@ const AddTechnology = () => {
         <span className="text-danger">{errorMsg}</span>
         <span className="text-success">{successMsg}</span>
       </div>
+      <hr />
       <div className="modalButtonDiv">
         <Button
           className="modalButton bg-info"
@@ -158,7 +159,7 @@ const AddTechnology = () => {
         </Button>
       </div>
 
-      <hr />
+      
 
       {/* ----------------------modal ---------------- */}
 
@@ -172,8 +173,8 @@ const AddTechnology = () => {
               <tr>
                 <th>Technology Id</th>
                 <th>Technology Name</th>
-                <th>Resource</th>
-                <th>Action</th>
+                {/* <th>Resource</th>
+                <th>Action</th> */}
               </tr>
             </thead>
             <tbody>
@@ -181,7 +182,7 @@ const AddTechnology = () => {
                 <tr key={technology.technologyId}>
                   <td>{technology.technologyId}</td>
                   <td>{technology.technologyName}</td>
-                  <td>{technology.resourceId}</td>
+                  {/* <td>{technology.resourceId}</td>
                   <td>
                     <center>
                       <button
@@ -193,7 +194,7 @@ const AddTechnology = () => {
                         Delete
                       </button>
                     </center>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

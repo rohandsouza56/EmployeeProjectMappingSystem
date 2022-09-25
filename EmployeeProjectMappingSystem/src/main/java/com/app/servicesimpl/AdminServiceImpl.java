@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.AdminRepository;
 import com.app.pojos.Admin;
+import com.app.pojos.Employee;
 import com.app.pojos.Projects;
 import com.app.service.IAdminService;
 
@@ -24,6 +25,12 @@ public class AdminServiceImpl implements IAdminService {
 		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
 		admin.setPassword(bcryptEncoder.encode(admin.getPassword()));
 		return adminRepository.save(admin);
+	}
+	
+	@Override
+	public Admin getAdmin(String email) {
+		Admin admin = adminRepository.findByEmail(email);
+		return admin;
 	}
 
 }
