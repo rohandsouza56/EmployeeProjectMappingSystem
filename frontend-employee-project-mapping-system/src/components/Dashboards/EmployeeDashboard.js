@@ -7,8 +7,10 @@ import { GiSkills } from "react-icons/gi";
 // import './AdminDashboard.css';
 import GetResource from "../Resources/GetResources";
 import EmployeeProfile from "../Employees/EmployeeProfile";
-
+import AttemptQuiz from "../Employees/AttemptQuiz";
+import ChangePassword from "../Login/ChangePassword";
 import ProjectListEmployee from "../Projects/ProjectListEmployee";
+
 
 //import { FaUserAlt } from "react-icons/md";
 import AddSkills from "../Skills/AddSkill";
@@ -23,6 +25,8 @@ const EmployeeDashboard = () => {
   const [employeeProfile, setEmployeeProfile] = useState(false);
   const [getResource, setResource] = useState(false);
   const [addSkill, setAddSkill] = useState(false);
+  const [attemptQuiz, setAttemptQuiz] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
 
   let showEmployeeProfile = () => {
     if (projectlist) {
@@ -34,7 +38,18 @@ const EmployeeDashboard = () => {
     }
     if (getResource) {
       setResource(false);
+
     }
+    
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+
+
+    if (changePassword) {
+      setChangePassword(false);
+    }
+
     setEmployeeProfile(true);
   };
 
@@ -49,6 +64,14 @@ const EmployeeDashboard = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
+    if (changePassword) {
+      setChangePassword(false);
+    }
+    
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+
 
     setProjectList(true);
   };
@@ -62,8 +85,14 @@ const EmployeeDashboard = () => {
     if (projectlist) {
       setProjectList(false);
     }
-
+    if (changePassword) {
+      setChangePassword(false);
+    }
   
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+
 
     if (getResource) {
       setResource(false);
@@ -80,6 +109,12 @@ const EmployeeDashboard = () => {
       setProjectList(false);
     }
 
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+    if (changePassword) {
+      setChangePassword(false);
+    }
 
     if (addSkill) {
       setAddSkill(false);
@@ -87,6 +122,54 @@ const EmployeeDashboard = () => {
 
     setResource(true);
   };
+
+  let showQuizzes = () => {
+    if (employeeProfile) {
+      setEmployeeProfile(false);
+    }
+    if (projectlist) {
+      setProjectList(false);
+    }
+
+    if (changePassword) {
+      setChangePassword(false);
+    }
+    if (addSkill) {
+      setAddSkill(false);
+    }
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+
+    if (getResource) {
+      setResource(false);
+    }
+
+    setAttemptQuiz(true);
+  };
+
+  let showChangePassword = () => {
+    if (employeeProfile) {
+      setEmployeeProfile(false);
+    }
+    if (projectlist) {
+      setProjectList(false);
+    }
+
+    if (addSkill) {
+      setAddSkill(false);
+    }
+    if (attemptQuiz) {
+      setAttemptQuiz(false);
+    }
+
+    if (getResource) {
+      setResource(false);
+    }
+
+    setChangePassword(true);
+  };
+
   return (
     <>
       {/* {unauthorizedAdminAccess && <Navigate to="/" />}
@@ -160,6 +243,22 @@ const EmployeeDashboard = () => {
                 />
                 <span id="Hovereffect">Get Resource</span>
               </li>
+              <li onClick={showQuizzes} style={{ cursor: "context-menu" }}>
+                <GrTechnology
+                  size={20}
+                  style={{ width: "30px", paddingBottom: "4px" }}
+                />
+                <span id="Hovereffect">Attempt Quizz</span>
+              </li>
+
+              <li onClick={showChangePassword} style={{ cursor: "context-menu" }}>
+                <GrTechnology
+                  size={20}
+                  style={{ width: "30px", paddingBottom: "4px" }}
+                />
+                <span id="Hovereffect">Update Password</span>
+              </li>
+
             </b>
           </ul>
           <div style={{ marginTop: "150%" }} className="sidebar-login">
@@ -175,6 +274,8 @@ const EmployeeDashboard = () => {
           {projectlist && <ProjectListEmployee />}
           {addSkill && <AddSkills />}
           {getResource && <GetResource />}
+          {attemptQuiz && <AttemptQuiz />}
+          {changePassword && <ChangePassword />}
           {/* 
                 <div className={show} id="snackbar">Login Successfully..</div>
                 <div className={show2} id="snackbar">Student details are added..</div> */}

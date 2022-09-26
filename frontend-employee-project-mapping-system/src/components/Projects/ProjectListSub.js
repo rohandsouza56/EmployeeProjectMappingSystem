@@ -32,7 +32,7 @@ const ProjectListSub = ({ projectData }) => {
           <div className="card__title">Name: {projectData.name}</div>
 
           <div className="card__body">
-            <table className="table">
+          <table className="table  table-striped">
               <tr>
                 <th>Id :</th>
                 <td>{projectData.projectId}</td>
@@ -53,12 +53,19 @@ const ProjectListSub = ({ projectData }) => {
                 <th>End Date:</th>
                 <td>{projectData.endDate}</td>
               </tr>
-              {/* <tr>
-                <th>Project Requirements</th>
-                <td>
-                  {projectData.projectRequirement[0].technology.technologyName}
-                </td>
-              </tr> */}
+              <tr>
+                <th rowspan={projectData.projectRequirement.length+1}>Project Requirements:</th><td></td></tr>
+                
+                {projectData.projectRequirement.map((technology) => (
+                  <tr>
+              <td>
+                {technology.technology.technologyName}
+              </td>
+              </tr>
+                ))}
+             
+            
+           
             </table>
 
             {/* <p>Manager Id: {projectData.managerId}</p> */}

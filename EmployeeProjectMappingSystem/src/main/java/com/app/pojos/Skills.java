@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -53,13 +55,27 @@ public class Skills {
 	@Column(name="Certification_Link")
 	private String certificationLink;
 	
+	@Lob
 	@Column(name="Certificate_Pdf")
-	private String certificatePdf;
+	private byte[] certificatePdf;
 	
+	@Transient
+	private String docName;
+	
+	@Transient
+	private String docType;
 
 	/****check cascade type */
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@ToString.Exclude
 	@JoinColumn(name = "Technology_Id") //fk
 	private Technology technologyId;
+	
+	public Skills(String docName, String docType, byte[] certificatePdf) {
+		super();
+		this.certificatePdf = certificatePdf;
+		this.docName = docName;
+		this.docType = docType;
+	}
+
 }

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import "../Home/HomePage.css";
 
 const Contact = () => {
     return (
       <div style={{backgroundColor: "#d3ded6"}} >
-      <div className="container-fluid w-50 mt-5 contact-page" >
+  
+      <div className="container-fluid w-75 mt-5 contact-page contact-section" >
       <div className="m-3">
           <h2 className="fw-bold mb-2 text-uppercase">Contact Us &nbsp;<i className="fa fa-paper-plane" style={{color: "green"}}></i></h2><br/>
           

@@ -10,7 +10,14 @@
     font-weight: 800;
     color: #ffff;
 }
-
+.search-box{
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 500px;
+    margin-right: auto;
+    width: 30%;
+}
 .titles {
 
     font-size: 20px;

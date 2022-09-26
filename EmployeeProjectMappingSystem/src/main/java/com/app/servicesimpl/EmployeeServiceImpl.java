@@ -46,7 +46,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	public List<Employee> getAllEmployees() {
 		
 		return employeeRepository.findAll();
-	}
+	}	
 
 	@Transactional
 	@Override
@@ -196,4 +196,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 				
 		return employee;
 	}
+	
+	
 }

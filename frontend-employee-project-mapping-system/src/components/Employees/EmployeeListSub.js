@@ -1,44 +1,51 @@
-
 import { Button } from "react-bootstrap";
 const EmployeeListSub = ({ employeeData }) => {
   return (
     <div className="col-5">
       <div className="card">
         <div className="card__title">Name: {employeeData.name}</div>
+
         <div className="card__body">
-          <p>
-            <span className="span-head">Id: </span> {employeeData.employeeId}
-          </p>
-          <p>
-            <span className="span-head">Designation: </span>{" "}
-            {employeeData.designation}
-          </p>
-          <p>
-            <span className="span-head">Location: </span> {employeeData.dateOfJoining}
-          </p>
-          <p>
-            <span className="span-head">Mobile No: </span>
-            {employeeData.mobileNo}
-          </p>
-          <p>
-            <span className="span-head">Email:</span> {employeeData.email}
-          </p>
-           <p>
-            <span className="span-head">Gender:</span> {employeeData.gender}
-          </p>
-        <p>
-            <span className="span-head">Role Id:</span> {employeeData.roleId}
-        </p>
-         
-          <Button
-            className="project-sub-button"
+          <table className="table  table-striped">
+            <tr>
+              <th>Name :</th>
+              <td>{employeeData.name}</td>
+            </tr>
+            <tr>
+              <th>Id:</th>
+              <td>{employeeData.employeeId}</td>
+            </tr>
+            <tr>
+              <th>Designation:</th>
+              <td>{employeeData.designation}</td>
+            </tr>
+            <tr>
+              <th>Date of Joining:</th>
+              <td>{employeeData.dateOfJoining}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{employeeData.email}</td>
+            </tr>
 
-            
-          >
-            View Employee
-          </Button>
+            <tr>
+              <th>Gender:</th>
+              <td>{employeeData.gender}</td>
+            </tr>
 
-          
+            <tr>
+                <th rowspan={employeeData.skills.length+1}>Skills:</th><td></td></tr>
+                
+                {employeeData.skills.map((technology) => (
+                  <tr>
+              <td>
+                {technology.technologyId.technologyName}
+              </td>
+              </tr>
+                ))}
+          </table>
+
+          <Button className="project-sub-button">Download Resume</Button>
         </div>
       </div>
     </div>

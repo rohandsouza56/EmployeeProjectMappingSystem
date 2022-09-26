@@ -1,4 +1,6 @@
 
+
+
 .first-section{
     height: 100vh;
    
@@ -7,11 +9,32 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.3);
+    filter: brightness(0.8);
     opacity: 0.8;
     z-index: 1;
     
 }
+
+.contact-section{
+    background-image: url("../Images/ContactUs.png");
+    background-position: left;
+
+
+}
+
+
+.about-section{
+
+    background-image: url("../Images/image-4.webp");
+        background-position: centers;
+        background-repeat: no-repeat;
+            background-size: cover;
+        filter: brightness(0.7);
+        height: 100vh;
+        z-index: 1;
+
+}
+
 
 .first-section-info-box{
     width: 50vw;

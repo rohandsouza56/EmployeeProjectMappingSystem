@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -88,6 +89,16 @@ public class EmployeeController {
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.of(Optional.of(list));
 	}
+	@GetMapping("/skill/{employeeId}")
+	public ResponseEntity<?> getAllSkills(@PathVariable int employeeId){
+		List<Skills> list = skillService.getAllEmployeeSkills(employeeId);
+		if(list.size()<=0)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.of(Optional.of(list));
+	}
+	
+	
+	
 	
 	@PostMapping("/skill/add")
 	public ResponseEntity<?> addSkills(@RequestBody Skills skill){
@@ -128,5 +139,27 @@ public class EmployeeController {
 		//}
 		return "Sucess";
 	}
+	@PostMapping("/certificatepdf")
+	public String uploadMultipleFilesPdf(@RequestParam("files") MultipartFile[] files) {
+		for (MultipartFile file: files) {
+			skillService.saveCertificatePdf(file);
+			
+		}
+		return "Sucess";
+	}
+	
+	@PostMapping("/certificatepdf/{employeeId}")
+	
+	public String uploadMultipleFilesPdf(@RequestParam("files") MultipartFile[] files,@PathVariable int employeeId,@ModelAttribute Skills skills ) {
+		
+		System.out.println("skill "+skills+"skilll.skillid"+skills.toString());
+		for (MultipartFile file: files) {
+			skillService.saveCertificatePdf(employeeId,skills,file);
+			
+		}
+		return "Sucess";
+	}
+
+	
 	
 }

@@ -75,6 +75,29 @@ const ExtraInfo = () => {
         </ul>
       </div>
 
+       <div className="extra-info-section-middle">
+        <h3>Our Projects</h3>
+        <ul className="extra-info-section-list">
+           <li>
+              <span>Spring Boot</span>
+             
+            </li>
+            <li>
+              <span>React Js</span>
+             
+            </li>
+            <li>
+              <span>bootstrap</span>
+             
+            </li>
+            <li>
+              <span>Java</span>
+              
+            </li>
+        </ul>
+      </div>
+
+       
       <div className="extra-info-section-right">
         <h3>Opening Hours</h3>
         <div className="extra-info-section-right-inner">

@@ -46,6 +46,7 @@ const ProjectList = () => {
                                 <td>{project.description}</td>
                                 <td>{project.startDate}</td>
                                 <td>{project.endDate}</td>
+                                
                                 <td>
                                     
                                 </td>

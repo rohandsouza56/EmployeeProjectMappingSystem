@@ -5,10 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
+import com.app.dao.EmployeeRepository;
 import com.app.dao.SkillsRepository;
+import com.app.pojos.Employee;
+import com.app.pojos.Projects;
 import com.app.pojos.Skills;
+import com.app.service.IEmployeeService;
 import com.app.service.ISkillService;
 
 
@@ -19,13 +24,22 @@ public class SkillServiceImpl implements ISkillService {
 	@Autowired
 	SkillsRepository skillRepository;
 	
+	@Autowired
+	EmployeeRepository employeeRepository;
+	
 	@Override
 	public List<Skills> getAllSkill() {
 		
 		return skillRepository.findAll();
 	}
 	
-
+	@Override
+	public List<Skills> getAllEmployeeSkills(int employeeId) {
+//		Employee employee = employeeRepository.findById(employeeId)
+//				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
+		
+		return skillRepository.findAllEmployeeSkills(employeeId);
+	}
 	@Override
 	public Skills addSkill(Skills skill) {
 	
@@ -53,5 +67,42 @@ public class SkillServiceImpl implements ISkillService {
 		skillRepository.delete(skill);
 		
 		return skillRepository.findAll();
+	}
+	
+	@Override
+	public Skills saveCertificatePdf(int employeeId,Skills skill,MultipartFile file) {
+		
+		Employee employee = employeeRepository.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
+		
+		skill.setEmployee(employee);
+		
+		  String docname = file.getOriginalFilename();
+		  try {
+		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
+			 // employee.setDocName(docname.);
+			  skill.setCertificatePdf(file.getBytes());
+			  return skillRepository.save(skill);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
+	}
+	
+	@Override
+	public Skills saveCertificatePdf(MultipartFile file) {
+		
+		  String docname = file.getOriginalFilename();
+		  try {
+			  Skills skill = new Skills(docname,file.getContentType(),file.getBytes());
+			 // employee.setDocName(docname.);
+			  skill.setCertificatePdf(file.getBytes());
+			  return skillRepository.save(skill);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
 	}
 }

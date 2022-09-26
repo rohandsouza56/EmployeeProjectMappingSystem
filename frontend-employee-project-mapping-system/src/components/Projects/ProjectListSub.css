@@ -43,3 +43,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+.search-box{
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 500px;
+    margin-right: auto;
+    width: 30%;
+}

@@ -94,7 +94,7 @@ const AddSkills = () => {
   };
 
   let certificatePdfHandler = (event) => {
-    setCertificatePdf(event.target.value);
+    setCertificatePdf(event.target.files[0]);
     if (certificatePdfErr !== "" || certificatePdfErr !== null) {
       setCertificatePdfErr("");
     }
@@ -147,14 +147,31 @@ const AddSkills = () => {
       let skillDetails= {
          skill,
           employeeId:JSON.parse(window.sessionStorage.getItem('employee')).employeeId,
-         dateOfCompletion,
+          dateOfCompletion,
          certificationLink,
          certificatePdf,
          technologyId,
       };
       console.log(skillDetails);
 
+      EmployeeService.addSkill(skillDetails)
+        .then((response) => {
+         
 
+          setSkillErr("");
+          setEmployeeIdErr("");
+          setDateOfCompletionErr("");
+          setCertificationLinkErr("");
+          setCertificatePdfErr("");
+          setTechnologyIdErr("");
+           setErrorMsg("");
+          toast.success("Skills Added Successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Error Uploading Details");
+        });
+/*
       EmployeeService.addNewSkills(skillDetails)
         .then((response) => {
           setSkillErr("");
@@ -172,7 +189,7 @@ const AddSkills = () => {
           setSuccessMsg("");
           toast.success("Something Went Wrong");
         });
-    }
+      */  }
   };
 
    let handleDelete = (skillId) => {
@@ -258,28 +275,29 @@ const AddSkills = () => {
               </div>
               <div className="form-floating mb-3">
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   value={certificationLink}
                   onChange={certificationLinkHandler}
                   placeholder="Certification Link"
                 />
                 <label>Certification Link</label>
-                <span className="text-danger">{certificationLinkErr}</span>
               </div>
 
-              <div className="form-floating mb-3">
+              
+              <div class="mb-3">
+                <label for="formFile" class="form-label">
+                Certificate Pdf
+                </label>
                 <input
-                  type="number"
-                  className="form-control"
-                  value={certificatePdf}
+                  class="form-control"
+                  type="file"
+                  id="formFile"
                   onChange={certificatePdfHandler}
-                  placeholder="Certificate Pdf"
-                />
-                <label>Certificate Pdf</label>
-                <span className="text-danger">{certificatePdfErr}</span>
+                  placeholder="Upload Certificate Pdf"
+                ></input>
+  
               </div>
-
               
               <div className="row g-1">
                 <button type="submit" className="btn btn-primary">

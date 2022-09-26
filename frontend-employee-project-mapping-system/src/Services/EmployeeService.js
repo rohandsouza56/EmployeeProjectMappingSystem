@@ -25,6 +25,20 @@ const addResume = (file) => {
   });
 };
 
+const addSkill = (skillDetails) => {
+  console.log(localStorage.getItem("jwtToken"));
+  let formData = new FormData();
+  formData.append("files", skillDetails.certificatePdf);
+  return axios.post(Employee_BASE_REST_API_URL + "certificatepdf/"+skillDetails.employeeId, formData, {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+      "Content-Type": "multipart/form-data",
+       "charset":"utf-8",
+    },
+  });
+};
+
+
 const getAllDepartments = () => {
   return axios.get(Employee_BASE_REST_API_URL + "departments", {
     headers: {
@@ -56,5 +70,6 @@ export default {
   deleteSkills,
   addResume,
   getAllDepartments,
-  getSingleEmployeeByUserName
+  getSingleEmployeeByUserName,
+  addSkill
 };

@@ -1,30 +1,53 @@
 import React, { useEffect, useState } from "react";
 import "./HomePage.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+// import { withRouter } from 'react-router-dom';
+import { Link, navigate, useNavigate } from "react-router-dom";
+
+
+
+
+
+  
 
 
 
 const HomePage = () => {
+  // const history = withRouter();
+  const navigate = useNavigate();
+
+  function emplogin() {
+    navigate("/employeelogin");
+  }
+  function adminlogin() {
+    console.log("aaaaa");
+    
+     navigate("/login");
+  }
+
   const email = window.sessionStorage.getItem("email");
-  const [hideRegisterButton, setHideRegisterButton] = useState(false);
+  const [hideLoginButton, setHideLoginButton] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
-    // if (email === null) {
-    //   setHideRegisterButton(true);
-    // }
-    // else {
-    //   setHideRegisterButton(false);
-    // }
+    if (email === null) {
+      setHideLoginButton(true);
+    } else {
+      setHideLoginButton(false);
+    }
   }, []);
 
   return (
     <>
+      
       <section className="info-section container-fluid">
-        <div className="first-section"></div>
-        <div className="first-section-info-box">
-          <h6>
+        
+        <h6>
             <i>Welcome to Employee Project Mapping System</i>
           </h6>
+        <div className="first-section"></div>
+        <div className="first-section-info-box">
+          
           <p>
             {" "}
             Employee project mapping system is a web portal for employees to
@@ -36,29 +59,24 @@ const HomePage = () => {
             perform necessary CRUD operations and change employee project
             mapping.{" "}
           </p>
-          {hideRegisterButton && (
+          {hideLoginButton && (
             <Link
               className="registration-btn registration-btn1"
-              to="/register/college"
+             
             >
-              <button className="btn btn-sm text-white">
-                Admin Login
-              </button>
+              <button onClick={adminlogin} className="btn btn-sm text-white">Admin Login</button>
             </Link>
           )}
-          {hideRegisterButton && (
+          {hideLoginButton && (
             <Link
               className="registration-btn registration-btn2"
-              to="/register/student"
+             
             >
-              <button className="btn btn-sm text-white">
-                Employee Login
-              </button>
+              <button onClick={emplogin} className="btn btn-sm text-white">Employee Login</button>
             </Link>
           )}
         </div>
       </section>
-      
     </>
   );
 };

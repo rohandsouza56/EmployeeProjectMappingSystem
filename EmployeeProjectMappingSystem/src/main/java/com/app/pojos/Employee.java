@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -76,6 +77,7 @@ public class Employee implements Serializable {
 	@OneToMany(mappedBy="employee",cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
 	@JsonManagedReference
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Set<Skills> skills;
 	
 	
@@ -93,6 +95,7 @@ public class Employee implements Serializable {
 	
 	@ManyToOne
 //	@JsonBackReference
+	@EqualsAndHashCode.Exclude
 	@JoinColumn(name="Role_Id")
 	private Roles roles;
 

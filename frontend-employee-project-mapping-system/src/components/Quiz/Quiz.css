@@ -55,7 +55,7 @@
     color: #ffffff;
   }
      */
-  /* body {
+/* body {
     background-color:#2f922f;
     display: flex;
     justify-content: center;
@@ -63,108 +63,133 @@
     min-height: 100vh;
   } */
 
-  .app1 {
-    background-color: #ffffff;
-    margin-top: 100px;
-    margin-bottom:100px ;
-    width: 500px;
-    height: 500px;
-    border-radius: 15px;
-    padding: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 10px 10px 42px 0px rgba(63, 59, 59, 0.75);
-    justify-content: space-evenly;
-  }
-  /* .quiz-card{
-    height: 800px !important;
-  } */
-  .score-section {
-    display: flex;
-    font-size: 24px;
-    align-items: center;
-  }
-  
-  /* QUESTION/TIMER/LEFT SECTION */
-  .question-section {
-    width: 100%;
-    position: relative;
-  }
-  
-  .question-count {
-    margin-bottom: 20px;
-  }
-  
-  .question-count span {
-    font-size: 28px;
-  }
-  
-  .question-text {
-    margin-bottom: 12px;
-    padding: 20px;
-    text-align: center;
-  } */
-  .quiz-button-div{
-    margin-top: 20px !important;
-    margin-top: auto !important;
-  }
+.app1 {
+  /* background-color: #a8a7a8; */
+  background-image: linear-gradient(135deg, #a32cdf, #230492);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 600px;
+  height: 620px;
+  border-radius: 15px;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 10px 10px 42px 0px rgba(63, 59, 59, 0.75);
+  justify-content: space-evenly;
+}
 
-  .quiz-button{
-    background-color: #2f922f !important;
-    padding: 10px;
-    border-radius: 10px;
-  }
-  .timer-text {
-    background: rgb(230, 153, 12);
-    padding: 15px;
-    margin-top: 20px;
-    margin-right: 20px;
-    border: 5px solid rgb(255, 189, 67);
-    border-radius: 15px;
-    text-align: center;
-  }
-  
-  /* ANSWERS/RIGHT SECTION */
-  .answer-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-  }
-  
-  .answer-button {
-    width: 100%;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #252d4a;
-    border-radius: 15px;
-    display: flex;
-    padding: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    border: 5px solid #234668;
-    cursor: pointer;
-    margin-bottom: 5px;
-  }
-  
-  
-  .correct {
-    background-color: #2f922f;
-  }
-  
-  .incorrect {
-    background-color: #ff3333;
-  }
-  
-  button:hover {
-    background-color: #555e7d;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  button svg {
-    margin-right: 5px;
-  }
+.quiz-card {
+  position: relative;
+  height: 550px;
+}
+
+.score-section {
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+.question-section {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 10px;
+
+}
+
+.question-count {
+  margin-bottom: 5px;
+}
+
+.question-count span {
+  font-size: 26px;
+}
+
+.question-text {
+  margin-bottom: 12px;
+  /* padding: 20px; */
+  text-align: center;
+  font-weight: 500;
+}
+
+
+.quiz-button-div {
+  /* margin-bottom: 20px !important;
+  margin-top: auto !important; */
+  margin-top: 60px !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  margin-left: 40px !important;
+  width: 80%;
+
+
+}
+
+.quiz-button {
+  background-color: #ff0b40 !important;
+  padding: 10px;
+  border-radius: 20px;
+  width: 40%;
+  font-weight: 700;
+  color: white;
+
+}
+
+.timer-text {
+  background: rgb(230, 153, 12);
+  padding: 15px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 5px solid rgb(255, 189, 67);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ANSWERS/RIGHT SECTION */
+.answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.answer-button {
+  width: 100%;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0px solid #234668;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+
+.correct {
+  background-color: #2f922f;
+}
+
+.incorrect {
+  background-color: #ff3333;
+}
+
+button:hover {
+  background-color: #aaaaaa;
+  /* color: #fcfdff; */
+}
+
+button:focus {
+  outline: none;
+}
+
+button svg {
+  margin-right: 5px;
+}

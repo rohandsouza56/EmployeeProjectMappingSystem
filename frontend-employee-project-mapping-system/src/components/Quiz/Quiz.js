@@ -25,7 +25,7 @@ const QuizComp = () => {
         console.log(error);
       });
   };
-  
+
   const handleAnswerResponse = (isTrue) => {
     if (isTrue && Questionbank[currentQuestion].marks < 1) {
       let qb = Questionbank;
@@ -83,7 +83,6 @@ const QuizComp = () => {
               Play Again!!
             </button>
           </> */}
-
         </div>
       ) : (
         <div className="quiz-card">
@@ -99,12 +98,16 @@ const QuizComp = () => {
 
           <div className="answer-section">
             {Questionbank[currentQuestion].options.map((option) => (
-              <button className="answer-button" onClick={() => handleAnswerResponse(option.true)}>
+              <button
+                className="answer-button"
+                onClick={() => handleAnswerResponse(option.true)}
+              >
                 {option.option}
               </button>
             ))}
           </div>
-          <div className="quiz-button-div row">
+
+          <div className="quiz-button-div row ">
             <button className="quiz-button col-6" onClick={PREVQUESTION}>
               PREVQUESTION
             </button>
