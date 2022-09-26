@@ -2,7 +2,7 @@
 
 
 .first-section{
-    height: 100vh;
+    height: 120vh;
    
 
     background-image: url("../Images/image-1.jpg");
@@ -26,12 +26,14 @@
 .about-section{
 
     background-image: url("../Images/image-4.webp");
-        background-position: centers;
-        background-repeat: no-repeat;
+      
+        padding-top: 100px;
             background-size: cover;
         filter: brightness(0.7);
         height: 100vh;
-        z-index: 1;
+        overflow-y: hidden;
+        
+       
 
 }
 
@@ -45,7 +47,7 @@
 }
 
 .first-section-info-box>h6{
-    padding: 10px 15px 10px 15px;
+  
     font-size: 2.5rem;
     color: white;
     margin: 0;
@@ -55,7 +57,7 @@
 }
 
 .first-section-info-box>p{
-    padding: 10px 15px 10px 15px;
+  
     background-color: var(--white-color);
     text-align: justify;
 }

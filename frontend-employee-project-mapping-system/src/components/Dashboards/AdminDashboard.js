@@ -7,7 +7,7 @@ import Home from "./AdminHome";
 import AddProjectMapping from "../Projects/ProjectMapping";
 import AddResources from "../Resources/AddResource";
 import Admin from "./Admin";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   FaUserAlt,
   FaBlackTie,
@@ -17,8 +17,9 @@ import {
   FaLightbulb,
 } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
-import { GrTechnology } from "react-icons/gr";
-import { AiTwotoneHome } from "react-icons/ai";
+import { RiLogoutCircleFill } from "react-icons/ri";
+import { AiTwotoneHome, } from "react-icons/ai";
+import {FcDepartment} from "react-icons/fc"
 
 import "./AdminDashboard.css";
 
@@ -38,6 +39,16 @@ const AdminDashboard = () => {
   const [addEmployee, setAddEmployee] = useState(false);
   const [addResource, setAddResource] = useState(false);
   const [projectReq, setProjectReq] = useState(false);
+
+  const navigate = useNavigate();
+   const logoutUser = () => {
+     
+    localStorage.removeItem("jwtToken");
+
+    navigate("/login");
+  };
+
+
 
   let showAddProject = () => {
     if (home) {
@@ -329,7 +340,7 @@ const AdminDashboard = () => {
             </li>
 
             <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
-              <FaBlackTie
+              <FcDepartment
                 size={22}
                 className="sidebar-list-icon"
                 style={{ width: "30px", paddingBottom: "4px" }}
@@ -369,7 +380,15 @@ const AdminDashboard = () => {
                 size={22}
                 style={{ width: "30px", paddingBottom: "4px" }}
               />
-              <span id="Hovereffect">Employee Project Mapping</span>
+              <span id="Hovereffect">Project Mapping</span>
+            </li>
+
+            <li onClick={logoutUser} style={{ cursor: "context-menu" }}>
+              <RiLogoutCircleFill
+                size={22}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Logout</span>
             </li>
           </ul>
         </div>

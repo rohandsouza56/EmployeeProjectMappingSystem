@@ -167,6 +167,7 @@ const Login = () => {
             </div> */}
 
       <div className="container-fluid w-50 mt-5 login-component">
+          
         <div
           className="row border rounded p-2"
           style={{ backgroundColor: "lightBlue" }}
@@ -226,6 +227,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

@@ -1,19 +1,19 @@
 .dashboard-data-section {
-  /* background-image: url("../Images/image-1.jpg");
+    /* background-image: url("../Images/image-1.jpg");
 background-image:-o-linear-gradient(); */
 
-  /* background-image:
+    /* background-image:
     url("../Images/image-5.png"); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding-bottom: 100px;
-  background-color: #A7BF2E;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 100px;
+    background-color: #A7BF2E;
 }
 
 .dashboard-sidebar {
-  /* height: 900px; */
-  background-color: #dad7cb;
+    /* height: 900px; */
+    background-color: #dad7cb;
 }
 
 /* .dashboard-data-section{
@@ -49,7 +49,7 @@ background-image:-o-linear-gradient(); */
         }
      */
 
-/* #Hovereffect {
+#Hovereffect {
   background-image: linear-gradient(to right, #0e76e6, #0e76e6 50%, #000 50%);
   background-size: 200% 100%;
   background-position: -100%;
@@ -84,21 +84,21 @@ background-image:-o-linear-gradient(); */
 
 #Hovereffect:hover::before {
   width: 100%;
-} */
+}
 
 .nav-pills>li {
-  margin: 2%;
+    margin: 2%;
 }
 
 /* .nav-pills>li:hover {
-  background-color: #2f2b32;
-  color: white;
+    background-color: #0c0b0c;
+    color: white;
 } */
 
 .adminhome {
 
-  background-image: url("../Images/admin9.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 400px;
+    background-image: url("../Images/admin9.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
 }
