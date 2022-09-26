@@ -13,6 +13,14 @@ const deleteSkills = (skillId) => {
   return axios.delete(Employee_BASE_REST_API_URL + "deleteskills", skillId);
 };
 
+const updateEmployeePassword = (employeeDetails) => {
+  return axios.post(Employee_BASE_REST_API_URL +"employee/updatepassword" , employeeDetails,{
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
+
 const addResume = (file) => {
   console.log(localStorage.getItem("jwtToken"));
   let formData = new FormData();
@@ -71,5 +79,6 @@ export default {
   addResume,
   getAllDepartments,
   getSingleEmployeeByUserName,
-  addSkill
+  addSkill,
+  updateEmployeePassword
 };

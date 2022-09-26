@@ -15,6 +15,8 @@ import {
   FaSourcetree,
   FaMapSigns,
   FaLightbulb,
+  FaArchive,
+  FaRegQuestionCircle,
 } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
 import { RiLogoutCircleFill } from "react-icons/ri";
@@ -26,6 +28,7 @@ import "./AdminDashboard.css";
 //import { FaUserAlt } from "react-icons/md";
 
 import AddTechnology from "../Technology/AddTechnology";
+import AddQuestion from "../Quiz/AddQuestion";
 
 const AdminDashboard = () => {
   const [addDepartment, setAddDepartment] = useState(false);
@@ -39,6 +42,7 @@ const AdminDashboard = () => {
   const [addEmployee, setAddEmployee] = useState(false);
   const [addResource, setAddResource] = useState(false);
   const [projectReq, setProjectReq] = useState(false);
+  const [addQuestion, setAddQuestion] = useState(false);
 
   const navigate = useNavigate();
    const logoutUser = () => {
@@ -78,6 +82,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
+
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddProject(true);
   };
 
@@ -102,6 +110,10 @@ const AdminDashboard = () => {
     }
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
     setHome(true);
   };
@@ -129,6 +141,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddEmployee(true);
   };
 
@@ -154,6 +170,10 @@ const AdminDashboard = () => {
 
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setAddTechnology(true);
@@ -184,7 +204,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
-
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddResource(true);
   };
 
@@ -214,6 +237,10 @@ const AdminDashboard = () => {
 
     if (mapping) {
       setMapping(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setProjectReq(true);
@@ -248,6 +275,10 @@ const AdminDashboard = () => {
     }
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setMapping(true);
@@ -284,7 +315,49 @@ const AdminDashboard = () => {
     if (mapping) {
       setMapping(false);
     }
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddDepartment(true);
+  };
+
+  let showAddQuestion = () => {
+    if (home) {
+      setHome(false);
+    }
+
+    if (addEmployee) {
+      setAddEmployee(false);
+    }
+    if (addproject) {
+      setAddProject(false);
+    }
+    if (addTechnology) {
+      setAddTechnology(false);
+    }
+
+    if (mapping) {
+      setMapping(false);
+    }
+    if (addResource) {
+      setAddResource(false);
+    }
+
+    if (addProjectRequirment) {
+      setAddProjectRequirment(false);
+    }
+    if (projectReq) {
+      setProjectReq(false);
+    }
+    if (mapping) {
+      setMapping(false);
+    }
+    
+    if(addDepartment){
+      setAddDepartment(false);
+    }
+    setAddQuestion(true);
   };
 
   return (
@@ -340,7 +413,7 @@ const AdminDashboard = () => {
             </li>
 
             <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
-              <FcDepartment
+              <FaArchive
                 size={22}
                 className="sidebar-list-icon"
                 style={{ width: "30px", paddingBottom: "4px" }}
@@ -362,6 +435,14 @@ const AdminDashboard = () => {
                 style={{ width: "30px", paddingBottom: "4px" }}
               />
               <span id="Hovereffect">Resource</span>
+            </li>
+
+            <li onClick={showAddQuestion} style={{ cursor: "context-menu" }}>
+              <FaRegQuestionCircle
+                size={20}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Add Questions</span>
             </li>
 
             <li
@@ -402,6 +483,7 @@ const AdminDashboard = () => {
           {projectReq && <AddProjectRequirment />}
           {addResource && <AddResources />}
           {mapping && <AddProjectMapping />}
+          {addQuestion && <AddQuestion/>}
         </div>
       </div>
     </>
