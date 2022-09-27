@@ -41,11 +41,16 @@ const AddSkills = () => {
   }, []);
 
   const getAllSkills = () => {
+    console.log(
+      JSON.parse(window.sessionStorage.getItem("employee")).employeeId
+    );
     console.log(localStorage.getItem("jwtToken"));
-    EmployeeService.getAllSkills()
+    EmployeeService.getSkillsByEmployeeId(
+      JSON.parse(window.sessionStorage.getItem("employee")).employeeId
+    )
       .then((response) => {
-        setAllSkills(response.data);
         console.log(response.data);
+        setAllSkills(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -62,6 +67,8 @@ const AddSkills = () => {
         console.log(error);
       });
   };
+
+  
 
 
   

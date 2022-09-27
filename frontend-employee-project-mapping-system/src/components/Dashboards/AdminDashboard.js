@@ -7,7 +7,7 @@ import Home from "./AdminHome";
 import AddProjectMapping from "../Projects/ProjectMapping";
 import AddResources from "../Resources/AddResource";
 import Admin from "./Admin";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   FaUserAlt,
   FaBlackTie,
@@ -15,16 +15,20 @@ import {
   FaSourcetree,
   FaMapSigns,
   FaLightbulb,
+  FaArchive,
+  FaRegQuestionCircle,
 } from "react-icons/fa";
 import { BiAtom } from "react-icons/bi";
-import { GrTechnology } from "react-icons/gr";
-import { AiTwotoneHome } from "react-icons/ai";
+import { RiLogoutCircleFill } from "react-icons/ri";
+import { AiTwotoneHome, } from "react-icons/ai";
+import {FcDepartment} from "react-icons/fc"
 
 import "./AdminDashboard.css";
 
 //import { FaUserAlt } from "react-icons/md";
 
 import AddTechnology from "../Technology/AddTechnology";
+import AddQuestion from "../Quiz/AddQuestion";
 
 const AdminDashboard = () => {
   const [addDepartment, setAddDepartment] = useState(false);
@@ -38,6 +42,17 @@ const AdminDashboard = () => {
   const [addEmployee, setAddEmployee] = useState(false);
   const [addResource, setAddResource] = useState(false);
   const [projectReq, setProjectReq] = useState(false);
+  const [addQuestion, setAddQuestion] = useState(false);
+
+  const navigate = useNavigate();
+   const logoutUser = () => {
+     
+    localStorage.removeItem("jwtToken");
+
+    navigate("/login");
+  };
+
+
 
   let showAddProject = () => {
     if (home) {
@@ -67,6 +82,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
+
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddProject(true);
   };
 
@@ -91,6 +110,10 @@ const AdminDashboard = () => {
     }
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
     setHome(true);
   };
@@ -118,6 +141,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddEmployee(true);
   };
 
@@ -143,6 +170,10 @@ const AdminDashboard = () => {
 
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setAddTechnology(true);
@@ -173,7 +204,10 @@ const AdminDashboard = () => {
     if (projectReq) {
       setProjectReq(false);
     }
-
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddResource(true);
   };
 
@@ -203,6 +237,10 @@ const AdminDashboard = () => {
 
     if (mapping) {
       setMapping(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setProjectReq(true);
@@ -237,6 +275,10 @@ const AdminDashboard = () => {
     }
     if (projectReq) {
       setProjectReq(false);
+    }
+    
+    if(addQuestion){
+      setAddQuestion(false);
     }
 
     setMapping(true);
@@ -273,7 +315,49 @@ const AdminDashboard = () => {
     if (mapping) {
       setMapping(false);
     }
+    
+    if(addQuestion){
+      setAddQuestion(false);
+    }
     setAddDepartment(true);
+  };
+
+  let showAddQuestion = () => {
+    if (home) {
+      setHome(false);
+    }
+
+    if (addEmployee) {
+      setAddEmployee(false);
+    }
+    if (addproject) {
+      setAddProject(false);
+    }
+    if (addTechnology) {
+      setAddTechnology(false);
+    }
+
+    if (mapping) {
+      setMapping(false);
+    }
+    if (addResource) {
+      setAddResource(false);
+    }
+
+    if (addProjectRequirment) {
+      setAddProjectRequirment(false);
+    }
+    if (projectReq) {
+      setProjectReq(false);
+    }
+    if (mapping) {
+      setMapping(false);
+    }
+    
+    if(addDepartment){
+      setAddDepartment(false);
+    }
+    setAddQuestion(true);
   };
 
   return (
@@ -329,7 +413,7 @@ const AdminDashboard = () => {
             </li>
 
             <li onClick={showAddDepartment} style={{ cursor: "context-menu" }}>
-              <FaBlackTie
+              <FaArchive
                 size={22}
                 className="sidebar-list-icon"
                 style={{ width: "30px", paddingBottom: "4px" }}
@@ -353,6 +437,14 @@ const AdminDashboard = () => {
               <span id="Hovereffect">Resource</span>
             </li>
 
+            <li onClick={showAddQuestion} style={{ cursor: "context-menu" }}>
+              <FaRegQuestionCircle
+                size={20}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Add Questions</span>
+            </li>
+
             <li
               onClick={showAddProjectRequirment}
               style={{ cursor: "context-menu" }}
@@ -369,7 +461,15 @@ const AdminDashboard = () => {
                 size={22}
                 style={{ width: "30px", paddingBottom: "4px" }}
               />
-              <span id="Hovereffect">Employee Project Mapping</span>
+              <span id="Hovereffect">Project Mapping</span>
+            </li>
+
+            <li onClick={logoutUser} style={{ cursor: "context-menu" }}>
+              <RiLogoutCircleFill
+                size={22}
+                style={{ width: "30px", paddingBottom: "4px" }}
+              />
+              <span id="Hovereffect">Logout</span>
             </li>
           </ul>
         </div>
@@ -383,6 +483,7 @@ const AdminDashboard = () => {
           {projectReq && <AddProjectRequirment />}
           {addResource && <AddResources />}
           {mapping && <AddProjectMapping />}
+          {addQuestion && <AddQuestion/>}
         </div>
       </div>
     </>

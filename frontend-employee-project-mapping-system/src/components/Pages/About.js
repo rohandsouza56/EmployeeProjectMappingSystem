@@ -7,7 +7,7 @@ const About = () => {
   }, []);
   return (
     <div
-      className="container-fluid w-75 about-section"
+      className="container-fluid  about-section"
       style={{ marginBottom: "10%" }}
     >
       <div className="m-5">

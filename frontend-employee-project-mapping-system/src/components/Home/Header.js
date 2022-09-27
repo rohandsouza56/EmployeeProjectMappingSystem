@@ -96,7 +96,7 @@ const Header = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <NavLink className="navbar-link" to="/login">
+            <NavLink className="navbar-link" to="/">
               <IoIosHome className="navbar-right-logo" /> Home
             </NavLink>
             <NavLink className="navbar-link" to="/team">

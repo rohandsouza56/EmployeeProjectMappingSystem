@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { FaUserAlt, FaBlackTie } from "react-icons/fa";
 import { FcList } from "react-icons/fc";
-import { BiAtom } from "react-icons/bi";
+import { AiOutlineLogout } from "react-icons/ai";
+import {CgProfile} from "react-icons/cg";
 import { GrTechnology } from "react-icons/gr";
 import { GiSkills } from "react-icons/gi";
+import {RiLockPasswordFill} from "react-icons/ri"
 // import './AdminDashboard.css';
 import GetResource from "../Resources/GetResources";
 import EmployeeProfile from "../Employees/EmployeeProfile";
 import AttemptQuiz from "../Employees/AttemptQuiz";
 import ChangePassword from "../Login/ChangePassword";
 import ProjectListEmployee from "../Projects/ProjectListEmployee";
+import './EmployeeDashboard.css';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
-//import { FaUserAlt } from "react-icons/md";
+import { MdQuiz} from "react-icons/md";
 import AddSkills from "../Skills/AddSkill";
 import AddTechnology from "../Technology/AddTechnology";
 
@@ -27,6 +31,15 @@ const EmployeeDashboard = () => {
   const [addSkill, setAddSkill] = useState(false);
   const [attemptQuiz, setAttemptQuiz] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
+   const navigate = useNavigate();
+
+    const logoutUser = () => {
+     
+    localStorage.removeItem("jwtToken");
+
+    navigate("/employeelogin");
+  };
+
 
   let showEmployeeProfile = () => {
     if (projectlist) {
@@ -206,7 +219,7 @@ const EmployeeDashboard = () => {
                 onClick={showEmployeeProfile}
                 style={{ cursor: "context-menu" }}
               >
-                <FcList
+                <CgProfile
                   className="sidebar-list-icon"
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
@@ -244,7 +257,7 @@ const EmployeeDashboard = () => {
                 <span id="Hovereffect">Get Resource</span>
               </li>
               <li onClick={showQuizzes} style={{ cursor: "context-menu" }}>
-                <GrTechnology
+                <MdQuiz
                   size={20}
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
@@ -252,11 +265,19 @@ const EmployeeDashboard = () => {
               </li>
 
               <li onClick={showChangePassword} style={{ cursor: "context-menu" }}>
-                <GrTechnology
+                <RiLockPasswordFill
                   size={20}
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
                 <span id="Hovereffect">Update Password</span>
+              </li>
+
+              <li onClick={logoutUser} style={{ cursor: "context-menu" }}>
+                <AiOutlineLogout
+                  size={20}
+                  style={{ width: "30px", paddingBottom: "4px" }}
+                />
+                <span id="Hovereffect">Logout</span>
               </li>
 
             </b>

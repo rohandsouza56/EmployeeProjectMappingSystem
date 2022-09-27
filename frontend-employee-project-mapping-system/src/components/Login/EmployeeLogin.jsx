@@ -108,23 +108,7 @@ const EmployeeLogin = () => {
           toast.success("Login Success");
           navigate("/employeedashboard");
 
-          // if (response.data.role === "ADMIN") {
-          //     const user = response.data;
-          //     // window.sessionStorage.setItem('user', JSON.stringify(user));
-          //     // window.sessionStorage.setItem("email", user.email);
-          //     // window.sessionStorage.setItem("name", user.name);
-          //     // window.sessionStorage.setItem("snackbar", "show");
-          //     // console.log(user);
-          //    setLoggedInAsAdmin(true);
-          // }
-
-          // else if(response.data.role === "MANAGER"){
-          //     setLoggedInAsManager(true);
-          // }
-
-          // else if(response.data.role === "EMPLOYEE"){
-          //     setLoggedInEmployee(true);
-          // }
+          
         })
         .catch((error) => {
           setErrorMsg(error.response.data);
@@ -139,22 +123,24 @@ const EmployeeLogin = () => {
       {loggedInAsEmployee && <Navigate to="/employeedashboard" />}
       {loggedInAsManager && <Navigate to="/managerdashboard" />}
 
-      <div className="container-fluid w-50 mt-5 login-component">
+      <div className="login-comp ">
         <div
-          className="row border rounded p-2"
-          style={{ backgroundColor: "lightBlue" }}
+          className="row rounded p-2 "
+          // style={{ backgroundColor: "lightBlue" }}
         >
-          <div className="col-4 ">
+
+         <div className="col-6 "></div>
+          {/* <div className="col-6 ">
             <img
               src={user}
               className="rounded-start img-fluid mt-5"
               style={{ width: "300px" }}
             ></img>
-          </div>
+          </div> */}
 
-          <div className="col-8">
+          <div className="col-5 rounded text-center" style={{backgroundColor:"white",height:"400px"}}>
             <div className="border border-0 rounded p-2">
-              <h2 className="fw-bold mb-2 mt-2 text-uppercase">Login</h2>
+              <h2 className="fw-bold mb-2 mt-2 text-uppercase">Employee Login</h2>
               <p className="text-50 text-dark mb-3">
                 Please enter your login and password!
               </p>

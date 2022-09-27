@@ -13,6 +13,14 @@ const deleteSkills = (skillId) => {
   return axios.delete(Employee_BASE_REST_API_URL + "deleteskills", skillId);
 };
 
+const updateEmployeePassword = (employeeDetails) => {
+  return axios.post(Employee_BASE_REST_API_URL +"employee/updatepassword" , employeeDetails,{
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
+
 const addResume = (file) => {
   console.log(localStorage.getItem("jwtToken"));
   let formData = new FormData();
@@ -46,15 +54,13 @@ const getAllDepartments = () => {
     },
   });
 };
-/*
-const getSingleEmployee = (employeeId) => {
-  return axios.get(Employee_BASE_REST_API_URL + , {
+const getSkillsByEmployeeId = (id) => {
+  return axios.get(Employee_BASE_REST_API_URL + "skill/" + id, {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
     },
   });
-};*/
-// export default new ProjectService();
+};
 
 
 const getSingleEmployeeByUserName = (userName) => {
@@ -71,5 +77,7 @@ export default {
   addResume,
   getAllDepartments,
   getSingleEmployeeByUserName,
-  addSkill
+  addSkill,
+  updateEmployeePassword,
+  getSkillsByEmployeeId
 };

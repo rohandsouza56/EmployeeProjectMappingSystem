@@ -3,7 +3,7 @@ import "./HomePage.css";
 // import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 // import { withRouter } from 'react-router-dom';
-import { Link, navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
 
@@ -40,14 +40,14 @@ const HomePage = () => {
   return (
     <>
       
-      <section className="info-section container-fluid">
+      <section className="info-section">
         
-        <h6>
-            <i>Welcome to Employee Project Mapping System</i>
-          </h6>
+       
         <div className="first-section"></div>
         <div className="first-section-info-box">
-          
+           <h6>
+            <i>Welcome to Employee Project Mapping System</i>
+          </h6>
           <p>
             {" "}
             Employee project mapping system is a web portal for employees to
@@ -60,20 +60,14 @@ const HomePage = () => {
             mapping.{" "}
           </p>
           {hideLoginButton && (
-            <Link
-              className="registration-btn registration-btn1"
-             
-            >
-              <button onClick={adminlogin} className="btn btn-sm text-white">Admin Login</button>
-            </Link>
+ 
+              <button className="registration-btn registration-btn2" onClick={adminlogin} className="btn btn-sm text-white">Admin Login</button>
+         
           )}
           {hideLoginButton && (
-            <Link
-              className="registration-btn registration-btn2"
-             
-            >
-              <button onClick={emplogin} className="btn btn-sm text-white">Employee Login</button>
-            </Link>
+          
+              <button className="registration-btn registration-btn2" onClick={emplogin} className="btn btn-sm text-white">Employee Login</button>
+           
           )}
         </div>
       </section>
