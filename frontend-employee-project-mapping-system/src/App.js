@@ -26,7 +26,8 @@ import EmployeeLogin from "./components/Login/EmployeeLogin";
 import EmployeeProfile from "./components/Employees/EmployeeProfile";
 import QuizComp from "./components/Quiz/Quiz";
 import HomePage from "./components/Home/HomePage";
-import EmployeeList from "./components/Employees/EmployeeList"
+import EmployeeList from "./components/Employees/EmployeeList";
+import TeamPage from "./components/Pages/TeamPage";
 
 const App = () => {
   return (
@@ -56,7 +57,7 @@ const App = () => {
           <Route path="/quiz" element={<QuizComp />} />
           <Route path="/employeelist" element={<EmployeeList />} />
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/teampage" element={<TeamPage/>} /> */}
+          <Route path="/team" element={<TeamPage/>} />
         </Routes>
 
         <footer className="footer section ">

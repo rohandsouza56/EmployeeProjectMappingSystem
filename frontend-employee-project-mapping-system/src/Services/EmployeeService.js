@@ -54,15 +54,13 @@ const getAllDepartments = () => {
     },
   });
 };
-/*
-const getSingleEmployee = (employeeId) => {
-  return axios.get(Employee_BASE_REST_API_URL + , {
+const getSkillsByEmployeeId = (id) => {
+  return axios.get(Employee_BASE_REST_API_URL + "skill/" + id, {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
     },
   });
-};*/
-// export default new ProjectService();
+};
 
 
 const getSingleEmployeeByUserName = (userName) => {
@@ -80,5 +78,6 @@ export default {
   getAllDepartments,
   getSingleEmployeeByUserName,
   addSkill,
-  updateEmployeePassword
+  updateEmployeePassword,
+  getSkillsByEmployeeId
 };

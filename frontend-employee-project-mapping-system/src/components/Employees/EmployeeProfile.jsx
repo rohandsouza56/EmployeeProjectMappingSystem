@@ -18,7 +18,7 @@ const EmployeeProfile = () => {
               <span>
                 {
                   JSON.parse(window.sessionStorage.getItem("employee"))
-                    .employeeName?JSON.parse(window.sessionStorage.getItem("employee"))
+                  ?JSON.parse(window.sessionStorage.getItem("employee"))
                     .employeeName:""
                 }
               </span>

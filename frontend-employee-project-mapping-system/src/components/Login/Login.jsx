@@ -88,23 +88,7 @@ const Login = () => {
           toast.success("Login Success");
           navigate("/admindashboard");
 
-          // if (response.data.role === "ADMIN") {
-          //     const user = response.data;
-          //     // window.sessionStorage.setItem('user', JSON.stringify(user));
-          //     // window.sessionStorage.setItem("email", user.email);
-          //     // window.sessionStorage.setItem("name", user.name);
-          //     // window.sessionStorage.setItem("snackbar", "show");
-          //     // console.log(user);
-          //    setLoggedInAsAdmin(true);
-          // }
-
-          // else if(response.data.role === "MANAGER"){
-          //     setLoggedInAsManager(true);
-          // }
-
-          // else if(response.data.role === "EMPLOYEE"){
-          //     setLoggedInEmployee(true);
-          // }
+          
         })
         .catch((error) => {
           setErrorMsg(error.response.data);
@@ -118,71 +102,28 @@ const Login = () => {
       {loggedInAsAdmin && <Navigate to="/admindashboard" />}
       {loggedInAsEmployee && <Navigate to="/employeedashboard" />}
       {loggedInAsManager && <Navigate to="/managerdashboard" />}
-      {/* <div className="container-fluid w-50 mt-5">
-                <div className="m-3 bg-success">
-                    <div className='row'>
-                    div
-                    <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                    <p className="text-50 text-primary mb-3">
-                        Please enter your login and password!
-                    </p>
-                    <div className='border border-1 rounded'>
-                        <div className='m-3'>
-                            <form onSubmit={onLoginSubmit}>
-                                <div className='form-floating mb-3'>
-                                    <input type='email' className='form-control form-control-sm'
-                                        value={email} onChange={emailTextHandler}
-                                        placeholder="name@example.com"
-                                    />
-                                    <label>Email Address</label>
-                                    <span className='text-danger'>{emailErr}</span>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input
-                                        type="password"
-                                        className="form-control form-control-sm"
-                                        value={password} onChange={passwordTextHandler}
-                                        placeholder="password"
-                                    />
-                                    <label>Password</label>
-                                    <span className="text-danger">{passwordErr}</span>
-                                </div>
-                                <div className="row g-1">
-                                    <div className="text-center mb-2">
-                                        <Link to="/forgot_password" className="link-primary">
-                                        Forgot password?
-                                        </Link>
-                                    </div>
-                                    <button type="submit" className="btn1 btn btn-primary">
-                                        Login
-                                    </button>
-                                    <hr className="my-4" />
-                                
-                                </div>
-                            </form>                        
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+      
 
-      <div className="container-fluid w-50 mt-5 login-component">
+      <div className="login-comp-01">
           
         <div
-          className="row border rounded p-2"
-          style={{ backgroundColor: "lightBlue" }}
+          className="row  rounded p-2  "
+          
         >
-          <div className="col-4 ">
+        <div className="col-7 ">
+            
+          </div>
+          {/* <div className="col-3 ">
             <img
               src={user}
               className="rounded-start img-fluid mt-5"
               style={{ width: "300px" }}
             ></img>
-          </div>
+          </div> */}
 
-          <div className="col-8">
-            <div className="border border-0 rounded p-2">
-              <h2 className="fw-bold mb-2 mt-2 text-uppercase">Login</h2>
+          <div className="col-4 rounded text-center" style={{backgroundColor:"lightblue",height:"400px"}}>
+            <div className="border border-0 rounded p-2  ">
+              <h2 className="fw-bold mb-2 mt-2 text-uppercase">Admin Login</h2>
               <p className="text-50 text-dark mb-3">
                 Please enter your login and password!
               </p>

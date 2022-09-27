@@ -5,7 +5,7 @@
     height: 120vh;
    
 
-    background-image: url("../Images/image-1.jpg");
+    background-image: url("../Images/image-7.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -58,7 +58,8 @@
 
 .first-section-info-box>p{
   
-    background-color: var(--white-color);
+    background-color: var(--green-color);
+    text-decoration-color: brown;
     text-align: justify;
 }
 
@@ -126,7 +127,7 @@
     .first-section-info-box>h2{
        
         font-size: 4rem;
-        color: white;
+        color: rgb(144, 49, 49);
         margin: 0;
         background-color: var(--green-color);
         width: 90%;
