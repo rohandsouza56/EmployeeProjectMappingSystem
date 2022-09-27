@@ -54,5 +54,15 @@ public class TechnologyServiceImpl implements ITechnologyService  {
 		
 		return technologyRepository.findAll();
 	}
+	
+	@Transactional
+	@Override
+	public Technology getTechnologyById(int technologyId) {
+	
+		Technology technology = technologyRepository.findById(technologyId)
+				.orElseThrow(() -> new ResourceNotFoundException("Technology Not Found with ID : " + technologyId));
+		
+		return technology;
+	}
 
 }

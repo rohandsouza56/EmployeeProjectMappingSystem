@@ -59,10 +59,8 @@ public class Skills {
 	@Column(name="Certificate_Pdf")
 	private byte[] certificatePdf;
 	
-	@Transient
 	private String docName;
 	
-	@Transient
 	private String docType;
 
 	/****check cascade type */

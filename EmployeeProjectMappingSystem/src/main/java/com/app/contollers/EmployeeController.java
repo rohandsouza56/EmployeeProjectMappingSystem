@@ -1,5 +1,7 @@
 package com.app.contollers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +31,7 @@ import com.app.service.IEmployeeService;
 import com.app.service.IProjectsService;
 import com.app.service.ISkillService;
 import com.app.service.ITechnologyService;
+import com.app.servicesimpl.EmailService;
 
 @RestController
 @RequestMapping("/employee")
@@ -46,6 +49,12 @@ public class EmployeeController {
 	
 	@Autowired
 	private ISkillService skillService;
+	
+	@Autowired
+	private ITechnologyService technologyService;
+	
+	@Autowired
+    EmailService emailService;
 	
 	@GetMapping("/projects")
 	public ResponseEntity<?> getAllProjects(){
@@ -139,14 +148,6 @@ public class EmployeeController {
 		//}
 		return "Sucess";
 	}
-	@PostMapping("/certificatepdf")
-	public String uploadMultipleFilesPdf(@RequestParam("files") MultipartFile[] files) {
-		for (MultipartFile file: files) {
-			skillService.saveCertificatePdf(file);
-			
-		}
-		return "Sucess";
-	}
 	
 	@PostMapping("/certificatepdf/{employeeId}")
 	
@@ -156,6 +157,44 @@ public class EmployeeController {
 		for (MultipartFile file: files) {
 			skillService.saveCertificatePdf(employeeId,skills,file);
 			
+		}
+		return "Sucess";
+	}
+	
+	@PostMapping("/certificatepdf")
+	public String uploadMultipleFilesPdf(@RequestParam("employeeId") int employeeId,@RequestParam("skill") String skill,@RequestParam("dateOfCompletion") String dateOfCompletion,@RequestParam("certificationLink") String certificationLink,@RequestParam("technologyId") int technologyId,@RequestParam("files") MultipartFile[] files) {
+		Skills skillObject=new Skills();
+		
+		//skillObject.setDateOfCompletion((LocalDate)dateOfCompletion);
+		skillObject.setSkill(skill);
+		// DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+		// LocalDate dt = dtf.parseLocalDate(dateOfCompletion);
+		
+		System.out.println(dateOfCompletion);
+	//	skillObject.setDateOfCompletion(dt);
+		
+		
+		
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		
+
+		  //convert String to LocalDate
+		  LocalDate localDate = LocalDate.parse(dateOfCompletion, formatter);
+
+		  skillObject.setDateOfCompletion(localDate);
+		
+		skillObject.setCertificationLink(certificationLink);
+		
+		System.out.println(technologyId);
+		Technology tech=technologyService.getTechnologyById(technologyId);
+		
+		System.out.println(tech.toString());
+		skillObject.setTechnologyId(tech);
+		System.out.println(skillObject.toString());
+		for (MultipartFile file: files) {
+			//skillService.saveCertificatePdf(file);
+			skillService.saveCertificatePdf(employeeId,skillObject,file);
 		}
 		return "Sucess";
 	}

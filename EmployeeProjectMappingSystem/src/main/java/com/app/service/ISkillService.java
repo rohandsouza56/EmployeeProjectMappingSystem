@@ -21,5 +21,6 @@ public interface ISkillService {
 	public Skills saveCertificatePdf(int employeeId,Skills skill,MultipartFile certificatePdf);
 	
 	public Skills saveCertificatePdf(MultipartFile file);
+	
 
 }

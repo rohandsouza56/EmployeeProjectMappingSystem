@@ -3,8 +3,13 @@ package com.app.contollers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +41,7 @@ import com.app.service.IQuestionService;
 import com.app.service.IResourceService;
 import com.app.service.ITechnologyService;
 import com.app.servicesimpl.DepartmentServiceImpl;
+import com.app.servicesimpl.EmailService;
 import com.app.servicesimpl.ProjectsServiceImpl;
 
 @RestController
@@ -69,6 +75,9 @@ public class AdminController {
 	
 	@Autowired
 	private IOptionsService optionsService;
+	
+	@Autowired
+    EmailService emailService;
 	
 	
 	//*************  Projects ************
@@ -281,6 +290,35 @@ public class AdminController {
 		@GetMapping("/getadmin")
 		public ResponseEntity<?> getEmployeeByuserName(@RequestParam(name = "email") String email){
 			return ResponseEntity.ok().body(adminService.getAdmin(email));
+		}
+		
+
+		@PostMapping("/email/requestchange/{managerId}")
+		public Employee register(@RequestBody Employee employee,@PathVariable int managerId) throws MessagingException{
+			System.out.println("Registering Customer...");
+			//Customer cust=customerService.registerUser(customerDto);
+//			System.out.println(cust);
+//			if(cust!=null) {
+
+			Employee manager = employeeService.getEmployeeById(managerId);
+			
+			
+			
+			if(manager.getEmail()!="")
+				emailService.sendSimpleEmail(manager.getEmail(),employee,"Project Change Request from Employee");
+			return employee;
+		}
+
+		@GetMapping("/downloadFile/{employeeId}")
+		public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable int employeeId){
+			Employee employee = employeeService.getEmployeeById(employeeId);
+			
+		//	MultipartFile file=employee.getResume();
+			
+			return ResponseEntity.ok()
+					.contentType(MediaType.parseMediaType(employee.getDocType()))
+					.header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+employee.getDocName()+"\"")
+					.body(new ByteArrayResource(employee.getResume()));
 		}
 	
 }

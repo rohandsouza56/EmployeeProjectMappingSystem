@@ -33,12 +33,14 @@ public class LoginServiceImpl implements UserDetailsService {
 		
 
 		System.out.println("Email: "+email);
-		Admin admin = adminRepository.findByEmail(email);
+		System.out.println("Email: "+email.substring(0,email.length()-1));
+		Admin admin = adminRepository.findByEmail(email.substring(0,email.length()-1));
+
 		
-		Employee employee = employeeRepository.findByEmail(email);
+		Employee employee = employeeRepository.findByEmail(email.substring(0,email.length()-1));
 		
-		//int roleId = Integer.parseInt(email.charAt(email.length()-1)+"");
-		//System.out.println("Role ID: "+roleId);
+		int roleId = Integer.parseInt(email.charAt(email.length()-1)+"");
+		System.out.println("Role ID: "+roleId);
 		
 		System.out.println(admin);
 		System.out.println(employee);
@@ -48,10 +50,10 @@ public class LoginServiceImpl implements UserDetailsService {
 		if (admin == null && employee==null) {
 			throw new UsernameNotFoundException("User not found with username: " + email);
 		}
-		else if(employee == null) {
+		else if(roleId==3) {
 			return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getPassword(),
 					new ArrayList<>());
-		}else {
+		}else {// if(admin == null && (roleId==1 || roleId == 2)) {
 			return new org.springframework.security.core.userdetails.User(employee.getEmail(), employee.getPassword(),
 					new ArrayList<>());
 		}

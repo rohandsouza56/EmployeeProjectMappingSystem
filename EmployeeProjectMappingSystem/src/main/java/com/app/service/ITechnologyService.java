@@ -15,7 +15,7 @@ public interface ITechnologyService {
 	public List<Technology> deleteTechnology(int technologyId);
 
 
-
+	public Technology getTechnologyById(int technologyId);
 
 }
 

@@ -46,7 +46,30 @@ public class SkillServiceImpl implements ISkillService {
 		return skillRepository.save(skill);
 	}
 	
-	
+	@Transactional
+	@Override
+	public Skills saveCertificatePdf(int employeeId,Skills skill,MultipartFile file) {
+		
+		Employee employee = employeeRepository.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
+		
+		skill.setEmployee(employee);
+		
+		  String docname = file.getOriginalFilename();
+		  try {
+		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
+			 // employee.setDocName(docname.);
+			  skill.setCertificatePdf(file.getBytes());
+			  
+			  skill.setDocType(file.getContentType());
+			  skill.setDocName(docname);
+			  return skillRepository.save(skill);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
+	}
 
 	@Override
 	public Skills updateSkill(Skills skill) {
@@ -69,26 +92,6 @@ public class SkillServiceImpl implements ISkillService {
 		return skillRepository.findAll();
 	}
 	
-	@Override
-	public Skills saveCertificatePdf(int employeeId,Skills skill,MultipartFile file) {
-		
-		Employee employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
-		
-		skill.setEmployee(employee);
-		
-		  String docname = file.getOriginalFilename();
-		  try {
-		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
-			 // employee.setDocName(docname.);
-			  skill.setCertificatePdf(file.getBytes());
-			  return skillRepository.save(skill);
-		  }
-		  catch(Exception e) {
-			  e.printStackTrace();
-		  }
-		return null;
-	}
 	
 	@Override
 	public Skills saveCertificatePdf(MultipartFile file) {

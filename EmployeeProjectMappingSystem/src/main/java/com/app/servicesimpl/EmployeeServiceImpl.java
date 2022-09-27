@@ -160,25 +160,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return null;
 	}
 	
-	@Override
-	public Employee saveFile(int employeeId,MultipartFile file) {
-		
-		Employee employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
-		
-		
-		  String docname = file.getOriginalFilename();
-		  try {
-		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
-			 // employee.setDocName(docname.);
-			  employee.setResume(file.getBytes());
-			  return employeeRepository.save(employee);
-		  }
-		  catch(Exception e) {
-			  e.printStackTrace();
-		  }
-		return null;
-	}
+	
 
 	@Override
 	public Employee getEmployeeById(int employeeId) {
@@ -195,6 +177,29 @@ public class EmployeeServiceImpl implements IEmployeeService {
 			}
 				
 		return employee;
+	}
+	
+	@Transactional
+	@Override
+	public Employee saveFile(int employeeId,MultipartFile file) {
+		
+		Employee employee = employeeRepository.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + employeeId));
+		
+		
+		  String docname = file.getOriginalFilename();
+		  try {
+		//	  Employee employee = new Employee(docname,file.getContentType(),file.getBytes());
+			 // employee.setDocName(docname.);
+			  employee.setResume(file.getBytes());
+			  employee.setDocName(docname);
+			  employee.setDocType(file.getContentType());
+			  return employeeRepository.save(employee);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		return null;
 	}
 	
 	
