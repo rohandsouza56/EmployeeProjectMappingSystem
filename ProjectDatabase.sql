@@ -5,8 +5,8 @@ show tables;
 
 create table Projects(
 Project_Id int primary key auto_increment,
-Project_Name varchar(50),
-`Description` varchar(100),
+Project_Name varchar(100),
+`Description` varchar(500),
 Start_Date date,
 End_Date date,
 Location varchar(50),
@@ -88,6 +88,8 @@ Project_Id int ,
 Department_Id int,
 Role_Id int,
 Resume MEDIUMBLOB,
+docName varchar(255),
+docType varchar(255),
 Constraint fk_Employee_Projects_Id foreign key	(Project_Id) references Projects(Project_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Department_Id foreign key (Department_Id) references Departments(Department_Id) ON DELETE SET NULL ON UPDATE CASCADE,
 Constraint fk_Employee_Role_Id_Id foreign key (Role_Id) references Roles(Role_Id) ON DELETE SET NULL ON UPDATE CASCADE
