@@ -1,0 +1,53 @@
+.card {
+    margin: 2rem 2rem 2rem 0;
+    padding: 40px;
+    box-shadow: 0 0 28px 4px rgba(0, 0, 0, 0.1);
+    transition: transform .3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card__title {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.span-head {
+    font-weight: 700;
+    padding: 20px;
+}
+
+.project-sub-button {
+    background-color: rgb(15, 158, 86) !important;
+    width: 40%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: 20px;
+}
+
+.project-req-button {
+    background-color: rgb(15, 158, 149) !important;
+    width: 40%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-dep-button {
+    background-color: rgb(15, 158, 180) !important;
+    width: 40%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.search-box{
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 500px;
+    margin-right: auto;
+    width: 30%;
+}
