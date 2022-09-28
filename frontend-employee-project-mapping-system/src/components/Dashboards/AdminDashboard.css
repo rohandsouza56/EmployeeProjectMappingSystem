@@ -1,19 +1,15 @@
 .dashboard-data-section {
-  /* background-image: url("../Images/image-1.jpg");
-background-image:-o-linear-gradient(); */
-
-  /* background-image:
-    url("../Images/image-5.png"); */
+  
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 100px;
-  background-color: #b83a3a;
+  background-color: #29282c;
 }
 
 .dashboard-sidebar {
   /* height: 900px; */
-  background-color: #dad7cb;
+  background-color: white;
 }
 
 /* .dashboard-data-section{

@@ -32,7 +32,7 @@ const ProjectList = () => {
                 <thead>
                     <th>  Id </th>
                     <th> Name </th>
-                    <th>  description </th>
+                    <th >  Description </th>
                     <th>  Startdate </th>
                     <th> Enddate </th>
                 </thead>
@@ -43,7 +43,7 @@ const ProjectList = () => {
                             <tr key = {project.projectId}> 
                                 <td> {project.projectId} </td>
                                 <td> {project.name} </td>
-                                <td>{project.description}</td>
+                                <td style = {{textAlign:'justify'}}>{project.description}</td>
                                 <td>{project.startDate}</td>
                                 <td>{project.endDate}</td>
                                 

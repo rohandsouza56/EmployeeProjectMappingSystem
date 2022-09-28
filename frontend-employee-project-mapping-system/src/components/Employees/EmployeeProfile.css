@@ -1,5 +1,5 @@
 .headpart {
-    background-color: rgb(170, 0, 255);
+    background-color: rgb(41, 119, 147);
     height: 100%;
     border-top-left-radius: 40px;
 }
@@ -34,4 +34,8 @@
     padding: 30px;
     box-shadow: 0 0 28px 4px rgba(0, 0, 0, 0.1);
 
+}
+.bodypart{
+    background-color: white;
+    border-end-start-radius: 20px;
 }

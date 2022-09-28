@@ -48,7 +48,7 @@ const AdminDashboard = () => {
    const logoutUser = () => {
      
     localStorage.removeItem("jwtToken");
-
+    window.sessionStorage.removeItem('admin');  
     navigate("/login");
   };
 
@@ -375,7 +375,7 @@ const AdminDashboard = () => {
 
             <span className="fs-4">
               Hello{" "}
-              <span className="text-secondary">
+              <span style ={{ color :"#28559A"}}>
                 <b>{
                   JSON.parse(window.sessionStorage.getItem("admin"))?JSON.parse(window.sessionStorage.getItem("admin"))
                   .name:"Admin"

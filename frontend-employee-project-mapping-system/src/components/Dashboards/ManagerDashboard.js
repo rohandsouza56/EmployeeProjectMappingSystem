@@ -11,7 +11,8 @@ import GetResource from "../Resources/GetResources";
 import EmployeeProfile from "../Employees/EmployeeProfile";
 import AttemptQuiz from "../Employees/AttemptQuiz";
 import ChangePassword from "../Login/ChangePassword";
-import ProjectListEmployee from "../Projects/ProjectListEmployee";
+import EmployeeList from "../Employees/EmployeeList";
+// import ProjectListEmployee from "../Projects/ProjectListEmployee";
 import "./EmployeeDashboard.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AddResume from "../Employees/AddResume";
@@ -20,12 +21,12 @@ import { MdQuiz } from "react-icons/md";
 import AddSkills from "../Skills/AddSkill";
 import AddTechnology from "../Technology/AddTechnology";
 
-const EmployeeDashboard = () => {
+const ManagerDashboard = () => {
   // const [addDepartment, setAddDepartment] = useState(false);
 
   // const [addproject, setAddProject] = useState(false);
 
-  const [projectlist, setProjectList] = useState(false);
+  const [employeelist, setEmployeeList] = useState(false);
   const [employeeProfile, setEmployeeProfile] = useState(false);
   const [getResource, setResource] = useState(false);
   const [addSkill, setAddSkill] = useState(false);
@@ -40,12 +41,13 @@ const EmployeeDashboard = () => {
     window.sessionStorage.removeItem("departments");
     window.sessionStorage.removeItem("projects");
     window.sessionStorage.removeItem("skills");
+
     navigate("/employeelogin");
   };
 
   let showEmployeeProfile = () => {
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
 
     if (addSkill) {
@@ -70,7 +72,7 @@ const EmployeeDashboard = () => {
     setEmployeeProfile(true);
   };
 
-  let showProjectList = () => {
+  let showEmployeeList = () => {
     if (addSkill) {
       setAddSkill(false);
     }
@@ -91,15 +93,15 @@ const EmployeeDashboard = () => {
       setAddResume(false);
     }
 
-    setProjectList(true);
+    setEmployeeList(true);
   };
 
   let showAddSkill = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
     if (changePassword) {
       setChangePassword(false);
@@ -123,8 +125,8 @@ const EmployeeDashboard = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
 
     if (attemptQuiz) {
@@ -147,8 +149,8 @@ const EmployeeDashboard = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
 
     if (changePassword) {
@@ -175,8 +177,8 @@ const EmployeeDashboard = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
 
     if (addSkill) {
@@ -200,8 +202,8 @@ const EmployeeDashboard = () => {
     if (employeeProfile) {
       setEmployeeProfile(false);
     }
-    if (projectlist) {
-      setProjectList(false);
+    if (employeelist) {
+      setEmployeeList(false);
     }
 
     if (addSkill) {
@@ -245,7 +247,7 @@ const EmployeeDashboard = () => {
 
             <span className="fs-4">
               Hello{" "}
-              <span  style ={{ color :"#28559A"}}>
+              <span style ={{ color :"#28559A"}}>
                 <b>
                   {" "}
                   {
@@ -269,12 +271,12 @@ const EmployeeDashboard = () => {
                 />
                 <span id="Hovereffect">Profile</span>
               </li>
-              <li onClick={showProjectList} style={{ cursor: "context-menu" }}>
+              <li onClick={showEmployeeList} style={{ cursor: "context-menu" }}>
                 <AiOutlineUnorderedList
                   className="sidebar-list-icon"
                   style={{ width: "30px", paddingBottom: "4px" }}
                 />
-                <span id="Hovereffect">Project List</span>
+                <span id="Hovereffect">Employee List</span>
               </li>
 
               {/* <li onClick={show} style={{cursor:"context-menu"}}>
@@ -344,7 +346,7 @@ const EmployeeDashboard = () => {
           // style={{ backgroundColor: "#d3ded6" }}
         >
           {employeeProfile && <EmployeeProfile />}
-          {projectlist && <ProjectListEmployee />}
+          {employeelist && <EmployeeList />}
           {addSkill && <AddSkills />}
           {getResource && <GetResource />}
           {attemptQuiz && <AttemptQuiz />}
@@ -359,4 +361,4 @@ const EmployeeDashboard = () => {
   );
 };
 
-export default EmployeeDashboard;
+export default ManagerDashboard;

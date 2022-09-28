@@ -113,16 +113,10 @@ const Login = () => {
         <div className="col-7 ">
             
           </div>
-          {/* <div className="col-3 ">
-            <img
-              src={user}
-              className="rounded-start img-fluid mt-5"
-              style={{ width: "300px" }}
-            ></img>
-          </div> */}
+          
 
-          <div className="col-4 rounded text-center" style={{backgroundColor:"lightblue",height:"400px"}}>
-            <div className="border border-0 rounded p-2  ">
+          <div className="col-4 rounded text-center" style={{backgroundColor:"#63BCE5",height:"400px", borderRadius:"20px"}}>
+            <div className="border border-0 rounded p-2">
               <h2 className="fw-bold mb-2 mt-2 text-uppercase">Admin Login</h2>
               <p className="text-50 text-dark mb-3">
                 Please enter your login and password!
@@ -152,11 +146,11 @@ const Login = () => {
                     <span className="text-danger">{passwordErr}</span>
                   </div>
                   <div className="row g-1">
-                    <div className="text-center mb-2">
+                    {/* <div className="text-center mb-2">
                       <Link to="/forgot_password" className="link-primary">
                         Forgot password?
                       </Link>
-                    </div>
+                    </div> */}
                     <button type="submit" className="btn1 btn btn-primary">
                       Login
                     </button>

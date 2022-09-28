@@ -80,13 +80,20 @@
 
 .quiz-card {
   position: relative;
-  height: 550px;
+  height: 600px;
+  background-color: rgb(59, 75, 132);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  border-radius: 20px;
+  
 }
 
 .score-section {
   display: flex;
   font-size: 24px;
   align-items: center;
+  background-color:#ffffff !important;
 }
 
 /* QUESTION/TIMER/LEFT SECTION */
@@ -124,12 +131,13 @@
   bottom: 0 !important;
   margin-left: 40px !important;
   width: 80%;
+  padding-bottom: 50px;
 
 
 }
 
 .quiz-button {
-  background-color: #ff0b40 !important;
+  background-color: #a4d9ed !important;
   padding: 10px;
   border-radius: 20px;
   width: 40%;

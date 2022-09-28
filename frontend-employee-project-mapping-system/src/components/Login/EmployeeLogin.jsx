@@ -92,23 +92,69 @@ const EmployeeLogin = () => {
         .then((response) => {
           EmployeeService.getSingleEmployeeByUserName(loginRequest.email).then(
             (response) => {
-              window.sessionStorage.setItem('employee', JSON.stringify(response.data));
-              window.sessionStorage.setItem('departments', JSON.stringify(response.data.departments));
-              window.sessionStorage.setItem('projects', JSON.stringify(response.data.projects));
-              window.sessionStorage.setItem('skills', JSON.stringify(response.data.skills));
-              
-              console.log(response.data);
-              console.log(JSON.parse(window.sessionStorage.getItem('employee')).designation)
+              console.log(response.data.roles.roleId);
+              console.log(role);
+              if (response.data.roles.roleId == 1 && role ==1) {
+                window.sessionStorage.setItem(
+                  "employee",
+                  JSON.stringify(response.data)
+                );
+                window.sessionStorage.setItem(
+                  "departments",
+                  JSON.stringify(response.data.departments)
+                );
+                window.sessionStorage.setItem(
+                  "projects",
+                  JSON.stringify(response.data.projects)
+                );
+                window.sessionStorage.setItem(
+                  "skills",
+                  JSON.stringify(response.data.skills)
+                );
+
+                console.log(response.data);
+                console.log(
+                  JSON.parse(window.sessionStorage.getItem("employee"))
+                    .designation
+                );
+                setEmail("");
+                setPassword("");
+                setRole("");
+                toast.success("Login Success");
+                navigate("/employeedashboard");
+              } else if (response.data.roles.roleId == 2 && role ==2) {
+                window.sessionStorage.setItem(
+                  "employee",
+                  JSON.stringify(response.data)
+                );
+                window.sessionStorage.setItem(
+                  "departments",
+                  JSON.stringify(response.data.departments)
+                );
+                window.sessionStorage.setItem(
+                  "projects",
+                  JSON.stringify(response.data.projects)
+                );
+                window.sessionStorage.setItem(
+                  "skills",
+                  JSON.stringify(response.data.skills)
+                );
+
+                console.log(response.data);
+                console.log(
+                  JSON.parse(window.sessionStorage.getItem("employee"))
+                    .designation
+                );
+                setEmail("");
+                setPassword("");
+                setRole("");
+                toast.success("Login Success");
+                navigate("/managerdashboard");
+              }else{
+                 toast.error("Incorrect Credentials");
+              }
             }
           );
-
-          setEmail("");
-          setPassword("");
-          setRole("");
-          toast.success("Login Success");
-          navigate("/employeedashboard");
-
-          
         })
         .catch((error) => {
           setErrorMsg(error.response.data);
@@ -128,19 +174,20 @@ const EmployeeLogin = () => {
           className="row rounded p-2 "
           // style={{ backgroundColor: "lightBlue" }}
         >
+          <div className="col-7 "></div>
 
-         <div className="col-6 "></div>
-          {/* <div className="col-6 ">
-            <img
-              src={user}
-              className="rounded-start img-fluid mt-5"
-              style={{ width: "300px" }}
-            ></img>
-          </div> */}
-
-          <div className="col-5 rounded text-center" style={{backgroundColor:"white",height:"400px"}}>
+          <div
+            className="col-4 rounded text-center"
+            style={{
+              backgroundColor: "white",
+              height: "450px",
+              paddingTop: "20px",
+            }}
+          >
             <div className="border border-0 rounded p-2">
-              <h2 className="fw-bold mb-2 mt-2 text-uppercase">Employee Login</h2>
+              <h2 className="fw-bold mb-2 mt-2 text-uppercase">
+                Employee Login
+              </h2>
               <p className="text-50 text-dark mb-3">
                 Please enter your login and password!
               </p>
@@ -174,21 +221,21 @@ const EmployeeLogin = () => {
                       aria-label="Default select example"
                       onChange={roleTextHandler}
                     >
-                      <option hidden disabled selected value>-- Role --</option>
-                      <option value="1">
-                        Employee
+                      <option hidden disabled selected value>
+                        -- Role --
                       </option>
+                      <option value="1">Employee</option>
                       <option value="2">Manager</option>
                     </select>
                     <label>Select Role</label>
                     <span className="text-danger">{roleErr}</span>
                   </div>
                   <div className="row g-1">
-                    <div className="text-center mb-2">
+                    {/* <div className="text-center mb-2">
                       <Link to="/forgot_password" className="link-primary">
                         Forgot password?
                       </Link>
-                    </div>
+                    </div> */}
                     <button type="submit" className="btn1 btn btn-primary">
                       Login
                     </button>

@@ -27,7 +27,7 @@ const ProjectListSub = ({ projectData }) => {
 
   return (
     <>
-      <div className="col-5">
+      <div className="col-11">
         <div className="card">
           <div className="card__title">Name: {projectData.name}</div>
 
@@ -39,7 +39,7 @@ const ProjectListSub = ({ projectData }) => {
               </tr>
               <tr>
                 <th>Description:</th>
-                <td>{projectData.description}</td>
+                <td style ={{textAlign:"justify"}}>{projectData.description}</td>
               </tr>
               <tr>
                 <th>Location:</th>

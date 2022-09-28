@@ -23,17 +23,17 @@
     background-color: rgb(15, 158, 86) !important;
     width: 40%;
     text-align: center;
-    margin-left: auto;
+    margin-left: 50px;
     margin-right: auto;
-    margin-right: 20px;
 }
 
 .project-req-button {
     background-color: rgb(15, 158, 149) !important;
     width: 40%;
     text-align: center;
-    margin-left: auto;
+    margin-left: 30px;
     margin-right: auto;
+    margin-top: 8px;
 }
 
 .project-dep-button {

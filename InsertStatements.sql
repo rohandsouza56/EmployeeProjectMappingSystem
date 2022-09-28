@@ -101,9 +101,9 @@ insert into employee(Employee_Name,Designation,DateOfJoining,MobileNo,Email,`Pas
 values("Rohan","Testing","2020-05-02","9820571545","rohandsouza5656@gmail.com","$2a$10$vN/uMRnu8yL/g0r0PDQcPOMMK0GFD/Ofn7wx2TeqBXfdRm8hY6qY2","Male",1,1,1,null),
 ("Sanket","Developer","2022-05-02","9921149469","srdongare10@gmail.com","$2a$10$kfy.hhz7ZifGMTyYc5OEm.zQRyBzz6TDY5FyZeZR2RGCLDp4NHXam","Male",2,5,1,null),
 ("Sachin","Developer","2021-02-28","9651149455","sachinbichitkar335@gmail.com","$2a$10$5ulvgvc5I57MmW1aX3nz6eHEavof8NFkRnRK6aJ1sl5qD8sxK4XMu","Male",3,9,1,null),
-("Sakshi","Developer","2018-05-02","9733449485","arzaresakshi1@gmail.com","$2a$10$5ulvgvc5I57MmW1aX3nz6eHEavof8NFkRnRK6aJ1sl5qD8sxK4XMu","Female",4,12,1,null),
+("Sakshi","Developer","2018-05-02","9733449485","arzaresakshi1@gmail.com","$2a$10$Wo0WZizNR67ogYJVfplwP.Cff7ZHYlRgRxwXvAbBzOCoNLiyKFEiW","Female",4,12,1,null),
 ("Shubham","Developer","2022-05-02","9921149485","shubhamkrps@gmail.com","$2a$10$s9Oa0CMcMHnnGKrS6MFgC.YxY/dRHomTE4MLlCpST9iXtlQZ60HJC","Male",5,15,1,null),
-("Rohan M","Developer","2016-10-20","9894149995","rohandsouza974@gmail.com","$2a$10$U056/lKEIB.BothAZSLUNOFqqM2FpUrQ0N79jAcH1JkYtWJ.kwZ3G","Male",1,1,1,null);
+("Rohan M","Developer","2016-10-20","9894149995","rohandsouza974@gmail.com","$2a$10$U056/lKEIB.BothAZSLUNOFqqM2FpUrQ0N79jAcH1JkYtWJ.kwZ3G","Male",1,1,2,null);
 
 desc employee;
 select *from employee;

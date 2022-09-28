@@ -8,12 +8,26 @@ background-image:-o-linear-gradient(); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-bottom: 100px;
-    background-color: #A7BF2E;
+    background-color:#8abcccfa;
+}
+.dashboard-section {
+
+  background-color: #8abcccfa;
+}
+
+.attempt-quiz{
+  background-image: url("../Images/Quiz6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 20px;
+  padding-bottom: 100px;
 }
 
 .dashboard-sidebar {
     /* height: 900px; */
-    background-color: #dad7cb;
+    background-color: white;
+    
+
 }
 
 /* .dashboard-data-section{

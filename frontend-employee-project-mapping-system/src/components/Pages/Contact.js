@@ -3,11 +3,11 @@ import "../Home/HomePage.css";
 
 const Contact = () => {
     return (
-      <div style={{backgroundColor: "#d3ded6"}} >
+      <div style={{backgroundColor: "#8abcccfa"}} >
   
-      <div className="container-fluid w-75 mt-5 contact-page contact-section" >
-      <div className="m-3">
-          <h2 className="fw-bold mb-2 text-uppercase">Contact Us &nbsp;<i className="fa fa-paper-plane" style={{color: "green"}}></i></h2><br/>
+      <div className="container-fluid w-75 contact-page contact-section" >
+      <div className='pt-5'>
+          <h2 className="fw-bold pb-2 text-uppercase">Contact Us &nbsp;<i className="fa fa-paper-plane" style={{color: "green"}}></i></h2><br/>
           
 			<p>
                 We are devoted to serve you in our best way possible.<br/> If you have any query or issue regarding this Project, feel free to contact us!

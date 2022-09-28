@@ -297,7 +297,7 @@ const AddProjects = () => {
                 <tr key={allproject.projectId}>
                   <td> {allproject.projectId} </td>
                   <td> {allproject.name} </td>
-                  <td>{allproject.description}</td>
+                  <td style = {{textAlign:'justify'}}>{allproject.description}</td>
                   <td>{allproject.startDate}</td>
                   <td>{allproject.endDate}</td>
                   <td>

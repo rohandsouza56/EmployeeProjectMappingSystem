@@ -10,12 +10,12 @@ const QuizComp = () => {
   const [Questionbank, setQuestionbank] = useState([]);
 
   useEffect(() => {
-    getAllQuestions();
+    getAllQuestions(window.sessionStorage.getItem("quizTechId"));
   }, []);
 
-  const getAllQuestions = () => {
+  const getAllQuestions = (techId) => {
     console.log(localStorage.getItem("jwtToken"));
-    QuizService.getAllQuestions(1)
+    QuizService.getAllQuestions(techId)
       .then((response) => {
         console.log(response.data);
         console.log(response.data[0].question);
@@ -74,9 +74,9 @@ const QuizComp = () => {
   };
 
   return Questionbank.length > 0 ? (
-    <div className="app1">
+    <div className="attempt-quiz ">
       {showScore ? (
-        <div className="score-section">
+        <div className="score-section attempt-quiz">
           You have scored {score} out of {Questionbank.length}
           {/* <>
             <button type="submit" onClick={resetQuiz}>
@@ -85,8 +85,8 @@ const QuizComp = () => {
           </> */}
         </div>
       ) : (
-        <div className="quiz-card">
-          <div className="question-section">
+        <div className="quiz-card w-50 ">
+          <div className="question-section ">
             <div className="question-count">
               <span>{currentQuestion + 1}</span>/{Questionbank.length}
             </div>

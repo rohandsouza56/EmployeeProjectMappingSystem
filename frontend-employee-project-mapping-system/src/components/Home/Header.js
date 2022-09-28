@@ -65,7 +65,7 @@ const Header = () => {
     >
       <div className="container-fluid ps-4">
         <Navbar.Brand href="#home">
-          <NavLink to="/login">
+          {/* <NavLink to="/login"> */}
             <img
               className="navbar-logo mt-2"
               src={NavLogo}
@@ -73,21 +73,9 @@ const Header = () => {
               width={160}
               height={50}
             />
-          </NavLink>
+          {/* </NavLink> */}
         </Navbar.Brand>
-        {/* <NavLink to="/login">
-          <img
-            className="navbar-logo mt-2"
-            src={NavLogo}
-            alt="ucs_logo"
-            width={160}
-            height={50}
-          />
-        </NavLink> */}
-
-        {/* <NavLink to="/login" id="title">
-          Employee Project Mapping System
-        </NavLink> */}
+       
 
         {/* <NavLink to= "/login"><h4><strong>Employee Project Mapping System</strong></h4> </NavLink> */}
         <Navbar.Toggle
@@ -108,11 +96,11 @@ const Header = () => {
             <NavLink className="navbar-link" to="/contact">
               <MdContactPage className="navbar-right-logo" /> Contact Us
             </NavLink>
-            <NavDropdown title={<FaUserCircle />} className="navbar-profile">
+            {/* <NavDropdown title={<FaUserCircle />} className="navbar-profile">
               <div>
                 <RenderMenu />
               </div>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </div>

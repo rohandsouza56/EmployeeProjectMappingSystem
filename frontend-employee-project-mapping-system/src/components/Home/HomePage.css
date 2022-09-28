@@ -1,170 +1,165 @@
+.first-section {
+  height: 120vh;
 
-
-
-.first-section{
-    height: 120vh;
-   
-
-    background-image: url("../Images/image-7.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.8);
-    opacity: 0.8;
-    z-index: 1;
-    
+  background-image: url("../Images/image-7.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+  opacity: 0.8;
+  z-index: 1;
 }
 
-.contact-section{
-    background-image: url("../Images/ContactUs.png");
-    background-position: left;
-
-
+.contact-section {
+  background-image: url("../Images/ContactUs.png");
+  background-position: left;
+  height: 80vh;
 }
 
-
-.about-section{
-
-    background-image: url("../Images/image-4.webp");
-      
-        padding-top: 100px;
-            background-size: cover;
-        filter: brightness(0.7);
-        height: 100vh;
-        overflow-y: hidden;
-        
-       
-
+.about-section {
+  padding-top: 100px;
+  filter: brightness(1.0);
+  height: 100vh;
+  overflow-y: hidden;
 }
 
+.first-section-info-box {
+  width: 50vw;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  z-index: 2;
+}
 
-.first-section-info-box{
-    width: 50vw;
+.first-section-info-box > h6 {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+  background-color: var(--green-color);
+  text-align: center;
+  width: 90%;
+}
+
+.first-section-info-box > p {
+  /* background-color: blue; */
+  color: white;
+
+  text-decoration-color: brown;
+  text-align: justify;
+  margin-right: 100px;
+}
+
+.registration-btn1 {
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: black;
+  margin-left: 150px;
+
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.registration-btn2 {
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: white;
+  color: black;
+  margin-left: 20px;
+
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.registration-btn:hover {
+  background-color: white;
+}
+.registration-btn:hover .btn {
+  color: black !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .first-section-info-box {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 10%;
-    z-index: 2;
+  }
+
+  .first-section-info-box > h2 {
+    padding: 8px 13px 8px 13px;
+    font-size: 4rem;
+  }
 }
 
-.first-section-info-box>h6{
-  
-    font-size: 2.5rem;
-    color: white;
+.info-section {
+  background-color: rgb(49, 177, 177) !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .first-section-info-box > h2 {
+    padding: 8px 13px 8px 13px;
+    font-size: 3.5rem;
+  }
+
+  .first-section-info-box > p {
+    width: 60vw;
+  }
+
+  .registration-btn {
+    padding: 8px;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .first-section-info-box {
+    width: 70vw;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    z-index: 2;
+  }
+
+  .first-section-info-box > h2 {
+    font-size: 4rem;
+    color: rgb(144, 49, 49);
     margin: 0;
     background-color: var(--green-color);
-    text-align: center;
     width: 90%;
+  }
 }
 
-.first-section-info-box>p{
-  
-    background-color: var(--green-color);
-    text-decoration-color: brown;
-    text-align: justify;
+@media only screen and (max-width: 576px) {
+  .first-section-info-box {
+    height: 100px;
+  }
+
+  .first-section-info-box > h2 {
+    width: 65vw;
+  }
+
+  .first-section-info-box > p {
+    width: 65vw;
+  }
+  .registration-btn2 {
+    position: relative;
+    top: 40%;
+    right: 47%;
+  }
 }
 
-.registration-btn{
-    border: none;
-    padding: 10px;
-    font-size: 1.2rem;
-    background-color: var(--green-color);
-    color: var(--white-color);
-    margin-right: 15px;
-    text-decoration: none;
-    border-radius: 5px;
+@media only screen and (max-width: 526px) {
+  .registration-btn2 {
+    position: relative;
+    top: 10%;
+    right: 0%;
+  }
 }
 
-.registration-btn:hover{
-    background-color: white;
-}
-.registration-btn:hover .btn{
-    color: black !important;
-}
-
-@media only screen and (max-width: 1024px){
-    
-    .first-section-info-box{
-        position: absolute;
-        top: 35%;
-        left: 10%;
-    }
-    
-    .first-section-info-box>h2{
-        padding: 8px 13px 8px 13px;
-        font-size: 4rem;
-    }
-    
-}
-
-@media only screen and (max-width: 992px){
-    
-    .first-section-info-box>h2{
-        padding: 8px 13px 8px 13px;
-        font-size: 3.5rem;
-    }
-
-    .first-section-info-box>p{
-        width: 60vw;
-      }
-
-    .registration-btn{
-        padding: 8px;
-        font-size: 1rem;
-    }
-    
-}
-
-@media only screen and (max-width: 768px){
-    
-    .first-section-info-box{
-        width: 70vw;
-        position: absolute;
-        top: 30%;
-        left: 20%;
-        z-index: 2;
-    }
-    
-    .first-section-info-box>h2{
-       
-        font-size: 4rem;
-        color: rgb(144, 49, 49);
-        margin: 0;
-        background-color: var(--green-color);
-        width: 90%;
-    }
-    
-}
-
-@media only screen and (max-width: 576px){
-
-    .first-section-info-box{
-        height: 100px;
-    }
-
-    .first-section-info-box>h2{
-        width: 65vw;
-    }
-
-    .first-section-info-box>p{
-        width: 65vw;
-    }
-    .registration-btn2{
-        position: relative;
-        top: 40%;
-        right: 47%;
-    }
-}
-
-@media only screen and (max-width: 526px){
-    .registration-btn2{
-        position: relative;
-        top: 10%;
-        right: 0%;
-    }
-}
-
-@media only screen and (max-width: 385px){
-    .first-section-info-box>h6{
-        font-size: 2rem;
-    }
+@media only screen and (max-width: 385px) {
+  .first-section-info-box > h6 {
+    font-size: 2rem;
+  }
 }

@@ -61,12 +61,12 @@ const HomePage = () => {
           </p>
           {hideLoginButton && (
  
-              <button className="registration-btn registration-btn2" onClick={adminlogin} className="btn btn-sm text-white">Admin Login</button>
+              <button className="registration-btn1" onClick={adminlogin}>Admin Login</button>
          
           )}
           {hideLoginButton && (
           
-              <button className="registration-btn registration-btn2" onClick={emplogin} className="btn btn-sm text-white">Employee Login</button>
+              <button className=" registration-btn2" onClick={emplogin}>Employee Login</button>
            
           )}
         </div>
