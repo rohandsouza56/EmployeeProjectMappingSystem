@@ -54,8 +54,7 @@ const addDepartment = (departmentDetails) => {
 
 const deleteDepartment = (departmentId) => {
   return axios.delete(
-    ADMIN_BASE_REST_API_URL + "department/delete",
-    departmentId, {
+    ADMIN_BASE_REST_API_URL + "department/delete/"+departmentId, {
       headers: {
         Authorization: localStorage.getItem("jwtToken"),
       },
@@ -160,6 +159,26 @@ const getAdminByEmail = (email) => {
   });
 };
 
+const getResumeById= (id) => {
+  return axios.get(ADMIN_BASE_REST_API_URL +"downloadFile/"+id ,{
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+      responseType: 'blob',
+    }, 
+  }
+  );
+};
+
+const sendEmail = (employee,managerId) => {
+  return axios.post(ADMIN_BASE_REST_API_URL + "email/requestchange/6", employee, {
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
+};
+
+
+
 export default {
   getAllProjects,
   addNewProject,
@@ -177,5 +196,7 @@ export default {
   addRequirment,
   projectMapping,
   getAllDepartmenrByProjectId,
-  getAdminByEmail
+  getAdminByEmail,
+  getResumeById,
+  sendEmail,
 };

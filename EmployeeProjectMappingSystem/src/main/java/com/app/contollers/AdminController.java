@@ -1,5 +1,11 @@
 package com.app.contollers;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -148,7 +154,7 @@ public class AdminController {
 	
 	@DeleteMapping("/department/delete/{departmentId}")
 	public ResponseEntity<?> deleteDepartmentstDetails(@PathVariable int departmentId){
-		return ResponseEntity.ok().body(projectsService.deleteProject(departmentId));
+		return ResponseEntity.ok().body(departmentServiceImpl.deleteDepartments(departmentId));
 	}
 	
 	
@@ -312,13 +318,34 @@ public class AdminController {
 		@GetMapping("/downloadFile/{employeeId}")
 		public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable int employeeId){
 			Employee employee = employeeService.getEmployeeById(employeeId);
-			
+			//System.out.println(new ByteArrayResource(employee.getResume()));
 		//	MultipartFile file=employee.getResume();
-			
+			String filename="filename";
 			return ResponseEntity.ok()
+					
 					.contentType(MediaType.parseMediaType(employee.getDocType()))
-					.header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+employee.getDocName()+"\"")
+					.header(filename,"attachment:filename=\""+employee.getDocName()+"\"")
 					.body(new ByteArrayResource(employee.getResume()));
 		}
+
+		
+//		public static String encoder(ByteArrayResource b) {
+//	        String base64File = "";
+//	        File file = new File(b);
+//	        try (FileInputStream imageInFile = new FileInputStream(file)) {
+//	            // Reading a file from file system
+//	            byte fileData[] = new byte[(int) file.length()];
+//	            imageInFile.read(fileData);
+//	            base64File = Base64.getEncoder().encodeToString(fileData);
+//	        } catch (FileNotFoundException e) {
+//	            System.out.println("File not found" + e);
+//	        } catch (IOException ioe) {
+//	            System.out.println("Exception while reading the file " + ioe);
+//	        }
+//	        return base64File;
+//	    }
+		
+		
+		
 	
 }

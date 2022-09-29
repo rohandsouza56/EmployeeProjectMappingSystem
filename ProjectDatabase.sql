@@ -113,6 +113,8 @@ Date_of_Completion date,
 Certification_Link varchar(50),
 Certificate_Pdf mediumblob,
 Technology_Id int,
+docName varchar(255),
+docType varchar(255),
 constraint fk_Skills_Skill_Id_ foreign key (Technology_Id) references Technology(Technology_Id) ON DELETE CASCADE ON UPDATE CASCADE,
 constraint fk_Skills_Employee_Id_ foreign key (Employee_Id) references Employee(Employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );

@@ -151,7 +151,7 @@ public class EmployeeController {
 	
 	@PostMapping("/certificatepdf/{employeeId}")
 	
-	public String uploadMultipleFilesPdf(@RequestParam("files") MultipartFile[] files,@PathVariable int employeeId,@ModelAttribute Skills skills ) {
+	public String uploadMultipleFilesPdf(@RequestParam("files") MultipartFile[] files,@PathVariable int employeeId,@RequestBody Skills skills ) {
 		
 		System.out.println("skill "+skills+"skilll.skillid"+skills.toString());
 		for (MultipartFile file: files) {
@@ -176,7 +176,7 @@ public class EmployeeController {
 		
 		
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 
 		  //convert String to LocalDate
@@ -198,6 +198,12 @@ public class EmployeeController {
 		}
 		return "Sucess";
 	}
+	
+	@PostMapping("/employee/updatepassword")
+	public ResponseEntity<?> updatePasswordEmployee(@RequestBody Employee employee){
+		return ResponseEntity.ok().body(employeeService.updatePassword(employee));
+	}
+
 
 	
 	

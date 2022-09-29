@@ -62,9 +62,13 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	}
 
 	@Override
+	@Transactional
 	public List<Departments> deleteDepartments(int departmentId) {
+		System.out.println(departmentId);
 		Departments department = departmentsRepository.findById(departmentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Department Not Found with Department ID : " + departmentId));
+		System.out.println(department.getName());
+		System.out.println(department.getProjects().getLocation());
 		departmentsRepository.delete(department);
 		
 		return departmentsRepository.findAll();

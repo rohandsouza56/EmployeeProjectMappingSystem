@@ -47,11 +47,11 @@ const GetResource = () => {
               {resource.map((resource) => (
                 <tr key={resource.resourceId}>
                   <td>{resource.resourceId}</td>
-                  <td>Tech Name</td>
+                  <td>{resource.technology.technologyName}</td>
                   <td>{resource.description}</td>
                   <td>
                     <a href={resource.link} target="_blank" rel="noreferrer">
-                      {resource.link}
+                      Docs
                     </a>
                   </td>
 

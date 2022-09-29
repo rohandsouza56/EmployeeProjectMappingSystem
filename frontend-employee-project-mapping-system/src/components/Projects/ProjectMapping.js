@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import AdminServices from "../../Services/AdminServices";
 import EmployeeService from "../../Services/EmployeeService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProjectMapping = () => {
   const [employeeId, setEmployeeId] = useState("");
@@ -96,13 +98,12 @@ const AddProjectMapping = () => {
           setDepartmentIdErr("");
           setEmployeeIdErr("");
           setProjectIdErr("");
-          setSuccessMsg("Employee Mapping Changed Successfully");
-          setErrorMsg("");
+          toast.success("Employee Mapping Changed Successfully");
         })
         .catch((err) => {
-          console.log("Error found", err);
-          setErrorMsg("Incorrect Details Entered");
-          setSuccessMsg("");
+          console.log(err);
+
+          toast.error("Incorrect Details Entered");
         });
     }
   };
@@ -173,8 +174,7 @@ const AddProjectMapping = () => {
             </form>
           </div>
         </div>
-        <span className="text-danger">{errorMsg}</span>
-        <span className="text-success">{successMsg}</span>
+        <ToastContainer />
       </div>
     </div>
   );

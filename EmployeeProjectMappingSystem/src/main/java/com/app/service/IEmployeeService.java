@@ -25,5 +25,7 @@ public interface IEmployeeService {
 	public Employee getEmployeeById(int employeeId);
 
 	public Employee getEmployeeByuserName(String userName);
+	
+	public Employee updatePassword(Employee newEmployee);
 
 }

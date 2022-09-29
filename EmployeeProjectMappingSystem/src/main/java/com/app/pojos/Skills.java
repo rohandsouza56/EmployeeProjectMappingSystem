@@ -64,7 +64,7 @@ public class Skills {
 	private String docType;
 
 	/****check cascade type */
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@ToString.Exclude
 	@JoinColumn(name = "Technology_Id") //fk
 	private Technology technologyId;

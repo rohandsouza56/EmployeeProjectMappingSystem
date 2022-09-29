@@ -60,13 +60,13 @@ public class Projects{
 	@Column(name="Manager_Id")
 	private int managerId;
 	
-	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="projects",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	@ToString.Exclude
 	Set<Departments> departments;
 	
 
-	@OneToMany(mappedBy="projects",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="projects",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	@ToString.Exclude
 	Set<ProjectRequirement> projectRequirement;

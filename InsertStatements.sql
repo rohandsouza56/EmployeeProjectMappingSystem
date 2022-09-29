@@ -68,7 +68,7 @@ values("Spring Boot"),
 ("Java"),
 ("Python");
 select * from Technology;
-truncate Technology;
+-- truncate Technology;
 
 insert into Resource (link,`Description`,Technology_Id)
 values("Link 1","Spring Boot Notes,PDFs,E-Books",1),
@@ -137,6 +137,7 @@ values ("Skill Description",1,"2022-5-5","Link 1","Pdf",1),
 
 select *from Skills;
 select * from Employee;
+
 
 show variables like 'max_allowed_packet';
 SET GLOBAL max_allowed_packet=268435456;

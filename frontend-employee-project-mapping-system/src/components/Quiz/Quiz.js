@@ -76,7 +76,7 @@ const QuizComp = () => {
   return Questionbank.length > 0 ? (
     <div className="attempt-quiz ">
       {showScore ? (
-        <div className="score-section attempt-quiz">
+        <div className="score-section w-50 text-white">
           You have scored {score} out of {Questionbank.length}
           {/* <>
             <button type="submit" onClick={resetQuiz}>

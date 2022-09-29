@@ -194,6 +194,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 			  employee.setResume(file.getBytes());
 			  employee.setDocName(docname);
 			  employee.setDocType(file.getContentType());
+			  
+			  System.out.println(employee);
 			  return employeeRepository.save(employee);
 		  }
 		  catch(Exception e) {
@@ -201,6 +203,22 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		  }
 		return null;
 	}
+	
+	@Transactional
+	@Override
+	public Employee updatePassword(Employee newEmployee) {
+		
+		Employee oldEmployee=employeeRepository.findById(newEmployee.getEmployeeId())
+				.orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with Employee ID : " + newEmployee.getEmployeeId()));
+		
+		BCryptPasswordEncoder bcryptEncoder =new BCryptPasswordEncoder();
+		oldEmployee.setPassword(bcryptEncoder.encode(newEmployee.getPassword()));
+		
+		return employeeRepository.save(oldEmployee);
+		
+	}
+
+
 	
 	
 }

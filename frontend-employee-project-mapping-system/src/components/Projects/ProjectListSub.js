@@ -3,6 +3,8 @@ import { Button, Modal } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
 import AdminServices from "../../Services/AdminServices";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProjectListSub = ({ projectData }) => {
   const [show, setShow] = useState(false);
@@ -24,6 +26,31 @@ const ProjectListSub = ({ projectData }) => {
         setDepartments([]);
       });
   };
+
+  let sendEmail = () => {
+    
+      let employee = {
+        employeeId:JSON.parse(window.sessionStorage.getItem("employee")).employeeId,
+        employeeName:JSON.parse(window.sessionStorage.getItem("employee")).employeeName,
+        designation:JSON.parse(window.sessionStorage.getItem("employee")).designation,
+        dateOfJoining:JSON.parse(window.sessionStorage.getItem("employee")).dateOfJoining,
+        mobileNo:JSON.parse(window.sessionStorage.getItem("employee")).mobileNo,
+        email:JSON.parse(window.sessionStorage.getItem("employee")).email,
+        gender:JSON.parse(window.sessionStorage.getItem("employee")).gender
+
+      };
+
+      console.log(employee);
+      AdminServices.sendEmail(employee,projectData.managerId)
+        .then((response) => {
+          toast.success("Email sent to respective Manager");
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Something Went Wrong");
+        });
+    };
+
 
   return (
     <>
@@ -76,10 +103,11 @@ const ProjectListSub = ({ projectData }) => {
             <Button
               className="project-req-button"
 
-              // onClick={handleShow}
+              onClick={sendEmail}
             >
               Request Change
             </Button>
+            <ToastContainer />
           </div>
         </div>
       </div>

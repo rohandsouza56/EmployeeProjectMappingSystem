@@ -26,7 +26,7 @@ const EmployeeDashboard = () => {
   // const [addproject, setAddProject] = useState(false);
 
   const [projectlist, setProjectList] = useState(false);
-  const [employeeProfile, setEmployeeProfile] = useState(false);
+  const [employeeProfile, setEmployeeProfile] = useState(true);
   const [getResource, setResource] = useState(false);
   const [addSkill, setAddSkill] = useState(false);
   const [attemptQuiz, setAttemptQuiz] = useState(false);
@@ -245,7 +245,7 @@ const EmployeeDashboard = () => {
 
             <span className="fs-4">
               Hello{" "}
-              <span  style ={{ color :"#28559A"}}>
+              <span style={{ color: "#28559A" }}>
                 <b>
                   {" "}
                   {
@@ -254,6 +254,14 @@ const EmployeeDashboard = () => {
                   }
                 </b>
               </span>
+            </span>
+          </a>
+          <a
+            href="#"
+            className="hello-text d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+          >
+            <span className="fs-5 ps-2" style={{ fontWeight: "500" }}>
+              Employee Dashboard
             </span>
           </a>
           <hr />

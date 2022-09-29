@@ -5,7 +5,7 @@ const Quiz_BASE_REST_API_URL = 'http://localhost:8082/quiz/';
 
 
 const getAllQuestions = (technologyId) => {
-    return axios.get(Quiz_BASE_REST_API_URL + "questions/1", {
+    return axios.get(Quiz_BASE_REST_API_URL + "questions/"+technologyId, {
       headers: {
         Authorization: localStorage.getItem("jwtToken"),
       },

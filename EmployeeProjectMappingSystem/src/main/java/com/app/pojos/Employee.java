@@ -85,11 +85,9 @@ public class Employee implements Serializable {
 	@Column(name="Resume")
 	private byte[] resume;
 	
-	
-	@Transient
+
 	private String docName;
 	
-	@Transient
 	private String docType;
 	
 	

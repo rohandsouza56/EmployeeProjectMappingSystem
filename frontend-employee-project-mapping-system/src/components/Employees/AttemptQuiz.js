@@ -13,6 +13,7 @@ const AttemptQuiz = () => {
   const navigate = useNavigate();
   const attempQuizSection = (techId) => {
   window.sessionStorage.setItem("quizTechId",techId);
+  console.log(techId);
   navigate("/quiz");
 
   };
@@ -55,7 +56,7 @@ const AttemptQuiz = () => {
 
                     <td>
                       <center>
-                        <button className="btn btn-primary" onClick={event => attempQuizSection(technology.technologyId)}> >
+                        <button className="btn btn-primary" onClick={event => attempQuizSection(technology.technologyId)}>
                           Attempt Quiz
                         </button>
                       </center>

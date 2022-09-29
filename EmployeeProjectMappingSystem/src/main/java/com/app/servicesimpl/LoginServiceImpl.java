@@ -32,15 +32,15 @@ public class LoginServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
 
-		System.out.println("Email: "+email);
-		System.out.println("Email: "+email.substring(0,email.length()-1));
+		//System.out.println("Email: "+email);
+		//System.out.println("Email: "+email.substring(0,email.length()-1));
 		Admin admin = adminRepository.findByEmail(email.substring(0,email.length()-1));
 
 		
 		Employee employee = employeeRepository.findByEmail(email.substring(0,email.length()-1));
 		
 		int roleId = Integer.parseInt(email.charAt(email.length()-1)+"");
-		System.out.println("Role ID: "+roleId);
+		//System.out.println("Role ID: "+roleId);
 		
 		System.out.println(admin);
 		System.out.println(employee);

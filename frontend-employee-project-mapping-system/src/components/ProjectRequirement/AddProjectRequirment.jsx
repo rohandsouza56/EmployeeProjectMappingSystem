@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminServices from "../../Services/AdminServices";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProjectRequirment = () => {
   const [technologyId, setTechnologyId] = useState("");
@@ -113,14 +115,12 @@ const AddProjectRequirment = () => {
         .then((response) => {
           setTechnologyId("");
           setProjectId("");
-          setErrorMsg("");
-          setSuccessMsg("Project Requirement Details Added Successfully");
+          toast.success("Project Requirement Details Added Successfully");
           setErrorMsg("");
         })
         .catch((error) => {
           console.log(error);
-          setSuccessMsg("");
-          setErrorMsg("Error");
+          toast.error("Something went Wrong");
         });
     }
   };
@@ -176,10 +176,9 @@ const AddProjectRequirment = () => {
                 </button>
               </div>
             </form>
+            <ToastContainer />
           </div>
         </div>
-        <span className="text-danger">{errorMsg}</span>
-        <span className="text-success">{successMsg}</span>
       </div>
 
       <hr />

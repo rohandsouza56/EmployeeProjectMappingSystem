@@ -12,9 +12,10 @@ values(1,"What is Dependency Injection?"),
 (1,"Which one of following is an alternative to Spring HibernateTemplate?");
 
 select *from Question;
-
+select *from Options;
 insert into Options (Question_Id,`Option`,isTrue)
-values(1,"It is a design pattern which implements Inversion of Control for software applications.",true),(1,"It is one of the spring module.",false),(1,"It is a technique to get dependencies of any project.",false),(1,"It is used to promote tight coupling in code.",false),
+values(1,"It is a de
+sign pattern which implements Inversion of Control for software applications.",true),(1,"It is one of the spring module.",false),(1,"It is a technique to get dependencies of any project.",false),(1,"It is used to promote tight coupling in code.",false),
 (2,"This scopes a bean definition to an HTTP Application/ Global session.",true),(2,"This scopes the bean definition to Spring IoC container.",false),(2,"This scopes the bean definition to HTTP request.",false),(2,"This scopes the bean definition to HTTP Session.",false),
 (3,"Autowiring helps in wiring a list of values, allowing duplicates.",false),(3,"Autowiring lets Spring resolve collaborators (other beans) for your bean by inspecting the contents of the BeanFactory without using <constructor-arg> and <property> elements.",true),(3,"Autowiring injects values in spring beans.",false),(3,"Autowiring injects one bean into another.",false),
 (4,"The @Autowired annotation can be used to autowire bean on the setter method.",false),(4,"The @Autowired annotation can be used to autowire bean on the methods with arbitrary names and/or multiple arguments.",false),(4,"This annotation provides more fine-grained control over where and how autowiring should be accomplished.",true),(4,"All of above.",false),
@@ -140,7 +141,8 @@ values(6,"What is the maximum length of a Python identifier?"),
 
 insert into Options (Question_Id,`Option`,isTrue)
 values(61,"32",false),(61,"16",false),(61,"28",false),(61,"No fixed length is specified",true),
-(62,"Zim Den",false),(62,"Guido van Rossum",true),(62,"Niene Stom",false),(62,"Wick van Rossum",false),
+(62,"Zim Den",false)
+,(62,"Guido van Rossum",true),(62,"Niene Stom",false),(62,"Wick van Rossum",false),
 (63,"English",false),(63,"PHP",false),(63,"C",true),(63,"All of the above",false),
 (64,".py",true),(4,".python",false),(64,".pyt",false),(64,"None of these",false),
 (65,"2008.",true),(65,"2000",false),(65,"2010",false),(65,"2005",false),

@@ -37,7 +37,8 @@ const addSkill = (skillDetails) => {
   console.log(localStorage.getItem("jwtToken"));
   let formData = new FormData();
   formData.append("files", skillDetails.certificatePdf);
-  return axios.post(Employee_BASE_REST_API_URL + "certificatepdf/"+skillDetails.employeeId, formData, {
+  return axios.post(Employee_BASE_REST_API_URL + 
+    "certificatepdf?employeeId="+skillDetails.employee.employeeId+"&skill="+skillDetails.skill+"&dateOfCompletion="+skillDetails.dateOfCompletion+"&certificationLink="+skillDetails.certificationLink+"&technologyId="+skillDetails.technologyId.technologyId, formData, {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
       "Content-Type": "multipart/form-data",

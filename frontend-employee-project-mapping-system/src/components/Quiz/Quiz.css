@@ -90,10 +90,17 @@
 }
 
 .score-section {
-  display: flex;
-  font-size: 24px;
-  align-items: center;
-  background-color:#ffffff !important;
+  height: 600px;
+  background-color: rgb(59, 75, 132);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  font-size: 30px;
+  padding-top: 15%;
+  margin-top: 30px;
+  
 }
 
 /* QUESTION/TIMER/LEFT SECTION */

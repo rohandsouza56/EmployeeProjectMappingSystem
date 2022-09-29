@@ -155,7 +155,7 @@ const AddProjects = () => {
           console.log(error);
           setErrorMsg("Error");
           setSuccessMsg("");
-          toast.success("Something Went Wrong");
+          toast.error("Something Went Wrong");
         });
     }
   };

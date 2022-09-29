@@ -152,12 +152,12 @@ const AddSkills = () => {
     if (validation()=== true) {
      
       let skillDetails= {
-         skill,
-          employeeId:JSON.parse(window.sessionStorage.getItem('employee')).employeeId,
+         skill:skill,
+          employee:{employeeId:JSON.parse(window.sessionStorage.getItem('employee')).employeeId},
           dateOfCompletion,
          certificationLink,
          certificatePdf,
-         technologyId,
+         technologyId:{technologyId},
       };
       console.log(skillDetails);
 

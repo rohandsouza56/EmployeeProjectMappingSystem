@@ -4,6 +4,8 @@ import AdminServices from "../../Services/AdminServices";
 // import EmployeeService from '../../Services/EmployeeService';
 import "react-toastify/dist/ReactToastify.css";
 import EmployeeService from "../../Services/EmployeeService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddEmployees = () => {
   const [name, setName] = useState("");
@@ -147,7 +149,7 @@ const AddEmployees = () => {
     }
 
     if (roleId === "" || roleId === null) {
-      setRoleIdErr("Please Enter Role Id");
+      setRoleIdErr("Please select Role");
       flag = false;
     }
 
@@ -169,14 +171,14 @@ const AddEmployees = () => {
       setRoleIdErr("");
 
       let employeeDetails = {
-        name,
+        employeeName:name,
         designation,
         dateOfJoining,
         mobileNo,
         email,
         gender,
         password,
-        roleId,
+        roles:{roleId},
       };
       console.log(employeeDetails);
       AdminServices.addNewEmployee(employeeDetails)
@@ -189,10 +191,11 @@ const AddEmployees = () => {
           setGender("");
           setPassword("");
           setRoleId("");
+          toast.success("Employee Added Successfully");
         })
         .catch((error) => {
           console.log(error);
-          //setErrorMesg(error.response.data);
+           toast.error("Something went wrong");
         });
     }
   };
@@ -262,7 +265,7 @@ const AddEmployees = () => {
                         onChange={mobileNoTextHandler}
                         placeholder="mobile no"
                       />
-                      <label>mobile No</label>
+                      <label>Mobile No</label>
                       <span className="text-danger">{mobileNoErr}</span>
                     </div>
                   </div>
@@ -272,44 +275,51 @@ const AddEmployees = () => {
                   <div className="col-6">
                     <div className="form-floating mb-3">
                       <input
-                        type="email"
+                        type="text"
                         className="form-control"
                         value={email}
                         onChange={emailTextHandler}
                         placeholder="Enter emailId"
                       />
-                      <label>email Id</label>
+                      <label>Email Id</label>
                       <b className="text-danger">{emailErr}</b>
                     </div>
                   </div>
                   <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={gender}
-                        onChange={genderTextHandler}
-                        placeholder="Enter PanNumber"
-                      />
-                      <label>Gender</label>
-                      <span className="text-danger">{genderErr}</span>
-                    </div>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      onChange={genderTextHandler}
+                    >
+                      <option hidden disabled selected value>
+                        --Select Gender --
+                      </option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    
+                    <span className="text-danger">{genderErr}</span>
                   </div>
                 </div>
+                
 
                 <div className="row">
+                  
                   <div className="col-6">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={roleId}
-                        onChange={roleIdTextHandler}
-                        placeholder="Enter roleId"
-                      />
-                      <label>roleId</label>
-                      <span className="text-danger">{roleIdErr}</span>
-                    </div>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      onChange={roleIdTextHandler}
+                    >
+                      <option hidden disabled selected value>
+                        --Select Role --
+                      </option>
+                      <option value="1">Employee</option>
+                      <option value="2">Manager</option>
+                    </select>
+                    
+                    <span className="text-danger">{roleIdErr}</span>
                   </div>
                   <div className="col-6">
                     <div className="form-floating mb-3">
@@ -332,6 +342,7 @@ const AddEmployees = () => {
                   </button>
                 </div>
               </form>
+              <ToastContainer />
             </div>
           </div>
           {/* <span className="text-success">
