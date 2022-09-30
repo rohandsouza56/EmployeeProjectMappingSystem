@@ -7,97 +7,19 @@ const EmployeeListSub = ({ employeeData }) => {
   const downloadResume = () => {
     AdminServices.getResumeById(employeeData.employeeId)
       .then((response) => {
-        /*//console.log("response -->"+JSON.parse(response));
-     console.log(response.headers);
-     //console.log(JSON.parse(response));
-     // response.blob;
-
-
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download","img.jpeg"); //or any other extension
-    document.body.appendChild(link);
-    link.click();
-      // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  */
-        // create file link in browser's memory
-        /*  const href = URL.createObjectURL(new Blob([response.data]));
-
-    // create "a" HTLM element with href to file & click
-    const link = document.createElement('a');
-    link.href = href;
-    link.setAttribute('download', 'Lab Exam.docx'); //or any other extension
-    document.body.appendChild(link);
-    link.click();
-
-    // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
-
-*/
-        /*
-    const cd=response.headers['filename']
-    const type = response.headers['content-type']
-    console.log(type);
-    console.log(cd);
-    let fileName = response.headers["Content-Disposition"].split("filename=")[1];
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) { // IE variant
-        window.navigator.msSaveOrOpenBlob(new Blob([response.data],
-                { type: type }
-            ),
-            fileName
-        );
-    } else {
-        const url = window.URL.createObjectURL(new Blob([response.data],
-            { type: type }));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download',
-            response.headers["Content-Disposition"].split("filename=")[1]);
-        document.body.appendChild(link);
-        link.click();
-    }
-  */
-
-        // const type = response.headers['content-type']
-
-        // const cd=response.headers['content-disposition']
-        //const cd2=response.headers['filename']
-        //console.log(response.data);
-        //console.log(type);
-        //console.log(response.headers);
-        // console.log(response.data);
-        //    const reader = new FileReader();
-        //     const blob = new Blob([response.data])
-
-        //     const data = reader.readAsDataURL(blob);
-
-        // console.log(data);
-
-        //     const link = document.createElement('a')
-        //     link.href = window.URL.createObjectURL(data)
-        //     console.log(link.href);
-        //     link.download = 'abc.pdf'
-        //     link.click()
-
-        // document.body.removeChild(link);
-        // URL.revokeObjectURL(link.href);
-        var bytes = new Uint8Array(response.data)
-        //var sampleArr = base64ToArrayBuffer(response.data);
-        //saveByteArray("Sample Report", sampleArr);
+        //var bytes = new Uint8Array(response.data)
+        var sampleArr = base64ToArrayBuffer(response.data);
+        saveByteArray("Sample Report", sampleArr);
 
         // console.log(response.headers);
-         const blob = new Blob([bytes], { type: "application/pdf" });
+        //const blob = new Blob([bytes], { type: "application/pdf" });
         // console.log(blob.text());
 
         // let reader = new FileReader();
 
-        const content = response.headers["content-type"];
-        //console.log(response);
-        download(blob, "abc.pdf", content);
+        // const content = response.headers["content-type"];
+        // //console.log(response);
+        // download(blob, "abc.pdf", content);
       })
       .catch((error) => {
         console.log(error);
@@ -109,20 +31,20 @@ const EmployeeListSub = ({ employeeData }) => {
     var binaryLen = binaryString.length;
     var bytes = new Uint8Array(binaryLen);
     for (var i = 0; i < binaryLen; i++) {
-       var ascii = binaryString.charCodeAt(i);
-       bytes[i] = ascii;
+      var ascii = binaryString.charCodeAt(i);
+      bytes[i] = ascii;
     }
     return bytes;
- }
+  }
 
- function saveByteArray(reportName, byte) {
-  var blob = new Blob([byte], {type: "application/pdf"});
-  var link = document.createElement('a');
-  link.href = window.URL.createObjectURL(blob);
-  var fileName = reportName;
-  link.download = fileName;
-  link.click();
-};
+  function saveByteArray(reportName, byte) {
+    var blob = new Blob([byte], { type: "application/pdf" });
+    var link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    var fileName = reportName;
+    link.download = fileName;
+    link.click();
+  }
 
   return (
     <div className="col-5">

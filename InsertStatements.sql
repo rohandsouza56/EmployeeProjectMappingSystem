@@ -71,12 +71,12 @@ select * from Technology;
 -- truncate Technology;
 
 insert into Resource (link,`Description`,Technology_Id)
-values("Link 1","Spring Boot Notes,PDFs,E-Books",1),
-("Link 2","React Notes,PDFs,E-Books",2),
-("Link 3","MySql Notes,PDFs,E-Books",3),
-("Link 4","DotNet Notes,PDFs,E-Books",4),
-("Link 5","Java Notes,PDFs,E-Books",5),
-("Link 6","Python Notes,PDFs,E-Books",6);
+values("https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/","Spring Boot Notes,PDFs,E-Books",1),
+("https://reactjs.org/docs/getting-started.html","React Notes,PDFs,E-Books",2),
+("https://dev.mysql.com/doc/","MySql Notes,PDFs,E-Books",3),
+("https://learn.microsoft.com/en-us/dotnet/","DotNet Notes,PDFs,E-Books",4),
+("https://docs.oracle.com/en/java/","Java Notes,PDFs,E-Books",5),
+("https://docs.python.org/3/","Python Notes,PDFs,E-Books",6);
 select * from Resource;
 truncate Resource;
 
@@ -140,7 +140,7 @@ select * from Employee;
 
 
 show variables like 'max_allowed_packet';
-SET GLOBAL max_allowed_packet=268435456;
+SET GLOBAL max_allowed_packet=1073741824;
 
 
 

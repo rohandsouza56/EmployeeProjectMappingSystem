@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,8 +34,24 @@ public class Resource {
 	@Column(name="Link")
 	private String link;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	
+	
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Technology_Id") //fk
 	private Technology technology;
 	
+	@Lob
+	@Column(name="Content")
+	private byte[] content;
+
+	private String docName;
+	
+	private String docType;
+	
+	public Resource(String docName, String docType, byte[] content) {
+		super();
+		this.content = content;
+		this.docName = docName;
+		this.docType = docType;
+	}
 }

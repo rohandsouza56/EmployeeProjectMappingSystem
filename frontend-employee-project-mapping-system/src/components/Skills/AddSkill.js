@@ -338,28 +338,28 @@ const AddSkills = () => {
           <Modal.Title>Skills</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <table striped border hover>
+          <table className="table table-striped">
           <thead>
             <tr>
               <th>Skill Id</th>
               <th>Skill</th>
-              <th>Employee Id</th>
+    
               <th>Date Of Completion</th>
               <th>Certification Link</th>
-              <th>Certificate Pdf</th>
-              <th>Technology Id</th>
+             
+              <th>Technology</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {allSkills.map((allSkill) => (
               <tr key={allSkill.skillId}>
+                <td>{allSkill.skillId}</td>
                 <td>{allSkill.skill}</td>
-                <td>{allSkill.employeeId}</td>
                 <td>{allSkill.dateOfCompletion}</td>
                 <td>{allSkill.certificationLink}</td>
-                <td>{allSkill.certificatePdf}</td>
-                <td>{allSkill.technologyId}</td>
+                
+                <td>{allSkill.technologyId.technologyName}</td>
                 <td>
                  
                     <button

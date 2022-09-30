@@ -12,6 +12,7 @@ values(1,"What is Dependency Injection?"),
 (1,"Which one of following is an alternative to Spring HibernateTemplate?");
 
 select *from Question;
+truncate table question;
 select *from Options;
 insert into Options (Question_Id,`Option`,isTrue)
 values(1,"It is a de
@@ -65,16 +66,16 @@ values(3,"Which of these is also known as a virtual table?"),
 (3, "Usage of aggregates in WHERE clause is allowed.?");
 
 insert into Options (Question_Id,`Option`,isTrue)
-values(31,"VIEW.",true),(31,"JOIN.",false),
-(32,"DATABASE",false),(32,"SCHEMA",false),(32,"JOIN",true),(32,"SCHEMA",false),
-(33,"REMOVE.",false),(33,"DELETE.",false),(33,"GROUP",false),(33,"DROP",true),
-(34,"DISPLAY.",false),(34,"INDEX.",true),(34,"DROP",false),(34,"FILTER",false),
-(35,"SCALER.",true),(35,"COLUMN",false),(35,"ROW",false),(35,"TABLE",false),
-(36,"NESTING.",false),(36,"SUBQUERING.",true),(36,"BINDING",false),(36,"ENCAPSULATING",false),
-(37,"SOME",true),(37,"MANY",false),(37,"GROUP",false),(37,"SELECT",false),
-(38,"IN AND NOT IN.",false),(38,"EXISTS AND NOT EXISTS.",true),(38,"PRESENT",false),(38,"ABSENT",false),
-(39,"=.",false),(39,"<=.",false),(39,">=",false),(39,"==",true),
-(40,"TRUE.",false),(40,"FALSE.",true);
+values(21,"VIEW.",true),(21,"JOIN.",false),
+(22,"DATABASE",false),(22,"SCHEMA",false),(22,"JOIN",true),(22,"SCHEMA",false),
+(23,"REMOVE.",false),(23,"DELETE.",false),(23,"GROUP",false),(23,"DROP",true),
+(24,"DISPLAY.",false),(24,"INDEX.",true),(24,"DROP",false),(24,"FILTER",false),
+(25,"SCALER.",true),(25,"COLUMN",false),(25,"ROW",false),(25,"TABLE",false),
+(26,"NESTING.",false),(26,"SUBQUERING.",true),(26,"BINDING",false),(26,"ENCAPSULATING",false),
+(27,"SOME",true),(27,"MANY",false),(27,"GROUP",false),(27,"SELECT",false),
+(28,"IN AND NOT IN.",false),(28,"EXISTS AND NOT EXISTS.",true),(28,"PRESENT",false),(28,"ABSENT",false),
+(29,"=.",false),(29,"<=.",false),(29,">=",false),(29,"==",true),
+(30,"TRUE.",false),(30,"FALSE.",true);
 
 -- .Net
 insert into Question (Technology_Id,Question)
@@ -90,16 +91,16 @@ values(4,"Which of the following is a .net obfuscation solution"),
 (4,"The first event triggers in an aspx page is.");
 
 insert into Options (Question_Id,`Option`,isTrue)
-values(41,"Decompiles DLL back into actual source code",false),(41,"It determines if or not a piece of code is allowed to run",false),(41," Prevent a .NET DLL to be decompiled",true),(41,"None of the above",false),
-(42,"CLS",false),(42," MSIL",false),(42,"CTS",false),(42,"CLR",true),
-(43,"Every one minute",false),(43,"When application is running low of memory",true),(43,"It runs randomly",false),
-(44,"ngen.exe",true),(44," caspol.exe",false),(44,"caspol.dll",false),(44,"ngen.dll",false),
-(45,"ISingleCall",false),(45,"ISerializable",true),(45,"IUnknown",false),(45,"IMarshalByValue",false),
-(46,"Base class library",false),(46,"COM marshaller",true),(46,"Class loader",false),(46,"Thread support",false),
-(47,"MSIL",false),(47,"Assembly manifest",true),(47,"GAC",false),(47,"Type metadata",false),
-(48,"Machine configuration, Machine.config file",false),(48,"Application configuration file",false),(48,"Security configuration file",false),(48,"All of the above",true),
-(49,"Mscorcfg.msc",false),(49,"Caspol.exe",false),(49," IIASM.exe",false),(49,"a and b",true),
-(50," Page_Init()",true),(50,"Page_Load()",false),(50,"Page_click()",false);
+values(31,"Decompiles DLL back into actual source code",false),(31,"It determines if or not a piece of code is allowed to run",false),(31," Prevent a .NET DLL to be decompiled",true),(31,"None of the above",false),
+(32,"CLS",false),(32," MSIL",false),(32,"CTS",false),(32,"CLR",true),
+(33,"Every one minute",false),(33,"When application is running low of memory",true),(33,"It runs randomly",false),
+(34,"ngen.exe",true),(34," caspol.exe",false),(34,"caspol.dll",false),(34,"ngen.dll",false),
+(35,"ISingleCall",false),(35,"ISerializable",true),(35,"IUnknown",false),(35,"IMarshalByValue",false),
+(36,"Base class library",false),(36,"COM marshaller",true),(36,"Class loader",false),(36,"Thread support",false),
+(37,"MSIL",false),(37,"Assembly manifest",true),(37,"GAC",false),(37,"Type metadata",false),
+(38,"Machine configuration, Machine.config file",false),(38,"Application configuration file",false),(38,"Security configuration file",false),(38,"All of the above",true),
+(39,"Mscorcfg.msc",false),(39,"Caspol.exe",false),(39," IIASM.exe",false),(39,"a and b",true),
+(40," Page_Init()",true),(40,"Page_Load()",false),(40,"Page_click()",false);
 
 -- 5.Java
 insert into Question (Technology_Id,Question)
@@ -115,16 +116,16 @@ values(5,"Which of the following is not OOPS concept in Java?"),
 (5,"Method overriding is combination of inheritance and polymorphism?");
 
 insert into Options (Question_Id,`Option`,isTrue)
-values(51,"Inheritance",false),(51,"Encapsulation",false),(51,"Polymorphism",false),(51,"Compilation",true),
-(52,"Compile time polymorphism",true),(52," Execution time polymorphism",false),(52,"Multiple polymorphism",false),(52," Multilevel polymorphism",false),
-(53," At run time",false),(53,"At compile time",true),(53,"At coding time",false),(53,"At execution time",false),
-(54," More than one method with same name but different method signature and different number or type of parameters",false),(54,"More than one method with same name, same signature but different number of signature",false),(54,"More than one method with same name, same signature, same number of parameters but different type",false),(54,"More than one method with same name, same number of parameters and type but different signature",true),
-(55,"Polymorphism",false),(55,"Encapsulation",false),(55,"Abstraction",true),(55,"Inheritance",false),
-(56,"Encapsulation",true),(56,"Inheritance",false),(56,"Polymorphism",false),(56,"Abstraction",false),
-(57,"Aggregation",false),(57,"Composition",false),(57,"Encapsulation",false),(57,"Association",true),
-(58,"Aggregation",false),(58,"Composition",true),(58,"Encapsulation",false),(58,"Association",false),
-(59,"Aggregation",true),(59,"Composition",false),(59,"Encapsulation",false),(59,"Association",false),
-(60,"True",true),(60,"False",false);
+values(41,"Inheritance",false),(41,"Encapsulation",false),(41,"Polymorphism",false),(41,"Compilation",true),
+(42,"Compile time polymorphism",true),(42," Execution time polymorphism",false),(42,"Multiple polymorphism",false),(42," Multilevel polymorphism",false),
+(43," At run time",false),(43,"At compile time",true),(43,"At coding time",false),(43,"At execution time",false),
+(44," More than one method with same name but different method signature and different number or type of parameters",false),(44,"More than one method with same name, same signature but different number of signature",false),(44,"More than one method with same name, same signature, same number of parameters but different type",false),(44,"More than one method with same name, same number of parameters and type but different signature",true),
+(45,"Polymorphism",false),(45,"Encapsulation",false),(45,"Abstraction",true),(45,"Inheritance",false),
+(46,"Encapsulation",true),(46,"Inheritance",false),(46,"Polymorphism",false),(46,"Abstraction",false),
+(47,"Aggregation",false),(47,"Composition",false),(47,"Encapsulation",false),(47,"Association",true),
+(48,"Aggregation",false),(48,"Composition",true),(48,"Encapsulation",false),(48,"Association",false),
+(49,"Aggregation",true),(49,"Composition",false),(49,"Encapsulation",false),(49,"Association",false),
+(50,"True",true),(50,"False",false);
 
 -- 6.Python
 insert into Question (Technology_Id,Question)
@@ -140,14 +141,14 @@ values(6,"What is the maximum length of a Python identifier?"),
 (6,"Why does the name of local variables start with an underscore discouraged?");
 
 insert into Options (Question_Id,`Option`,isTrue)
-values(61,"32",false),(61,"16",false),(61,"28",false),(61,"No fixed length is specified",true),
-(62,"Zim Den",false)
-,(62,"Guido van Rossum",true),(62,"Niene Stom",false),(62,"Wick van Rossum",false),
-(63,"English",false),(63,"PHP",false),(63,"C",true),(63,"All of the above",false),
-(64,".py",true),(4,".python",false),(64,".pyt",false),(64,"None of these",false),
-(65,"2008.",true),(65,"2000",false),(65,"2010",false),(65,"2005",false),
-(66,"Key",false),(66,"Brackets",false),(66,"Indentation",true),(66,"None of these",false),
-(67,"/",false),(67,"//",false),(67,"#",true),(67,"!",false),
-(68,"Classes are real-world entities while objects are not real",false),(68,"Objects are real-world entities while classes are not real",true),(68,"Both objects and classes are real-world entities",false),(68,"All of the above",false),
-(69,"Object",false),(69,"Function",true),(69,"Attribute",false),(69,"Argument",false),
-(70,"To identify the variable",false),(70,"It confuses the interpreter",true),(70,"It indicates a private variable of a class",true),(70,"None of these",false);
+values(51,"32",false),(51,"16",false),(51,"28",false),(51,"No fixed length is specified",true),
+(52,"Zim Den",false)
+,(52,"Guido van Rossum",true),(52,"Niene Stom",false),(52,"Wick van Rossum",false),
+(53,"English",false),(53,"PHP",false),(53,"C",true),(53,"All of the above",false),
+(54,".py",true),(4,".python",false),(54,".pyt",false),(54,"None of these",false),
+(55,"2008.",true),(55,"2000",false),(55,"2010",false),(55,"2005",false),
+(56,"Key",false),(56,"Brackets",false),(56,"Indentation",true),(56,"None of these",false),
+(57,"/",false),(57,"//",false),(57,"#",true),(57,"!",false),
+(58,"Classes are real-world entities while objects are not real",false),(58,"Objects are real-world entities while classes are not real",true),(58,"Both objects and classes are real-world entities",false),(58,"All of the above",false),
+(59,"Object",false),(59,"Function",true),(59,"Attribute",false),(59,"Argument",false),
+(60,"To identify the variable",false),(60,"It confuses the interpreter",true),(60,"It indicates a private variable of a class",true),(60,"None of these",false);

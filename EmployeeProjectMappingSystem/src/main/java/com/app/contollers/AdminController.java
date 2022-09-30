@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.pojos.Admin;
 import com.app.pojos.Departments;
@@ -320,31 +322,43 @@ public class AdminController {
 			Employee employee = employeeService.getEmployeeById(employeeId);
 			//System.out.println(new ByteArrayResource(employee.getResume()));
 		//	MultipartFile file=employee.getResume();
+			
+			//byte[] encoded = Base64.getEncoder().encode(employee.getResume());
+		
+			
 			String filename="filename";
 			return ResponseEntity.ok()
 					
 					.contentType(MediaType.parseMediaType(employee.getDocType()))
 					.header(filename,"attachment:filename=\""+employee.getDocName()+"\"")
-					.body(new ByteArrayResource(employee.getResume()));
+					.body(new ByteArrayResource(Base64.getEncoder().encode(employee.getResume())));
 		}
+		
+	
 
+		@PostMapping("/resource/add/{technologyId}")
+		public String uploadResource(@PathVariable("technologyId") int technologyId,@RequestParam("link") String link,@RequestParam("description") String description,@RequestParam("files") MultipartFile[] files) {
+			Resource resource=new Resource();
+			
+			Technology tech=technologyService.getTechnologyById(technologyId);
+			resource.setTechnology(tech);
+			resource.setDescription(description);
+			resource.setLink(link);
+			
+			for (MultipartFile file: files) {
+				resouceService.saveResource(technologyId,resource,file);
+			}
+			return "Sucess";
+		}
 		
-//		public static String encoder(ByteArrayResource b) {
-//	        String base64File = "";
-//	        File file = new File(b);
-//	        try (FileInputStream imageInFile = new FileInputStream(file)) {
-//	            // Reading a file from file system
-//	            byte fileData[] = new byte[(int) file.length()];
-//	            imageInFile.read(fileData);
-//	            base64File = Base64.getEncoder().encodeToString(fileData);
-//	        } catch (FileNotFoundException e) {
-//	            System.out.println("File not found" + e);
-//	        } catch (IOException ioe) {
-//	            System.out.println("Exception while reading the file " + ioe);
-//	        }
-//	        return base64File;
-//	    }
-		
+		@PostMapping("/resource/addfile/{resourceId}")
+		public String uploadResource(@PathVariable("resourceId") int resourceId,@RequestParam("files") MultipartFile[] files) {
+			Resource resource=resouceService.getResourceById(resourceId);
+			for (MultipartFile file: files) {
+				resouceService.saveResource(resource,file);
+			}
+			return "Sucess";
+		}
 		
 		
 	

@@ -10,9 +10,12 @@ const addSkills = (skillDetails) => {
 };
 
 const deleteSkills = (skillId) => {
-  return axios.delete(Employee_BASE_REST_API_URL + "deleteskills", skillId);
+  return axios.delete(Employee_BASE_REST_API_URL + "skill/delete/"+skillId ,{
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+    },
+  });
 };
-
 const updateEmployeePassword = (employeeDetails) => {
   return axios.post(Employee_BASE_REST_API_URL +"employee/updatepassword" , employeeDetails,{
     headers: {
@@ -71,6 +74,17 @@ const getSingleEmployeeByUserName = (userName) => {
     },
   });
 };
+
+const downloadResource= (id) => {
+  return axios.get(Employee_BASE_REST_API_URL  +"download/resource/"+id ,{
+    headers: {
+      Authorization: localStorage.getItem("jwtToken"),
+      responseType: 'blob',
+    }, 
+  }
+  );
+};
+
 export default {
   getAllSkills,
   addSkills,
@@ -80,5 +94,6 @@ export default {
   getSingleEmployeeByUserName,
   addSkill,
   updateEmployeePassword,
-  getSkillsByEmployeeId
+  getSkillsByEmployeeId,
+  downloadResource
 };

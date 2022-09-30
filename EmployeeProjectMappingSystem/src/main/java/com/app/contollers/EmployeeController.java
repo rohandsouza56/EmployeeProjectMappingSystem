@@ -2,11 +2,14 @@ package com.app.contollers;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,11 +27,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.app.pojos.Departments;
 import com.app.pojos.Employee;
 import com.app.pojos.Projects;
+import com.app.pojos.Resource;
 import com.app.pojos.Skills;
 import com.app.pojos.Technology;
 import com.app.service.IDepartmentService;
 import com.app.service.IEmployeeService;
 import com.app.service.IProjectsService;
+import com.app.service.IResourceService;
 import com.app.service.ISkillService;
 import com.app.service.ITechnologyService;
 import com.app.servicesimpl.EmailService;
@@ -52,6 +57,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private ITechnologyService technologyService;
+	
+	@Autowired
+	private IResourceService resourceService;
 	
 	@Autowired
     EmailService emailService;
@@ -126,6 +134,7 @@ public class EmployeeController {
 	
 	@DeleteMapping("/skill/delete/{skillId}")
 	public ResponseEntity<?> deleteSkills(@PathVariable int skillId){
+		System.out.println("abc");
 		return ResponseEntity.ok().body(skillService.deleteSkill(skillId));
 	}
 	
@@ -165,24 +174,13 @@ public class EmployeeController {
 	public String uploadMultipleFilesPdf(@RequestParam("employeeId") int employeeId,@RequestParam("skill") String skill,@RequestParam("dateOfCompletion") String dateOfCompletion,@RequestParam("certificationLink") String certificationLink,@RequestParam("technologyId") int technologyId,@RequestParam("files") MultipartFile[] files) {
 		Skills skillObject=new Skills();
 		
-		//skillObject.setDateOfCompletion((LocalDate)dateOfCompletion);
 		skillObject.setSkill(skill);
-		// DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-		// LocalDate dt = dtf.parseLocalDate(dateOfCompletion);
-		
-		System.out.println(dateOfCompletion);
-	//	skillObject.setDateOfCompletion(dt);
-		
-		
-		
-		
+		System.out.println(dateOfCompletion);	
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
+		LocalDate localDate = LocalDate.parse(dateOfCompletion, formatter);
 
-		  //convert String to LocalDate
-		  LocalDate localDate = LocalDate.parse(dateOfCompletion, formatter);
-
-		  skillObject.setDateOfCompletion(localDate);
+		skillObject.setDateOfCompletion(localDate);
 		
 		skillObject.setCertificationLink(certificationLink);
 		
@@ -203,6 +201,21 @@ public class EmployeeController {
 	public ResponseEntity<?> updatePasswordEmployee(@RequestBody Employee employee){
 		return ResponseEntity.ok().body(employeeService.updatePassword(employee));
 	}
+	
+	@GetMapping("/download/resource/{resourceId}")
+	public ResponseEntity<ByteArrayResource> downloadResource(@PathVariable int resourceId){
+		Resource resource = resourceService.getResourceById(resourceId);
+		//System.out.println(new ByteArrayResource(employee.getResume()));
+	
+		
+		String filename="filename";
+		return ResponseEntity.ok()
+				
+				.contentType(MediaType.parseMediaType(resource.getDocType()))
+				.header(filename,"attachment:filename=\""+resource.getDocName()+"\"")
+				.body(new ByteArrayResource(Base64.getEncoder().encode(resource.getContent())));
+	}
+
 
 
 	

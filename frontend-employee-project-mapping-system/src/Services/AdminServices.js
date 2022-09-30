@@ -106,7 +106,9 @@ const getAllResources = () => {
   });
 };
 const addNewResouce = (resourceDetails) => {
-  return axios.post(ADMIN_BASE_REST_API_URL + "resource/add", resourceDetails, {
+  let formData = new FormData();
+  formData.append("files", resourceDetails.resourceZip);
+  return axios.post(ADMIN_BASE_REST_API_URL + "resource/add/"+resourceDetails.technology.technologyId+"?link="+resourceDetails.link+"&description="+resourceDetails.description, formData, {
     headers: {
       Authorization: localStorage.getItem("jwtToken"),
     },

@@ -14,6 +14,8 @@ const AddResources = () => {
   const [errorMesg, setErrorMesg] = useState("");
   const [resources, setResources] = useState([]);
   const [technologies, setTechnologies] = useState([]);
+  const [resourceZip, setResourceZip] = useState("");
+  const [resourceZipErr, setResourceZipErr] = useState("");
 
   //--------------for modal--------------
   const [show, setShow] = useState(false);
@@ -70,6 +72,14 @@ const AddResources = () => {
     setTechnologyId(event.target.value);
   };
 
+  let resourceZipHandler = (event) => {
+    if (resourceZipErr !== "" || resourceZipErr !== null) setResourceZipErr("");
+    if (resourceZipErr !== "" || resourceZipErr !== null) {
+      setResourceZip(event.target.files[0]);
+    }
+  };
+
+
   let validation = () => {
     setLinkErr("");
     setDescriptionErr("");
@@ -91,6 +101,11 @@ const AddResources = () => {
       flag = false;
     }
 
+    if (resourceZip === "" || resourceZip === null) {
+      setResourceZipErr("Please Upload Resource");
+      flag = false;
+    }
+
     if (flag) {
       return true;
     }
@@ -105,6 +120,7 @@ const AddResources = () => {
         technology: {
           technologyId,
         },
+        resourceZip
       };
       console.log(resourceDetails);
       AdminServices.addNewResouce(resourceDetails)
@@ -113,12 +129,12 @@ const AddResources = () => {
           setDescription("");
           setTechnologyId("");
           getAllResources();
-
+          setResourceZip("");
           toast.success("Resources Details Added Successfully");
         })
         .catch((error) => {
           console.log(error);
-          toast.success("Something Went Wrong");
+          toast.error("Something Went Wrong");
         });
     }
   };
@@ -193,9 +209,21 @@ const AddResources = () => {
                   <label>Description</label>
                   <span className="text-danger">{descriptionErr}</span>
                 </div>
-
+                <div class="mb-3">
+                <label for="formFile" class="form-label">
+                Resource Zip
+                </label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="formFile"
+                  onChange={resourceZipHandler}
+                  placeholder="Upload Certificate Pdf"
+                ></input>
+                <span className="text-danger">{resourceZipErr}</span>
+              </div>
                 <div className="row g-1">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" onClick={addResourceDetails} className="btn btn-primary">
                     Add Resource
                   </button>
                 </div>
